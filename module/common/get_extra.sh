@@ -4,23 +4,6 @@ MODPATH=${0%/*}
 SKIPLIST="$MODPATH/tmp/skiplist"
 OUTPUT="$MODPATH/tmp/exclude-list"
 KBOUTPUT="$MODPATH/tmp/.extra"
-BBPATH="/data/adb/magisk/busybox \
-/data/adb/ksu/bin/busybox \
-/data/adb/ap/bin/busybox \
-/data/adb/modules/busybox-ndk/system/*/busybox"
-
-check_wget() {
-    for path in $BBPATH; do
-        [ -f "$path" ] && BUSYBOX="$path" && break
-    done
-    if ! command -v wget >/dev/null || grep -q "wget-curl" "$(command -v wget)"; then
-        if [ -n "$BUSYBOX" ]; then
-            wget() { "$BUSYBOX" wget "$@"; }
-        else
-            exit 1
-        fi
-    fi
-}
 
 aapt() { "$MODPATH/aapt" "$@"; }
 
