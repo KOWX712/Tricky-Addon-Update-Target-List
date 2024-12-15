@@ -23,15 +23,6 @@ get_kb() {
     [ -s "$KBOUTPUT" ] || rm -f "$KBOUTPUT"
 }
 
-get_unnecessary() {
-    if [ ! -s "$OUTPUT" ] || [ ! -f "$OUTPUT" ]; then
-        download "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/more-excldue.json" 2>/dev/null | \
-        grep -o '"package-name": *"[^"]*"' | \
-        awk -F'"' '{print $4}' > "$OUTPUT"
-    fi
-    get_xposed
-}
-
 get_xposed() {
     pm list packages -3 | cut -d':' -f2 | grep -vxF -f "$SKIPLIST" | grep -vxF -f "$OUTPUT" | while read -r PACKAGE; do
         APK_PATH=$(pm path "$PACKAGE" | grep "base.apk" | cut -d':' -f2 | tr -d '\r')
@@ -41,6 +32,15 @@ get_xposed() {
             fi
         fi
     done
+}
+
+get_unnecessary() {
+    if [ ! -s "$OUTPUT" ] || [ ! -f "$OUTPUT" ]; then
+        download "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/more-excldue.json" 2>/dev/null | \
+        grep -o '"package-name": *"[^"]*"' | \
+        awk -F'"' '{print $4}' > "$OUTPUT"
+    fi
+    get_xposed
 }
 
 check_update() {
