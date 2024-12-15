@@ -19,15 +19,13 @@ download() {
 }      
 
 get_kb() {
-    check_wget
-    wget --no-check-certificate -qO "$KBOUTPUT" "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/.extra"
+    download "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/.extra" > "$KBOUTPUT" 
     [ -s "$KBOUTPUT" ] || rm -f "$KBOUTPUT"
 }
 
 get_unnecessary() {
-    check_wget
     if [ ! -s "$OUTPUT" ] || [ ! -f "$OUTPUT" ]; then
-        wget --no-check-certificate -q -O - "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/more-excldue.json" 2>/dev/null | \
+        download "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/more-excldue.json" 2>/dev/null | \
         grep -o '"package-name": *"[^"]*"' | \
         awk -F'"' '{print $4}' > "$OUTPUT"
     fi
@@ -46,9 +44,8 @@ get_xposed() {
 }
 
 check_update() {
-    check_wget
     if [ -d "$MODPATH/update" ]; then
-        JSON=$(wget --no-check-certificate -q -O - "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/update.json") || exit 1
+        JSON=$(download "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/update.json") || exit 1
         REMOTE_VERSION=$(echo "$JSON" | grep -o '"versionCode": *[0-9]*' | awk -F: '{print $2}' | tr -d ' ')
         LOCAL_VERSION=$(grep -o 'versionCode=[0-9]*' "$MODPATH/update/module.prop" | awk -F= '{print $2}')
         if [ "$REMOTE_VERSION" -gt "$LOCAL_VERSION" ]; then
