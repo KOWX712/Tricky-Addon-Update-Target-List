@@ -1,11 +1,22 @@
-#!/system/bin/sh
-
+#!/bin/sh
+PATH=/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk:/data/data/com.termux/files/usr/bin:$PATH
 MODPATH=${0%/*}
 SKIPLIST="$MODPATH/tmp/skiplist"
 OUTPUT="$MODPATH/tmp/exclude-list"
 KBOUTPUT="$MODPATH/tmp/.extra"
 
 aapt() { "$MODPATH/aapt" "$@"; }
+
+# probe for downloaders
+# wget = low pref, no ssl.
+# curl, has ssl on android, we use it if found
+download() {
+	if command -v curl > /dev/null 2>&1; then
+		curl --connect-timeout 3 -s "$1"
+        else
+		busybox wget -T 3 --no-check-certificate -qO - "$1"
+        fi
+}      
 
 get_kb() {
     check_wget
