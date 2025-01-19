@@ -38,7 +38,7 @@ export async function fetchAppList() {
             console.warn("Applist file not found or could not be loaded. Skipping applist lookup.");
         }
 
-        const result = await execCommand('pm list packages -3; pm path com.google.android.gms >/dev/null 2>&1 && echo "package:com.google.android.gms" || true');
+        const result = await execCommand('pm list packages -3; pm path com.google.android.gms; pm path com.google.android.gsf; pm path com.android.vending >/dev/null 2>&1 && echo "package:com.google.android.gms" && echo "package:com.google.android.gsf" && echo "package:com.android.vending" || true');
         const appEntries = result
             .split("\n")
             .map(line => {

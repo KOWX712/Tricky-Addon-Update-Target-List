@@ -18,7 +18,7 @@ export const floatingBtn = document.querySelector('.floating-btn');
 export const basePath = "set-path";
 export const appsWithExclamation = [];
 export const appsWithQuestion = [];
-const ADDITIONAL_APPS = [ "com.google.android.gms", "io.github.vvb2060.keyattestation", "io.github.vvb2060.mahoshojo", "icu.nullptr.nativetest" ];
+const ADDITIONAL_APPS = [ "com.google.android.gms", "com.android.vending", "com.google.android.gsf", "io.github.vvb2060.keyattestation", "io.github.vvb2060.mahoshojo", "icu.nullptr.nativetest" ];
 const rippleClasses = ['.language-option', '.menu-button', '.menu-options li', '.search-card', '.card', '.update-card', '.link-icon', '.floating-btn', '.uninstall-container', '.boot-hash-save-button', '.boot-hash-value', '.reboot', '.install'];
 
 // Variables
