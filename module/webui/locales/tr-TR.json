@@ -1,0 +1,86 @@
+{
+    "language": "Türkçe",
+    "header": {
+        "title": "Tricky Addon"
+    },
+    "help": {
+        "help_instructions": "Talimatlar",
+        "save_and_update": "Kaydet",
+        "save_and_update_description": "Mevcut yapılandırmayı target.txt dosyasına kaydet.",
+        "refresh": "Yenile",
+        "refresh_description": "Uygulama ve hariç tutma listesini yenile.",
+        "select_deselect": "Tümünü Seç & Seçimi Kaldır",
+        "select_description": "Mevcut arayüzdeki tüm uygulamaları seç veya seçimini kaldır.",
+        "select_denylist": "Reddetme Listesinden Seç",
+        "select_denylist_description": "Yalnızca Magisk’te mevcut, Reddetme Listesindeki uygulamaları seç. Tavsiye edilir.",
+        "deselect_unnecessary": "Gereksizleri Seçme",
+        "deselect_unnecessary_description": "Gereksiz kategori: Xposed modülü, root yöneticisi, root ile ilgili uygulamalar ve asla bootloader durumunu kontrol etmeyen genel uygulamalar. Bu seçenek internet bağlantısı gerektirir.",
+        "set_keybox": "AOSP & Geçerli Keybox Ayarla",
+        "set_keybox_description": "Tricky Store'daki keybox.xml dosyasını değiştirir. Eğer geçerli bir keybox yoksa AOSP keybox ile değiştirilecektir. Geçerli keybox seçeneği internet bağlantısı gerektirir.",
+        "set_verified_boot_hash": "Doğrulanmış Boot Hash Ayarla",
+        "set_verified_boot_hash_description": "Key Attestation Demo’dan verifiedBootHash değerini alın. Abnormal boot durumunu ro.boot.vbmeta.digest’i sıfırlayarak düzeltin."
+    },
+    "update": {
+        "update_available": "Yeni bir sürüm hazır",
+        "redirect_to_release": "Son sürümü indirmek için dokunun",
+        "changelog": "Değişiklik Günlüğü",
+        "install": "Yükle",
+        "reboot": "Yeniden Başlat"
+    },
+    "search_bar": {
+        "search_placeholder": "Ara"
+    },
+    "functional_button": {
+        "save_and_update_button": "Kaydet",
+        "uninstall_webui": "WebUI’ı Kaldır"
+    },
+    "loading": {
+        "loading": "Yükleniyor..."
+    },
+    "menu": {
+        "refresh": "Yenile",
+        "select_all": "Tümünü Seç",
+        "deselect_all": "Tüm Seçimleri Kaldır",
+        "select_denylist": "Reddetme Listesinden Seç",
+        "deselect_unnecessary": "Gereksizleri Seçme",
+        "set_aosp_keybox": "AOSP Keybox Ayarla",
+        "set_valid_keybox": "Geçerli Keybox Ayarla",
+        "set_verified_boot_hash": "Doğrulanmış Boot Hash Ayarla",
+        "about": "Hakkında"
+    },
+    "reset_vbmeta": {
+        "boot_hash_input_placeholder": "Doğrulanmış Boot Hash’inizi buraya yapıştırın",
+        "boot_hash_save_button": "Kaydet"
+    },
+    "about": {
+        "module_name_line1": "Tricky Addon",
+        "module_name_line2": "Target List'i Güncelle",
+        "by": "tarafından",
+        "telegram_channel": "Telegram Kanalı",
+        "github": "GitHub",
+        "disclaimer": "Bu modül, Tricky Store modülünün bir parçası değildir. Herhangi bir sorun yaşarsanız, lütfen bunu Tricky Store’a rapor etmeyin.",
+        "acknowledgment": "Teşekkür"
+    },
+    "prompt": {
+        "no_internet": "Lütfen internet bağlantınızı kontrol edin",
+        "aosp_key_set": "AOSP keybox başarıyla ayarlandı",
+        "key_set_error": "Keybox güncellenemedi",
+        "valid_key_set": "Geçerli keybox başarıyla ayarlandı",
+        "no_valid_fallback": "Geçerli keybox bulunamadı, AOSP keybox ile değiştirildi.",
+        "boot_hash_set": "Doğrulanmış Boot Hash başarıyla kaydedildi",
+        "boot_hash_set_error": "Doğrulanmış Boot Hash güncellenemedi",
+        "saved_target": "Yapılandırma target.txt dosyasına kaydedildi",
+        "save_error": "Yapılandırma kaydedilemedi",
+        "uninstall_prompt": "WebUI yeniden başlatma sonrasında kaldırılacak",
+        "uninstall_failed": "WebUI kaldırılamadı",
+        "new_update": "Yeni bir güncelleme mevcut!",
+        "downloading": "Yeni güncelleme indiriliyor...",
+        "downloaded": "İndirme tamamlandı",
+        "download_fail": "Güncelleme indirilemedi",
+        "installing": "Güncelleme yükleniyor...",
+        "installed": "Başarıyla yüklendi, şimdi yeniden başlatın.",
+        "install_fail": "Yükleme başarısız oldu, lütfen manuel olarak güncelleyin",
+        "rebooting": "Yeniden başlatılıyor...",
+        "reboot_fail": "Yeniden başlatma başarısız, lütfen manuel olarak yeniden başlatın"
+    }
+}
