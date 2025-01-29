@@ -21,6 +21,8 @@ me.garfieldhan.apatch.next"
 
 ADDITION="
 com.google.android.gms
+com.google.android.gsf
+com.android.vending
 io.github.vvb2060.keyattestation
 io.github.vvb2060.mahoshojo
 icu.nullptr.nativetest"
