@@ -19,8 +19,8 @@
         "set_keybox_description": "Tricky Store'daki keybox.xml dosyasını değiştirir. Eğer geçerli bir keybox yoksa AOSP keybox ile değiştirilecektir. Geçerli keybox seçeneği internet bağlantısı gerektirir.",
         "set_custom_keybox": "Özel Keybox Ayarla",
         "set_custom_keybox_description": "Cihaz depolamasından bir keybox dosyasını içe aktarın. Sadece xml dosyaları desteklenir.",
-        "set_security_patch": "Güvenlik Parçası Ayarla",
-        "set_security_patch_description": "Özel güvenlik parçasını ayarlayın. Otomatik yapılandırma PIF modülünün güvenlik parçasını kullanacaktır. Boş bırakın ve kaydedin ki otomatik yapılandırma devre dışı bırakılsın.",
+        "set_security_patch": "Güvenlik Yaması Ayarla",
+        "set_security_patch_description": "Özel güvenlik yamasını ayarlayın. Otomatik yapılandırma PIF modülünün güvenlik yamasını kullanacaktır. Boş bırakın ve kaydedin ki otomatik yapılandırma devre dışı bırakılsın.",
         "set_verified_boot_hash": "Doğrulanmış Boot Hash Ayarla",
         "set_verified_boot_hash_description": "Key Attestation Demo'dan verifiedBootHash değerini alın. Abnormal boot durumunu ro.boot.vbmeta.digest'i sıfırlayarak düzeltin."
     },
@@ -50,7 +50,7 @@
         "set_aosp_keybox": "AOSP Keybox Ayarla",
         "set_valid_keybox": "Geçerli Keybox Ayarla",
         "set_custom_keybox": "Özel Keybox Ayarla",
-        "set_security_patch": "Güvenlik Parçası Ayarla",
+        "set_security_patch": "Güvenlik Yaması Ayarla",
         "set_verified_boot_hash": "Doğrulanmış Boot Hash Ayarla",
         "about": "Hakkında"
     },
@@ -65,7 +65,7 @@
         "telegram_channel": "Telegram Kanalı",
         "github": "GitHub",
         "disclaimer": "Bu modül, Tricky Store modülünün bir parçası değildir. Herhangi bir sorun yaşarsanız, lütfen bunu Tricky Store'a rapor etmeyin.",
-        "acknowledgment": "Teşekkür"
+        "acknowledgment": "Teşekkürler"
     },
     "prompt": {
         "no_internet": "Lütfen internet bağlantınızı kontrol edin",
@@ -99,9 +99,9 @@
         "save": "Kaydet",
         "auto_success": "Otomatik yapılandırma başarıyla etkinleştirildi",
         "auto_failed": "Otomatik yapılandırma etkinleştirilemedi",
-        "save_success": "Güvenlik parçası başarıyla kaydedildi",
-        "save_failed": "Güvenlik parçası kaydedilemedi",
-        "value_empty": "Güvenlik parçası yapılandırması devre dışı bırakıldı",
+        "save_success": "Güvenlik yaması başarıyla kaydedildi",
+        "save_failed": "Güvenlik yaması kaydedilemedi",
+        "value_empty": "Güvenlik yaması yapılandırması devre dışı bırakıldı",
         "invalid_all": "Geçersiz format",
         "invalid_boot": "Geçersiz başlatma formatı",
         "invalid_system": "Geçersiz sistem formatı",
