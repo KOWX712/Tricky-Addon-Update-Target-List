@@ -23,6 +23,10 @@
                     "package-name": "me.weishu.kernelsu"
                 },
                 {
+                    "name": "KernelSU Next",
+                    "package-name": "com.rifsxd.ksunext"
+                },
+                {
                     "name": "Apatch",
                     "package-name": "me.bmax.apatch"
                 },
