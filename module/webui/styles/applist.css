@@ -59,10 +59,10 @@
 
 .update-menu {
     position: relative;
-    width: 90vw;
+    width: calc(90% - 60px);
     max-width: 800px;
     background-color: white;
-    padding: 10px 0;
+    padding: 30px;
     border-radius: 15px;
     text-align: left;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -77,10 +77,6 @@
     border: none;
     font-size: 20px;
     color: #ccc;
-}
-
-.update-content {
-    padding: 0 30px;
 }
 
 .update-content h3 {
@@ -115,33 +111,28 @@
 
 .update-button-container {
     width: 100%;
-    padding-top: 10px;
+    margin-top: 20px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .install,
 .reboot {
     display: none;
-    margin-top: 10px;
-    margin-bottom: 15px;
+    justify-content: center;
     font-weight: bold;
-    color: #333;
-    background-color: #fff;
+    background-color: #ddd;
+    width: 100%;
     border: none;
-    padding: 10px 15px;
-    border: 1px solid #3B3B3B;
-    border-radius: 50px 50px;
+    padding: 12px;
+    border-radius: 12px;
     font-size: 18px;
-    position: relative;
-    overflow: hidden;
     user-select: none;
 }
 
 .reboot {
     color: #fff;
     background-color: #007bff;
-    border: 1px solid #007bff;
 }
 
 .card {
@@ -352,9 +343,8 @@
     }
 
     .install {
-        color: #eee;
-        background-color: #343434;
-        border: 1px solid #C2C2C2;
+        background-color: #6E6E6E;
+        color: white;
     }
 
     .update-menu {

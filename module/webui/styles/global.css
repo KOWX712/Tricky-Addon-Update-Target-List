@@ -28,7 +28,7 @@ body {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    padding: 12px 24px;
+    padding: 10px 20px;
     font-size: 22px;
     font-weight: bold;
     transition: transform 0.4s ease;
