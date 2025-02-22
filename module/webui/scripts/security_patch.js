@@ -122,13 +122,24 @@ async function loadCurrentConfig() {
 
             // Check if in advanced mode
             if (autoConfig === '0' && allValue === null && (bootValue || systemValue || vendorValue)) {
-                advancedToggle.checked = true;
-                normalInputs.classList.add('hidden');
-                advancedInputs.classList.remove('hidden');
+                checkAdvanced(true);
             }
         }
     } catch (error) {
         console.error('Failed to load security patch config:', error);
+    }
+}
+
+// Function to check advanced mode
+function checkAdvanced(shouldCheck) {
+    if (shouldCheck) {
+        advancedToggle.checked = true;
+        normalInputs.classList.add('hidden');
+        advancedInputs.classList.remove('hidden');
+    } else {
+        advancedToggle.checked = false;
+        normalInputs.classList.remove('hidden');
+        advancedInputs.classList.add('hidden');
     }
 }
 
@@ -240,11 +251,7 @@ export function securityPatch() {
                 bootPatchInput.value = '';
                 vendorPatchInput.value = '';
 
-                // Uncheck advanced mode
-                advancedToggle.checked = false;
-                normalInputs.classList.remove('hidden');
-                advancedInputs.classList.add('hidden');
-
+                checkAdvanced(false);
                 showPrompt('security_patch.auto_success');
             }
         } catch (error) {
@@ -328,9 +335,7 @@ export function securityPatch() {
             await new Promise(resolve => setTimeout(resolve, 200));
             const output = await execCommand(`sh ${basePath}common/get_extra.sh --get-security-patch`);
             showPrompt('security_patch.fetched', true, 1000);
-            advancedToggle.checked = true;
-            normalInputs.classList.add('hidden');
-            advancedInputs.classList.remove('hidden');
+            checkAdvanced(true);
 
             systemPatchInput.value = 'prop';
             bootPatchInput.value = output;
