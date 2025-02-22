@@ -40,17 +40,33 @@ document.getElementById("select-denylist").addEventListener("click", async () =>
 // Function to read the exclude list and uncheck corresponding apps
 document.getElementById("deselect-unnecessary").addEventListener("click", async () => {
     try {
-        const fileCheck = await execCommand(`test -f ${basePath}common/tmp/exclude-list && echo "exists" || echo "not found"`);
-        if (fileCheck.trim() === "not found") {
-            setTimeout(async () => {
-                await execCommand(`sh ${basePath}common/get_extra.sh --unnecessary`);
-            }, 0);
-            console.log("Exclude list not found. Running the unnecessary apps script.");
+        const fileCheck = await execCommand(`[ -f ${basePath}common/tmp/exclude-list ] || echo "false"`);
+        if (fileCheck.trim() === "false") {
+            fetch("https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/more-exclude.json")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const excludeList = data.data
+                        .flatMap(category => category.apps)
+                        .map(app => app['package-name'])
+                        .join('\n');
+                    return excludeList;
+                })
+                .then(async excludeList => {
+                    await execCommand(`
+                        echo "${excludeList}" > ${basePath}common/tmp/exclude-list
+                        sh ${basePath}common/get_extra.sh --xposed
+                    `);
+                })
+                .catch(error => {
+                    toast("Failed to download unnecessary apps!");
+                });
         } else {
-            setTimeout(async () => {
-                await execCommand(`sh ${basePath}common/get_extra.sh --xposed`);
-            }, 0);
-            console.log("Exclude list found. Running xposed script.");
+            await execCommand(`sh ${basePath}common/get_extra.sh --xposed`);
         }
         await new Promise(resolve => setTimeout(resolve, 100));
         const result = await execCommand(`cat ${basePath}common/tmp/exclude-list`);
@@ -66,8 +82,8 @@ document.getElementById("deselect-unnecessary").addEventListener("click", async 
         });
         console.log("Unnecessary apps deselected successfully.");
     } catch (error) {
-        toast("Failed!");
-        console.error("Failed to deselect unnecessary apps:", error);
+        toast("Failed to get unnecessary apps!");
+        console.error("Failed to get unnecessary apps:", error);
     }
 });
 

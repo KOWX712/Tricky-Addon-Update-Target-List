@@ -49,14 +49,6 @@ get_xposed() {
     done
 }
 
-get_unnecessary() {
-    if [ ! -s "$OUTPUT" ] || [ ! -f "$OUTPUT" ]; then
-        JSON=$(download --fetch "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/more-exclude.json") || exit 1
-        echo "$JSON" | grep -o '"package-name": *"[^"]*"' | awk -F'"' '{print $4}' >"$OUTPUT"
-    fi
-    get_xposed
-}
-
 check_update() {
     [ -f "$MODDIR/disable" ] && rm -f "$MODDIR/disable"
     LOCAL_VERSION=$(grep '^versionCode=' "$MODPATH/update/module.prop" | awk -F= '{print $2}')
@@ -146,10 +138,6 @@ get_latest_security_patch() {
 }
 
 case "$1" in
---unnecessary)
-    get_unnecessary
-    exit
-    ;;
 --xposed)
     get_xposed
     exit
