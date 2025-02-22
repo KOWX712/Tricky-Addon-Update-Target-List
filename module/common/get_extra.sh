@@ -3,7 +3,6 @@ MODPATH=${0%/*}
 ORG_PATH="$PATH"
 SKIPLIST="$MODPATH/tmp/skiplist"
 OUTPUT="$MODPATH/tmp/exclude-list"
-KBOUTPUT="$MODPATH/tmp/.extra"
 
 if [ "$MODPATH" = "/data/adb/modules/.TA_utl/common" ]; then
     MODDIR="/data/adb/modules/.TA_utl"
@@ -37,11 +36,6 @@ download() {
         fi
     fi
     PATH="$ORG_PATH"
-}
-
-get_kb() {
-    download --output "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/.extra" "$KBOUTPUT" 
-    [ -s "$KBOUTPUT" ] || rm -f "$KBOUTPUT"
 }
 
 get_xposed() {
@@ -152,10 +146,6 @@ get_latest_security_patch() {
 }
 
 case "$1" in
---kb)
-    get_kb
-    exit
-    ;;
 --unnecessary)
     get_unnecessary
     exit

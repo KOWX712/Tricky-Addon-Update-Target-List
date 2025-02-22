@@ -72,11 +72,11 @@ document.getElementById("deselect-unnecessary").addEventListener("click", async 
 });
 
 // Function to backup previous keybox and set new keybox
-async function setKeybox(path) {
+async function setKeybox(content) {
     try {
         await execCommand(`
             mv -f /data/adb/tricky_store/keybox.xml /data/adb/tricky_store/keybox.xml.bak 2>/dev/null
-            echo '${path}' > /data/adb/tricky_store/keybox.xml
+            echo '${content}' > /data/adb/tricky_store/keybox.xml
             chmod 644 /data/adb/tricky_store/keybox.xml
             `);
         return true;
@@ -100,27 +100,36 @@ export async function aospkb() {
 
 // Function to replace valid kb
 document.getElementById("validkb").addEventListener("click", async () => {
-    setTimeout(async () => {
-        await execCommand(`sh ${basePath}common/get_extra.sh --kb`);
-    }, 100);
-    const sourcePath = `${basePath}common/tmp/.extra`;
-    await new Promise(resolve => setTimeout(resolve, 300));
-    const fileExists = await execCommand(`[ -f ${sourcePath} ] && echo "exists"`);
-    try {
-        if (fileExists.trim() !== "exists") {
-            throw new Error(".extra file not found");
+    fetch("https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/.extra")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const source = await execCommand(`xxd -r -p ${sourcePath} | base64 -d`);
-        const result = await setKeybox(source);
-        if (result) {
-            showPrompt("prompt.valid_key_set");
-        } else {
-            throw new Error("Failed to copy valid keybox");
+        return response.text();
+    })
+    .then(async data => {
+        if (!data.trim()) {
+            await aospkb();
+            showPrompt("prompt.no_valid_fallback", false);
+            return;
         }
-    } catch (error) {
-        await aospkb();
-        showPrompt("prompt.no_valid_fallback", false);
-    }
+        try {
+            const hexBytes = new Uint8Array(data.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+            const decodedHex = new TextDecoder().decode(hexBytes);
+            const source = atob(decodedHex);
+            const result = await setKeybox(source);
+            if (result) {
+                showPrompt("prompt.valid_key_set");
+            } else {
+                throw new Error("Failed to copy valid keybox");
+            }
+        } catch (error) {
+            throw new Error("Failed to decode keybox data");
+        }
+    })
+    .catch(async error => {
+        showPrompt("prompt.no_internet", false);
+    });
 });
 
 // Add file selector dialog elements dynamically
