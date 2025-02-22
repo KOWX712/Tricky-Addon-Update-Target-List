@@ -65,9 +65,7 @@ get_unnecessary() {
 
 check_update() {
     [ -f "$MODDIR/disable" ] && rm -f "$MODDIR/disable"
-    JSON=$(download --fetch "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/update.json") || exit 1
-    REMOTE_VERSION=$(echo "$JSON" | grep -o '"versionCode": *[0-9]*' | awk -F: '{print $2}' | tr -d ' ')
-    LOCAL_VERSION=$(grep -o 'versionCode=[0-9]*' "$MODPATH/update/module.prop" | awk -F= '{print $2}')
+    LOCAL_VERSION=$(grep '^versionCode=' "$MODPATH/update/module.prop" | awk -F= '{print $2}')
     if [ "$REMOTE_VERSION" -gt "$LOCAL_VERSION" ] && [ ! -f "/data/adb/modules/TA_utl/update" ]; then
         if [ "$MAGISK" = "true" ]; then
             [ -d "/data/adb/modules/TA_utl" ] && rm -rf "/data/adb/modules/TA_utl"
@@ -89,12 +87,8 @@ uninstall() {
 }
 
 get_update() {
-    JSON=$(download --fetch "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/update.json") || exit 1
-    ZIP_URL=$(echo "$JSON" | grep -o '"zipUrl": "[^"]*"' | cut -d '"' -f 4) || exit 1
-    CHANGELOG_URL=$(echo "$JSON" | grep -o '"changelog": "[^"]*"' | cut -d '"' -f 4) || exit 1
-    echo "$JSON" | grep '"version"' | sed 's/.*: "//; s/".*//' > "$MODPATH/tmp/version" || exit 1
-    download --output "$ZIP_URL" "$MODPATH/tmp/module.zip" || exit 1
-    download --output "$CHANGELOG_URL" "$MODPATH/tmp/changelog.md" || exit 1
+    download --output "$ZIP_URL" "$MODPATH/tmp/module.zip"
+    [ -s "$MODPATH/tmp/module.zip" ] || exit 1
 }
 
 install_update() {
@@ -114,7 +108,6 @@ install_update() {
 }
 
 release_note() {
-    VERSION=$(grep 'v' "$MODPATH/tmp/version")
     awk -v header="### $VERSION" '
         $0 == header { 
             print; 
@@ -171,7 +164,8 @@ case "$1" in
     get_xposed
     exit
     ;;
---update)
+--check-update)
+    REMOTE_VERSION="$2"
     check_update
     exit
     ;;
@@ -180,6 +174,7 @@ case "$1" in
     exit
     ;;
 --get-update)
+    ZIP_URL="$2"
     get_update
     exit
     ;;
@@ -188,6 +183,7 @@ case "$1" in
     exit
     ;;
 --release-note)
+    VERSION="$2"
     release_note
     exit
     ;;

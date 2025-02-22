@@ -122,6 +122,7 @@
 
 .install,
 .reboot {
+    display: none;
     margin-top: 10px;
     margin-bottom: 15px;
     font-weight: bold;
@@ -138,7 +139,6 @@
 }
 
 .reboot {
-    display: none;
     color: #fff;
     background-color: #007bff;
     border: 1px solid #007bff;

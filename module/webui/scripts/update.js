@@ -8,25 +8,84 @@ const releaseNotes = document.querySelector('.changelog');
 const installButton = document.querySelector('.install');
 const rebootButton = document.querySelector('.reboot');
 
-// Function to run the update check
+let remoteVersionCode, remoteVersion, zipURL, changelogURL, downloading = false;
+
+// Function to download file
+function downloadFile(targetURL, fileName) {
+    return new Promise((resolve, reject) => {
+        fetch(targetURL)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                const file = new File([blob], fileName, { type: blob.type });
+                const reader = new FileReader();
+                reader.onload = async function() {
+                    const base64Data = reader.result.split(',')[1];
+                    try {
+                        await execCommand(`echo ${base64Data} | base64 -d > ${basePath}common/tmp/${fileName}`);
+                        resolve();
+                    } catch (error) {
+                        reject(error);
+                    }
+                };
+                reader.readAsDataURL(file);
+            })
+            .catch(reject);
+    });
+}
+
+// Function to check for updates
 export async function updateCheck() {
     try {
-        const output = await execCommand(`sh ${basePath}common/get_extra.sh --update`);
-        console.log("update script executed successfully.");
+        const response = await fetch("https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/update.json");
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         noConnection.style.display = "none";
-        if (output.includes("update")) {
-            console.log("Update detected from extra script.");
-            showPrompt("prompt.new_update", true, 2000);
+        const data = await response.json();
+        remoteVersionCode = data.versionCode;
+        remoteVersion = data.version;
+        zipURL = data.zipUrl;
+        changelogURL = data.changelog;
+
+        const updateAvailable = await execCommand(`sh ${basePath}common/get_extra.sh --check-update ${remoteVersionCode}`);
+        if (updateAvailable.includes("update")) {
+            showPrompt("prompt.new_update", true, 1500);
             updateCard.style.display = "flex";
             setupUpdateMenu();
-        } else {
-            console.log("No update detected from extra script.");
         }
     } catch (error) {
-        console.error("Failed to execute update script:", error);
+        console.error("Error fetching JSON or executing command:", error);
         showPrompt("prompt.no_internet", false);
         noConnection.style.display = "flex";
     }
+}
+
+// Function to render changelog
+async function renderChangelog() {
+    const changelog = await execCommand(`sh ${basePath}common/get_extra.sh --release-note ${remoteVersion}`);
+        window.linkRedirect = linkRedirect;
+        marked.setOptions({
+            sanitize: true,
+            walkTokens(token) {
+                if (token.type === 'link') {
+                    const href = token.href;
+                    token.href = "javascript:void(0);";
+                    token.type = "html";
+                    token.text = `<a href="javascript:void(0);" onclick="linkRedirect('${href}')">${token.text}</a>`;
+                }
+            }
+        });
+        const cleanedChangelog = changelog
+            .split('\n')
+            .filter(line => line.trim() !== '')
+            .join('\n');
+            const formattedChangelog = marked.parse(cleanedChangelog);
+            releaseNotes.innerHTML = formattedChangelog;
 }
 
 // Function to setup update menu
@@ -45,46 +104,54 @@ function setupUpdateMenu() {
             UpdateMenu.style.display = "none";
         }, 200);
     }
+
+    // Update card
     updateCard.addEventListener('click', async () => {
         try {
-            const module = await execCommand(`[ -f ${basePath}common/tmp/module.zip ] || echo "false"`);
-            if (module.trim() === "false") {
+            const module = await execCommand(`
+                [ -f ${basePath}common/tmp/module.zip ] || echo "noModule"
+                [ -f ${basePath}common/tmp/changelog.md ] || echo "noChangelog"
+            `);
+            if (module.trim().includes("noChangelog")) {
                 showPrompt("prompt.downloading");
-                await new Promise(resolve => setTimeout(resolve, 200));
-                await execCommand(`sh ${basePath}common/get_extra.sh --get-update`);
-                showPrompt("prompt.downloaded");
-            }
-            const changelog = await execCommand(`sh ${basePath}common/get_extra.sh --release-note`);
-            window.linkRedirect = linkRedirect;
-            marked.setOptions({
-                sanitize: true,
-                walkTokens(token) {
-                    if (token.type === 'link') {
-                        const href = token.href;
-                        token.href = "javascript:void(0);";
-                        token.type = "html";
-                        token.text = `<a href="javascript:void(0);" onclick="linkRedirect('${href}')">${token.text}</a>`;
-                    }
+                await downloadFile(changelogURL, "changelog.md");
+                await renderChangelog();
+                openUpdateMenu();
+                setTimeout(() => {
+                    updateCard.click();
+                }, 200);
+            } else if (module.trim().includes("noModule")) {
+                if (downloading) return;
+                downloading = true;
+                try {
+                    await execCommand(`sh ${basePath}common/get_extra.sh --get-update ${zipURL}`);
+                    showPrompt("prompt.downloaded");
+                    installButton.style.display = "flex";
+                    downloading = false;
+                } catch (error) {
+                    showPrompt("prompt.download_fail", false);
+                    downloading = false;
                 }
-            });
-            const cleanedChangelog = changelog
-                .split('\n')
-                .filter(line => line.trim() !== '')
-                .join('\n');
-            const formattedChangelog = marked.parse(cleanedChangelog);
-            releaseNotes.innerHTML = formattedChangelog;
-            openUpdateMenu();
+            } else {
+                    installButton.style.display = "flex";
+                    await renderChangelog();
+                    openUpdateMenu();
+            }
         } catch (error) {
             showPrompt("prompt.download_fail", false);
             console.error('Error download module update:', error);
         }
     });
+
+    // Close update menu
     closeUpdate.addEventListener("click", closeUpdateMenu);
     UpdateMenu.addEventListener("click", (event) => {
         if (event.target === UpdateMenu) {
             closeUpdateMenu();
         }
     });
+
+    // Install button
     installButton.addEventListener('click', async () => {
         try {
             showPrompt("prompt.installing");
@@ -99,6 +166,8 @@ function setupUpdateMenu() {
             console.error('Fail to execute installation script:', error);
         }
     });
+
+    // Reboot button
     rebootButton.addEventListener('click', async () => {
         try {
             showPrompt("prompt.rebooting");
