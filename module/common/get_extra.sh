@@ -2,7 +2,6 @@
 MODPATH=${0%/*}
 ORG_PATH="$PATH"
 SKIPLIST="$MODPATH/tmp/skiplist"
-OUTPUT="$MODPATH/tmp/exclude-list"
 
 if [ "$MODPATH" = "/data/adb/modules/.TA_utl/common" ]; then
     MODDIR="/data/adb/modules/.TA_utl"
@@ -39,11 +38,11 @@ download() {
 }
 
 get_xposed() {
-    pm list packages -3 | cut -d':' -f2 | grep -vxF -f "$SKIPLIST" | grep -vxF -f "$OUTPUT" | while read -r PACKAGE; do
+    pm list packages -3 | cut -d':' -f2 | grep -vxF -f "$SKIPLIST" | while read -r PACKAGE; do
         APK_PATH=$(pm path "$PACKAGE" | grep "base.apk" | cut -d':' -f2 | tr -d '\r')
         if [ -n "$APK_PATH" ]; then
             if aapt dump xmltree "$APK_PATH" AndroidManifest.xml 2>/dev/null | grep -qE "xposed.category|xposeddescription"; then
-                echo "$PACKAGE" >>"$OUTPUT"
+                echo "$PACKAGE"
             fi
         fi
     done
