@@ -173,12 +173,14 @@ export async function setupSystemAppMenu() {
     }
 }
 
+
 // Function to backup previous keybox and set new keybox
 async function setKeybox(content) {
+    const sanitizedContent = content.replace(/'/g, "'\\''");
     try {
         await execCommand(`
             mv -f /data/adb/tricky_store/keybox.xml /data/adb/tricky_store/keybox.xml.bak 2>/dev/null
-            echo '${content}' > /data/adb/tricky_store/keybox.xml
+            echo '${sanitizedContent}' > /data/adb/tricky_store/keybox.xml
             chmod 644 /data/adb/tricky_store/keybox.xml
             `);
         return true;
