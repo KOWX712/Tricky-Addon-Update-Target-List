@@ -173,7 +173,6 @@ export async function setupSystemAppMenu() {
     }
 }
 
-
 // Function to backup previous keybox and set new keybox
 async function setKeybox(content) {
     const sanitizedContent = content.replace(/'/g, "'\\''");
