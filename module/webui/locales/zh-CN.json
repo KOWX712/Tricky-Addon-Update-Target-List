@@ -48,7 +48,7 @@
         "select_all": "全选",
         "deselect_all": "取消全选",
         "select_denylist": "从排除列表中选择",
-        "deselect_unnecessary": "取消选择非必应用",
+        "deselect_unnecessary": "取消选择非必要应用",
         "add_system_app": "添加系统应用",
         "set_aosp_keybox": "设置 AOSP 密钥",
         "set_valid_keybox": "设置有效密钥",
