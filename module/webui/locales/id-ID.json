@@ -1,0 +1,125 @@
+{
+    "language": "Bahasa Indonesia",
+    "header": {
+        "title": "Tricky Addon"
+    },
+    "help": {
+        "help_instructions": "Panduan",
+        "save_and_update": "Simpan",
+        "save_and_update_description": "Simpan konfigurasi saat ini ke target.txt.",
+        "refresh": "Segarkan",
+        "refresh_description": "Perbarui daftar aplikasi dan daftar pengecualian.",
+        "select_deselect": "Pilih & Batalkan Pilihan Semua",
+        "select_description": "Pilih atau batalkan pilihan semua aplikasi yang ditampilkan.",
+        "select_denylist": "Pilih dari Denylist",
+        "select_denylist_description": "Hanya untuk Magisk, pilih aplikasi yang ada di Denylist. Disarankan.",
+        "deselect_unnecessary": "Batalkan Pilihan yang Tidak Perlu",
+        "deselect_unnecessary_description": "Kategori tidak perlu: Modul Xposed, pengelola root, aplikasi terkait root, dan aplikasi yang tidak pernah memeriksa status bootloader. Opsi ini memerlukan koneksi internet.",
+        "add_system_app": "Tambahkan Aplikasi Sistem",
+        "add_system_app_description": "Tambahkan aplikasi sistem tertentu ke daftar aplikasi.",
+        "set_keybox": "Ganti Keybox AOSP & Valid",
+        "set_keybox_description": "Ganti file keybox.xml bawaan. Jika tidak ada keybox valid, maka keybox AOSP akan digunakan. Opsi ini memerlukan koneksi internet.",
+        "set_custom_keybox": "Gunakan Keybox Kustom",
+        "set_custom_keybox_description": "Impor keybox dari penyimpanan perangkat. Hanya mendukung file XML.",
+        "set_security_patch": "Atur Patch Keamanan",
+        "set_security_patch_description": "Sesuaikan patch keamanan. Konfigurasi otomatis akan menggunakan patch dari modul PIF dan aktif secara default. Kosongkan dan simpan untuk menonaktifkan konfigurasi otomatis.",
+        "set_verified_boot_hash": "Atur Verified Boot Hash",
+        "set_verified_boot_hash_description": "Ambil nilai verifiedBootHash dari aplikasi Key Attestation Demo. Perbaiki status boot yang bermasalah dengan mereset ro.boot.vbmeta.digest."
+    },
+    "update": {
+        "update_available": "Versi baru tersedia!",
+        "redirect_to_release": "Ketuk untuk mengunduh versi terbaru",
+        "changelog": "Catatan Perubahan",
+        "install": "Pasang",
+        "reboot": "Mulai Ulang"
+    },
+    "search_bar": {
+        "search_placeholder": "Cari"
+    },
+    "functional_button": {
+        "save_and_update_button": "Simpan",
+        "uninstall_webui": "Copot Pemasangan WebUI"
+    },
+    "loading": {
+        "loading": "Memuat..."
+    },
+    "menu": {
+        "refresh": "Segarkan",
+        "select_all": "Pilih Semua",
+        "deselect_all": "Batalkan Semua Pilihan",
+        "select_denylist": "Pilih dari Denylist",
+        "deselect_unnecessary": "Batalkan Pilihan yang Tidak Perlu",
+        "add_system_app": "Tambahkan Aplikasi Sistem",
+        "set_aosp_keybox": "Gunakan Keybox AOSP",
+        "set_valid_keybox": "Gunakan Keybox Valid",
+        "set_custom_keybox": "Gunakan Keybox Kustom",
+        "set_verified_boot_hash": "Atur Verified Boot Hash",
+        "set_security_patch": "Atur Patch Keamanan",
+        "about": "Tentang"
+    },
+    "boot_hash": {
+        "title": "Verified Boot Hash",
+        "input_placeholder": "Tempel Verified Boot Hash Anda di sini",
+        "save_button": "Simpan"
+    },
+    "about": {
+        "module_name_line1": "Tricky Addon",
+        "module_name_line2": "Perbarui Daftar Target",
+        "by": "oleh",
+        "telegram_channel": "Saluran Telegram",
+        "github": "GitHub",
+        "disclaimer": "Modul ini bukan bagian dari Tricky Store. Jangan laporkan masalah ke Tricky Store jika mengalami kendala.",
+        "acknowledgment": "Pengakuan"
+    },
+    "prompt": {
+        "no_internet": "Periksa koneksi internet Anda",
+        "aosp_key_set": "Keybox AOSP berhasil digunakan",
+        "key_set_error": "Gagal memperbarui keybox",
+        "valid_key_set": "Keybox valid berhasil digunakan",
+        "no_valid_fallback": "Tidak ada keybox valid, menggunakan keybox AOSP.",
+        "boot_hash_set": "Verified Boot Hash berhasil disimpan",
+        "boot_hash_set_error": "Gagal memperbarui Verified Boot Hash",
+        "saved_target": "Konfigurasi disimpan ke target.txt",
+        "save_error": "Gagal menyimpan konfigurasi",
+        "uninstall_prompt": "WebUI akan dicopot setelah perangkat dimulai ulang",
+        "uninstall_failed": "Gagal mencopot pemasangan WebUI",
+        "new_update": "Pembaruan baru tersedia!",
+        "downloading": "Mengunduh pembaruan...",
+        "downloaded": "Unduhan selesai",
+        "download_fail": "Gagal mengunduh pembaruan",
+        "installing": "Memasang pembaruan...",
+        "installed": "Pembaruan berhasil dipasang, mulai ulang sekarang.",
+        "install_fail": "Gagal memasang, silakan perbarui secara manual",
+        "rebooting": "Memulai ulang...",
+        "reboot_fail": "Gagal memulai ulang, silakan lakukan secara manual",
+        "custom_key_set": "Keybox kustom berhasil digunakan",
+        "custom_key_set_error": "Gagal menggunakan keybox kustom",
+        "no_file_selected": "Tidak ada file yang dipilih",
+        "system_app_not_found": "Aplikasi sistem tidak ditemukan",
+        "system_app_error": "Gagal menambahkan aplikasi sistem"
+    },
+    "security_patch": {
+        "title": "Patch Keamanan",
+        "advanced_mode": "Mode Lanjutan",
+        "get_date": "Ambil Tanggal Patch Keamanan",
+        "auto": "Otomatis",
+        "save": "Simpan",
+        "fetching": "Mengambil...",
+        "fetched": "Selesai",
+        "get_failed": "Gagal mengambil tanggal patch keamanan",
+        "auto_success": "Konfigurasi otomatis berhasil diaktifkan",
+        "auto_failed": "Gagal mengaktifkan konfigurasi otomatis",
+        "save_success": "Patch keamanan berhasil disimpan",
+        "save_failed": "Gagal menyimpan patch keamanan",
+        "value_empty": "Konfigurasi patch keamanan dinonaktifkan",
+        "invalid_all": "Format tidak valid",
+        "invalid_boot": "Format boot tidak valid",
+        "invalid_system": "Format sistem tidak valid",
+        "invalid_vendor": "Format vendor tidak valid"
+    },
+    "add_system_app": {
+        "title": "Tambahkan Aplikasi Sistem",
+        "add": "Tambah",
+        "current_list": "Daftar Aplikasi Sistem Saat Ini"
+    }
+}
