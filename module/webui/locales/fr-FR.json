@@ -1,0 +1,132 @@
+{
+    "language": "Français",
+    "system_default": "Langage système",
+    "header": {
+        "title": "Tricky Addon"
+    },
+    "help": {
+        "help_instructions": "Instructions",
+        "save_and_update": "Enregistrer",
+        "save_and_update_description": "Enregistrer la configuration actuelle dans target.txt.",
+        "refresh": "Actualiser",
+        "refresh_description": "Actualiser la liste des applications et la liste d'exclusions.",
+        "select_deselect": "Tout sélectionner & désélectionner",
+        "select_description": "Sélectionner ou désélectionner toutes les applications de l'interface actuelle.",
+        "select_DenyList": "Sélectionner depuis la DenyList",
+        "select_DenyList_description": "Disponible uniquement sur Magisk, sélectionner les applications présentes dans la DenyList. Recommandé.",
+        "deselect_unnecessary": "Désélectionner les applications inutiles",
+        "deselect_unnecessary_description": "Catégorie inutile : module Xposed, gestionnaire root, applications liées au root et applications générales ne vérifiant jamais l'état du bootloader. Cette option nécessite une connexion Internet.",
+        "add_system_app": "Ajouter une application système",
+        "add_system_app_description": "Ajouter une application système spécifique à la liste.",
+        "set_keybox": "Définir une Keybox AOSP & Valide",
+        "set_keybox_description": "Remplacer le fichier keybox.xml de Tricky Store. La keybox AOSP sera remplacée s'il n'y a plus de keybox valide. L'option keybox valide nécessite une connexion Internet.",
+        "set_custom_keybox": "Définir une Keybox personnalisée",
+        "set_custom_keybox_description": "Importer une keybox depuis le stockage de votre appareil. Seuls les fichiers XML sont pris en charge.",
+        "set_security_patch": "Définir le patch de sécurité",
+        "set_security_patch_description": "Définir un patch de sécurité personnalisé. La configuration automatique utilisera le patch de sécurité du module PIF, activée par défaut. Laisser vide et enregistrer pour désactiver la configuration automatique.",
+        "set_verified_boot_hash": "Définir le hash Verified Boot",
+        "set_verified_boot_hash_description": "Obtenir la valeur verifiedBootHash depuis Key Attestation Demo. Corriger un état de démarrage anormal en réinitialisant ro.boot.vbmeta.digest."
+    },
+    "update": {
+        "update_available": "Une nouvelle version est disponible",
+        "redirect_to_release": "appuyer pour télécharger la dernière version",
+        "changelog": "Journal des modifications",
+        "install": "Installer",
+        "reboot": "Redémarrer"
+    },
+    "search_bar": {
+        "search_placeholder": "Rechercher"
+    },
+    "functional_button": {
+        "save_and_update_button": "Enregistrer",
+        "uninstall_webui": "Désinstaller la WebUI"
+    },
+    "loading": {
+        "loading": "Chargement…"
+    },
+    "menu": {
+        "refresh": "Actualiser",
+        "select_all": "Tout sélectionner",
+        "deselect_all": "Tout désélectionner",
+        "select_DenyList": "Sélectionner depuis la DenyList",
+        "deselect_unnecessary": "Désélectionner les applications inutiles",
+        "add_system_app": "Ajouter une application système",
+        "set_aosp_keybox": "Définir une Keybox AOSP",
+        "set_valid_keybox": "Définir une Keybox valide",
+        "set_custom_keybox": "Définir une Keybox personnalisée",
+        "set_verified_boot_hash": "Définir le hash Verified Boot",
+        "set_security_patch": "Définir le patch de sécurité",
+        "about": "À propos"
+    },
+    "boot_hash": {
+        "title": "Hash de démarrage",
+        "input_placeholder": "Collez votre hash Verified Boot ici",
+        "save_button": "Enregistrer"
+    },
+    "about": {
+        "module_name_line1": "Tricky Addon",
+        "module_name_line2": "Mettre à jour la liste cible",
+        "by": "par",
+        "telegram_channel": "Canal Telegram",
+        "github": "GitHub",
+        "disclaimer": "Ce module ne fait pas partie du module Tricky Store. NE signalez PAS de problèmes à Tricky Store en cas d'erreur.",
+        "acknowledgment": "Remerciements"
+    },
+    "prompt": {
+        "no_internet": "Veuillez vérifier votre connexion Internet",
+        "aosp_key_set": "Keybox AOSP définie avec succès",
+        "key_set_error": "Échec de la mise à jour de la Keybox",
+        "valid_key_set": "Keybox valide définie avec succès",
+        "no_valid_fallback": "Aucune Keybox valide trouvée, remplacée par le Keybox AOSP.",
+        "boot_hash_set": "Hash Verified Boot enregistré avec succès",
+        "boot_hash_set_error": "Échec de la mise à jour du hash Verified Boot",
+        "saved_target": "Configuration enregistrée dans target.txt",
+        "save_error": "Échec de l'enregistrement de la configuration",
+        "uninstall_prompt": "La WebUI sera supprimée après le redémarrage",
+        "uninstall_failed": "Échec de la désinstallation de la WebUI",
+        "new_update": "Une nouvelle mise à jour est disponible !",
+        "downloading": "Téléchargement de la mise à jour…",
+        "downloaded": "Téléchargement terminé",
+        "download_fail": "Échec du téléchargement de la mise à jour",
+        "installing": "Installation de la mise à jour…",
+        "installed": "Installation réussie, redémarrez maintenant.",
+        "install_fail": "Échec de l'installation, veuillez mettre à jour manuellement",
+        "rebooting": "Redémarrage…",
+        "reboot_fail": "Échec du redémarrage, veuillez redémarrer manuellement",
+        "custom_key_set": "Keybox personnalisée définie avec succès",
+        "custom_key_set_error": "Échec de la définition de la Keybox personnalisée",
+        "no_file_selected": "Aucun fichier sélectionné",
+        "system_app_not_found": "Application système introuvable",
+        "system_app_error": "Échec de l'ajout de l'application système"
+    },
+    "security_patch": {
+        "title": "Patch de sécurité",
+        "advanced_mode": "Avancé",
+        "get_date": "Obtenir la date du patch de sécurité",
+        "auto": "Automatique",
+        "save": "Enregistrer",
+        "fetching": "Récupération…",
+        "fetched": "Terminé",
+        "get_failed": "Échec de la récupération de la date du patch de sécurité",
+        "auto_success": "Configuration automatique activée avec succès",
+        "auto_failed": "Échec de l'activation de la configuration automatique",
+        "save_success": "Patch de sécurité enregistré avec succès",
+        "save_failed": "Échec de l'enregistrement du patch de sécurité",
+        "value_empty": "Configuration du patch de sécurité désactivée",
+        "invalid_all": "Format invalide",
+        "invalid_boot": "Format de démarrage invalide",
+        "invalid_system": "Format du système invalide",
+        "invalid_vendor": "Format du fournisseur invalide"
+    },
+    "add_system_app": {
+        "title": "Ajouter une application système",
+        "add": "Ajouter",
+        "current_list": "Liste des applications système actuelles"
+    },
+    "confirmation": {
+        "uninstall_title": "Confirmer la désinstallation ?",
+        "uninstall_message": "Êtes-vous sûr(e) de vouloir désinstaller Tricky Addon",
+        "uninstall_cancel": "Annuler",
+        "uninstall_confirm": "Confirmer"
+    }
+}
