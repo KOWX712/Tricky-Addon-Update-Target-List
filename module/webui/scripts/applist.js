@@ -13,7 +13,6 @@ export async function fetchAppList() {
         try {
             const targetFileContent = await execCommand('cat /data/adb/tricky_store/target.txt');
             targetList = processTargetList(targetFileContent);
-            console.log("Current target list:", targetList);
         } catch (error) {
             toast("Failed to read target.txt!");
             console.error("Failed to read target.txt file:", error);
@@ -107,7 +106,6 @@ export async function fetchAppList() {
             checkbox.checked = targetList.includes(packageName);
             appListContainer.appendChild(appElement);
         });
-        console.log("App list with names and packages rendered successfully.");
     } catch (error) {
         toast("Failed to fetch app list!");
         console.error("Failed to fetch or render app list with names:", error);
