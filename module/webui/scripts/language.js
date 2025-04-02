@@ -10,7 +10,7 @@ let availableLanguages = ['en-US'];
  * Detect user's default language
  * @returns {Promise<string>} - Detected language code
  */
-export async function detectUserLanguage() {
+async function detectUserLanguage() {
     const userLang = navigator.language || navigator.userLanguage;
     const langCode = userLang.split('-')[0];
 

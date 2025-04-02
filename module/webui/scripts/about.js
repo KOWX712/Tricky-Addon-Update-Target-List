@@ -1,8 +1,5 @@
 import { linkRedirect } from './main.js';
 
-const telegramLink = document.getElementById('telegram');
-const githubLink = document.getElementById('github');
-
 // Function to show about overlay
 document.getElementById("about").addEventListener("click", () => {
     const aboutOverlay = document.getElementById('about-overlay');
@@ -33,9 +30,9 @@ document.getElementById("about").addEventListener("click", () => {
 });
 
 // Event listener for link redirect
-telegramLink.addEventListener('click', function() {
+document.getElementById('telegram').addEventListener('click', function() {
     linkRedirect('https://t.me/kowchannel');
 });
-githubLink.addEventListener('click', function() {
+document.getElementById('github').addEventListener('click', function() {
     linkRedirect('https://github.com/KOWX712/Tricky-Addon-Update-Target-List');
 });

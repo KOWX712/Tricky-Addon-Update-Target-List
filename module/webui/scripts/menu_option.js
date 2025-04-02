@@ -136,7 +136,7 @@ export async function setupSystemAppMenu() {
         currentSystemAppListContent.innerHTML = "";
         try {
             const systemAppList = await execCommand(`[ -f "/data/adb/tricky_store/system_app" ] && cat "/data/adb/tricky_store/system_app" | sed '/^$/d' || echo "false"`);
-            if (systemAppList.includes("false")) {
+            if (systemAppList.trim() === 'false' || systemAppList.trim() === '') {
                 currentSystemAppList.style.display = "none";
             } else {
                 systemAppList.split("\n").forEach(app => {
@@ -191,7 +191,7 @@ async function setKeybox(content) {
 }
 
 // Function to replace aosp kb
-export async function aospkb() {
+document.getElementById("aospkb").addEventListener("click", async () => {
     const source = await execCommand(`xxd -r -p ${basePath}/common/.default | base64 -d`);
     const result = await setKeybox(source);
     if (result) {
@@ -200,7 +200,7 @@ export async function aospkb() {
     } else {
         showPrompt("prompt.key_set_error", false);
     }
-}
+});
 
 // Function to replace valid kb
 document.getElementById("validkb").addEventListener("click", async () => {

@@ -1,6 +1,6 @@
 import { appListContainer, fetchAppList } from './applist.js';
 import { loadTranslations, setupLanguageMenu, translations } from './language.js';
-import { aospkb, setupSystemAppMenu } from './menu_option.js';
+import { setupSystemAppMenu } from './menu_option.js';
 import { searchMenuContainer, searchInput, clearBtn, setupMenuToggle } from './search_menu.js';
 import { updateCheck } from './update.js';
 import { securityPatch } from './security_patch.js';
@@ -44,7 +44,6 @@ async function getModuleVersion() {
         moduleVersion.textContent = version;
     } catch (error) {
         console.error("Failed to read version from module.prop:", error);
-        updateVersion("Error");
     }
 }
 
@@ -343,7 +342,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     floatingBtn.style.display = 'block';
     hideFloatingBtn(false);
     document.getElementById("refresh").addEventListener("click", refreshAppList);
-    document.getElementById("aospkb").addEventListener("click", aospkb);
     document.querySelector('.uninstall-container').classList.remove('hidden-uninstall');
 });
 
