@@ -42,10 +42,15 @@ document.getElementById("deselect-unnecessary").addEventListener("click", async 
     try {
         const excludeList = await fetch("https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/more-exclude.json")
             .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 return response.json();
+            })
+            .catch(async () => {
+                return fetch("https://raw.gitmirror.com/KOWX712/Tricky-Addon-Update-Target-List/main/more-exclude.json")
+                    .then(response => {
+                        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                        return response.json();
+                    });
             })
             .then(data => {
                 return data.data
@@ -205,35 +210,40 @@ document.getElementById("aospkb").addEventListener("click", async () => {
 // Function to replace valid kb
 document.getElementById("validkb").addEventListener("click", async () => {
     fetch("https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/.extra")
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.text();
-    })
-    .then(async data => {
-        if (!data.trim()) {
-            await aospkb();
-            showPrompt("prompt.no_valid_fallback", false);
-            return;
-        }
-        try {
-            const hexBytes = new Uint8Array(data.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
-            const decodedHex = new TextDecoder().decode(hexBytes);
-            const source = atob(decodedHex);
-            const result = await setKeybox(source);
-            if (result) {
-                showPrompt("prompt.valid_key_set");
-            } else {
-                throw new Error("Failed to copy valid keybox");
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.text();
+        })
+        .catch(async () => {
+            return fetch("https://raw.gitmirror.com/KOWX712/Tricky-Addon-Update-Target-List/main/.extra")
+                .then(response => {
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    return response.text();
+                });
+        })
+        .then(async data => {
+            if (!data.trim()) {
+                await aospkb();
+                showPrompt("prompt.no_valid_fallback", false);
+                return;
             }
-        } catch (error) {
-            throw new Error("Failed to decode keybox data");
-        }
-    })
-    .catch(async error => {
-        showPrompt("prompt.no_internet", false);
-    });
+            try {
+                const hexBytes = new Uint8Array(data.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+                const decodedHex = new TextDecoder().decode(hexBytes);
+                const source = atob(decodedHex);
+                const result = await setKeybox(source);
+                if (result) {
+                    showPrompt("prompt.valid_key_set");
+                } else {
+                    throw new Error("Failed to copy valid keybox");
+                }
+            } catch (error) {
+                throw new Error("Failed to decode keybox data");
+            }
+        })
+        .catch(async error => {
+            showPrompt("prompt.no_internet", false);
+        });
 });
 
 // File selector
