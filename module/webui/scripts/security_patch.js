@@ -322,6 +322,7 @@ export function securityPatch() {
             showPrompt('security_patch.fetched', true, 1000);
             checkAdvanced(true);
 
+            allPatchInput.value = output.replace(/-/g, '');
             systemPatchInput.value = 'prop';
             bootPatchInput.value = output;
             vendorPatchInput.value = output;
