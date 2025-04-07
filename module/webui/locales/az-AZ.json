@@ -1,0 +1,132 @@
+{
+    "language": "Azərbaycanca",
+    "system_default": "Sistem Varsayılanı",
+    "header": {
+        "title": "Tricky Addon"
+    },
+    "help": {
+        "help_instructions": "Təlimatlar",
+        "save_and_update": "Yadda saxla",
+        "save_and_update_description": "Cari konfiqurasiyanı target.txt faylına yadda saxla.",
+        "refresh": "Təzələ",
+        "refresh_description": "Proqram siyahısını və istisna siyahısını təzələ.",
+        "select_deselect": "Hamısını seç və seçimi ləğv et",
+        "select_description": "Cari interfeysdəki bütün tətbiqləri seç və ya seçimdən çıxar.",
+        "select_denylist": "DenyList-dən seç",
+        "select_denylist_description": "Yalnız Magisk-də mövcuddur, DenyList-də olan tətbiqləri seçin. Tövsiyə olunur.",
+        "deselect_unnecessary": "Lazımsızları seçmə",
+        "deselect_unnecessary_description": "Lazımsız kateqoriya: Xposed modulu, kök meneceri, kök ilə əlaqəli tətbiqlər və heç vaxt bootloader statusunu yoxlamayan ümumi tətbiqlər. Bu seçim İnternet bağlantısı tələb edir.",
+        "add_system_app": "Sistem Tətbiqi Əlavə et",
+        "add_system_app_description": "Müəyyən bir sistem tətbiqini tətbiq siyahısına əlavə et.",
+        "set_keybox": "AOSP & Etibarlı Keybox təyin et",
+        "set_keybox_description": "Tricky store keybox.xml-ni dəyişdir. Əgər etibarlı keybox yoxdursa, AOSP keybox dəyişdiriləcək. Etibarlı keybox seçimi İnternet bağlantısı tələb edir.",
+        "set_custom_keybox": "Özəl Keybox təyin et",
+        "set_custom_keybox_description": "Keybox-u cihaz yaddaşından idxal et. Yalnız xml faylını dəstəkləyir.",
+        "set_security_patch": "Təhlükəsizlik Təkmilləşdirməsini təyin et",
+        "set_security_patch_description": "Xüsusi təhlükəsizlik təkmilləşdirməsini dəyişdir. Avtomatik konfiqurasiya, PIF modulundan təhlükəsizlik təkmilləşdirməsini istifadə edəcək, bu seçimi aktivdir. Avtomatik konfiqurasiyanı dayandırmaq üçün boş buraxın və yadda saxlayın.",
+        "set_verified_boot_hash": "Təsdiqlənmiş Boot Hash təyin et",
+        "set_verified_boot_hash_description": "Key Attestation Demo-dan verifiedBootHash dəyərini əldə et. ro.boot.vbmeta.digest-ni sıfırlayaraq qeyri-adi boot vəziyyətini düzəlt."
+    },
+    "update": {
+        "update_available": "Yeni versiya mövcuddur",
+        "redirect_to_release": "Ən son versiyanı yükləmək üçün klikləyin",
+        "changelog": "Dəyişikliklər",
+        "install": "Yüklə",
+        "reboot": "Yenidən başladın"
+    },
+    "search_bar": {
+        "search_placeholder": "Axtar"
+    },
+    "functional_button": {
+        "save_and_update_button": "Yadda saxla",
+        "uninstall_webui": "WebUI-ni sil"
+    },
+    "loading": {
+        "loading": "Yüklənir..."
+    },
+    "menu": {
+        "refresh": "Təzələ",
+        "select_all": "Hamısını seç",
+        "deselect_all": "Hamısının seçimini ləğv et",
+        "select_denylist": "DenyList-dən seç",
+        "deselect_unnecessary": "Lazımsızları seçmə",
+        "add_system_app": "Sistem Tətbiqi Əlavə et",
+        "set_aosp_keybox": "AOSP Keybox təyin et",
+        "set_valid_keybox": "Etibarlı Keybox təyin et",
+        "set_custom_keybox": "Özəl Keybox təyin et",
+        "set_verified_boot_hash": "Təsdiqlənmiş Boot Hash təyin et",
+        "set_security_patch": "Təhlükəsizlik Təkmilləşdirməsini təyin et",
+        "about": "Haqqında"
+    },
+    "boot_hash": {
+        "title": "Boot Hash",
+        "input_placeholder": "Təsdiqlənmiş Boot Hash-ı buraya yapışdırın",
+        "save_button": "Yadda saxla"
+    },
+    "about": {
+        "module_name_line1": "Tricky Addon",
+        "module_name_line2": "Hədəf Siyahısını Yenilə",
+        "by": "tərəfindən",
+        "telegram_channel": "Telegram Kanalı",
+        "github": "GitHub",
+        "disclaimer": "Bu mod, Tricky Store modulunun bir hissəsi deyil. Qarşılaşılan hər hansı bir problemi Tricky Store-a bildirməyin.",
+        "acknowledgment": "Təşəkkür"
+    },
+    "prompt": {
+        "no_internet": "İnternet bağlantınızı yoxlayın",
+        "aosp_key_set": "AOSP keybox uğurla təyin olundu",
+        "key_set_error": "Keybox-u yeniləmək mümkün olmadı",
+        "valid_key_set": "Etibarlı keybox uğurla təyin olundu",
+        "no_valid_fallback": "Etibarlı keybox tapılmadı, AOSP keybox ilə dəyişdirildi.",
+        "boot_hash_set": "Təsdiqlənmiş Boot Hash uğurla yadda saxlanıldı",
+        "boot_hash_set_error": "Təsdiqlənmiş Boot Hash yenilənə bilmədi",
+        "saved_target": "Konfiqurasiya target.txt-yə yadda saxlanıldı",
+        "save_error": "Konfiqurasiyanı yadda saxlamaq mümkün olmadı",
+        "uninstall_prompt": "WebUI yenidən başladıqdan sonra silinəcək",
+        "uninstall_failed": "WebUI-ni silmək mümkün olmadı",
+        "new_update": "Yeni bir yeniləmə mövcuddur!",
+        "downloading": "Yeni yeniləməni yükləyir...",
+        "downloaded": "Yükləmə tamamlandı",
+        "download_fail": "Yeniləməni yükləmək mümkün olmadı",
+        "installing": "Yeniləmə quraşdırılır...",
+        "installed": "Uğurla quraşdırıldı, indi yenidən başladın.",
+        "install_fail": "Quraşdırmaq mümkün olmadı, zəhmət olmasa əl ilə yeniləyin",
+        "rebooting": "Yenidən başladılır...",
+        "reboot_fail": "Yenidən başlatmaq mümkün olmadı, zəhmət olmasa əl ilə yenidən başlayın",
+        "custom_key_set": "Özəl keybox uğurla təyin olundu",
+        "custom_key_set_error": "Özəl keybox təyin oluna bilmədi",
+        "no_file_selected": "Fayl seçilməyib",
+        "system_app_not_found": "Sistem tətbiqi tapılmadı",
+        "system_app_error": "Sistem tətbiqini əlavə etmək mümkün olmadı"
+    },
+    "security_patch": {
+        "title": "Təhlükəsizlik Təkmilləşdirməsi",
+        "advanced_mode": "Ətraflı",
+        "get_date": "Təhlükəsizlik Təkmilləşdirməsinin Tarixini Al",
+        "auto": "Avtomatik",
+        "save": "Yadda saxla",
+        "fetching": "Yığılır...",
+        "fetched": "Tamam",
+        "get_failed": "Təhlükəsizlik təkmilləşdirməsinin tarixini almaq mümkün olmadı",
+        "auto_success": "Avtomatik konfiqurasiya uğurla aktivləşdirildi",
+        "auto_failed": "Avtomatik konfiqurasiyanı aktivləşdirmək mümkün olmadı",
+        "save_success": "Təhlükəsizlik təkmilləşdirməsi uğurla yadda saxlanıldı",
+        "save_failed": "Təhlükəsizlik təkmilləşdirməsini yadda saxlamaq mümkün olmadı",
+        "value_empty": "Təhlükəsizlik təkmilləşdirməsi konfiqurasiyası deaktivdir",
+        "invalid_all": "Yanlış format",
+        "invalid_boot": "Yanlış boot formatı",
+        "invalid_system": "Yanlış sistem formatı",
+        "invalid_vendor": "Yanlış vendor formatı"
+    },
+    "add_system_app": {
+        "title": "Sistem Tətbiqi Əlavə et",
+        "add": "Əlavə et",
+        "current_list": "Cari Sistem Tətbiqi Siyahısı"
+    },
+    "confirmation": {
+        "uninstall_title": "Silinməni Təsdiqləyirsiniz?",
+        "uninstall_message": "Tricky Addon-u silmək istədiyinizə əminsinizmi?",
+        "uninstall_cancel": "İmtina et",
+        "uninstall_confirm": "Təsdiqlə"
+    }
+}
