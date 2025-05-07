@@ -1,3 +1,4 @@
+import { exec, toast } from './assets/kernelsu.js';
 import { appListContainer, fetchAppList } from './applist.js';
 import { loadTranslations, setupLanguageMenu, translations } from './language.js';
 import { setupSystemAppMenu } from './menu_option.js';
@@ -10,7 +11,7 @@ const title = document.querySelector('.header');
 export const noConnection = document.querySelector('.no-connection');
 
 // Loading, Save and Prompt Elements
-const loadingIndicator = document.querySelector('.loading');
+export const loadingIndicator = document.querySelector('.loading');
 const prompt = document.getElementById('prompt');
 const floatingCard = document.querySelector('.floating-card');
 const floatingBtn = document.querySelector('.floating-btn');
@@ -49,16 +50,12 @@ export async function refreshAppList() {
     appListContainer.innerHTML = '';
     loadingIndicator.style.display = 'flex';
     document.querySelector('.uninstall-container').classList.add('hidden-uninstall');
-    await new Promise(resolve => setTimeout(resolve, 500));
     window.scrollTo(0, 0);
     if (noConnection.style.display === "flex") {
         updateCheck();
         exec(`rm -f "${basePath}/common/tmp/exclude-list"`);
     }
-    await fetchAppList();
-    applyRippleEffect();
-    loadingIndicator.style.display = 'none';
-    document.querySelector('.uninstall-container').classList.remove('hidden-uninstall');
+    fetchAppList();
     isRefreshing = false;
 }
 
@@ -200,15 +197,24 @@ function checkMMRL() {
 
 // Funtion to adapt floating button hide in MMRL
 export function hideFloatingBtn(hide = true) {
-    if (!hide) floatingCard.style.transform = 'translateY(0)';
+    if (!hide) {
+        floatingCard.style.transform = 'translateY(0)';
+        floatingBtn.style.display = 'block';
+    }
     else floatingCard.style.transform = 'translateY(calc(var(--window-inset-bottom, 0px) + 120px))';
 }
 
-// Function to apply ripple effect
+/**
+ * Simulate MD3 ripple animation
+ * Usage: class="ripple-element" style="position: relative; overflow: hidden;"
+ * Note: Require background-color to work properly
+ * @return {void}
+ */
 export function applyRippleEffect() {
     document.querySelectorAll('.ripple-element').forEach(element => {
         if (element.dataset.rippleListener !== "true") {
             element.addEventListener("pointerdown", async (event) => {
+                // Pointer up event
                 const handlePointerUp = () => {
                     ripple.classList.add("end");
                     setTimeout(() => {
@@ -221,8 +227,6 @@ export function applyRippleEffect() {
                 element.addEventListener("pointerup", () => setTimeout(handlePointerUp, 80));
                 element.addEventListener("pointercancel", () => setTimeout(handlePointerUp, 80));
 
-                await new Promise(resolve => setTimeout(resolve, 80));
-                if (isScrolling) return;
                 const ripple = document.createElement("span");
                 ripple.classList.add("ripple");
 
@@ -247,7 +251,6 @@ export function applyRippleEffect() {
                 // Adaptive color
                 const computedStyle = window.getComputedStyle(element);
                 const bgColor = computedStyle.backgroundColor || "rgba(0, 0, 0, 0)";
-                const textColor = computedStyle.color;
                 const isDarkColor = (color) => {
                     const rgb = color.match(/\d+/g);
                     if (!rgb) return false;
@@ -256,7 +259,9 @@ export function applyRippleEffect() {
                 };
                 ripple.style.backgroundColor = isDarkColor(bgColor) ? "rgba(255, 255, 255, 0.2)" : "";
 
-                // Append ripple and handle cleanup
+                // Append ripple if not scrolling
+                await new Promise(resolve => setTimeout(resolve, 80));
+                if (isScrolling) return;
                 element.appendChild(ripple);
             });
             element.dataset.rippleListener = "true";
@@ -298,54 +303,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupMenuToggle();
     setupLanguageMenu();
     setupSystemAppMenu();
-    await fetchAppList();
-    applyRippleEffect();
+    fetchAppList();
     checkTrickyStoreVersion();
     checkMagisk();
     updateCheck();
     securityPatch();
-    loadingIndicator.style.display = "none";
-    floatingBtn.style.display = 'block';
-    hideFloatingBtn(false);
     document.getElementById("refresh").addEventListener("click", refreshAppList);
-    document.querySelector('.uninstall-container').classList.remove('hidden-uninstall');
 });
-
-/**
- * Execute shell command with ksu.exec
- * @param {string} command - The command to execute
- * @param {Object} [options={}] - Options object containing:
- *   - cwd <string> - Current working directory of the child process
- *   - env {Object} - Environment key-value pairs
- * @returns {Promise<Object>} Resolves with:
- *   - errno {number} - Exit code of the command
- *   - stdout {string} - Standard output from the command
- *   - stderr {string} - Standard error from the command
- */
-export function exec(command, options = {}) {
-    return new Promise((resolve, reject) => {
-        const callbackFuncName = `exec_callback_${Date.now()}_${e++}`;
-        window[callbackFuncName] = (errno, stdout, stderr) => {
-            resolve({ errno, stdout, stderr });
-            cleanup(callbackFuncName);
-        };
-        function cleanup(successName) {
-            delete window[successName];
-        }
-        try {
-            ksu.exec(command, JSON.stringify(options), callbackFuncName);
-        } catch (error) {
-            reject(error);
-            cleanup(callbackFuncName);
-        }
-    });
-}
-
-// Function to toast message
-export function toast(message) {
-    try {
-        ksu.toast(message);
-    } catch (error) {
-        console.error("Failed to show toast:", error);
-    }
-}

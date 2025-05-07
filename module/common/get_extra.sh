@@ -1,4 +1,7 @@
 #!/bin/sh
+
+# This file is the backend of JavaScript
+
 MODPATH=${0%/*}
 ORG_PATH="$PATH"
 SKIPLIST="$MODPATH/tmp/skiplist"
@@ -17,13 +20,11 @@ aapt() { "$MODPATH/aapt" "$@"; }
 # wget = low pref, no ssl.
 # curl, has ssl on android, we use it if found
 download() {
-    PATH=/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk:/data/data/com.termux/files/usr/bin:$PATH
     if command -v curl >/dev/null 2>&1; then
         timeout 10 curl -Ls "$1"
     else
         timeout 10 busybox wget --no-check-certificate -qO- "$1"
     fi
-    PATH="$ORG_PATH"
 }
 
 get_xposed() {
@@ -37,6 +38,19 @@ get_xposed() {
         fi
     done
     cat "$XPOSED"
+}
+
+get_applist() {
+    pm list packages -3 | awk -F: '{print $2}'
+    [ -s "/data/adb/tricky_store/system_app" ] && SYSTEM_APP=$(cat "/data/adb/tricky_store/system_app" | tr '\n' '|' | sed 's/|*$//') || SYSTEM_APP=""
+    [ -z "$SYSTEM_APP" ] || pm list packages -s | awk -F: '{print $2}' | grep -Ex "$SYSTEM_APP" || true
+}
+
+get_appname() {
+    base_apk=$(pm path $package_name | head -n1 | awk -F: '{print $2}')
+    app_name=$(aapt dump badging $base_apk 2>/dev/null | grep "application-label:" | sed "s/application-label://; s/'//g")
+    [ -z "$app_name" ] && app_name="$package_name"
+    echo "$app_name"
 }
 
 check_update() {
@@ -68,7 +82,6 @@ get_update() {
 }
 
 install_update() {
-    PATH=/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk:$PATH
     if command -v magisk >/dev/null 2>&1; then
         magisk --install-module "$MODPATH/tmp/module.zip" || exit 1
     elif command -v apd >/dev/null 2>&1; then
@@ -131,6 +144,15 @@ get_latest_security_patch() {
 case "$1" in
 --xposed)
     get_xposed
+    exit
+    ;;
+--applist)
+    get_applist
+    exit
+    ;;
+--appname)
+    package_name="$2"
+    get_appname
     exit
     ;;
 --check-update)

@@ -1,4 +1,5 @@
-import { basePath, exec, showPrompt, toast, applyRippleEffect, refreshAppList } from './main.js';
+import { exec, toast } from './assets/kernelsu.js';
+import { basePath, showPrompt, applyRippleEffect, refreshAppList } from './main.js';
 
 // Function to check or uncheck all app
 function toggleCheckboxes(shouldCheck) {

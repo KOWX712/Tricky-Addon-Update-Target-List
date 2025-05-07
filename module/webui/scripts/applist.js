@@ -1,40 +1,42 @@
-import { basePath, exec, hideFloatingBtn, appsWithExclamation, appsWithQuestion, toast } from './main.js';
+import { exec, spawn, toast } from './assets/kernelsu.js';
+import { basePath, loadingIndicator, hideFloatingBtn, appsWithExclamation, appsWithQuestion, applyRippleEffect } from './main.js';
 
 const appTemplate = document.getElementById('app-template').content;
 const modeOverlay = document.querySelector('.mode-overlay');
 export const appListContainer = document.getElementById('apps-list');
 export const updateCard = document.getElementById('update-card');
 
+let targetList = [];
+
 // Fetch and render applist
 export async function fetchAppList() {
-    try {
-        // fetch target list
-        let targetList = [];
-        await exec('cat /data/adb/tricky_store/target.txt')
-            .then(({ errno, stdout }) => {
-                if (errno === 0) {
-                    targetList = processTargetList(stdout);
-                } else {
-                    toast("Failed to read target.txt!");
-                }
-            });
+    // fetch target list
+    await exec('cat /data/adb/tricky_store/target.txt')
+        .then(({ errno, stdout }) => {
+            if (errno === 0) {
+                targetList = processTargetList(stdout);
+            } else {
+                toast("Failed to read target.txt!");
+            }
+        });
 
-        // fetch applist
-        const response = await fetch('applist.json');
-        const appList = await response.json();
-        const appNameMap = appList.reduce((map, app) => {
-            map[app.package_name] = app.app_name;
-            return map;
-        }, {});
+    // Fetch cached applist
+    const response = await fetch('applist.json');
+    const appList = await response.json();
+    const appNameMap = appList.reduce((map, app) => {
+        map[app.package_name] = app.app_name;
+        return map;
+    }, {});
 
-        // Get installed packages first
-        let appEntries = [], installedPackages = [];
-        const { stdout } = await exec(`
-            pm list packages -3 | awk -F: '{print $2}'
-            [ -s "/data/adb/tricky_store/system_app" ] && SYSTEM_APP=$(cat "/data/adb/tricky_store/system_app" | tr '\n' '|' | sed 's/|*$//') || SYSTEM_APP=""
-            [ -z "$SYSTEM_APP" ] || pm list packages -s | awk -F: '{print $2}' | grep -Ex "$SYSTEM_APP" || true
-        `);
-        installedPackages = stdout.split("\n").map(line => line.trim()).filter(Boolean);
+    // Get installed packages
+    let appEntries = [], installedPackages = [];
+    const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--applist']);
+    output.stdout.on('data', (data) => {
+        if (data.trim() === "") return;
+        installedPackages.push(data);
+    });
+    output.on('exit', async () => {
+        // Create appEntries array contain { appName, packageName }
         appEntries = await Promise.all(installedPackages.map(async (packageName) => {
             if (appNameMap[packageName]) {
                 return {
@@ -42,76 +44,86 @@ export async function fetchAppList() {
                     packageName
                 };
             }
-            const { stdout: appName } = await exec(`
-                base_apk=$(pm path ${packageName} | head -n1 | awk -F: '{print $2}')
-                aapt dump badging $base_apk 2>/dev/null | grep "application-label:" | sed "s/application-label://; s/'//g"
-            `, { env: { PATH: `$PATH:${basePath}/common:/data/data/com.termux/files/usr/bin` } });
-            return {
-                appName: appName || packageName,
-                packageName
-            };
-        }));
-
-        // Sort
-        const sortedApps = appEntries.sort((a, b) => {
-            const aChecked = targetList.includes(a.packageName);
-            const bChecked = targetList.includes(b.packageName);
-            if (aChecked !== bChecked) {
-                return aChecked ? -1 : 1;
-            }
-            return (a.appName || "").localeCompare(b.appName || "");
-        });
-
-        // Render
-        appListContainer.innerHTML = "";
-        sortedApps.forEach(({ appName, packageName }) => {
-            const appElement = document.importNode(appTemplate, true);
-            const contentElement = appElement.querySelector(".content");
-            contentElement.setAttribute("data-package", packageName);
-        
-            // Set unique names for radio button groups
-            const radioButtons = appElement.querySelectorAll('input[type="radio"]');
-            radioButtons.forEach((radio) => {
-                radio.name = `mode-radio-${packageName}`;
+            return new Promise((resolve) => {
+                const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--appname', packageName],
+                                { env: { PATH: `$PATH:${basePath}/common:/data/data/com.termux/files/usr/bin` } });
+                output.stdout.on('data', (data) => {
+                    resolve({
+                        appName: data,
+                        packageName
+                    });
+                });
             });
-        
-            // Preselect the radio button based on the package name
-            const generateRadio = appElement.querySelector('#generate-mode');
-            const hackRadio = appElement.querySelector('#hack-mode');
-            const normalRadio = appElement.querySelector('#normal-mode');
-        
-            if (appsWithExclamation.includes(packageName)) {
-                generateRadio.checked = true;
-            } else if (appsWithQuestion.includes(packageName)) {
-                hackRadio.checked = true;
-            } else {
-                normalRadio.checked = true;
-            }
-        
-            const nameElement = appElement.querySelector(".name");
-            nameElement.innerHTML = `
-                <div class="app-info">
-                    <div class="app-name"><strong>${appName}</strong></div>
-                    <div class="package-name">${packageName}</div>
-                </div>
-            `;
-            const checkbox = appElement.querySelector(".checkbox");
-            checkbox.checked = targetList.includes(packageName);
-            appListContainer.appendChild(appElement);
+        }));
+        renderAppList(appEntries);
+    });
+}
+
+/**
+ * Render processed app list to the UI
+ * @param {Array} data - Array of objects containing appName and packageName
+ * @returns {void}
+ */
+function renderAppList(data) {
+    // Sort
+    const sortedApps = data.sort((a, b) => {
+        const aChecked = targetList.includes(a.packageName);
+        const bChecked = targetList.includes(b.packageName);
+        if (aChecked !== bChecked) {
+            return aChecked ? -1 : 1;
+        }
+        return (a.appName || "").localeCompare(b.appName || "");
+    });
+
+    // Render
+    appListContainer.innerHTML = "";
+    sortedApps.forEach(({ appName, packageName }) => {
+        const appElement = document.importNode(appTemplate, true);
+        const contentElement = appElement.querySelector(".content");
+        contentElement.setAttribute("data-package", packageName);
+    
+        // Set unique names for radio button groups
+        const radioButtons = appElement.querySelectorAll('input[type="radio"]');
+        radioButtons.forEach((radio) => {
+            radio.name = `mode-radio-${packageName}`;
         });
-    } catch (error) {
-        toast("Failed to fetch app list!");
-        console.error("Failed to fetch or render app list with names:", error);
-    }
+    
+        // Preselect the radio button based on the package name
+        const generateRadio = appElement.querySelector('#generate-mode');
+        const hackRadio = appElement.querySelector('#hack-mode');
+        const normalRadio = appElement.querySelector('#normal-mode');
+    
+        if (appsWithExclamation.includes(packageName)) {
+            generateRadio.checked = true;
+        } else if (appsWithQuestion.includes(packageName)) {
+            hackRadio.checked = true;
+        } else {
+            normalRadio.checked = true;
+        }
+    
+        const nameElement = appElement.querySelector(".name");
+        nameElement.innerHTML = `
+            <div class="app-info">
+                <div class="app-name"><strong>${appName}</strong></div>
+                <div class="package-name">${packageName}</div>
+            </div>
+        `;
+        const checkbox = appElement.querySelector(".checkbox");
+        checkbox.checked = targetList.includes(packageName);
+        appListContainer.appendChild(appElement);
+    });
+
+    loadingIndicator.style.display = "none";
     hideFloatingBtn(false);
+    document.querySelector('.uninstall-container').classList.remove('hidden-uninstall');
     toggleableCheckbox();
     if (appListContainer.firstChild !== updateCard) {
         appListContainer.insertBefore(updateCard, appListContainer.firstChild);
     }
-    const checkboxes = appListContainer.querySelectorAll(".checkbox");
     setupRadioButtonListeners();
     setupModeMenu();
     updateCheckboxColor();
+    applyRippleEffect();
 }
 
 // Function to save app with ! and ? then process target list

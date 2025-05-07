@@ -26,13 +26,13 @@ jobs:
 
       - name: Update dependency
         run: |
-          curl -Ls https://cdn.jsdelivr.net/npm/marked/marked.min.js > module/webui/scripts/marked.min.js
+          curl -Ls https://cdn.jsdelivr.net/npm/marked/marked.min.js > module/webui/scripts/assets/marked.min.js
 
           # Commit if found changes
-          if ! git diff --exit-code module/webui/scripts/marked.min.js > /dev/null; then
+          if ! git diff --exit-code module/webui/scripts/assets/marked.min.js > /dev/null; then
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
             git config --global user.name "github-actions[bot]"
-            git add module/webui/scripts/marked.min.js
+            git add module/webui/scripts/assets/marked.min.js
             git commit -m "deps: update marked.min.js"
             git push
           fi

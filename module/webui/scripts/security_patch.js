@@ -1,4 +1,5 @@
-import { basePath, exec, showPrompt } from './main.js';
+import { exec, spawn } from './assets/kernelsu.js';
+import { basePath, showPrompt } from './main.js';
 
 const overlay = document.getElementById('security-patch-overlay');
 const overlayContent = document.querySelector('.security-patch-card');
@@ -217,24 +218,29 @@ export function securityPatch() {
 
     // Auto config button
     autoButton.addEventListener('click', () => {
-        exec(`sh ${basePath}/common/get_extra.sh --security-patch`)
-            .then(({ errno, stdout }) => {
-                if (errno !== 0 || stdout.trim() === "not set") {
-                    showPrompt('security_patch.auto_failed', false);
-                } else {
-                    exec(`touch /data/adb/tricky_store/security_patch_auto_config`)
-                    // Reset inputs
-                    allPatchInput.value = '';
-                    systemPatchInput.value = '';
-                    bootPatchInput.value = '';
-                    vendorPatchInput.value = '';
+        const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--security-patch']);
+        output.stdout.on('data', (data) => {
+            if (data.includes("not set")) {
+                showPrompt('security_patch.auto_failed', false);
+            }
+        });
+        output.on('exit', (code) => {
+            if (code === 0) {
+                exec(`touch /data/adb/tricky_store/security_patch_auto_config`)
+                // Reset inputs
+                allPatchInput.value = '';
+                systemPatchInput.value = '';
+                bootPatchInput.value = '';
+                vendorPatchInput.value = '';
 
-                    checkAdvanced(false);
-                    showPrompt('security_patch.auto_success');
-                }
-                hideSecurityPatchDialog();
-                loadCurrentConfig();
-            });
+                checkAdvanced(false);
+                showPrompt('security_patch.auto_success');
+            } else {
+                showPrompt('security_patch.auto_failed', false);
+            }
+            hideSecurityPatchDialog();
+            loadCurrentConfig();
+        });
     });
 
     // Save button
@@ -307,21 +313,18 @@ export function securityPatch() {
     // Get button
     getButton.addEventListener('click', async () => {
         showPrompt('security_patch.fetching');
-        setTimeout(() => {
-            exec(`sh ${basePath}/common/get_extra.sh --get-security-patch`)
-            .then(({ errno, stdout }) => {
-                if (errno !== 0) {
-                    showPrompt('security_patch.get_failed', false);
-                } else {
-                    showPrompt('security_patch.fetched', true, 1000);
-                    checkAdvanced(true);
+        const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--get-security-patch']);
+        output.stdout.on('data', (data) => {
+            showPrompt('security_patch.fetched', true, 1000);
+            checkAdvanced(true);
 
-                    allPatchInput.value = stdout.replace(/-/g, '');
-                    systemPatchInput.value = 'prop';
-                    bootPatchInput.value = stdout;
-                    vendorPatchInput.value = stdout;
-                }
-            })
-        }, 200);
+            allPatchInput.value = data.replace(/-/g, '');
+            systemPatchInput.value = 'prop';
+            bootPatchInput.value = data;
+            vendorPatchInput.value = data;
+        });
+        output.on('exit', (code) => {
+            if (code !== 0) showPrompt('security_patch.get_failed', false);
+        });
     });
 }

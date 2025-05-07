@@ -1,4 +1,5 @@
-import { basePath, exec, showPrompt, noConnection, linkRedirect } from './main.js';
+import { exec, spawn } from './assets/kernelsu.js';
+import { basePath, showPrompt, noConnection, linkRedirect } from './main.js';
 import { updateCard } from './applist.js';
 
 const updateMenu = document.querySelector('.update-overlay');
@@ -51,12 +52,14 @@ export async function updateCheck() {
         zipURL = data.zipUrl;
         changelogURL = data.changelog;
 
-        const { stdout } = await exec(`sh ${basePath}/common/get_extra.sh --check-update ${remoteVersionCode}`);
-        if (stdout.includes("update")) {
-            showPrompt("prompt.new_update", true, 1500);
-            updateCard.style.display = "flex";
-            setupUpdateMenu();
-        }
+        const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--check-update', `${remoteVersionCode}`]);
+        output.stdout.on('data', (data) => {
+            if (data.includes("update")) {
+                showPrompt("prompt.new_update", true, 1500);
+                updateCard.style.display = "flex";
+                setupUpdateMenu();
+            }
+        });
     } catch (error) {
         console.error("Error fetching JSON or executing command:", error);
         showPrompt("prompt.no_internet", false);
@@ -110,43 +113,41 @@ function setupUpdateMenu() {
 
     // Update card
     updateCard.addEventListener('click', async () => {
-        try {
-            const { stdout } = await exec(`
-                [ -f ${basePath}/common/tmp/module.zip ] || echo "noModule"
-                [ -f ${basePath}/common/tmp/changelog.md ] || echo "noChangelog"
-                [ ! -f /data/adb/modules/TA_utl/update ] || echo "updated"
-            `);
-            if (stdout.trim().includes("updated")) {
-                installButton.style.display = "none";
-                rebootButton.style.display = "flex";
-                openUpdateMenu();
-            } else if (stdout.trim().includes("noChangelog")) {
-                showPrompt("prompt.downloading");
-                await downloadFile(changelogURL, "changelog.md");
-                renderChangelog();
-                openUpdateMenu();
-                setTimeout(() => {
-                    updateCard.click();
-                }, 200);
-            } else if (stdout.trim().includes("noModule")) {
-                if (downloading) return;
-                downloading = true;
-                const { errno } = await exec(`sh ${basePath}/common/get_extra.sh --get-update ${zipURL}`);
-                if (errno === 0) {
+        const { stdout } = await exec(`
+            [ -f ${basePath}/common/tmp/module.zip ] || echo "noModule"
+            [ -f ${basePath}/common/tmp/changelog.md ] || echo "noChangelog"
+            [ ! -f /data/adb/modules/TA_utl/update ] || echo "updated"
+        `);
+        if (stdout.trim().includes("updated")) {
+            installButton.style.display = "none";
+            rebootButton.style.display = "flex";
+            openUpdateMenu();
+        } else if (stdout.trim().includes("noChangelog")) {
+            showPrompt("prompt.downloading");
+            await downloadFile(changelogURL, "changelog.md");
+            renderChangelog();
+            openUpdateMenu();
+            setTimeout(() => {
+                updateCard.click();
+            }, 200);
+        } else if (stdout.trim().includes("noModule")) {
+            if (downloading) return;
+            downloading = true;
+            const download = spawn('sh', [`${basePath}/common/get_extra.sh`, '--get-update', `${zipURL}`],
+                                { env: { PATH: "$PATH:/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk:/data/data/com.termux/files/usr/bin" } });
+            download.on('exit', (code) => {
+                downloading = false;
+                if (code === 0) {
                     showPrompt("prompt.downloaded");
                     installButton.style.display = "flex";
                 } else {
                     showPrompt("prompt.download_fail", false);
                 }
-                downloading = false;
-            } else {
-                installButton.style.display = "flex";
-                renderChangelog();
-                openUpdateMenu();
-            }
-        } catch (error) {
-            showPrompt("prompt.download_fail", false);
-            console.error('Error download module update:', error);
+            });
+        } else {
+            installButton.style.display = "flex";
+            renderChangelog();
+            openUpdateMenu();
         }
     });
 
@@ -159,16 +160,20 @@ function setupUpdateMenu() {
     // Install button
     installButton.addEventListener('click', async () => {
         showPrompt("prompt.installing");
-        await new Promise(resolve => setTimeout(resolve, 300));
-        const { errno, stderr } = await exec(`sh ${basePath}/common/get_extra.sh --install-update`);
-        if (errno === 0) {
-            showPrompt("prompt.installed");
-            installButton.style.display = "none";
-            rebootButton.style.display = "flex";
-        } else {
-            showPrompt("prompt.install_fail", false);
-            console.error('Fail to execute installation script:', stderr);
-        }
+        const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--install-update'],
+                        { env: { PATH: "$PATH:/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk" } });
+        output.stderr.on('data', (data) => {
+            console.error('Error during installation:', data);
+        })
+        output.on('exit', (code) => {
+            if (code === 0) {
+                showPrompt("prompt.installed");
+                installButton.style.display = "none";
+                rebootButton.style.display = "flex";
+            } else {
+                showPrompt("prompt.install_fail", false);
+            }
+        });
     });
 
     // Reboot button

@@ -1,4 +1,5 @@
-import { exec, showPrompt } from './main.js';
+import { exec } from './assets/kernelsu.js';
+import { showPrompt } from './main.js';
 
 const bootHashOverlay = document.getElementById('boot-hash-overlay');
 const bootHash = document.querySelector('.boot-hash-card');
@@ -21,14 +22,12 @@ document.getElementById("boot-hash").addEventListener("click", async () => {
     }, 10);
 
     // read current boot hash
-    exec("cat /data/adb/boot_hash")
+    exec(`sed '/^#/d; /^$/d' /data/adb/boot_hash`)
         .then(({ errno, stdout }) => {
             if (errno !== 0) {
                 inputBox.value = "";
             } else {
-                const validHash = stdout
-                    .split("\n")
-                    .filter(line => !line.startsWith("#") && line.trim())[0];
+                const validHash = stdout.trim();
                 inputBox.value = validHash || "";
             }
         });
@@ -47,7 +46,7 @@ const closeBootHashMenu = () => {
 saveButton.addEventListener("click", async () => {
     const inputValue = inputBox.value.trim();
     exec(`
-        resetprop -n ro.boot.vbmeta.digest ${inputValue}
+        resetprop -n ro.boot.vbmeta.digest "${inputValue}"
         [ -z "${inputValue}" ] && rm -f /data/adb/boot_hash || {
             echo "${inputValue}" > /data/adb/boot_hash
             chmod 644 /data/adb/boot_hash
