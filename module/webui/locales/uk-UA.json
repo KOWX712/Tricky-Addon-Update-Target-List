@@ -1,0 +1,136 @@
+{
+    "language": "Українська",
+    "system_default": "System Default",
+    "header": {
+        "title": "Tricky Addon"
+    },
+    "help": {
+        "help_instructions": "Вказівки",
+        "save_and_update": "Зберегти",
+        "save_and_update_description": "Зберегти поточну конфігурацію до файлу target.txt",
+        "refresh": "Оновити",
+        "refresh_description": "Оновити список застосунків та перелік виключень.",
+        "select_deselect": "Виділити та прибрати виділення всіх",
+        "select_description": "Вибрати чи прибрати виділення всіх застосунків у поточному інтерфейсі.",
+        "select_denylist": "Виберіть із DenyList",
+        "select_denylist_description": "Доступно лише у Magisk, обрати застосунки, які входять до DenyList. Рекомендовано.",
+        "deselect_unnecessary": "Зняти виділення з необов'язкових",
+        "deselect_unnecessary_description": "Необов'язкова категорія: Модуль Xposed, рут-менеджер, програми, пов'язані з рутом, і загальні програми, які ніколи не перевіряють стан завантажувача. Ця опція вимагає підключення до інтернету.",
+        "add_system_app": "Додати системний застосунок",
+        "add_system_app_description": "Додати конкретний системний застосунок до списку.",
+        "set_keybox": "Встановити AOSP та валідний ключ",
+        "set_keybox_description": "Замінити tricky store keybox.xml. Ключа буде замінено на AOSP, якщо не буде валідного. Для використання валідного ключа потрібне з'єднання з інтернетом.",
+        "set_custom_keybox": "Встановити власний ключ",
+        "set_custom_keybox_description": "Імпортувати ключі зі сховища вашого пристрою. Підтримуються лише xml файли.",
+        "set_security_patch": "Встановити патч безпеки",
+        "set_security_patch_description": "Встановити власну підміну патчу безпеки. Автоконфігурація використовуватиме патч безпеки з модуля PIF. Залиште порожнім і збережіть, щоб вимкнути автоконфігурацію.",
+        "set_verified_boot_hash": "Встановити перевірений хеш завантаження",
+        "set_verified_boot_hash_description": "Отримати значення verifiedBootHash з Key Attestation Demo. Виправляє ненормальний стан завантаження шляхом скидання ro.boot.vbmeta.digest."
+    },
+    "update": {
+        "update_available": "Нова версія готова",
+        "redirect_to_release": "натисніть, щоб завантажити найновішу версію",
+        "changelog": "Список змін",
+        "install": "Встановити",
+        "reboot": "Перезавантажити"
+    },
+    "search_bar": {
+        "search_placeholder": "Пошук"
+    },
+    "functional_button": {
+        "save_and_update_button": "Зберегти",
+        "uninstall_webui": "Деінсталювати WebUI"
+    },
+    "loading": {
+        "loading": "Завантаження..."
+    },
+    "menu": {
+        "refresh": "Оновити",
+        "select_all": "Вибрати все",
+        "deselect_all": "Прибрати усі позначки",
+        "select_denylist": "Вибрати із DenyList",
+        "deselect_unnecessary": "Прибрати необов'язкові",
+        "add_system_app": "Додати системний застосунок",
+        "set_aosp_keybox": "Встановити AOSP ключ",
+        "set_unknown_keybox": "Встановити невідомий ключ",
+        "set_valid_keybox": "Встановити валідний ключ",
+        "set_custom_keybox": "Встановити користувацький ключ",
+        "set_verified_boot_hash": "Встановити перевірений хеш завантаження",
+        "set_security_patch": "Встановити патч безпеки",
+        "about": "Деталі",
+        "shortcut": "Створити значок на домашньому екрані"
+    },
+    "boot_hash": {
+        "title": "Хеш завантаження",
+        "input_placeholder": "Вставте перевірений хеш завантаження сюди",
+        "save_button": "Зберегти"
+    },
+    "about": {
+        "module_name_line1": "Tricky Addon",
+        "module_name_line2": "Оновити Target List",
+        "by": "by",
+        "telegram_channel": "Телеґрам-канал",
+        "github": "GitHub",
+        "disclaimer": "Цей модуль не є частиною модуля Tricky Store. НЕ повідомляйте Tricky Store про будь-які проблеми, якщо вони виникли.",
+        "acknowledgment": "Подяка"
+    },
+    "prompt": {
+        "no_internet": "Будь ласка, перевірте своє інтернет-з'єднання",
+        "aosp_key_set": "Ключ AOSP успішно встановлено",
+        "key_set_error": "Не вдалося оновити ключ",
+        "unknown_key_set": "Невідомий ключ успішно встановлено",
+        "valid_key_set": "Валідний ключ успішно встановлений",
+        "no_valid": "Не знайдено жодного дійсного ключа.",
+        "boot_hash_set": "Перевірений хеш завантаження успішно збережено",
+        "boot_hash_set_error": "Не вдалося оновити перевірений хеш завантаження",
+        "saved_target": "Конфігурацію збережено до файлу target.txt",
+        "save_error": "Не вдалося зберегти конфігурацію",
+        "uninstall_prompt": "WebUI буде видалено після перезавантаження",
+        "uninstall_failed": "Не вдалося видалити WebUI",
+        "new_update": "Доступне нове оновлення!",
+        "downloading": "Завантажуємо нове оновлення...",
+        "downloaded": "Завантаження завершено",
+        "download_fail": "Не вдається завантажити оновлення",
+        "installing": "Встановлюємо оновлення...",
+        "installed": "Успішно встановлено, тепер перезавантажте пристрій.",
+        "install_fail": "Не вдалося встановити, будь ласка, оновіть вручну",
+        "rebooting": "Перезавантаження...",
+        "reboot_fail": "Не вдається перезавантажити, будь ласка, перезавантажте вручну",
+        "custom_key_set": "Успішне встановлення користувацького ключа",
+        "custom_key_set_error": "Не вдалося встановити користувальницький ключ",
+        "no_file_selected": "Не вибрано жодного файлу",
+        "system_app_not_found": "Системний застосунок не знайдено",
+        "system_app_error": "Не вдалося додати системний застосунок",
+        "shortcut_created": "Створено значок на домашньому екрані"
+    },
+    "security_patch": {
+        "title": "Патч безпеки",
+        "advanced_mode": "Розширені",
+        "get_date": "Отримати дату патчу безпеки",
+        "auto": "Авто",
+        "save": "Зберегти",
+        "fetching": "Робимо запит...",
+        "fetched": "Готово",
+        "get_failed": "Не вдалося отримати дату патчу безпеки",
+        "auto_success": "Автоконфігурацію успішно увімкнено",
+        "auto_failed": "Не вдалося увімкнути автоконфігурацію",
+        "save_success": "Успішно збережено патч безпеки",
+        "save_failed": "Не вдалося зберегти патч безпеки",
+        "value_empty": "Конфігурацію патчу безпеки вимкнено",
+        "invalid_all": "Неправильний формат",
+        "invalid_boot": "Неправильний формат завантаження",
+        "invalid_system": "Неправильний формат системи",
+        "invalid_vendor": "Неправильний формат виробника"
+    },
+    "add_system_app": {
+        "title": "Додати системний застосунок",
+        "add": "Add",
+        "current_list": "Поточний список системних застосунків"
+    },
+    "confirmation": {
+        "uninstall_title": "Підтверджуєте видалення?",
+        "uninstall_message": "Ви дійсно хочете видалити Tricky Addon?",
+        "uninstall_cancel": "Скасувати",
+        "uninstall_confirm": "Підтвердити"
+    }
+}
