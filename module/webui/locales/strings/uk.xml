@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="system_default">System Default</string>
-
     <!-- Header -->
     <string name="header_title">Tricky Addon</string>
-
     <!-- Help Menu-->
     <string name="help_help_instructions">Вказівки</string>
     <string name="help_save_and_update">Зберегти</string>
@@ -27,24 +25,19 @@
     <string name="help_set_security_patch_description">Встановити власну підміну патчу безпеки. Автоконфігурація використовуватиме патч безпеки з модуля PIF. Залиште порожнім і збережіть, щоб вимкнути автоконфігурацію.</string>
     <string name="help_set_verified_boot_hash">Встановити перевірений хеш завантаження</string>
     <string name="help_set_verified_boot_hash_description">Отримати значення verifiedBootHash з Key Attestation Demo. Виправляє ненормальний стан завантаження шляхом скидання ro.boot.vbmeta.digest.</string>
-
     <!-- Update -->
     <string name="update_update_available">Нова версія готова</string>
     <string name="update_redirect_to_release">натисніть, щоб завантажити найновішу версію</string>
     <string name="update_changelog">Список змін</string>
     <string name="update_install">Встановити</string>
     <string name="update_reboot">Перезавантажити</string>
-
     <!-- Search -->
     <string name="search_bar_search_placeholder">Пошук</string>
-
     <!-- Functional Button -->
     <string name="functional_button_save_and_update_button">Зберегти</string>
     <string name="functional_button_uninstall_webui">Деінсталювати WebUI</string>
-
     <!-- Loading -->
     <string name="loading_loading">Завантаження...</string>
-
     <!-- Menu -->
     <string name="menu_refresh">Оновити</string>
     <string name="menu_select_all">Вибрати все</string>
@@ -60,12 +53,10 @@
     <string name="menu_set_security_patch">Встановити патч безпеки</string>
     <string name="menu_about">Деталі</string>
     <string name="menu_shortcut">Створити значок на домашньому екрані</string>
-
     <!-- Boot Hash -->
     <string name="boot_hash_title">Хеш завантаження</string>
     <string name="boot_hash_input_placeholder">Вставте перевірений хеш завантаження сюди</string>
     <string name="boot_hash_save_button">Зберегти</string>
-
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Оновити Target List</string>
@@ -74,7 +65,6 @@
     <string name="about_github">GitHub</string>
     <string name="about_disclaimer">Цей модуль не є частиною модуля Tricky Store. НЕ повідомляйте Tricky Store про будь-які проблеми, якщо вони виникли.</string>
     <string name="about_acknowledgment">Подяка</string>
-
     <!-- Prompt -->
     <string name="prompt_no_internet">Будь ласка, перевірте своє інтернет-з&apos;єднання</string>
     <string name="prompt_aosp_key_set">Ключ AOSP успішно встановлено</string>
@@ -103,7 +93,6 @@
     <string name="prompt_system_app_not_found">Системний застосунок не знайдено</string>
     <string name="prompt_system_app_error">Не вдалося додати системний застосунок</string>
     <string name="prompt_shortcut_created">Створено значок на домашньому екрані</string>
-
     <!-- Security Patch -->
     <string name="security_patch_title">Патч безпеки</string>
     <string name="security_patch_advanced_mode">Розширені</string>
@@ -113,6 +102,7 @@
     <string name="security_patch_fetching">Робимо запит...</string>
     <string name="security_patch_fetched">Готово</string>
     <string name="security_patch_get_failed">Не вдалося отримати дату патчу безпеки</string>
+    <string name="security_patch_unable_to_connect">Unable to connect to source.android.com</string>
     <string name="security_patch_auto_success">Автоконфігурацію успішно увімкнено</string>
     <string name="security_patch_auto_failed">Не вдалося увімкнути автоконфігурацію</string>
     <string name="security_patch_save_success">Успішно збережено патч безпеки</string>
@@ -122,12 +112,10 @@
     <string name="security_patch_invalid_boot">Неправильний формат завантаження</string>
     <string name="security_patch_invalid_system">Неправильний формат системи</string>
     <string name="security_patch_invalid_vendor">Неправильний формат виробника</string>
-
     <!-- Add System App -->
     <string name="add_system_app_title">Додати системний застосунок</string>
     <string name="add_system_app_add">Add</string>
     <string name="add_system_app_current_list">Поточний список системних застосунків</string>
-
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Підтверджуєте видалення?</string>
     <string name="confirmation_uninstall_message">Ви дійсно хочете видалити Tricky Addon?</string>
