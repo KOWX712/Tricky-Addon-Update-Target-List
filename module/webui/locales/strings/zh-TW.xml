@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="system_default">系統預設</string>
-
     <!-- Header -->
     <string name="header_title">TS 插件</string>
-
     <!-- Help Menu-->
     <string name="help_help_instructions">使用指南</string>
     <string name="help_save_and_update">保存</string>
@@ -27,24 +25,19 @@
     <string name="help_set_security_patch_description">設置自定義安全補丁。自動配置將使用 PIF 模組的安全補丁。留空保存則禁用自動配置。</string>
     <string name="help_set_verified_boot_hash">設置哈希值</string>
     <string name="help_set_verified_boot_hash_description">從 Key Attestation Demo 獲取 verifiedBootHash（哈希值）。通過重置 ro.boot.vbmeta.digest 修復異常 boot 狀態。</string>
-
     <!-- Update -->
     <string name="update_update_available">發現新版本</string>
     <string name="update_redirect_to_release">點擊下載最新版本</string>
     <string name="update_changelog">更新日誌</string>
     <string name="update_install">安裝</string>
     <string name="update_reboot">重啟</string>
-
     <!-- Search -->
     <string name="search_bar_search_placeholder">搜索</string>
-
     <!-- Functional Button -->
     <string name="functional_button_save_and_update_button">保存</string>
     <string name="functional_button_uninstall_webui">卸載 WebUI</string>
-
     <!-- Loading -->
     <string name="loading_loading">加載中...</string>
-
     <!-- Menu -->
     <string name="menu_refresh">刷新</string>
     <string name="menu_select_all">全選</string>
@@ -56,16 +49,14 @@
     <string name="menu_set_unknown_keybox">設置未知密鑰</string>
     <string name="menu_set_valid_keybox">設置有效密鑰</string>
     <string name="menu_set_custom_keybox">設置自定義密鑰</string>
-    <string name="menu_set_security_patch">設置安全補丁</string>
     <string name="menu_set_verified_boot_hash">設置哈希值</string>
+    <string name="menu_set_security_patch">設置安全補丁</string>
     <string name="menu_about">關於</string>
     <string name="menu_shortcut">建立主畫面捷徑</string>
-
     <!-- Boot Hash -->
     <string name="boot_hash_title">哈希值</string>
     <string name="boot_hash_input_placeholder">在此貼上您的哈希值</string>
     <string name="boot_hash_save_button">保存</string>
-
     <!-- About -->
     <string name="about_module_name_line1">TS 插件</string>
     <string name="about_module_name_line2">更新目標列表</string>
@@ -74,7 +65,6 @@
     <string name="about_github">GitHub</string>
     <string name="about_disclaimer">此 WebUI 並非 Tricky Store 的一部分，如遇任何問題請勿向 Tricky Store 作者反饋。</string>
     <string name="about_acknowledgment">特別鳴謝</string>
-
     <!-- Prompt -->
     <string name="prompt_no_internet">請檢查您的網絡連接</string>
     <string name="prompt_aosp_key_set">成功設置 AOSP 密鑰</string>
@@ -103,7 +93,6 @@
     <string name="prompt_system_app_not_found">未找到該系統應用</string>
     <string name="prompt_system_app_error">系統應用添加失敗</string>
     <string name="prompt_shortcut_created">主畫面捷徑已建立</string>
-
     <!-- Security Patch -->
     <string name="security_patch_title">安全補丁</string>
     <string name="security_patch_advanced_mode">進階</string>
@@ -123,12 +112,10 @@
     <string name="security_patch_invalid_boot">無效 boot 格式</string>
     <string name="security_patch_invalid_system">無效 system 格式</string>
     <string name="security_patch_invalid_vendor">無效 vendor 格式</string>
-
     <!-- Add System App -->
     <string name="add_system_app_title">添加系統應用</string>
     <string name="add_system_app_add">添加</string>
     <string name="add_system_app_current_list">當前系統應用列表</string>
-
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">確認卸載？</string>
     <string name="confirmation_uninstall_message">您確定要卸載 TS 插件嗎</string>
