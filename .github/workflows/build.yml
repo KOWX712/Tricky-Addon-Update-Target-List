@@ -25,6 +25,7 @@ jobs:
           fetch-tags: true
 
       - name: Update dependency
+        if: github.event_name != 'pull_request'
         run: |
           curl -Ls https://cdn.jsdelivr.net/npm/marked/marked.min.js > module/webui/scripts/assets/marked.min.js
           wget -q $(curl -Ls https://api.github.com/repos/KOWX712/openssl-static-build/releases/latest | jq -r '.assets[].browser_download_url') -O openssl.tar.gz
