@@ -102,7 +102,6 @@
     <string name="security_patch_fetching">Робимо запит...</string>
     <string name="security_patch_fetched">Готово</string>
     <string name="security_patch_get_failed">Не вдалося отримати дату патчу безпеки</string>
-    <string name="security_patch_unable_to_connect">Unable to connect to source.android.com</string>
     <string name="security_patch_auto_success">Автоконфігурацію успішно увімкнено</string>
     <string name="security_patch_auto_failed">Не вдалося увімкнути автоконфігурацію</string>
     <string name="security_patch_save_success">Успішно збережено патч безпеки</string>

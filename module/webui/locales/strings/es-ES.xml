@@ -102,7 +102,6 @@
     <string name="security_patch_fetching">Obteniendo...</string>
     <string name="security_patch_fetched">Completado</string>
     <string name="security_patch_get_failed">Error al obtener la fecha del parche de seguridad</string>
-    <string name="security_patch_unable_to_connect">Unable to connect to source.android.com</string>
     <string name="security_patch_auto_success">Configuración automática habilitada con éxito</string>
     <string name="security_patch_auto_failed">Error al habilitar la configuración automática</string>
     <string name="security_patch_save_success">Parche de seguridad guardado con éxito</string>

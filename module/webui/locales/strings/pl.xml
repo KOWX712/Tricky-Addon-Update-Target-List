@@ -102,7 +102,6 @@
     <string name="security_patch_fetching">Pobieranie...</string>
     <string name="security_patch_fetched">Zrobione</string>
     <string name="security_patch_get_failed">Nie udało się pobrać daty poprawki zabezpieczeń</string>
-    <string name="security_patch_unable_to_connect">Unable to connect to source.android.com</string>
     <string name="security_patch_auto_success">Konfiguracja automatyczna włączona pomyślnie</string>
     <string name="security_patch_auto_failed">Nie udało się włączyć automatycznej konfiguracji</string>
     <string name="security_patch_save_success">Poprawka zabezpieczeń została pomyślnie zapisana</string>
