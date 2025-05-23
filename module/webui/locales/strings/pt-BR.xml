@@ -102,6 +102,7 @@
     <string name="security_patch_fetching">Buscar...</string>
     <string name="security_patch_fetched">Feito</string>
     <string name="security_patch_get_failed">Falha ao buscar a data do patch de segurança</string>
+    <string name="security_patch_unable_to_connect">Unable to connect to source.android.com</string>
     <string name="security_patch_auto_success">Configuração automática habilitada com sucesso</string>
     <string name="security_patch_auto_failed">Falha ao ativar a configuração automática</string>
     <string name="security_patch_save_success">Patch de segurança salvo com sucesso</string>
