@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="system_default">Predeterminado del sistema</string>
-
     <!-- Header -->
     <string name="header_title">Tricky Addon</string>
-
     <!-- Help Menu-->
     <string name="help_help_instructions">Instrucciones</string>
     <string name="help_save_and_update">Guardar</string>
@@ -27,24 +25,19 @@
     <string name="help_set_security_patch_description">Configurar parche de seguridad personalizado. La configuración automática usará el parche de seguridad de PIF. Deja en blanco y guarda para deshabilitar la configuración automática.</string>
     <string name="help_set_verified_boot_hash">Configurar Boot Hash Verificado</string>
     <string name="help_set_verified_boot_hash_description">Obtén el valor de verifiedBootHash del Key Attestation Demo. Corrige un estado de arranque anormal reiniciando ro.boot.vbmeta.digest.</string>
-
     <!-- Update -->
     <string name="update_update_available">Una nueva versión está lista</string>
     <string name="update_redirect_to_release">toca para descargar la última versión</string>
     <string name="update_changelog">Registro de cambios</string>
     <string name="update_install">Instalar</string>
     <string name="update_reboot">Reiniciar</string>
-
     <!-- Search -->
     <string name="search_bar_search_placeholder">Buscar</string>
-
     <!-- Functional Button -->
     <string name="functional_button_save_and_update_button">Guardar</string>
     <string name="functional_button_uninstall_webui">Desinstalar WebUI</string>
-
     <!-- Loading -->
     <string name="loading_loading">Cargando...</string>
-
     <!-- Menu -->
     <string name="menu_refresh">Actualizar</string>
     <string name="menu_select_all">Seleccionar Todo</string>
@@ -56,16 +49,14 @@
     <string name="menu_set_unknown_keybox">Configurar Keybox Desconocido</string>
     <string name="menu_set_valid_keybox">Configurar Keybox Válido</string>
     <string name="menu_set_custom_keybox">Establecer Keybox Personalizado</string>
-    <string name="menu_set_security_patch">Configurar Parche de Seguridad</string>
     <string name="menu_set_verified_boot_hash">Configurar Boot Hash Verificado</string>
+    <string name="menu_set_security_patch">Configurar Parche de Seguridad</string>
     <string name="menu_about">Acerca de</string>
     <string name="menu_shortcut">Crear acceso directo en la pantalla de inicio</string>
-
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
     <string name="boot_hash_input_placeholder">Pega aquí tu Boot Hash verificado</string>
     <string name="boot_hash_save_button">Guardar</string>
-
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Actualizar Lista de Objetivos</string>
@@ -74,7 +65,6 @@
     <string name="about_github">GitHub</string>
     <string name="about_disclaimer">Este módulo no es parte del módulo Tricky Store. NO reportes problemas al autor de Tricky Store si los encuentras.</string>
     <string name="about_acknowledgment">Agradecimientos</string>
-
     <!-- Prompt -->
     <string name="prompt_no_internet">Por favor, verifica tu conexión a Internet</string>
     <string name="prompt_aosp_key_set">AOSP Keybox configurado correctamente</string>
@@ -103,7 +93,6 @@
     <string name="prompt_system_app_not_found">Aplicación del sistema no encontrada</string>
     <string name="prompt_system_app_error">Error al agregar la aplicación del sistema</string>
     <string name="prompt_shortcut_created">Acceso directo creado en la pantalla de inicio</string>
-
     <!-- Security Patch -->
     <string name="security_patch_title">Parche de Seguridad</string>
     <string name="security_patch_advanced_mode">Avanzado</string>
@@ -113,6 +102,7 @@
     <string name="security_patch_fetching">Obteniendo...</string>
     <string name="security_patch_fetched">Completado</string>
     <string name="security_patch_get_failed">Error al obtener la fecha del parche de seguridad</string>
+    <string name="security_patch_unable_to_connect">Unable to connect to source.android.com</string>
     <string name="security_patch_auto_success">Configuración automática habilitada con éxito</string>
     <string name="security_patch_auto_failed">Error al habilitar la configuración automática</string>
     <string name="security_patch_save_success">Parche de seguridad guardado con éxito</string>
@@ -122,12 +112,10 @@
     <string name="security_patch_invalid_boot">Formato de boot inválido</string>
     <string name="security_patch_invalid_system">Formato de system inválido</string>
     <string name="security_patch_invalid_vendor">Formato de vendor inválido</string>
-
     <!-- Add System App -->
     <string name="add_system_app_title">Añadir aplicación del sistema</string>
     <string name="add_system_app_add">Añadir</string>
     <string name="add_system_app_current_list">Lista actual de aplicaciones del sistema</string>
-
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">¿Confirmar desinstalación?</string>
     <string name="confirmation_uninstall_message">¿Está seguro de que desea desinstalar Tricky Addon</string>
