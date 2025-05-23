@@ -1,24 +1,6 @@
 project_id_env: CROWDIN_PROJECT_ID
 api_token_env: CROWDIN_API_TOKEN
-preserve_hierarchy: true
-
+preserve_hierarchy: 1
 files:
   - source: /module/webui/locales/strings/en.xml
     translation: /module/webui/locales/strings/%locale%.xml
-    languages_mapping:
-      locale:
-        ar: ar
-        az: az
-        es-ES: es
-        fr: fr
-        id: id
-        it: it
-        ja: ja
-        pl: pl
-        pt-BR: pt
-        ru: ru
-        tl: tl
-        tr: tr
-        uk: uk
-        zh-CN: zh-CN
-        zh-TW: zh-TW

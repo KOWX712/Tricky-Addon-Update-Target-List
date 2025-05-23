@@ -1,32 +1,37 @@
-name: Crowdin Sync
+name: Crowdin Action
+
 on:
   push:
     branches: [ main ]
     paths: 
       - 'module/webui/locales/strings/*.xml'
+  schedule:
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
-  sync-translations:
+  synchronize-with-crowdin:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: crowdin/github-action@v1
-        with:
-          upload_sources: true
-          upload_translations: true
-          download_translations: true
-          skip_untranslated_files: true
+    - name: Checkout
+      uses: actions/checkout@v4
 
-          create_pull_request: true
-          localization_branch_name: crowdin_branch
-          pull_request_labels: 'enhancement, documentation'
-          pull_request_title: '[Translation] Update translation from Crowdin'
+    - name: Crowdin Action
+      uses: crowdin/github-action@v1
+      with:
+        upload_sources: true
+        upload_translations: true
+        download_translations: true
+        skip_untranslated_files: true
 
-          config: 'crowdin.yml'
-          crowdin_branch_name: main
+        create_pull_request: true
+        localization_branch_name: crowdin_branch
+        pull_request_labels: 'enhancement, documentation'
+        pull_request_title: '[Translation] Update translation from Crowdin'
 
-        env:
-         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-         CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
-         CROWDIN_API_TOKEN: ${{ secrets.CROWDIN_API_TOKEN }}
+        config: 'crowdin.yml'
+        crowdin_branch_name: main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
+        CROWDIN_API_TOKEN: ${{ secrets.CROWDIN_API_TOKEN }}
