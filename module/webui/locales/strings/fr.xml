@@ -11,8 +11,8 @@
     <string name="help_refresh_description">Actualiser la liste des applications et la liste d&apos;exclusions.</string>
     <string name="help_select_deselect">Tout sélectionner &amp; désélectionner</string>
     <string name="help_select_description">Sélectionner ou désélectionner toutes les applications de l&apos;interface actuelle.</string>
-    <string name="help_select_denylist">Select From DenyList</string>
-    <string name="help_select_denylist_description">Available in Magisk only, select apps that are in the DenyList. Recommended.</string>
+    <string name="help_select_denylist">Sélectionner depuis la DenyList</string>
+    <string name="help_select_denylist_description">Disponible uniquement sur Magisk, sélectionner les applications présentes dans la DenyList. Recommandé.</string>
     <string name="help_deselect_unnecessary">Désélectionner les applications inutiles</string>
     <string name="help_deselect_unnecessary_description">Catégorie inutile : module Xposed, gestionnaire root, applications liées au root et applications générales ne vérifiant jamais l&apos;état du bootloader. Cette option nécessite une connexion Internet.</string>
     <string name="help_add_system_app">Ajouter une application système</string>
@@ -42,7 +42,7 @@
     <string name="menu_refresh">Actualiser</string>
     <string name="menu_select_all">Tout sélectionner</string>
     <string name="menu_deselect_all">Tout désélectionner</string>
-    <string name="menu_select_denylist">Select From DenyList</string>
+    <string name="menu_select_denylist">Sélectionner depuis la DenyList</string>
     <string name="menu_deselect_unnecessary">Désélectionner les applications inutiles</string>
     <string name="menu_add_system_app">Ajouter une application système</string>
     <string name="menu_set_aosp_keybox">Définir une Keybox AOSP</string>
