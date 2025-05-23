@@ -102,6 +102,7 @@
     <string name="security_patch_fetching">Yığılır...</string>
     <string name="security_patch_fetched">Tamam</string>
     <string name="security_patch_get_failed">Təhlükəsizlik təkmilləşdirməsinin tarixini almaq mümkün olmadı</string>
+    <string name="security_patch_unable_to_connect">Unable to connect to source.android.com</string>
     <string name="security_patch_auto_success">Avtomatik konfiqurasiya uğurla aktivləşdirildi</string>
     <string name="security_patch_auto_failed">Avtomatik konfiqurasiyanı aktivləşdirmək mümkün olmadı</string>
     <string name="security_patch_save_success">Təhlükəsizlik təkmilləşdirməsi uğurla yadda saxlanıldı</string>
