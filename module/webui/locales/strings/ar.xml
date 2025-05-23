@@ -102,6 +102,7 @@
     <string name="security_patch_fetching">جارٍ التحميل...</string>
     <string name="security_patch_fetched">تم</string>
     <string name="security_patch_get_failed">فشل في جلب تاريخ تصحيح الأمان</string>
+    <string name="security_patch_unable_to_connect">Unable to connect to source.android.com</string>
     <string name="security_patch_auto_success">تم تفعيل التكوين التلقائي بنجاح</string>
     <string name="security_patch_auto_failed">فشل في تفعيل التكوين التلقائي</string>
     <string name="security_patch_save_success">تم حفظ تصحيح الأمان بنجاح</string>
