@@ -27,8 +27,12 @@ let isRefreshing = false;
 
 // Function to set basePath
 async function getBasePath() {
-    const { errno } = await exec('[ -d /data/adb/modules/.TA_utl ]');
-    basePath = errno === 0 ? "/data/adb/modules/.TA_utl" : "/data/adb/modules/TA_utl";
+    try {
+        const { errno } = await exec('[ -d /data/adb/modules/.TA_utl ]');
+        basePath = errno === 0 ? "/data/adb/modules/.TA_utl" : "/data/adb/modules/TA_utl";
+    } catch (error) {
+        console.error("Error getting base path:", error);
+    }
 }
 
 // Function to load the version from module.prop
