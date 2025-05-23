@@ -102,6 +102,7 @@
     <string name="security_patch_fetching">Recupero...</string>
     <string name="security_patch_fetched">Fatto</string>
     <string name="security_patch_get_failed">Impossibile recuperare la data della patch di sicurezza</string>
+    <string name="security_patch_unable_to_connect">Unable to connect to source.android.com</string>
     <string name="security_patch_auto_success">Configurazione automatica abilitata correttamente</string>
     <string name="security_patch_auto_failed">Impossibile abilitare la configurazione automatica</string>
     <string name="security_patch_save_success">Patch di sicurezza salvata correttamente</string>
