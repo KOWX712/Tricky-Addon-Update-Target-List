@@ -102,6 +102,7 @@
     <string name="security_patch_fetching">Kumukuha...</string>
     <string name="security_patch_fetched">Tapos na</string>
     <string name="security_patch_get_failed">Hindi makuha ang petsa ng security patch</string>
+    <string name="security_patch_unable_to_connect">Unable to connect to source.android.com</string>
     <string name="security_patch_auto_success">Matagumpay na na-enable ang auto config</string>
     <string name="security_patch_auto_failed">Nabigong i-enable ang auto config</string>
     <string name="security_patch_save_success">Matagumpay na na-save ang security patch</string>
