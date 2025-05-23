@@ -102,6 +102,7 @@
     <string name="security_patch_fetching">取得中...</string>
     <string name="security_patch_fetched">完了</string>
     <string name="security_patch_get_failed">セキュリティパッチの日付を取得できませんでした</string>
+    <string name="security_patch_unable_to_connect">Unable to connect to source.android.com</string>
     <string name="security_patch_auto_success">自動設定が有効化されました</string>
     <string name="security_patch_auto_failed">自動設定が有効化できませんでした</string>
     <string name="security_patch_save_success">セキュリティパッチが正常に保存されました</string>
