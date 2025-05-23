@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="system_default">Системный по умолчанию</string>
-
     <!-- Header -->
     <string name="header_title">Tricky Addon</string>
-
     <!-- Help Menu-->
     <string name="help_help_instructions">Инструкции</string>
     <string name="help_save_and_update">Сохранить</string>
@@ -27,24 +25,19 @@
     <string name="help_set_security_patch_description">Установите пользовательский патч безопасности. Автоматическая настройка будет использовать патч безопасности из модуля PIF. Оставьте пустым и сохраните, чтобы отключить автоматическую настройку.</string>
     <string name="help_set_verified_boot_hash">Установить Verified Boot Hash</string>
     <string name="help_set_verified_boot_hash_description">Получите значение verifiedBootHash из Key Attestation Demo. Исправьте аномальное состояние загрузки, сбросив ro.boot.vbmeta.digest.</string>
-
     <!-- Update -->
     <string name="update_update_available">Доступна новая версия</string>
     <string name="update_redirect_to_release">нажмите, чтобы скачать последнюю версию</string>
     <string name="update_changelog">Список изменений</string>
     <string name="update_install">Установить</string>
     <string name="update_reboot">Перезагрузить</string>
-
     <!-- Search -->
     <string name="search_bar_search_placeholder">Поиск</string>
-
     <!-- Functional Button -->
     <string name="functional_button_save_and_update_button">Сохранить</string>
     <string name="functional_button_uninstall_webui">Удалить WebUI</string>
-
     <!-- Loading -->
     <string name="loading_loading">Загрузка...</string>
-
     <!-- Menu -->
     <string name="menu_refresh">Обновить</string>
     <string name="menu_select_all">Выбрать все</string>
@@ -56,16 +49,14 @@
     <string name="menu_set_unknown_keybox">Установить неизвестный Keybox</string>
     <string name="menu_set_valid_keybox">Установить действующий Keybox</string>
     <string name="menu_set_custom_keybox">Установить пользовательский Keybox</string>
-    <string name="menu_set_security_patch">Установить Security Patch</string>
     <string name="menu_set_verified_boot_hash">Установить Verified Boot Hash</string>
+    <string name="menu_set_security_patch">Установить Security Patch</string>
     <string name="menu_about">О программе</string>
     <string name="menu_shortcut">Создать ярлык на главном экране</string>
-
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
     <string name="boot_hash_input_placeholder">Вставьте свой проверенный Boot Hash сюда</string>
     <string name="boot_hash_save_button">Сохранить</string>
-
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Обновить список целей</string>
@@ -74,7 +65,6 @@
     <string name="about_github">GitHub</string>
     <string name="about_disclaimer">Этот WebUI не является частью Tricky Store, НЕ сообщайте автору Tricky Store о любых возникающих проблемах.</string>
     <string name="about_acknowledgment">Благодарности</string>
-
     <!-- Prompt -->
     <string name="prompt_no_internet">Пожалуйста, проверьте ваше подключение к интернету</string>
     <string name="prompt_aosp_key_set">AOSP keybox успешно установлен</string>
@@ -103,7 +93,6 @@
     <string name="prompt_system_app_not_found">Системное приложение не найдено</string>
     <string name="prompt_system_app_error">Не удалось добавить системное приложение</string>
     <string name="prompt_shortcut_created">Ярлык на главном экране создан</string>
-
     <!-- Security Patch -->
     <string name="security_patch_title">Патч безопасности</string>
     <string name="security_patch_advanced_mode">Расширенный</string>
@@ -113,6 +102,7 @@
     <string name="security_patch_fetching">Получение...</string>
     <string name="security_patch_fetched">Готово</string>
     <string name="security_patch_get_failed">Не удалось получить дату патча безопасности</string>
+    <string name="security_patch_unable_to_connect">Unable to connect to source.android.com</string>
     <string name="security_patch_auto_success">Автоматическая конфигурация успешно включена</string>
     <string name="security_patch_auto_failed">Не удалось включить автоматическую конфигурацию</string>
     <string name="security_patch_save_success">Патч безопасности успешно сохранен</string>
@@ -122,12 +112,10 @@
     <string name="security_patch_invalid_boot">Неверный формат boot</string>
     <string name="security_patch_invalid_system">Неверный формат system</string>
     <string name="security_patch_invalid_vendor">Неверный формат vendor</string>
-
     <!-- Add System App -->
     <string name="add_system_app_title">Добавить системное приложение</string>
     <string name="add_system_app_add">Добавить</string>
     <string name="add_system_app_current_list">Текущий список системных приложений</string>
-
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Подтвердить удаление?</string>
     <string name="confirmation_uninstall_message">Вы уверены, что хотите удалить Tricky Addon</string>
