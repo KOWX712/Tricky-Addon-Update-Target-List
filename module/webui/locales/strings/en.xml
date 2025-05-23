@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="system_default">System Default</string>
-
     <!-- Header -->
     <string name="header_title">Tricky Addon</string>
-
     <!-- Help Menu-->
     <string name="help_help_instructions">Instructions</string>
     <string name="help_save_and_update">Save</string>
@@ -27,24 +25,19 @@
     <string name="help_set_security_patch_description">Set custom security patch spoof. Auto config will use security patch from PIF module. Leave blank and save to disable auto config.</string>
     <string name="help_set_verified_boot_hash">Set Verified Boot Hash</string>
     <string name="help_set_verified_boot_hash_description">Get verifiedBootHash value from Key Attestation Demo. Fix abnormal boot state by resetting ro.boot.vbmeta.digest.</string>
-
     <!-- Update -->
     <string name="update_update_available">A new version is ready</string>
     <string name="update_redirect_to_release">tap to download the latest version</string>
     <string name="update_changelog">Changelog</string>
     <string name="update_install">Install</string>
     <string name="update_reboot">Reboot</string>
-
     <!-- Search -->
     <string name="search_bar_search_placeholder">Search</string>
-
     <!-- Functional Button -->
     <string name="functional_button_save_and_update_button">Save</string>
     <string name="functional_button_uninstall_webui">Uninstall WebUI</string>
-
     <!-- Loading -->
     <string name="loading_loading">Loading...</string>
-
     <!-- Menu -->
     <string name="menu_refresh">Refresh</string>
     <string name="menu_select_all">Select All</string>
@@ -60,12 +53,10 @@
     <string name="menu_set_security_patch">Set Security Patch</string>
     <string name="menu_about">About</string>
     <string name="menu_shortcut">Create home screen shortcut</string>
-
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
     <string name="boot_hash_input_placeholder">Paste your verified Boot Hash here</string>
     <string name="boot_hash_save_button">Save</string>
-
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Update Target List</string>
@@ -74,7 +65,6 @@
     <string name="about_github">GitHub</string>
     <string name="about_disclaimer">This module is not a part of the Tricky Store module. DO NOT report any issues to Tricky Store if encountered.</string>
     <string name="about_acknowledgment">Acknowledgment</string>
-
     <!-- Prompt -->
     <string name="prompt_no_internet">Please check your Internet connection</string>
     <string name="prompt_aosp_key_set">AOSP keybox set successfully</string>
@@ -103,7 +93,6 @@
     <string name="prompt_system_app_not_found">System app not found</string>
     <string name="prompt_system_app_error">Failed to add system app</string>
     <string name="prompt_shortcut_created">Home screen shortcut created</string>
-
     <!-- Security Patch -->
     <string name="security_patch_title">Security Patch</string>
     <string name="security_patch_advanced_mode">Advanced</string>
@@ -123,12 +112,10 @@
     <string name="security_patch_invalid_boot">Invalid boot format</string>
     <string name="security_patch_invalid_system">Invalid system format</string>
     <string name="security_patch_invalid_vendor">Invalid vendor format</string>
-
     <!-- Add System App -->
     <string name="add_system_app_title">Add System App</string>
     <string name="add_system_app_add">Add</string>
     <string name="add_system_app_current_list">Current System App List</string>
-
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Confirm Uninstall?</string>
     <string name="confirmation_uninstall_message">Are you sure you want to uninstall Tricky Addon</string>

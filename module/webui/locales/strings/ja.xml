@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="system_default">システムデフォルト</string>
-
     <!-- Header -->
     <string name="header_title">Tricky Addon</string>
-
     <!-- Help Menu-->
     <string name="help_help_instructions">使い方</string>
     <string name="help_save_and_update">保存</string>
@@ -27,24 +25,19 @@
     <string name="help_set_security_patch_description">カスタムセキュリティパッチの設定。自動設定は PIF モジュールのセキュリティパッチを使用します。空白のまま保存すると自動設定を無効にします。</string>
     <string name="help_set_verified_boot_hash">確認付きブートハッシュを設定</string>
     <string name="help_set_verified_boot_hash_description">Key Attestation Demo から確認付きブートハッシュの値を取得します。ro.boot.vbmeta.digest をリセットして異常なブート状態を修正します。</string>
-
     <!-- Update -->
     <string name="update_update_available">新しいバージョンの準備完了</string>
     <string name="update_redirect_to_release">タップで最新のバージョンをダウンロード</string>
     <string name="update_changelog">変更履歴</string>
     <string name="update_install">インストール</string>
     <string name="update_reboot">再起動</string>
-
     <!-- Search -->
     <string name="search_bar_search_placeholder">検索</string>
-
     <!-- Functional Button -->
     <string name="functional_button_save_and_update_button">保存</string>
     <string name="functional_button_uninstall_webui">WebUI をアンインストール</string>
-
     <!-- Loading -->
     <string name="loading_loading">読み込み中...</string>
-
     <!-- Menu -->
     <string name="menu_refresh">更新</string>
     <string name="menu_select_all">すべて選択</string>
@@ -60,12 +53,10 @@
     <string name="menu_set_security_patch">セキュリティパッチを設定</string>
     <string name="menu_about">このアドオンについて</string>
     <string name="menu_shortcut">ホーム画面にショートカットを作成</string>
-
     <!-- Boot Hash -->
     <string name="boot_hash_title">ブートハッシュ</string>
     <string name="boot_hash_input_placeholder">確認付きブートハッシュをここに貼り付け</string>
     <string name="boot_hash_save_button">保存</string>
-
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">ターゲットリストを更新</string>
@@ -74,7 +65,6 @@
     <string name="about_github">GitHub</string>
     <string name="about_disclaimer">このモジュールは、Tricky Store モジュールの一部ではありません。Tricky Store 公式に問題を報告しないでください。</string>
     <string name="about_acknowledgment">謝辞</string>
-
     <!-- Prompt -->
     <string name="prompt_no_internet">インターネット接続を確認してください。</string>
     <string name="prompt_aosp_key_set">AOSP Keybox の設定に成功しました。</string>
@@ -103,7 +93,6 @@
     <string name="prompt_system_app_not_found">システムアプリが見つかりません</string>
     <string name="prompt_system_app_error">システムアプリの追加に失敗しました</string>
     <string name="prompt_shortcut_created">ホーム画面にショートカットが作成されました</string>
-
     <!-- Security Patch -->
     <string name="security_patch_title">セキュリティパッチ</string>
     <string name="security_patch_advanced_mode">高度</string>
@@ -113,6 +102,7 @@
     <string name="security_patch_fetching">取得中...</string>
     <string name="security_patch_fetched">完了</string>
     <string name="security_patch_get_failed">セキュリティパッチの日付を取得できませんでした</string>
+    <string name="security_patch_unable_to_connect">Unable to connect to source.android.com</string>
     <string name="security_patch_auto_success">自動設定が有効化されました</string>
     <string name="security_patch_auto_failed">自動設定が有効化できませんでした</string>
     <string name="security_patch_save_success">セキュリティパッチが正常に保存されました</string>
@@ -122,12 +112,10 @@
     <string name="security_patch_invalid_boot">無効な boot 形式です</string>
     <string name="security_patch_invalid_system">無効な system 形式です</string>
     <string name="security_patch_invalid_vendor">無効な vendor 形式です</string>
-
     <!-- Add System App -->
     <string name="add_system_app_title">システムアプリを追加</string>
     <string name="add_system_app_add">追加</string>
     <string name="add_system_app_current_list">現在のシステムアプリリスト</string>
-
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">アンインストールの確認</string>
     <string name="confirmation_uninstall_message">Tricky Addonをアンインストールしてもよろしいですか</string>

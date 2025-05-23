@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="system_default">Predefinito di sistema</string>
-
     <!-- Header -->
     <string name="header_title">Tricky Addon</string>
-
     <!-- Help Menu-->
     <string name="help_help_instructions">Istruzioni</string>
     <string name="help_save_and_update">Salva</string>
@@ -27,24 +25,19 @@
     <string name="help_set_security_patch_description">Imposta spoofing patch di sicurezza personalizzato. La configurazione automatica utilizzerà la patch di sicurezza dal modulo PIF. Lascia vuoto e salva per disabilitare la configurazione automatica.</string>
     <string name="help_set_verified_boot_hash">Imposta Boot Hash Verificato</string>
     <string name="help_set_verified_boot_hash_description">Ottieni il valore verifiedBootHash da Key Attestation Demo. Correggi lo stato di avvio anomalo reimpostando ro.boot.vbmeta.digest.</string>
-
     <!-- Update -->
     <string name="update_update_available">È pronta una nuova versione</string>
     <string name="update_redirect_to_release">tocca per scaricare l&apos;ultima versione</string>
     <string name="update_changelog">Changelog</string>
     <string name="update_install">Installa</string>
     <string name="update_reboot">Riavvio</string>
-
     <!-- Search -->
     <string name="search_bar_search_placeholder">Ricerca</string>
-
     <!-- Functional Button -->
     <string name="functional_button_save_and_update_button">Salva</string>
     <string name="functional_button_uninstall_webui">Disinstalla WebUI</string>
-
     <!-- Loading -->
     <string name="loading_loading">Caricamento...</string>
-
     <!-- Menu -->
     <string name="menu_refresh">Aggiorna</string>
     <string name="menu_select_all">Seleziona Tutto</string>
@@ -60,12 +53,10 @@
     <string name="menu_set_security_patch">Imposta Patch di Sicurezza</string>
     <string name="menu_about">About</string>
     <string name="menu_shortcut">Crea collegamento nella schermata iniziale</string>
-
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
     <string name="boot_hash_input_placeholder">Incolla qui il tuo Boot Hash verificato</string>
     <string name="boot_hash_save_button">Salva</string>
-
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Aggiorna Target List</string>
@@ -74,7 +65,6 @@
     <string name="about_github">GitHub</string>
     <string name="about_disclaimer">Questo modulo non fa parte del modulo Tricky Store. NON segnalare eventuali problemi a Tricky Store se riscontrati.</string>
     <string name="about_acknowledgment">Riconoscimento</string>
-
     <!-- Prompt -->
     <string name="prompt_no_internet">Controlla la tua connessione Internet</string>
     <string name="prompt_aosp_key_set">Keybox AOSP impostata correttamente</string>
@@ -103,7 +93,6 @@
     <string name="prompt_system_app_not_found">App di sistema non trovata</string>
     <string name="prompt_system_app_error">Impossibile aggiungere l&apos;app di sistema</string>
     <string name="prompt_shortcut_created">Collegamento creato nella schermata iniziale</string>
-
     <!-- Security Patch -->
     <string name="security_patch_title">Patch di sicurezza</string>
     <string name="security_patch_advanced_mode">Avanzato</string>
@@ -113,6 +102,7 @@
     <string name="security_patch_fetching">Recupero...</string>
     <string name="security_patch_fetched">Fatto</string>
     <string name="security_patch_get_failed">Impossibile recuperare la data della patch di sicurezza</string>
+    <string name="security_patch_unable_to_connect">Unable to connect to source.android.com</string>
     <string name="security_patch_auto_success">Configurazione automatica abilitata correttamente</string>
     <string name="security_patch_auto_failed">Impossibile abilitare la configurazione automatica</string>
     <string name="security_patch_save_success">Patch di sicurezza salvata correttamente</string>
@@ -122,12 +112,10 @@
     <string name="security_patch_invalid_boot">Formato boot non valido</string>
     <string name="security_patch_invalid_system">Formato system non valido</string>
     <string name="security_patch_invalid_vendor">Formato vendor non valido</string>
-
     <!-- Add System App -->
     <string name="add_system_app_title">Aggiungi app di sistema</string>
     <string name="add_system_app_add">Aggiungi</string>
     <string name="add_system_app_current_list">Elenco attuale delle app di sistema</string>
-
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Confermi disinstallazione?</string>
     <string name="confirmation_uninstall_message">Sei sicuro di voler disinstallare Tricky Addon</string>

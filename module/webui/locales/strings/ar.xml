@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="system_default">الإعدادات الافتراضية للنظام</string>
-
     <!-- Header -->
     <string name="header_title">Tricky Addon</string>
-
     <!-- Help Menu-->
     <string name="help_help_instructions">تعليمات</string>
     <string name="help_save_and_update">حفظ</string>
@@ -27,24 +25,19 @@
     <string name="help_set_security_patch_description">تعيين تصحيح أمان مخصص. سيستخدم التكوين التلقائي تصحيح الأمان من وحدة PIF. اتركه فارغًا واحفظه لتعطيل التكوين التلقائي.</string>
     <string name="help_set_verified_boot_hash">تعيين تجزئة التمهيد الموثوق</string>
     <string name="help_set_verified_boot_hash_description">احصل على قيمة verifiedBootHash من عرض إثبات المفتاح. إصلاح حالة التمهيد غير الطبيعية عن طريق إعادة تعيين ro.boot.vbmeta.digest.</string>
-
     <!-- Update -->
     <string name="update_update_available">إصدار جديد جاهز</string>
     <string name="update_redirect_to_release">اضغط لتنزيل أحدث إصدار</string>
     <string name="update_changelog">سجل التغييرات</string>
     <string name="update_install">تثبيت</string>
     <string name="update_reboot">إعادة تشغيل</string>
-
     <!-- Search -->
     <string name="search_bar_search_placeholder">بحث</string>
-
     <!-- Functional Button -->
     <string name="functional_button_save_and_update_button">حفظ</string>
     <string name="functional_button_uninstall_webui">إلغاء تثبيت WebUI</string>
-
     <!-- Loading -->
     <string name="loading_loading">جارٍ التحميل...</string>
-
     <!-- Menu -->
     <string name="menu_refresh">تحديث</string>
     <string name="menu_select_all">تحديد الكل</string>
@@ -60,12 +53,10 @@
     <string name="menu_set_security_patch">تعيين تصحيح الأمان</string>
     <string name="menu_about">حول</string>
     <string name="menu_shortcut">إنشاء اختصار على الشاشة الرئيسية</string>
-
     <!-- Boot Hash -->
     <string name="boot_hash_title">تجزئة التمهيد</string>
     <string name="boot_hash_input_placeholder">الصق تجزئة التمهيد الموثوق هنا</string>
     <string name="boot_hash_save_button">حفظ</string>
-
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">تحديث قائمة الأهداف</string>
@@ -74,7 +65,6 @@
     <string name="about_github">GitHub</string>
     <string name="about_disclaimer">هذه الوحدة ليست جزءًا من وحدة Tricky Store. لا تقم بالإبلاغ عن أي مشاكل إلى Tricky Store إذا واجهت أيًا منها.</string>
     <string name="about_acknowledgment">شكر وتقدير</string>
-
     <!-- Prompt -->
     <string name="prompt_no_internet">يرجى التحقق من اتصالك بالإنترنت</string>
     <string name="prompt_aosp_key_set">تم تعيين keybox AOSP بنجاح</string>
@@ -103,8 +93,7 @@
     <string name="prompt_system_app_not_found">لم يتم العثور على تطبيق النظام</string>
     <string name="prompt_system_app_error">فشل في إضافة تطبيق النظام</string>
     <string name="prompt_shortcut_created">تم إنشاء اختصار على الشاشة الرئيسية</string>
-
-    <!-- Security -->
+    <!-- Security Patch -->
     <string name="security_patch_title">تصحيح الأمان</string>
     <string name="security_patch_advanced_mode">متقدم</string>
     <string name="security_patch_get_date">الحصول على تاريخ تصحيح الأمان</string>
@@ -113,6 +102,7 @@
     <string name="security_patch_fetching">جارٍ التحميل...</string>
     <string name="security_patch_fetched">تم</string>
     <string name="security_patch_get_failed">فشل في جلب تاريخ تصحيح الأمان</string>
+    <string name="security_patch_unable_to_connect">Unable to connect to source.android.com</string>
     <string name="security_patch_auto_success">تم تفعيل التكوين التلقائي بنجاح</string>
     <string name="security_patch_auto_failed">فشل في تفعيل التكوين التلقائي</string>
     <string name="security_patch_save_success">تم حفظ تصحيح الأمان بنجاح</string>
@@ -122,12 +112,10 @@
     <string name="security_patch_invalid_boot">تنسيق تمهيد غير صالح</string>
     <string name="security_patch_invalid_system">تنسيق نظام غير صالح</string>
     <string name="security_patch_invalid_vendor">تنسيق بائع غير صالح</string>
-
     <!-- Add System App -->
     <string name="add_system_app_title">إضافة تطبيق نظام</string>
     <string name="add_system_app_add">إضافة</string>
     <string name="add_system_app_current_list">قائمة تطبيقات النظام الحالية</string>
-
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">تأكيد إلغاء التثبيت؟</string>
     <string name="confirmation_uninstall_message">هل أنت متأكد أنك تريد إلغاء تثبيت Tricky Addon</string>
