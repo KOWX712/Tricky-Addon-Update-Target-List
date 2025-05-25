@@ -19,7 +19,7 @@ jobs:
       version_tag_exists: ${{ steps.check_tag.outputs.version_tag_exists }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
           fetch-tags: true
@@ -65,7 +65,7 @@ jobs:
           echo "VERSION=${MODULE_VERSION}" >> $GITHUB_ENV
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: ${{ env.ARTIFACT_NAME }}
           path: module/
@@ -93,7 +93,7 @@ jobs:
     if: ${{ needs.build.outputs.version_tag_exists == 'false' && github.event_name != 'pull_request' }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 2
 
@@ -127,7 +127,7 @@ jobs:
           cd module && zip -r "../${{ env.ZIP_NAME }}" ./*
 
       - name: Create release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v2.2.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
