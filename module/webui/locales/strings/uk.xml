@@ -13,12 +13,12 @@
     <string name="help_select_description">Вибрати чи прибрати виділення всіх застосунків у поточному інтерфейсі.</string>
     <string name="help_select_denylist">Виберіть із DenyList</string>
     <string name="help_select_denylist_description">Доступно лише у Magisk, обрати застосунки, які входять до DenyList. Рекомендовано.</string>
-    <string name="help_deselect_unnecessary">Зняти виділення з необов&apos;язкових</string>
-    <string name="help_deselect_unnecessary_description">Необов&apos;язкова категорія: Модуль Xposed, рут-менеджер, програми, пов&apos;язані з рутом, і загальні програми, які ніколи не перевіряють стан завантажувача. Ця опція вимагає підключення до інтернету.</string>
+    <string name="help_deselect_unnecessary">Зняти виділення з необов\'язкових</string>
+    <string name="help_deselect_unnecessary_description">Необов\'язкова категорія: Модуль Xposed, рут-менеджер, програми, пов\'язані з рутом, і загальні програми, які ніколи не перевіряють стан завантажувача. Ця опція вимагає підключення до інтернету.</string>
     <string name="help_add_system_app">Додати системний застосунок</string>
     <string name="help_add_system_app_description">Додати конкретний системний застосунок до списку.</string>
     <string name="help_set_keybox">Встановити AOSP та валідний ключ</string>
-    <string name="help_set_keybox_description">Замінити tricky store keybox.xml. Ключа буде замінено на AOSP, якщо не буде валідного. Для використання валідного ключа потрібне з&apos;єднання з інтернетом.</string>
+    <string name="help_set_keybox_description">Замінити tricky store keybox.xml. Ключа буде замінено на AOSP, якщо не буде валідного. Для використання валідного ключа потрібне з\'єднання з інтернетом.</string>
     <string name="help_set_custom_keybox">Встановити власний ключ</string>
     <string name="help_set_custom_keybox_description">Імпортувати ключі зі сховища вашого пристрою. Підтримуються лише xml файли.</string>
     <string name="help_set_security_patch">Встановити патч безпеки</string>
@@ -43,7 +43,7 @@
     <string name="menu_select_all">Вибрати все</string>
     <string name="menu_deselect_all">Прибрати усі позначки</string>
     <string name="menu_select_denylist">Вибрати із DenyList</string>
-    <string name="menu_deselect_unnecessary">Прибрати необов&apos;язкові</string>
+    <string name="menu_deselect_unnecessary">Прибрати необов\'язкові</string>
     <string name="menu_add_system_app">Додати системний застосунок</string>
     <string name="menu_set_aosp_keybox">Встановити AOSP ключ</string>
     <string name="menu_set_unknown_keybox">Встановити невідомий ключ</string>
@@ -62,11 +62,10 @@
     <string name="about_module_name_line2">Оновити Target List</string>
     <string name="about_by">by</string>
     <string name="about_telegram_channel">Телеґрам-канал</string>
-    <string name="about_github">GitHub</string>
     <string name="about_disclaimer">Цей модуль не є частиною модуля Tricky Store. НЕ повідомляйте Tricky Store про будь-які проблеми, якщо вони виникли.</string>
     <string name="about_acknowledgment">Подяка</string>
     <!-- Prompt -->
-    <string name="prompt_no_internet">Будь ласка, перевірте своє інтернет-з&apos;єднання</string>
+    <string name="prompt_no_internet">Будь ласка, перевірте своє інтернет-з\'єднання</string>
     <string name="prompt_aosp_key_set">Ключ AOSP успішно встановлено</string>
     <string name="prompt_key_set_error">Не вдалося оновити ключ</string>
     <string name="prompt_unknown_key_set">Невідомий ключ успішно встановлено</string>
