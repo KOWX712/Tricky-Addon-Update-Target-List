@@ -9,7 +9,7 @@
     <string name="help_save_and_update_description">保存当前配置到目标列表（target.txt）。</string>
     <string name="help_refresh">刷新</string>
     <string name="help_refresh_description">刷新应用列表和排除列表。</string>
-    <string name="help_select_deselect">全选与取消全选</string>
+    <string name="help_select_deselect">全选 &amp; 取消全选</string>
     <string name="help_select_description">选择或取消选择当前界面中的所有应用。</string>
     <string name="help_select_denylist">从排除列表中选择</string>
     <string name="help_select_denylist_description">仅适用于 Magisk，选择在排除列表中的应用。推荐使用。</string>
@@ -17,7 +17,7 @@
     <string name="help_deselect_unnecessary_description">非必要分类：Xposed 模块、root 管理器、与 root 相关的应用，以及从不检查 bootloader 状态的通用应用。此功能需连网使用。</string>
     <string name="help_add_system_app">添加系统应用</string>
     <string name="help_add_system_app_description">添加特定系统应用到应用列表。</string>
-    <string name="help_set_keybox">设置 AOSP 与有效密钥</string>
+    <string name="help_set_keybox">设置 AOSP &amp; 有效密钥</string>
     <string name="help_set_keybox_description">替换 Tricky Store 的密钥（keybox.xml）。如果没有有效密钥，将替换为 AOSP 密钥。有效密钥选项需连网使用。</string>
     <string name="help_set_custom_keybox">设置自定义密钥</string>
     <string name="help_set_custom_keybox_description">从设备存储导入自定义密钥。仅支持 xml 文件。</string>
