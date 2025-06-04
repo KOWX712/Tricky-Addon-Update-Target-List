@@ -1,16 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="system_default">Sistem Varsayılanı</string>
     <!-- Header -->
+    <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
+    <string name="help_help_instructions">Talimatlar</string>
+    <string name="help_save_and_update">Kaydet</string>
+    <string name="help_save_and_update_description">Mevcut yapılandırmayı target.txt dosyasına kaydet.</string>
+    <string name="help_refresh">Yenile</string>
+    <string name="help_refresh_description">Uygulama ve hariç tutma listesini yenile.</string>
+    <string name="help_select_deselect">Tümünü Seç &amp; Seçimi Kaldır</string>
+    <string name="help_select_description">Mevcut arayüzdeki tüm uygulamaları seç veya seçimini kaldır.</string>
+    <string name="help_select_denylist">Reddetme Listesinden Seç</string>
+    <string name="help_select_denylist_description">Yalnızca Magisk&apos;te mevcut, Reddetme Listesindeki uygulamaları seç. Tavsiye edilir.</string>
+    <string name="help_deselect_unnecessary">Gereksizleri Seçme</string>
+    <string name="help_deselect_unnecessary_description">Gereksiz kategori: Xposed modülü, root yöneticisi, root ile ilgili uygulamalar ve asla bootloader durumunu kontrol etmeyen genel uygulamalar. Bu seçenek internet bağlantısı gerektirir.</string>
+    <string name="help_add_system_app">Sistem Uygulaması Ekle</string>
+    <string name="help_add_system_app_description">Belirli bir sistem uygulamasını uygulama listesine ekleyin.</string>
+    <string name="help_set_keybox">AOSP &amp; Geçerli Keybox Ayarla</string>
+    <string name="help_set_keybox_description">Tricky Store&apos;daki keybox.xml dosyasını değiştirir. Eğer geçerli bir keybox yoksa AOSP keybox ile değiştirilecektir. Geçerli keybox seçeneği internet bağlantısı gerektirir.</string>
+    <string name="help_set_custom_keybox">Özel Keybox Ayarla</string>
+    <string name="help_set_custom_keybox_description">Cihaz depolamasından bir keybox dosyasını içe aktarın. Sadece xml dosyaları desteklenir.</string>
+    <string name="help_set_security_patch">Güvenlik Yaması Ayarla</string>
+    <string name="help_set_security_patch_description">Özel güvenlik yamasını ayarlayın. Otomatik yapılandırma PIF modülünün güvenlik yamasını kullanacaktır. Boş bırakın ve kaydedin ki otomatik yapılandırma devre dışı bırakılsın.</string>
+    <string name="help_set_verified_boot_hash">Doğrulanmış Boot Hash Ayarla</string>
+    <string name="help_set_verified_boot_hash_description">Key Attestation Demo&apos;dan verifiedBootHash değerini alın. Abnormal boot durumunu ro.boot.vbmeta.digest&apos;i sıfırlayarak düzeltin.</string>
     <!-- Update -->
+    <string name="update_update_available">Yeni bir sürüm hazır</string>
+    <string name="update_redirect_to_release">Son sürümü indirmek için dokunun</string>
+    <string name="update_changelog">Değişiklik Günlüğü</string>
+    <string name="update_install">Yükle</string>
+    <string name="update_reboot">Yeniden Başlat</string>
     <!-- Search -->
+    <string name="search_bar_search_placeholder">Ara</string>
     <!-- Functional Button -->
+    <string name="functional_button_save_and_update_button">Kaydet</string>
+    <string name="functional_button_uninstall_webui">WebUI&apos;ı Kaldır</string>
     <!-- Loading -->
+    <string name="loading_loading">Yükleniyor...</string>
     <!-- Menu -->
+    <string name="menu_refresh">Yenile</string>
+    <string name="menu_select_all">Tümünü Seç</string>
+    <string name="menu_deselect_all">Tüm Seçimleri Kaldır</string>
+    <string name="menu_select_denylist">Reddetme Listesinden Seç</string>
+    <string name="menu_deselect_unnecessary">Gereksizleri Seçme</string>
+    <string name="menu_add_system_app">Sistem Uygulaması Ekle</string>
+    <string name="menu_set_aosp_keybox">AOSP Keybox Ayarla</string>
+    <string name="menu_set_unknown_keybox">Bilinmeyen Keybox Ayarla</string>
+    <string name="menu_set_valid_keybox">Geçerli Keybox Ayarla</string>
+    <string name="menu_set_custom_keybox">Özel Keybox Ayarla</string>
+    <string name="menu_set_verified_boot_hash">Doğrulanmış Boot Hash Ayarla</string>
+    <string name="menu_set_security_patch">Güvenlik Yaması Ayarla</string>
+    <string name="menu_about">Hakkında</string>
+    <string name="menu_shortcut">Ana ekrana kısayol oluştur</string>
     <!-- Boot Hash -->
+    <string name="boot_hash_title">Boot Hash</string>
+    <string name="boot_hash_input_placeholder">Doğrulanmış Boot Hash&apos;inizi buraya yapıştırın</string>
+    <string name="boot_hash_save_button">Kaydet</string>
     <!-- About -->
+    <string name="about_module_name_line1">Tricky Addon</string>
+    <string name="about_module_name_line2">Target List&apos;i Güncelle</string>
+    <string name="about_by">tarafından</string>
+    <string name="about_telegram_channel">Telegram Kanalı</string>
+    <string name="about_disclaimer">Bu modül, Tricky Store modülünün bir parçası değildir. Herhangi bir sorun yaşarsanız, lütfen bunu Tricky Store&apos;a rapor etmeyin.</string>
+    <string name="about_acknowledgment">Teşekkürler</string>
     <!-- Prompt -->
+    <string name="prompt_no_internet">Lütfen internet bağlantınızı kontrol edin</string>
+    <string name="prompt_aosp_key_set">AOSP keybox başarıyla ayarlandı</string>
+    <string name="prompt_key_set_error">Keybox güncellenemedi</string>
+    <string name="prompt_unknown_key_set">Bilinmeyen keybox başarıyla ayarlandı</string>
+    <string name="prompt_valid_key_set">Geçerli keybox başarıyla ayarlandı</string>
+    <string name="prompt_no_valid">Geçerli keybox bulunamadı.</string>
+    <string name="prompt_boot_hash_set">Doğrulanmış Boot Hash başarıyla kaydedildi</string>
+    <string name="prompt_boot_hash_set_error">Doğrulanmış Boot Hash güncellenemedi</string>
+    <string name="prompt_saved_target">Yapılandırma target.txt dosyasına kaydedildi</string>
+    <string name="prompt_save_error">Yapılandırma kaydedilemedi</string>
+    <string name="prompt_uninstall_prompt">WebUI yeniden başlatma sonrasında kaldırılacak</string>
+    <string name="prompt_uninstall_failed">WebUI kaldırılamadı</string>
+    <string name="prompt_new_update">Yeni bir güncelleme mevcut!</string>
+    <string name="prompt_downloading">Yeni güncelleme indiriliyor...</string>
+    <string name="prompt_downloaded">İndirme tamamlandı</string>
+    <string name="prompt_download_fail">Güncelleme indirilemedi</string>
+    <string name="prompt_installing">Güncelleme yükleniyor...</string>
+    <string name="prompt_installed">Başarıyla yüklendi, şimdi yeniden başlatın.</string>
+    <string name="prompt_install_fail">Yükleme başarısız oldu, lütfen manuel olarak güncelleyin</string>
+    <string name="prompt_rebooting">Yeniden başlatılıyor...</string>
+    <string name="prompt_reboot_fail">Yeniden başlatma başarısız, lütfen manuel olarak yeniden başlatın</string>
+    <string name="prompt_custom_key_set">Özel keybox başarıyla ayarlandı</string>
+    <string name="prompt_custom_key_set_error">Özel keybox ayarlanamadı</string>
+    <string name="prompt_no_file_selected">Dosya seçilmedi</string>
+    <string name="prompt_system_app_not_found">Sistem uygulaması bulunamadı</string>
+    <string name="prompt_system_app_error">Sistem uygulaması ekleme hatası</string>
+    <string name="prompt_shortcut_created">Ana ekran kısayolu oluşturuldu</string>
     <!-- Security Patch -->
+    <string name="security_patch_title">Güvenlik Yaması</string>
+    <string name="security_patch_advanced_mode">Gelişmiş</string>
+    <string name="security_patch_get_date">Güvenlik Yaması Tarihini Al</string>
+    <string name="security_patch_auto">Otomatik</string>
+    <string name="security_patch_save">Kaydet</string>
+    <string name="security_patch_fetching">Alınıyor...</string>
+    <string name="security_patch_fetched">Tamamlandı</string>
+    <string name="security_patch_get_failed">Güvenlik yaması tarihi alınamadı</string>
+    <string name="security_patch_auto_success">Otomatik yapılandırma başarıyla etkinleştirildi</string>
+    <string name="security_patch_auto_failed">Otomatik yapılandırma etkinleştirilemedi</string>
+    <string name="security_patch_save_success">Güvenlik yaması başarıyla kaydedildi</string>
+    <string name="security_patch_save_failed">Güvenlik yaması kaydedilemedi</string>
+    <string name="security_patch_value_empty">Güvenlik yaması yapılandırması devre dışı bırakıldı</string>
+    <string name="security_patch_invalid_all">Geçersiz format</string>
+    <string name="security_patch_invalid_boot">Geçersiz boot formatı</string>
+    <string name="security_patch_invalid_system">Geçersiz system formatı</string>
+    <string name="security_patch_invalid_vendor">Geçersiz vendor formatı</string>
     <!-- Add System App -->
+    <string name="add_system_app_title">Sistem Uygulaması Ekle</string>
+    <string name="add_system_app_add">Ekle</string>
+    <string name="add_system_app_current_list">Mevcut Sistem Uygulamaları Listesi</string>
     <!-- Uninstall confirmation -->
+    <string name="confirmation_uninstall_title">Kaldırma İşlemi Onaylansın mı?</string>
+    <string name="confirmation_uninstall_message">Tricky Addon&apos;u kaldırmak istediğinizden emin misiniz</string>
+    <string name="confirmation_uninstall_cancel">İptal</string>
+    <string name="confirmation_uninstall_confirm">Onayla</string>
 </resources>
