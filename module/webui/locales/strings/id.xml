@@ -101,6 +101,7 @@
     <string name="security_patch_fetching">Mengambil...</string>
     <string name="security_patch_fetched">Selesai</string>
     <string name="security_patch_get_failed">Gagal mengambil tanggal patch keamanan</string>
+    <string name="security_patch_unable_to_connect">Tidak dapat terhubung ke source.android.com</string>
     <string name="security_patch_auto_success">Konfigurasi otomatis berhasil diaktifkan</string>
     <string name="security_patch_auto_failed">Gagal mengaktifkan konfigurasi otomatis</string>
     <string name="security_patch_save_success">Patch keamanan berhasil disimpan</string>
