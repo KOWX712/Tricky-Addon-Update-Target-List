@@ -1,16 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="system_default">Default ng Sistema</string>
     <!-- Header -->
+    <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
+    <string name="help_help_instructions">Mga Tagubilin</string>
+    <string name="help_save_and_update">I-save</string>
+    <string name="help_save_and_update_description">I-save ang kasalukuyang configuration sa target.txt.</string>
+    <string name="help_refresh">I-refresh</string>
+    <string name="help_refresh_description">I-refresh ang listahan ng apps at exclude list.</string>
+    <string name="help_select_deselect">Piliin &amp; Huwag Pumili ng Lahat</string>
+    <string name="help_select_description">Piliin o huwag piliin ang lahat ng apps sa kasalukuyang interface.</string>
+    <string name="help_select_denylist">Piliin mula sa DenyList</string>
+    <string name="help_select_denylist_description">Available lang sa Magisk, piliin ang mga app na nasa DenyList. Inirerekomenda.</string>
+    <string name="help_deselect_unnecessary">Huwag Pumili ng Hindi Kinakailangan</string>
+    <string name="help_deselect_unnecessary_description">Hindi kinakailangang kategorya: Xposed module, root manager, root-related apps, at mga karaniwang apps na hindi kailanman nire-refresh ang bootloader status. Nangangailangan ng koneksyon sa internet.</string>
+    <string name="help_add_system_app">Magdagdag ng System App</string>
+    <string name="help_add_system_app_description">Magdagdag ng tiyak na system app sa listahan ng apps.</string>
+    <string name="help_set_keybox">I-set ang AOSP at Valid Keybox</string>
+    <string name="help_set_keybox_description">Palitan ang tricky store keybox. Palitan ang AOSP keybox kung walang valid keybox. Nangangailangan ng koneksyon sa internet ang valid keybox option.</string>
+    <string name="help_set_custom_keybox">I-set ang Custom Keybox</string>
+    <string name="help_set_custom_keybox_description">Mag-import ng custom keybox mula sa iyong device storage. Sumusuporta lamang ng xml file.</string>
+    <string name="help_set_security_patch">I-set ang Security Patch</string>
+    <string name="help_set_security_patch_description">I-set ang custom security patch. Ang auto config ay mag-use ng security patch mula sa PIF module. I-leave blank at i-save para i-disable ang auto config.</string>
+    <string name="help_set_verified_boot_hash">I-set ang Verified Boot Hash</string>
+    <string name="help_set_verified_boot_hash_description">Kunin ang verifiedBootHash mula sa Key Attestation Demo. Ayusin ang abnormal na boot state sa pamamagitan ng pag-reset ng ro.boot.vbmeta.digest.</string>
     <!-- Update -->
+    <string name="update_update_available">Handa na ang bagong bersyon</string>
+    <string name="update_redirect_to_release">i-tap para i-download ang pinakabagong bersyon</string>
+    <string name="update_changelog">Mga Pagbabago</string>
+    <string name="update_install">I-install</string>
+    <string name="update_reboot">I-reboot</string>
     <!-- Search -->
+    <string name="search_bar_search_placeholder">Maghanap</string>
     <!-- Functional Button -->
+    <string name="functional_button_save_and_update_button">I-save</string>
+    <string name="functional_button_uninstall_webui">I-uninstall ang WebUI</string>
     <!-- Loading -->
+    <string name="loading_loading">Naglo-load...</string>
     <!-- Menu -->
+    <string name="menu_refresh">I-refresh</string>
+    <string name="menu_select_all">Piliin Lahat</string>
+    <string name="menu_deselect_all">Huwag Pumili ng Lahat</string>
+    <string name="menu_select_denylist">Piliin mula sa DenyList</string>
+    <string name="menu_deselect_unnecessary">Huwag Pumili ng Hindi Kinakailangan</string>
+    <string name="menu_add_system_app">Magdagdag ng System App</string>
+    <string name="menu_set_aosp_keybox">I-set ang AOSP Keybox</string>
+    <string name="menu_set_unknown_keybox">I-set ang Hindi Kilalang Keybox</string>
+    <string name="menu_set_valid_keybox">I-set ang Valid Keybox</string>
+    <string name="menu_set_custom_keybox">I-set ang Custom Keybox</string>
+    <string name="menu_set_verified_boot_hash">I-set ang Verified Boot Hash</string>
+    <string name="menu_set_security_patch">I-set ang Security Patch</string>
+    <string name="menu_about">Tungkol</string>
+    <string name="menu_shortcut">Gumawa ng shortcut sa home screen</string>
     <!-- Boot Hash -->
+    <string name="boot_hash_title">Boot Hash</string>
+    <string name="boot_hash_input_placeholder">I-paste ang iyong verified Boot Hash dito</string>
+    <string name="boot_hash_save_button">I-save</string>
     <!-- About -->
+    <string name="about_module_name_line1">Tricky Addon</string>
+    <string name="about_module_name_line2">I-update ang Target List</string>
+    <string name="about_by">ni</string>
+    <string name="about_telegram_channel">Telegram Channel</string>
+    <string name="about_disclaimer">Ang WebUI na ito ay hindi bahagi ng Tricky Store, HUWAG i-report sa may-akda ng Tricky Store kung makaranas ka ng anumang isyu.</string>
+    <string name="about_acknowledgment">Pagkilala</string>
     <!-- Prompt -->
+    <string name="prompt_no_internet">Pakitingnan ang iyong koneksyon sa Internet</string>
+    <string name="prompt_aosp_key_set">Matagumpay na na-set ang AOSP Keybox</string>
+    <string name="prompt_key_set_error">Nabigong i-update ang keybox</string>
+    <string name="prompt_unknown_key_set">Matagumpay na na-set ang Hindi Kilalang Keybox</string>
+    <string name="prompt_valid_key_set">Matagumpay na na-set ang Valid Keybox</string>
+    <string name="prompt_no_valid">Walang valid na keybox na natagpuan.</string>
+    <string name="prompt_boot_hash_set">Matagumpay na na-save ang Verified Boot Hash</string>
+    <string name="prompt_boot_hash_set_error">Nabigong i-update ang Verified Boot Hash</string>
+    <string name="prompt_saved_target">Na-save ang configuration sa target.txt</string>
+    <string name="prompt_save_error">Nabigong i-save ang config</string>
+    <string name="prompt_uninstall_prompt">Mawawala ang WebUI pagkatapos ng reboot</string>
+    <string name="prompt_uninstall_failed">Nabigong i-uninstall ang WebUI</string>
+    <string name="prompt_new_update">May bagong update na available!</string>
+    <string name="prompt_downloading">Nagda-download ng bagong update...</string>
+    <string name="prompt_downloaded">Natapos ang pag-download</string>
+    <string name="prompt_download_fail">Nabigo ang pag-download ng update</string>
+    <string name="prompt_installing">Nag-i-install ng update...</string>
+    <string name="prompt_installed">Matagumpay na na-install, mag-reboot na ngayon.</string>
+    <string name="prompt_install_fail">Nabigo ang pag-install, pakisubukang mag-update nang manu-mano</string>
+    <string name="prompt_rebooting">Nag-re-reboot...</string>
+    <string name="prompt_reboot_fail">Nabigo ang pag-reboot, pakisubukang mag-reboot nang manu-mano</string>
+    <string name="prompt_custom_key_set">Matagumpay na na-set ang Custom Keybox</string>
+    <string name="prompt_custom_key_set_error">Nabigong i-set ang Custom Keybox</string>
+    <string name="prompt_no_file_selected">Walang napiling file</string>
+    <string name="prompt_system_app_not_found">Walang natagpuan na system app</string>
+    <string name="prompt_system_app_error">Nabigong dagdag ang system app</string>
+    <string name="prompt_shortcut_created">Matagumpay na nagawa ang shortcut sa home screen</string>
     <!-- Security Patch -->
+    <string name="security_patch_title">Security Patch</string>
+    <string name="security_patch_advanced_mode">Advanced</string>
+    <string name="security_patch_get_date">Kunin ang Petsa ng Security Patch</string>
+    <string name="security_patch_auto">Auto</string>
+    <string name="security_patch_save">I-save</string>
+    <string name="security_patch_fetching">Kumukuha...</string>
+    <string name="security_patch_fetched">Tapos na</string>
+    <string name="security_patch_get_failed">Hindi makuha ang petsa ng security patch</string>
+    <string name="security_patch_auto_success">Matagumpay na na-enable ang auto config</string>
+    <string name="security_patch_auto_failed">Nabigong i-enable ang auto config</string>
+    <string name="security_patch_save_success">Matagumpay na na-save ang security patch</string>
+    <string name="security_patch_save_failed">Nabigong i-save ang security patch</string>
+    <string name="security_patch_value_empty">Naka-disable ang configuration ng security patch</string>
+    <string name="security_patch_invalid_all">Invalid format</string>
+    <string name="security_patch_invalid_boot">Invalid boot format</string>
+    <string name="security_patch_invalid_system">Invalid system format</string>
+    <string name="security_patch_invalid_vendor">Invalid vendor format</string>
     <!-- Add System App -->
+    <string name="add_system_app_title">Magdagdag ng System App</string>
+    <string name="add_system_app_add">Idagdag</string>
+    <string name="add_system_app_current_list">Kasalukuyang Listahan ng System App</string>
     <!-- Uninstall confirmation -->
+    <string name="confirmation_uninstall_title">Kumpirmahin ang Pag-uninstall?</string>
+    <string name="confirmation_uninstall_message">Sigurado ka bang gusto mong i-uninstall ang Tricky Addon</string>
+    <string name="confirmation_uninstall_cancel">Kanselahin</string>
+    <string name="confirmation_uninstall_confirm">Kumpirmahin</string>
 </resources>
