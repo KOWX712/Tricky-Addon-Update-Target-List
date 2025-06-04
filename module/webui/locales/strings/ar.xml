@@ -1,16 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="system_default">الإعدادات الافتراضية للنظام</string>
     <!-- Header -->
+    <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
+    <string name="help_help_instructions">تعليمات</string>
+    <string name="help_save_and_update">حفظ</string>
+    <string name="help_save_and_update_description">حفظ الإعدادات الحالية إلى target.txt.</string>
+    <string name="help_refresh">تحديث</string>
+    <string name="help_refresh_description">تحديث قائمة التطبيقات وقائمة الاستبعاد.</string>
+    <string name="help_select_deselect">تحديد وإلغاء تحديد الكل</string>
+    <string name="help_select_description">تحديد أو إلغاء تحديد جميع التطبيقات في الواجهة الحالية.</string>
+    <string name="help_select_denylist">تحديد من قائمة الرفض</string>
+    <string name="help_select_denylist_description">متاح في Magisk فقط، حدد التطبيقات الموجودة في قائمة الرفض. موصى به.</string>
+    <string name="help_deselect_unnecessary">إلغاء تحديد غير الضروري</string>
+    <string name="help_deselect_unnecessary_description">فئة غير ضرورية: وحدة Xposed، مدير الجذر، التطبيقات المتعلقة بالجذر، والتطبيقات العامة التي لا تتحقق أبدًا من حالة bootloader. يتطلب هذا الخيار اتصالاً بالإنترنت.</string>
+    <string name="help_add_system_app">إضافة تطبيق نظام</string>
+    <string name="help_add_system_app_description">إضافة تطبيق نظام محدد إلى قائمة التطبيقات.</string>
+    <string name="help_set_keybox">تعيين AOSP و Keybox صالح</string>
+    <string name="help_set_keybox_description">استبدال tricky store keybox.xml. سيتم استبدال keybox AOSP إذا لم يكن هناك keybox صالح آخر. يتطلب خيار keybox الصالح اتصالاً بالإنترنت.</string>
+    <string name="help_set_custom_keybox">تعيين Keybox مخصص</string>
+    <string name="help_set_custom_keybox_description">استيراد keybox من تخزين جهازك. يدعم فقط ملف xml.</string>
+    <string name="help_set_security_patch">تعيين تصحيح الأمان</string>
+    <string name="help_set_security_patch_description">تعيين تصحيح أمان مخصص. سيستخدم التكوين التلقائي تصحيح الأمان من وحدة PIF. اتركه فارغًا واحفظه لتعطيل التكوين التلقائي.</string>
+    <string name="help_set_verified_boot_hash">تعيين تجزئة التمهيد الموثوق</string>
+    <string name="help_set_verified_boot_hash_description">احصل على قيمة verifiedBootHash من عرض إثبات المفتاح. إصلاح حالة التمهيد غير الطبيعية عن طريق إعادة تعيين ro.boot.vbmeta.digest.</string>
     <!-- Update -->
+    <string name="update_update_available">إصدار جديد جاهز</string>
+    <string name="update_redirect_to_release">اضغط لتنزيل أحدث إصدار</string>
+    <string name="update_changelog">سجل التغييرات</string>
+    <string name="update_install">تثبيت</string>
+    <string name="update_reboot">إعادة تشغيل</string>
     <!-- Search -->
+    <string name="search_bar_search_placeholder">بحث</string>
     <!-- Functional Button -->
+    <string name="functional_button_save_and_update_button">حفظ</string>
+    <string name="functional_button_uninstall_webui">إلغاء تثبيت WebUI</string>
     <!-- Loading -->
+    <string name="loading_loading">جارٍ التحميل...</string>
     <!-- Menu -->
+    <string name="menu_refresh">تحديث</string>
+    <string name="menu_select_all">تحديد الكل</string>
+    <string name="menu_deselect_all">إلغاء تحديد الكل</string>
+    <string name="menu_select_denylist">تحديد من قائمة الرفض</string>
+    <string name="menu_deselect_unnecessary">إلغاء تحديد غير الضروري</string>
+    <string name="menu_add_system_app">إضافة تطبيق نظام</string>
+    <string name="menu_set_aosp_keybox">تعيين Keybox AOSP</string>
+    <string name="menu_set_unknown_keybox">تعيين Keybox غير معروف</string>
+    <string name="menu_set_valid_keybox">تعيين Keybox صالح</string>
+    <string name="menu_set_custom_keybox">تعيين Keybox مخصص</string>
+    <string name="menu_set_verified_boot_hash">تعيين تجزئة التمهيد الموثوق</string>
+    <string name="menu_set_security_patch">تعيين تصحيح الأمان</string>
+    <string name="menu_about">حول</string>
+    <string name="menu_shortcut">إنشاء اختصار على الشاشة الرئيسية</string>
     <!-- Boot Hash -->
+    <string name="boot_hash_title">تجزئة التمهيد</string>
+    <string name="boot_hash_input_placeholder">الصق تجزئة التمهيد الموثوق هنا</string>
+    <string name="boot_hash_save_button">حفظ</string>
     <!-- About -->
+    <string name="about_module_name_line1">Tricky Addon</string>
+    <string name="about_module_name_line2">تحديث قائمة الأهداف</string>
+    <string name="about_by">بواسطة</string>
+    <string name="about_telegram_channel">قناة التليجرام</string>
+    <string name="about_disclaimer">هذه الوحدة ليست جزءًا من وحدة Tricky Store. لا تقم بالإبلاغ عن أي مشاكل إلى Tricky Store إذا واجهت أيًا منها.</string>
+    <string name="about_acknowledgment">شكر وتقدير</string>
     <!-- Prompt -->
+    <string name="prompt_no_internet">يرجى التحقق من اتصالك بالإنترنت</string>
+    <string name="prompt_aosp_key_set">تم تعيين keybox AOSP بنجاح</string>
+    <string name="prompt_key_set_error">فشل في تحديث keybox</string>
+    <string name="prompt_unknown_key_set">تم تعيين Keybox غير معروف بنجاح</string>
+    <string name="prompt_valid_key_set">تم تعيين keybox صالح بنجاح</string>
+    <string name="prompt_no_valid">لم يتم العثور على keybox صالح.</string>
+    <string name="prompt_boot_hash_set">تم حفظ تجزئة التمهيد الموثوق بنجاح</string>
+    <string name="prompt_boot_hash_set_error">فشل في تحديث تجزئة التمهيد الموثوق</string>
+    <string name="prompt_saved_target">تم حفظ التكوين إلى target.txt</string>
+    <string name="prompt_save_error">فشل في حفظ التكوين</string>
+    <string name="prompt_uninstall_prompt">سيتم إزالة WebUI بعد إعادة التشغيل</string>
+    <string name="prompt_uninstall_failed">فشل في إلغاء تثبيت WebUI</string>
+    <string name="prompt_new_update">تحديث جديد متاح!</string>
+    <string name="prompt_downloading">جارٍ تنزيل التحديث الجديد...</string>
+    <string name="prompt_downloaded">اكتمل التنزيل</string>
+    <string name="prompt_download_fail">فشل في تنزيل التحديث</string>
+    <string name="prompt_installing">جارٍ تثبيت التحديث...</string>
+    <string name="prompt_installed">تم التثبيت بنجاح، أعد التشغيل الآن.</string>
+    <string name="prompt_install_fail">فشل في التثبيت، يرجى التحديث يدويًا</string>
+    <string name="prompt_rebooting">جارٍ إعادة التشغيل...</string>
+    <string name="prompt_reboot_fail">فشل في إعادة التشغيل، يرجى إعادة التشغيل يدويًا</string>
+    <string name="prompt_custom_key_set">تم تعيين keybox مخصص بنجاح</string>
+    <string name="prompt_custom_key_set_error">فشل في تعيين keybox مخصص</string>
+    <string name="prompt_no_file_selected">لم يتم اختيار أي ملف</string>
+    <string name="prompt_system_app_not_found">لم يتم العثور على تطبيق النظام</string>
+    <string name="prompt_system_app_error">فشل في إضافة تطبيق النظام</string>
+    <string name="prompt_shortcut_created">تم إنشاء اختصار على الشاشة الرئيسية</string>
     <!-- Security Patch -->
+    <string name="security_patch_title">تصحيح الأمان</string>
+    <string name="security_patch_advanced_mode">متقدم</string>
+    <string name="security_patch_get_date">الحصول على تاريخ تصحيح الأمان</string>
+    <string name="security_patch_auto">تلقائي</string>
+    <string name="security_patch_save">حفظ</string>
+    <string name="security_patch_fetching">جارٍ التحميل...</string>
+    <string name="security_patch_fetched">تم</string>
+    <string name="security_patch_get_failed">فشل في جلب تاريخ تصحيح الأمان</string>
+    <string name="security_patch_auto_success">تم تفعيل التكوين التلقائي بنجاح</string>
+    <string name="security_patch_auto_failed">فشل في تفعيل التكوين التلقائي</string>
+    <string name="security_patch_save_success">تم حفظ تصحيح الأمان بنجاح</string>
+    <string name="security_patch_save_failed">فشل في حفظ تصحيح الأمان</string>
+    <string name="security_patch_value_empty">تم تعطيل تكوين تصحيح الأمان</string>
+    <string name="security_patch_invalid_all">تنسيق غير صالح</string>
+    <string name="security_patch_invalid_boot">تنسيق تمهيد غير صالح</string>
+    <string name="security_patch_invalid_system">تنسيق نظام غير صالح</string>
+    <string name="security_patch_invalid_vendor">تنسيق بائع غير صالح</string>
     <!-- Add System App -->
+    <string name="add_system_app_title">إضافة تطبيق نظام</string>
+    <string name="add_system_app_add">إضافة</string>
+    <string name="add_system_app_current_list">قائمة تطبيقات النظام الحالية</string>
     <!-- Uninstall confirmation -->
+    <string name="confirmation_uninstall_title">تأكيد إلغاء التثبيت؟</string>
+    <string name="confirmation_uninstall_message">هل أنت متأكد أنك تريد إلغاء تثبيت Tricky Addon</string>
+    <string name="confirmation_uninstall_cancel">إلغاء</string>
+    <string name="confirmation_uninstall_confirm">تأكيد</string>
 </resources>
