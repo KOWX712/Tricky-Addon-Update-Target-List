@@ -20,9 +20,9 @@ aapt() { "$MODPATH/aapt" "$@"; }
 # curl, has ssl on android, we use it if found
 download() {
     if command -v curl >/dev/null 2>&1; then
-        timeout 10 curl -Ls "$1"
+        timeout 30 curl -Ls "$1"
     else
-        timeout 10 busybox wget --no-check-certificate -qO- "$1"
+        timeout 30 busybox wget --no-check-certificate -qO- "$1"
     fi
 }
 

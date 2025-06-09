@@ -48,7 +48,7 @@ document.getElementById('canary').addEventListener('click', async () => {
     if (isDownloading) return;
     isDownloading = true;
     try {
-        showPrompt("prompt_checking_update");
+        showPrompt("prompt_checking_update", true, 10000);
         const url = "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://nightly.link/KOWX712/Tricky-Addon-Update-Target-List/workflows/build/main?preview");
         const response = await fetch(url);
         const html = await response.text();
