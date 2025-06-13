@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="system_default">系统默认</string>
+    <string name="more_language">更多</string>
+    <!-- Header -->
+    <string name="header_title">TS 插件</string>
+    <!-- Help Menu-->
+    <string name="help_help_instructions">使用指南</string>
+    <string name="help_save_and_update">保存</string>
+    <string name="help_save_and_update_description">保存当前配置到目标列表（target.txt）。</string>
+    <string name="help_refresh">刷新</string>
+    <string name="help_refresh_description">刷新应用列表和排除列表。</string>
+    <string name="help_select_deselect">全选 &amp; 取消全选</string>
+    <string name="help_select_description">选择或取消选择当前界面中的所有应用。</string>
+    <string name="help_select_denylist">从排除列表中选择</string>
+    <string name="help_select_denylist_description">仅适用于 Magisk，选择在排除列表中的应用。推荐使用。</string>
+    <string name="help_deselect_unnecessary">取消选择非必要应用</string>
+    <string name="help_deselect_unnecessary_description">非必要分类：Xposed 模块、root 管理器、与 root 相关的应用，以及从不检查 bootloader 状态的通用应用。此功能需连网使用。</string>
+    <string name="help_add_system_app">添加系统应用</string>
+    <string name="help_add_system_app_description">添加特定系统应用到应用列表。</string>
+    <string name="help_set_keybox">设置 AOSP &amp; 有效密钥</string>
+    <string name="help_set_keybox_description">替换 Tricky Store 的密钥（keybox.xml）。如果没有有效密钥，将替换为 AOSP 密钥。有效密钥选项需连网使用。</string>
+    <string name="help_set_custom_keybox">设置自定义密钥</string>
+    <string name="help_set_custom_keybox_description">从设备存储导入自定义密钥。仅支持 xml 文件。</string>
+    <string name="help_set_security_patch">设置安全补丁</string>
+    <string name="help_set_security_patch_description">设置自定义安全补丁。自动配置将使用 PIF 模块的安全补丁。留空保存则禁用自动配置。</string>
+    <string name="help_set_verified_boot_hash">设置哈希值</string>
+    <string name="help_set_verified_boot_hash_description">从 Key Attestation Demo 获取 verifiedBootHash（哈希值）。通过重置 ro.boot.vbmeta.digest 修复异常 boot 状态。</string>
+    <!-- Update -->
+    <string name="update_update_available">发现新的版本</string>
+    <string name="update_redirect_to_release">点击下载最新版本</string>
+    <string name="update_changelog">更新日志</string>
+    <string name="update_install">安装</string>
+    <string name="update_reboot">重启</string>
+    <!-- Search -->
+    <string name="search_bar_search_placeholder">搜索</string>
+    <!-- Functional Button -->
+    <string name="functional_button_save_and_update_button">保存</string>
+    <string name="functional_button_uninstall_webui">卸载 WebUI</string>
+    <!-- Loading -->
+    <string name="loading_loading">加载中...</string>
+    <!-- Menu -->
+    <string name="menu_refresh">刷新</string>
+    <string name="menu_select_all">全选</string>
+    <string name="menu_deselect_all">取消全选</string>
+    <string name="menu_select_denylist">从排除列表中选择</string>
+    <string name="menu_deselect_unnecessary">取消选择非必要应用</string>
+    <string name="menu_add_system_app">添加系统应用</string>
+    <string name="menu_set_aosp_keybox">设置 AOSP 密钥</string>
+    <string name="menu_set_unknown_keybox">设置未知密钥</string>
+    <string name="menu_set_valid_keybox">设置有效密钥</string>
+    <string name="menu_set_custom_keybox">设置自定义密钥</string>
+    <string name="menu_set_verified_boot_hash">设置哈希值</string>
+    <string name="menu_set_security_patch">设置安全补丁</string>
+    <string name="menu_about">关于</string>
+    <string name="menu_shortcut">创建桌面快捷方式</string>
+    <!-- Boot Hash -->
+    <string name="boot_hash_title">哈希值</string>
+    <string name="boot_hash_input_placeholder">在此粘贴您的哈希值</string>
+    <string name="boot_hash_save_button">保存</string>
+    <!-- About -->
+    <string name="about_module_name_line1">TS插件</string>
+    <string name="about_module_name_line2">更新目标列表</string>
+    <string name="about_by">作者：</string>
+    <string name="about_telegram_channel">TG频道</string>
+    <string name="about_canary_update">下载最新测试版</string>
+    <string name="about_disclaimer">此 WebUI 不是 Tricky Store 的一部分，遇到任何问题请勿向 Tricky Store 作者反馈。</string>
+    <string name="about_acknowledgment">特别鸣谢</string>
+    <!-- Prompt -->
+    <string name="prompt_no_internet">请检查您的网络连接</string>
+    <string name="prompt_aosp_key_set">成功设置 AOSP 密钥</string>
+    <string name="prompt_key_set_error">更新密钥失败</string>
+    <string name="prompt_unknown_key_set">成功设置未知密钥</string>
+    <string name="prompt_valid_key_set">成功设置有效密钥</string>
+    <string name="prompt_no_valid">未找到有效密钥。</string>
+    <string name="prompt_boot_hash_set">哈希值重置成功</string>
+    <string name="prompt_boot_hash_set_error">哈希值重置失败</string>
+    <string name="prompt_saved_target">成功保存配置</string>
+    <string name="prompt_save_error">保存配置失败</string>
+    <string name="prompt_uninstall_prompt">WebUI 将在重启后被移除</string>
+    <string name="prompt_uninstall_failed">卸载 WebUI 失败</string>
+    <string name="prompt_checking_update">正在检测更新...</string>
+    <string name="prompt_new_update">发现新的版本！</string>
+    <string name="prompt_no_update">当前已是最新版本</string>
+    <string name="prompt_downloading">正在下载...</string>
+    <string name="prompt_downloaded">下载完成</string>
+    <string name="prompt_download_fail">下载失败</string>
+    <string name="prompt_installing">正常安装...</string>
+    <string name="prompt_installed">安装完成，重启生效</string>
+    <string name="prompt_install_fail">安装失败，请手动更新</string>
+    <string name="prompt_rebooting">正在重启...</string>
+    <string name="prompt_reboot_fail">重启失败，请手动重启</string>
+    <string name="prompt_custom_key_set">成功设置自定义密钥</string>
+    <string name="prompt_custom_key_set_error">设置自定义密钥失败</string>
+    <string name="prompt_no_file_selected">未选择文件</string>
+    <string name="prompt_system_app_not_found">未找到该系统应用</string>
+    <string name="prompt_system_app_error">系统应用添加失败</string>
+    <string name="prompt_shortcut_created">桌面快捷方式已创建</string>
+    <!-- Security Patch -->
+    <string name="security_patch_title">安全补丁</string>
+    <string name="security_patch_advanced_mode">高级</string>
+    <string name="security_patch_get_date">获取安全补丁日期</string>
+    <string name="security_patch_auto">自动</string>
+    <string name="security_patch_save">保存</string>
+    <string name="security_patch_fetching">获取中...</string>
+    <string name="security_patch_fetched">完成</string>
+    <string name="security_patch_get_failed">获取安全补丁日期失败</string>
+    <string name="security_patch_unable_to_connect">无法连接至 source.android.com</string>
+    <string name="security_patch_auto_success">自动配置成功启用</string>
+    <string name="security_patch_auto_failed">无法启用自动配置</string>
+    <string name="security_patch_save_success">安全补丁成功保存</string>
+    <string name="security_patch_save_failed">保存安全补丁失败</string>
+    <string name="security_patch_value_empty">安全补丁配置已禁用</string>
+    <string name="security_patch_invalid_all">无效格式</string>
+    <string name="security_patch_invalid_boot">无效 boot 格式</string>
+    <string name="security_patch_invalid_system">无效 system 格式</string>
+    <string name="security_patch_invalid_vendor">无效 vendor 格式</string>
+    <!-- Add System App -->
+    <string name="add_system_app_title">添加系统应用</string>
+    <string name="add_system_app_add">添加</string>
+    <string name="add_system_app_current_list">当前系统应用列表</string>
+    <!-- Uninstall confirmation -->
+    <string name="confirmation_uninstall_title">确认卸载？</string>
+    <string name="confirmation_uninstall_message">您确定要卸载 TS 插件吗</string>
+    <string name="confirmation_uninstall_cancel">取消</string>
+    <string name="confirmation_uninstall_confirm">确认</string>
+</resources>

@@ -37,7 +37,7 @@
     position: absolute;
     border: none;
     color: var(--text-primary);
-    background-color: var(--bg-secondary);
+    background-color: transparent;
     font-size: 17px;
     outline: none;
     left: 10px;
@@ -113,6 +113,7 @@
     user-select: none;
 }
 
+#shortcut,
 #select-denylist,
 #security-patch {
     display: none;
@@ -133,7 +134,6 @@
 .menu-options li {
     padding: 12px 15px;
     text-align: left;
-    background-color: var(--bg-secondary);
 }
 
 .menu-options li::after {

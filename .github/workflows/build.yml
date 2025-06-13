@@ -24,18 +24,51 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
-      - name: Update dependency
+      - name: Update translation template
         run: |
-          curl -Ls https://cdn.jsdelivr.net/npm/marked/marked.min.js > module/webui/scripts/assets/marked.min.js
+          # Translation template
+          cp -f module/webui/locales/strings/en.xml module/webui/locales/template.xml
 
           # Commit if found changes
-          if ! git diff --exit-code module/webui/scripts/assets/marked.min.js > /dev/null; then
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+          # Force push translation template if changed
+          if git status --porcelain | grep 'module/webui/locales/template.xml'; then
+            git add module/webui/locales/template.xml
+            git commit --amend --no-edit
+          fi
+
+      - name: Update dependency
+        if: github.event_name != 'pull_request'
+        run: |
+          # marked.js
+          curl -Ls https://cdn.jsdelivr.net/npm/marked/marked.min.js > module/webui/scripts/assets/marked.min.js
+
+          # OpenSSL
+          wget -q $(curl -Ls https://api.github.com/repos/KOWX712/openssl-static-build/releases/latest | jq -r '.assets[].browser_download_url') -O openssl.tar.gz
+          tar -xzf openssl.tar.gz
+          mv openssl-arm64 module/bin/arm64-v8a/openssl
+          mv openssl-arm32 module/bin/armeabi-v7a/openssl
+
+          # Commit if found changes
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+          # Commit marked.min.js if changed
+          if git status --porcelain | grep 'module/webui/scripts/assets/marked.min.js'; then
             git add module/webui/scripts/assets/marked.min.js
             git commit -m "deps: update marked.min.js"
-            git push
           fi
+
+          # Commit OpenSSL files if changed
+          if git status --porcelain | grep -E 'module/bin/arm64-v8a|module/bin/armeabi-v7a'; then
+            git add module/bin/arm64-v8a/openssl module/bin/armeabi-v7a/openssl
+            git commit -m "deps: update OpenSSL binaries"
+          fi
+
+          # Push all commits
+          git push --force
 
       - name: Extract Module Info
         id: extract_info
@@ -43,8 +76,9 @@ jobs:
           MODULE_VERSION=$(grep '^version=' module/module.prop | sed 's/version=//')
           COMMIT_NUM=$(git rev-list --count HEAD)
           BUILD_COUNT=${{ github.run_number }}
-          ARTIFACT_NAME="TrickyAddonModule-${MODULE_VERSION}-${COMMIT_NUM}${BUILD_COUNT}-canary"
+          ARTIFACT_NAME="TrickyAddonModule-${MODULE_VERSION}-${COMMIT_NUM}-canary"
           sed -i "s/^version=.*/& (${COMMIT_NUM}${BUILD_COUNT}-canary)/" module/module.prop
+          sed -i "s/^versionCode=.*/versionCode=${COMMIT_NUM}/" module/module.prop
           echo "MODULE_VERSION=${MODULE_VERSION}" >> $GITHUB_ENV
           echo "ARTIFACT_NAME=${ARTIFACT_NAME}" >> $GITHUB_ENV
           echo "VERSION=${MODULE_VERSION}" >> $GITHUB_ENV
@@ -75,7 +109,7 @@ jobs:
     name: release
     runs-on: ubuntu-latest
     needs: build
-    if: ${{ needs.build.outputs.version_tag_exists == 'false' }}
+    if: ${{ needs.build.outputs.version_tag_exists == 'false' && github.event_name != 'pull_request' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

@@ -1,0 +1,38 @@
+name: Language request
+description: Request a language to be added in WebUI
+title: "New language request: "
+labels: []
+body:
+  - type: input
+    id: langauge
+    attributes:
+      label: Langauge
+      placeholder: English
+    validations:
+      required: true
+
+  - type: input
+    id: region
+    attributes:
+      label: Region (Optional)
+      placeholder: United States
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmations
+      description: Make sure check the latest canary version to see if the language is already available before submitting issue.
+      options: 
+        - label: This language is not already available in WebUI
+          required: true
+
+  - type: textarea
+    id: optional
+    attributes:
+      label: Upload translated file (optional)
+      description: Upload translated file based on template.xml if you have translated it
+      placeholder: translate the template in module/webui/locales/template.xml (optional)
+    validations:
+      required: false

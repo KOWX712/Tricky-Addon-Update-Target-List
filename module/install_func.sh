@@ -17,8 +17,9 @@ initialize() {
 
     # Set aapt binary
     cp "$MODPATH/module.prop" "$COMPATH/update/module.prop"
-    mv "$MODPATH/bin/$(getprop ro.product.cpu.abi)/aapt" "$COMPATH/aapt"
+    mv "$MODPATH/bin/$(getprop ro.product.cpu.abi)/"* "$COMPATH/"
     set_perm $COMPATH/aapt 0 2000 0755
+    set_perm $COMPATH/openssl 0 2000 0755
     rm -rf "$MODPATH/bin"
 }
 

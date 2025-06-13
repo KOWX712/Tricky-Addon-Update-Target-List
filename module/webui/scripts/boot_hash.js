@@ -53,7 +53,7 @@ saveButton.addEventListener("click", async () => {
         }
     `, { env: { PATH: "/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk:$PATH" } })
         .then(() => {
-            showPrompt("prompt.boot_hash_set");
+            showPrompt("prompt_boot_hash_set");
             closeBootHashMenu();
         });
 });

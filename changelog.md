@@ -8,6 +8,14 @@ GitHub release: [Tricky Addon: Update Target List](https://github.com/KOWX712/Tr
 Telegram channel: [KOW's Little World](https://t.me/kowchannel)
 
 ## Changelog
+### v3.9
+- **WebUI:** Optmized app loading speed, fixed all known freezing issue.
+- **WebUI:** Added unknown keybox option, similar to AOSP keybox, removed AOSP keybox fallback when no valid keybox available.
+- **MMRL:** Added app icon support, enjoy with latest [MMRL](https://github.com/MMRLApp/MMRL/releases/latest) or [WebUI X](https://github.com/MMRLApp/WebUI-X-Portable/releases/latest).
+- **Action:** Added support for Magisk action redirect WebUI X.
+- **Script:** Get actual vbmeta size before resetprop.
+- **WebUI:** Add Portuguese Brazilian Translation (#38, @JeanxPereira)
+
 ### v3.8.1
 - **WebUI:** Fixed missing aosp key fallback when no valid key is available.
 

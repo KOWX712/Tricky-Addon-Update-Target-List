@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="system_default">Προεπιλογή Συστήματος</string>
+    <!-- Header -->
+    <string name="header_title">Tricky Addon</string>
+    <!-- Help Menu-->
+    <string name="help_help_instructions">Οδηγίες</string>
+    <string name="help_save_and_update">Αποθήκευση</string>
+    <string name="help_save_and_update_description">Αποθήκευσε την τρέχουσα ρύθμιση στο target.txt.</string>
+    <string name="help_refresh">Ανανέωση</string>
+    <string name="help_refresh_description">Ανανέωσε τη λίστα εφαρμογών και τη λίστα αποκλεισμού.</string>
+    <string name="help_select_deselect">Επιλογή &amp; Αποεπιλογή Όλων</string>
+    <string name="help_select_description">Επίλεξε ή αποεπίλεξε όλες τις εφαρμογές στην τρέχουσα οθόνη.</string>
+    <string name="help_select_denylist">Επίλεξε από DenyList</string>
+    <string name="help_select_denylist_description">Διαθέσιμο μόνο στο Magisk, επίλεξε εφαρμογές που είναι στη DenyList. Συνιστάται.</string>
+    <string name="help_deselect_unnecessary">Αποεπίλεξε άχρηστα</string>
+    <string name="help_deselect_unnecessary_description">Άχρηστη κατηγορία: Xposed module, root manager, root-related apps, και γενικές εφαρμογές που ποτέ δεν ελέγχουν κατάσταση bootloader. Απαιτεί σύνδεση Internet.</string>
+    <string name="help_add_system_app">Πρόσθεσε Εφαρμογή Συστήματος</string>
+    <string name="help_add_system_app_description">Πρόσθεσε συγκεκριμένη εφαρμογή συστήματος στη λίστα εφαρμογών.</string>
+    <string name="help_set_keybox">Όρισε AOSP &amp; Έγκυρο Keybox</string>
+    <string name="help_set_keybox_description">Αντικατέστησε το tricky store keybox.xml. Το AOSP keybox θα αντικατασταθεί αν δεν υπάρχει έγκυρο keybox. Η επιλογή valid keybox απαιτεί σύνδεση Internet.</string>
+    <string name="help_set_custom_keybox">Όρισε Custom Keybox</string>
+    <string name="help_set_custom_keybox_description">Εισήγαγε keybox από τη συσκευή σου. Υποστηρίζεται μόνο αρχείο xml.</string>
+    <string name="help_set_security_patch">Όρισε Security Patch</string>
+    <string name="help_set_security_patch_description">Όρισε spoof για custom security patch. Η αυτόματη ρύθμιση χρησιμοποιεί το security patch από το PIF module. Άφησε κενό και αποθήκευσε για απενεργοποίηση αυτόματης ρύθμισης.</string>
+    <string name="help_set_verified_boot_hash">Όρισε Verified Boot Hash</string>
+    <string name="help_set_verified_boot_hash_description">Πάρε την τιμή verifiedBootHash από το Key Attestation Demo. Διόρθωσε την ανώμαλη κατάσταση εκκίνησης επαναφέροντας το ro.boot.vbmeta.digest.</string>
+    <!-- Update -->
+    <string name="update_update_available">Μια νέα έκδοση είναι έτοιμη</string>
+    <string name="update_redirect_to_release">πάτησε για να κατεβάσεις την τελευταία έκδοση</string>
+    <string name="update_changelog">Αλλαγές</string>
+    <string name="update_install">Εγκατάσταση</string>
+    <string name="update_reboot">Επανεκκίνηση</string>
+    <!-- Search -->
+    <string name="search_bar_search_placeholder">Αναζήτηση</string>
+    <!-- Functional Button -->
+    <string name="functional_button_save_and_update_button">Αποθήκευση</string>
+    <string name="functional_button_uninstall_webui">Απεγκατάσταση WebUI</string>
+    <!-- Loading -->
+    <string name="loading_loading">Φόρτωση...</string>
+    <!-- Menu -->
+    <string name="menu_refresh">Ανανέωση</string>
+    <string name="menu_select_all">Επίλεξε Όλα</string>
+    <string name="menu_deselect_all">Αποεπίλεξε Όλα</string>
+    <string name="menu_select_denylist">Επίλεξε από DenyList</string>
+    <string name="menu_deselect_unnecessary">Αποεπίλεξε Άχρηστα</string>
+    <string name="menu_add_system_app">Πρόσθεσε Εφαρμογή Συστήματος</string>
+    <string name="menu_set_aosp_keybox">Όρισε AOSP Keybox</string>
+    <string name="menu_set_unknown_keybox">Όρισε Unknown Keybox</string>
+    <string name="menu_set_valid_keybox">Όρισε Valid Keybox</string>
+    <string name="menu_set_custom_keybox">Όρισε Custom Keybox</string>
+    <string name="menu_set_verified_boot_hash">Όρισε Verified Boot Hash</string>
+    <string name="menu_set_security_patch">Όρισε Security Patch</string>
+    <string name="menu_about">Σχετικά</string>
+    <string name="menu_shortcut">Δημιουργία συντόμευσης στην αρχική οθόνη</string>
+    <!-- Boot Hash -->
+    <string name="boot_hash_title">Boot Hash</string>
+    <string name="boot_hash_input_placeholder">Επικόλλησε εδώ το Verified Boot Hash σου</string>
+    <string name="boot_hash_save_button">Αποθήκευση</string>
+    <!-- About -->
+    <string name="about_module_name_line1">Tricky Addon</string>
+    <string name="about_module_name_line2">Ενημέρωση Λίστας Στόχων</string>
+    <string name="about_by">από</string>
+    <string name="about_telegram_channel">Κανάλι Telegram</string>
+    <string name="about_disclaimer">Αυτό το module δεν είναι μέρος του Tricky Store module. ΜΗΝ αναφέρετε προβλήματα στο Tricky Store αν προκύψουν.</string>
+    <string name="about_acknowledgment">Ευχαριστίες</string>
+    <!-- Prompt -->
+    <string name="prompt_no_internet">Έλεγξε τη σύνδεση Internet</string>
+    <string name="prompt_aosp_key_set">Το AOSP keybox ορίστηκε με επιτυχία</string>
+    <string name="prompt_key_set_error">Αποτυχία ενημέρωσης keybox</string>
+    <string name="prompt_unknown_key_set">Το Unknown keybox ορίστηκε με επιτυχία</string>
+    <string name="prompt_valid_key_set">Το Valid keybox ορίστηκε με επιτυχία</string>
+    <string name="prompt_no_valid">Δεν βρέθηκε έγκυρο keybox.</string>
+    <string name="prompt_boot_hash_set">Το Verified Boot Hash αποθηκεύτηκε με επιτυχία</string>
+    <string name="prompt_boot_hash_set_error">Αποτυχία ενημέρωσης Verified Boot Hash</string>
+    <string name="prompt_saved_target">Η ρύθμιση αποθηκεύτηκε στο target.txt</string>
+    <string name="prompt_save_error">Αποτυχία αποθήκευσης ρύθμισης</string>
+    <string name="prompt_uninstall_prompt">Το WebUI θα αφαιρεθεί μετά την επανεκκίνηση</string>
+    <string name="prompt_uninstall_failed">Αποτυχία απεγκατάστασης WebUI</string>
+    <string name="prompt_new_update">Υπάρχει νέα ενημέρωση!</string>
+    <string name="prompt_downloading">Κατεβάζω νέα ενημέρωση...</string>
+    <string name="prompt_downloaded">Η λήψη ολοκληρώθηκε</string>
+    <string name="prompt_download_fail">Αποτυχία λήψης ενημέρωσης</string>
+    <string name="prompt_installing">Εγκαθιστώ ενημέρωση...</string>
+    <string name="prompt_installed">Εγκαταστάθηκε με επιτυχία, επανεκκίνηση τώρα.</string>
+    <string name="prompt_install_fail">Αποτυχία εγκατάστασης, κάνε ενημέρωση χειροκίνητα</string>
+    <string name="prompt_rebooting">Επανεκκίνηση...</string>
+    <string name="prompt_reboot_fail">Αποτυχία επανεκκίνησης, κάνε επανεκκίνηση χειροκίνητα</string>
+    <string name="prompt_custom_key_set">Το Custom keybox ορίστηκε με επιτυχία</string>
+    <string name="prompt_custom_key_set_error">Αποτυχία ορισμού custom keybox</string>
+    <string name="prompt_no_file_selected">Δεν επιλέχθηκε αρχείο</string>
+    <string name="prompt_system_app_not_found">Η εφαρμογή συστήματος δεν βρέθηκε</string>
+    <string name="prompt_system_app_error">Αποτυχία προσθήκης εφαρμογής συστήματος</string>
+    <string name="prompt_shortcut_created">Η συντόμευση στην αρχική οθόνη δημιουργήθηκε</string>
+    <!-- Security Patch -->
+    <string name="security_patch_title">Security Patch</string>
+    <string name="security_patch_advanced_mode">Προχωρημένο</string>
+    <string name="security_patch_get_date">Πάρε Ημερομηνία Security Patch</string>
+    <string name="security_patch_auto">Αυτόματο</string>
+    <string name="security_patch_save">Αποθήκευση</string>
+    <string name="security_patch_fetching">Φόρτωση...</string>
+    <string name="security_patch_fetched">Ολοκληρώθηκε</string>
+    <string name="security_patch_get_failed">Αποτυχία λήψης ημερομηνίας security patch</string>
+    <string name="security_patch_auto_success">Η αυτόματη ρύθμιση ενεργοποιήθηκε με επιτυχία</string>
+    <string name="security_patch_auto_failed">Αποτυχία ενεργοποίησης αυτόματης ρύθμισης</string>
+    <string name="security_patch_save_success">Το security patch αποθηκεύτηκε με επιτυχία</string>
+    <string name="security_patch_save_failed">Αποτυχία αποθήκευσης security patch</string>
+    <string name="security_patch_value_empty">Η ρύθμιση security patch είναι απενεργοποιημένη</string>
+    <string name="security_patch_invalid_all">Μη έγκυρη μορφή</string>
+    <string name="security_patch_invalid_boot">Μη έγκυρη μορφή boot</string>
+    <string name="security_patch_invalid_system">Μη έγκυρη μορφή system</string>
+    <string name="security_patch_invalid_vendor">Μη έγκυρη μορφή vendor</string>
+    <!-- Add System App -->
+    <string name="add_system_app_title">Πρόσθεσε Εφαρμογή Συστήματος</string>
+    <string name="add_system_app_add">Πρόσθεσε</string>
+    <string name="add_system_app_current_list">Τρέχουσα Λίστα Εφαρμογών Συστήματος</string>
+    <!-- Uninstall confirmation -->
+    <string name="confirmation_uninstall_title">Επιβεβαίωση Απεγκατάστασης;</string>
+    <string name="confirmation_uninstall_message">Είσαι σίγουρος ότι θέλεις να απεγκαταστήσεις το Tricky Addon;</string>
+    <string name="confirmation_uninstall_cancel">Άκυρο</string>
+    <string name="confirmation_uninstall_confirm">Επιβεβαίωση</string>
+</resources>

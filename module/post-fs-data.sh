@@ -17,3 +17,10 @@ fi
 
 [ -L "$TS/webroot" ] && rm -f "$TS/webroot"
 [ -L "$TS/action.sh" ] && rm -f "$TS/action.sh"
+
+# detect root manager
+[ "$APATCH" = "true" ] && MANAGER="APATCH"
+[ "$KSU" = "true" ] && MANAGER="KSU"
+[ ! "$APATCH" = "true" ] && [ ! "$KSU" = "true" ] && MANAGER="MAGISK"
+echo "MANAGER=$MANAGER" > "$MODPATH/common/manager.sh"
+chmod 755 "$MODPATH/common/manager.sh"

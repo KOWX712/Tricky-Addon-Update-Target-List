@@ -1,4 +1,4 @@
-import { applyRippleEffect } from './main.js';
+import { applyRippleEffect, linkRedirect } from './main.js';
 
 const languageButton = document.querySelector('.language-button');
 const languageMenu = document.querySelector('.language-menu');
@@ -6,7 +6,30 @@ const languageOptions = document.querySelectorAll('.language-option');
 const languageOverlay = document.getElementById('language-overlay');
 
 export let translations = {};
-let availableLanguages = ['en-US'];
+let baseTranslations = {};
+let availableLanguages = ['en'];
+let languageNames = {};
+
+/**
+ * Parse XML translation file into a JavaScript object
+ * @param {string} xmlText - The XML content as string
+ * @returns {Object} - Parsed translations
+ */
+function parseTranslationsXML(xmlText) {
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+    const strings = xmlDoc.getElementsByTagName('string');
+    const translations = {};
+
+    for (let i = 0; i < strings.length; i++) {
+        const string = strings[i];
+        const name = string.getAttribute('name');
+        const value = string.textContent;
+        translations[name] = value;
+    }
+
+    return translations;
+}
 
 /**
  * Detect user's default language
@@ -18,10 +41,10 @@ async function detectUserLanguage() {
 
     try {
         // Fetch available languages
-        const availableResponse = await fetch('locales/available-lang.json');
+        const availableResponse = await fetch('locales/languages.json');
         const availableData = await availableResponse.json();
-        availableLanguages = availableData.languages;
-        await generateLanguageMenu();
+        availableLanguages = Object.keys(availableData);
+        languageNames = availableData;
 
         // Fetch preferred language
         const prefered_language_code = localStorage.getItem('trickyAddonLanguage');
@@ -34,11 +57,12 @@ async function detectUserLanguage() {
         } else if (availableLanguages.includes(langCode)) {
             return langCode;
         } else {
-            return 'en-US';
+            localStorage.removeItem('trickyAddonLanguage');
+            return 'en';
         }
     } catch (error) {
         console.error('Error detecting user language:', error);
-        return 'en-US';
+        return 'en';
     }
 }
 
@@ -47,9 +71,29 @@ async function detectUserLanguage() {
  * @returns {Promise<void>}
  */
 export async function loadTranslations() {
-    const lang = await detectUserLanguage();
-    const response = await fetch(`locales/${lang}.json`);
-    translations = await response.json();
+    try {
+        // load Englsih as base translations
+        const baseResponse = await fetch('locales/strings/en.xml');
+        const baseXML = await baseResponse.text();
+        baseTranslations = parseTranslationsXML(baseXML);
+
+        // load user's language if available
+        const lang = await detectUserLanguage();
+        if (lang !== 'en') {
+            const response = await fetch(`locales/strings/${lang}.xml`);
+            const userXML = await response.text();
+            const userTranslations = parseTranslationsXML(userXML);
+            translations = { ...baseTranslations, ...userTranslations };
+        } else {
+            translations = baseTranslations;
+        }
+
+        // Generate language menu
+        await generateLanguageMenu();
+    } catch (error) {
+        console.error('Error loading translations:', error);
+        translations = baseTranslations;
+    }
     applyTranslations();
     applyRippleEffect();
 }
@@ -60,8 +104,8 @@ export async function loadTranslations() {
  */
 function applyTranslations() {
     document.querySelectorAll("[data-i18n]").forEach((el) => {
-        const keyString = el.getAttribute("data-i18n");
-        const translation = keyString.split('.').reduce((acc, key) => acc && acc[key], translations);
+        const key = el.getAttribute("data-i18n");
+        const translation = translations[key];
         if (translation) {
             if (el.hasAttribute("placeholder")) {
                 el.setAttribute("placeholder", translation);
@@ -114,7 +158,7 @@ export function setupLanguageMenu() {
             localStorage.setItem('trickyAddonLanguage', lang);
             closeLanguageMenu();
             await new Promise(resolve => setTimeout(resolve, 200));
-            loadTranslations(lang);
+            loadTranslations();
         }
     });
 }
@@ -134,18 +178,12 @@ async function generateLanguageMenu() {
     defaultButton.setAttribute('data-i18n', 'system_default');
     languageMenu.appendChild(defaultButton);
 
-    const languagePromises = availableLanguages.map(async (lang) => {
-        try {
-            const response = await fetch(`locales/${lang}.json`);
-            const data = await response.json();
-            return { lang, name: data.language || lang };
-        } catch (error) {
-            console.error(`Error fetching language name for ${lang}:`, error);
-            return { lang, name: lang };
-        }
-    });
-    const languageData = await Promise.all(languagePromises);
-    const sortedLanguages = languageData.sort((a, b) => a.name.localeCompare(b.name));
+    // Create and sort language entries
+    const sortedLanguages = Object.entries(languageNames)
+        .map(([lang, name]) => ({ lang, name }))
+        .sort((a, b) => a.name.localeCompare(b.name));
+
+    // Add language buttons
     sortedLanguages.forEach(({ lang, name }) => {
         const button = document.createElement('button');
         button.classList.add('language-option', 'ripple-element');
@@ -153,4 +191,11 @@ async function generateLanguageMenu() {
         button.textContent = name;
         languageMenu.appendChild(button);
     });
+
+    // Add translation guide button
+    const moreBtn = document.createElement('button');
+    moreBtn.classList.add('language-option', 'ripple-element');
+    moreBtn.textContent = translations.more_language;
+    moreBtn.onclick = () => linkRedirect('https://github.com/KOWX712/Tricky-Addon-Update-Target-List/blob/main/module/webui/locales/GUIDE.md');
+    languageMenu.appendChild(moreBtn);
 }

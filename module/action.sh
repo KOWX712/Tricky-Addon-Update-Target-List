@@ -49,12 +49,9 @@ get_webui() {
 if pm path io.github.a13e300.ksuwebui >/dev/null 2>&1; then
     echo "- Launching WebUI in KSUWebUIStandalone..."
     am start -n "io.github.a13e300.ksuwebui/.WebUIActivity" -e id "tricky_store"
-elif pm path com.dergoogler.mmrl >/dev/null 2>&1; then
-    echo "- Launching WebUI in MMRL WebUI..."
-    am start -n "com.dergoogler.mmrl/.ui.activity.webui.WebUIActivity" -e MOD_ID "tricky_store"
-elif pm path com.dergoogler.mmrl.webuix > /dev/null 2>&1; then
+elif pm path com.dergoogler.mmrl.wx > /dev/null 2>&1; then
     echo "- Launching WebUI in WebUI X..."
-    am start -n "com.dergoogler.mmrl.webuix/.ui.activity.webui.WebUIActivity" -e MOD_ID "tricky_store"
+    am start -n "com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity" -e MOD_ID "tricky_store"
 else
     echo "! No WebUI app found"
     get_webui

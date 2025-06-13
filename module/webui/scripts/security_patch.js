@@ -32,7 +32,7 @@ function handleSecurityPatch(mode, value = null) {
             rm -f /data/adb/tricky_store/security_patch.txt || true
         `).then(({ errno }) => {
             const result = errno === 0;
-            showPrompt(result ? 'security_patch.value_empty' : 'security_patch.save_failed', result);
+            showPrompt(result ? 'security_patch_value_empty' : 'security_patch_save_failed', result);
             return result;
         });
     } else if (mode === 'manual') {
@@ -42,7 +42,7 @@ function handleSecurityPatch(mode, value = null) {
             chmod 644 /data/adb/tricky_store/security_patch.txt
         `).then(({ errno }) => {
             const result = errno === 0;
-            showPrompt(result ? 'security_patch.save_success' : 'security_patch.save_failed', result);
+            showPrompt(result ? 'security_patch_save_success' : 'security_patch_save_failed', result);
             return result;
         });
     }
@@ -221,7 +221,7 @@ export function securityPatch() {
         const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--security-patch']);
         output.stdout.on('data', (data) => {
             if (data.includes("not set")) {
-                showPrompt('security_patch.auto_failed', false);
+                showPrompt('security_patch_auto_failed', false);
             }
         });
         output.on('exit', (code) => {
@@ -234,9 +234,9 @@ export function securityPatch() {
                 vendorPatchInput.value = '';
 
                 checkAdvanced(false);
-                showPrompt('security_patch.auto_success');
+                showPrompt('security_patch_auto_success');
             } else {
-                showPrompt('security_patch.auto_failed', false);
+                showPrompt('security_patch_auto_failed', false);
             }
             hideSecurityPatchDialog();
             loadCurrentConfig();
@@ -255,7 +255,7 @@ export function securityPatch() {
                 return;
             }
             if (!isValid8Digit(allValue)) {
-                showPrompt('security_patch.invalid_all', false);
+                showPrompt('security_patch_invalid_all', false);
                 return;
             }
             const value = `all=${allValue}`;
@@ -280,17 +280,17 @@ export function securityPatch() {
             }
 
             if (systemValue && !isValid6Digit(systemValue)) {
-                showPrompt('security_patch.invalid_system', false);
+                showPrompt('security_patch_invalid_system', false);
                 return;
             }
 
             if (bootValue && !isValidDateFormat(bootValue)) {
-                showPrompt('security_patch.invalid_boot', false);
+                showPrompt('security_patch_invalid_boot', false);
                 return;
             }
 
             if (vendorValue && !isValidDateFormat(vendorValue)) {
-                showPrompt('security_patch.invalid_vendor', false);
+                showPrompt('security_patch_invalid_vendor', false);
                 return;
             }
 
@@ -312,10 +312,11 @@ export function securityPatch() {
 
     // Get button
     getButton.addEventListener('click', async () => {
-        showPrompt('security_patch.fetching');
-        const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--get-security-patch']);
+        showPrompt('security_patch_fetching');
+        const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--get-security-patch'],
+                        { cwd: "/data/local/tmp", env: { PATH: "/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk:/data/data/com.termux/files/usr/bin:$PATH" }});
         output.stdout.on('data', (data) => {
-            showPrompt('security_patch.fetched', true, 1000);
+            showPrompt('security_patch_fetched', true, 1000);
             checkAdvanced(true);
 
             allPatchInput.value = data.replace(/-/g, '');
@@ -323,8 +324,15 @@ export function securityPatch() {
             bootPatchInput.value = data;
             vendorPatchInput.value = data;
         });
+        output.stderr.on('data', (data) => {
+            if (data.includes("failed")) {
+                showPrompt('security_patch_unable_to_connect', false);
+            } else {
+                console.error(data);
+            }
+        });
         output.on('exit', (code) => {
-            if (code !== 0) showPrompt('security_patch.get_failed', false);
+            if (code !== 0) showPrompt('security_patch_get_failed', false);
         });
     });
 }

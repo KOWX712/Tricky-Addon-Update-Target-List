@@ -55,14 +55,14 @@ export async function updateCheck() {
         const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--check-update', `${remoteVersionCode}`]);
         output.stdout.on('data', (data) => {
             if (data.includes("update")) {
-                showPrompt("prompt.new_update", true, 1500);
+                showPrompt("prompt_new_update", true, 1500);
                 updateCard.style.display = "flex";
                 setupUpdateMenu();
             }
         });
     } catch (error) {
         console.error("Error fetching JSON or executing command:", error);
-        showPrompt("prompt.no_internet", false);
+        showPrompt("prompt_no_internet", false);
         noConnection.style.display = "flex";
     }
 }
@@ -123,7 +123,7 @@ function setupUpdateMenu() {
             rebootButton.style.display = "flex";
             openUpdateMenu();
         } else if (stdout.trim().includes("noChangelog")) {
-            showPrompt("prompt.downloading");
+            showPrompt("prompt_downloading");
             await downloadFile(changelogURL, "changelog.md");
             renderChangelog();
             openUpdateMenu();
@@ -138,10 +138,10 @@ function setupUpdateMenu() {
             download.on('exit', (code) => {
                 downloading = false;
                 if (code === 0) {
-                    showPrompt("prompt.downloaded");
+                    showPrompt("prompt_downloaded");
                     installButton.style.display = "flex";
                 } else {
-                    showPrompt("prompt.download_fail", false);
+                    showPrompt("prompt_download_fail", false);
                 }
             });
         } else {
@@ -159,19 +159,19 @@ function setupUpdateMenu() {
 
     // Install button
     installButton.addEventListener('click', async () => {
-        showPrompt("prompt.installing");
+        showPrompt("prompt_installing");
         const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--install-update'],
                         { env: { PATH: "$PATH:/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk" } });
         output.stderr.on('data', (data) => {
             console.error('Error during installation:', data);
-        })
+        });
         output.on('exit', (code) => {
             if (code === 0) {
-                showPrompt("prompt.installed");
+                showPrompt("prompt_installed");
                 installButton.style.display = "none";
                 rebootButton.style.display = "flex";
             } else {
-                showPrompt("prompt.install_fail", false);
+                showPrompt("prompt_install_fail", false);
             }
         });
     });
@@ -179,11 +179,11 @@ function setupUpdateMenu() {
     // Reboot button
     rebootButton.addEventListener('click', async () => {
         try {
-            showPrompt("prompt.rebooting");
+            showPrompt("prompt_rebooting");
             await new Promise(resolve => setTimeout(resolve, 1000));
             await exec("svc power reboot");
         } catch (error) {
-            showPrompt("prompt.reboot_fail", false);
+            showPrompt("prompt_reboot_fail", false);
             console.error('Fail to reboot:', error);
         }
     });

@@ -237,6 +237,10 @@ body {
     background-color: var(--btn-primary);
 }
 
+.blur-box {
+    backdrop-filter: blur(10px);
+}
+
 .ripple-element {
     position: relative;
     overflow: hidden;

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="system_default">System Default</string>
+    <string name="more_language">More</string>
+    <!-- Header -->
+    <string name="header_title">Tricky Addon</string>
+    <!-- Help Menu-->
+    <string name="help_help_instructions">Instructions</string>
+    <string name="help_save_and_update">Save</string>
+    <string name="help_save_and_update_description">Save current configure to target.txt.</string>
+    <string name="help_refresh">Refresh</string>
+    <string name="help_refresh_description">Refresh app list and exclude list.</string>
+    <string name="help_select_deselect">Select &amp; Deselect All</string>
+    <string name="help_select_description">Select or deselect all apps in the current interface.</string>
+    <string name="help_select_denylist">Select From DenyList</string>
+    <string name="help_select_denylist_description">Available in Magisk only, select apps that are in the DenyList. Recommended.</string>
+    <string name="help_deselect_unnecessary">Deselect Unnecessary</string>
+    <string name="help_deselect_unnecessary_description">Unnecessary category: Xposed module, root manager, root-related apps, and general apps that never check bootloader status. This option requires Internet connection.</string>
+    <string name="help_add_system_app">Add System App</string>
+    <string name="help_add_system_app_description">Add specific system app to app list.</string>
+    <string name="help_set_keybox">Set AOSP &amp; Valid Keybox</string>
+    <string name="help_set_keybox_description">Replace tricky store keybox.xml. AOSP keybox will be replaced if there\'s no more valid keybox. Valid keybox option requires Internet connection.</string>
+    <string name="help_set_custom_keybox">Set Custom Keybox</string>
+    <string name="help_set_custom_keybox_description">Import keybox from your device storage. Only support xml file.</string>
+    <string name="help_set_security_patch">Set Security Patch</string>
+    <string name="help_set_security_patch_description">Set custom security patch spoof. Auto config will use security patch from PIF module. Leave blank and save to disable auto config.</string>
+    <string name="help_set_verified_boot_hash">Set Verified Boot Hash</string>
+    <string name="help_set_verified_boot_hash_description">Get verifiedBootHash value from Key Attestation Demo. Fix abnormal boot state by resetting ro.boot.vbmeta.digest.</string>
+    <!-- Update -->
+    <string name="update_update_available">A new version is ready</string>
+    <string name="update_redirect_to_release">tap to download the latest version</string>
+    <string name="update_changelog">Changelog</string>
+    <string name="update_install">Install</string>
+    <string name="update_reboot">Reboot</string>
+    <!-- Search -->
+    <string name="search_bar_search_placeholder">Search</string>
+    <!-- Functional Button -->
+    <string name="functional_button_save_and_update_button">Save</string>
+    <string name="functional_button_uninstall_webui">Uninstall WebUI</string>
+    <!-- Loading -->
+    <string name="loading_loading">Loading...</string>
+    <!-- Menu -->
+    <string name="menu_refresh">Refresh</string>
+    <string name="menu_select_all">Select All</string>
+    <string name="menu_deselect_all">Deselect All</string>
+    <string name="menu_select_denylist">Select From DenyList</string>
+    <string name="menu_deselect_unnecessary">Deselect Unnecessary</string>
+    <string name="menu_add_system_app">Add System App</string>
+    <string name="menu_set_aosp_keybox">Set AOSP Keybox</string>
+    <string name="menu_set_unknown_keybox">Set Unknown Keybox</string>
+    <string name="menu_set_valid_keybox">Set Valid Keybox</string>
+    <string name="menu_set_custom_keybox">Set Custom Keybox</string>
+    <string name="menu_set_verified_boot_hash">Set Verified Boot Hash</string>
+    <string name="menu_set_security_patch">Set Security Patch</string>
+    <string name="menu_about">About</string>
+    <string name="menu_shortcut">Create home screen shortcut</string>
+    <!-- Boot Hash -->
+    <string name="boot_hash_title">Boot Hash</string>
+    <string name="boot_hash_input_placeholder">Paste your verified Boot Hash here</string>
+    <string name="boot_hash_save_button">Save</string>
+    <!-- About -->
+    <string name="about_module_name_line1">Tricky Addon</string>
+    <string name="about_module_name_line2">Update Target List</string>
+    <string name="about_by">by</string>
+    <string name="about_telegram_channel">Telegram Channel</string>
+    <string name="about_canary_update">Update to latest canary version</string>
+    <string name="about_disclaimer">This module is not a part of the Tricky Store module. DO NOT report any issues to Tricky Store if encountered.</string>
+    <string name="about_acknowledgment">Acknowledgment</string>
+    <!-- Prompt -->
+    <string name="prompt_no_internet">Please check your Internet connection</string>
+    <string name="prompt_aosp_key_set">AOSP keybox set successfully</string>
+    <string name="prompt_key_set_error">Failed to update keybox</string>
+    <string name="prompt_unknown_key_set">Unknown keybox set successfully</string>
+    <string name="prompt_valid_key_set">Valid keybox set successfully</string>
+    <string name="prompt_no_valid">No valid keybox found.</string>
+    <string name="prompt_boot_hash_set">Verified Boot Hash saved successfully</string>
+    <string name="prompt_boot_hash_set_error">Failed to update Verified Boot Hash</string>
+    <string name="prompt_saved_target">Config saved to target.txt</string>
+    <string name="prompt_save_error">Failed to save config</string>
+    <string name="prompt_uninstall_prompt">WebUI will be removed after reboot</string>
+    <string name="prompt_uninstall_failed">Failed to uninstall WebUI</string>
+    <string name="prompt_checking_update">Checking udpate...</string>
+    <string name="prompt_new_update">A new update is available!</string>
+    <string name="prompt_no_update">There are currently no updates available</string>
+    <string name="prompt_downloading">Downloading new update...</string>
+    <string name="prompt_downloaded">Download completed</string>
+    <string name="prompt_download_fail">Fail to download update</string>
+    <string name="prompt_installing">Installing update...</string>
+    <string name="prompt_installed">Installed successfully, reboot now.</string>
+    <string name="prompt_install_fail">Fail to install, please update manually</string>
+    <string name="prompt_rebooting">Rebooting...</string>
+    <string name="prompt_reboot_fail">Fail to reboot, please reboot manually</string>
+    <string name="prompt_custom_key_set">Custom keybox set successfully</string>
+    <string name="prompt_custom_key_set_error">Failed to set custom keybox</string>
+    <string name="prompt_no_file_selected">No file selected</string>
+    <string name="prompt_system_app_not_found">System app not found</string>
+    <string name="prompt_system_app_error">Failed to add system app</string>
+    <string name="prompt_shortcut_created">Home screen shortcut created</string>
+    <!-- Security Patch -->
+    <string name="security_patch_title">Security Patch</string>
+    <string name="security_patch_advanced_mode">Advanced</string>
+    <string name="security_patch_get_date">Get Security Patch Date</string>
+    <string name="security_patch_auto">Auto</string>
+    <string name="security_patch_save">Save</string>
+    <string name="security_patch_fetching">Fetching...</string>
+    <string name="security_patch_fetched">Done</string>
+    <string name="security_patch_get_failed">Failed to fetch security patch date</string>
+    <string name="security_patch_unable_to_connect">Unable to connect to source.android.com</string>
+    <string name="security_patch_auto_success">Auto config enabled successfully</string>
+    <string name="security_patch_auto_failed">Failed to enable auto config</string>
+    <string name="security_patch_save_success">Security patch saved successfully</string>
+    <string name="security_patch_save_failed">Failed to save security patch</string>
+    <string name="security_patch_value_empty">Security patch configuration is disabled</string>
+    <string name="security_patch_invalid_all">Invalid format</string>
+    <string name="security_patch_invalid_boot">Invalid boot format</string>
+    <string name="security_patch_invalid_system">Invalid system format</string>
+    <string name="security_patch_invalid_vendor">Invalid vendor format</string>
+    <!-- Add System App -->
+    <string name="add_system_app_title">Add System App</string>
+    <string name="add_system_app_add">Add</string>
+    <string name="add_system_app_current_list">Current System App List</string>
+    <!-- Uninstall confirmation -->
+    <string name="confirmation_uninstall_title">Confirm Uninstall?</string>
+    <string name="confirmation_uninstall_message">Are you sure you want to uninstall Tricky Addon</string>
+    <string name="confirmation_uninstall_cancel">Cancel</string>
+    <string name="confirmation_uninstall_confirm">Confirm</string>
+</resources>

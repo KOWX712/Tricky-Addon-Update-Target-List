@@ -19,7 +19,7 @@ const floatingBtn = document.querySelector('.floating-btn');
 export let basePath;
 export const appsWithExclamation = [];
 export const appsWithQuestion = [];
-const ADDITIONAL_APPS = [ "android", "com.google.android.gms", "io.github.vvb2060.keyattestation", "io.github.vvb2060.mahoshojo", "icu.nullptr.nativetest" ]; // Always keep default apps in target.txt
+const ADDITIONAL_APPS = []; // Deprecated
 
 // Variables
 let e = 0;
@@ -27,8 +27,12 @@ let isRefreshing = false;
 
 // Function to set basePath
 async function getBasePath() {
-    const { errno } = await exec('[ -d /data/adb/modules/.TA_utl ]');
-    basePath = errno === 0 ? "/data/adb/modules/.TA_utl" : "/data/adb/modules/TA_utl";
+    try {
+        const { errno } = await exec('[ -d /data/adb/modules/.TA_utl ]');
+        basePath = errno === 0 ? "/data/adb/modules/.TA_utl" : "/data/adb/modules/TA_utl";
+    } catch (error) {
+        console.error("Error getting base path:", error);
+    }
 }
 
 // Function to load the version from module.prop
@@ -85,8 +89,7 @@ function checkMagisk() {
 
 // Function to show the prompt with a success or error message
 export function showPrompt(key, isSuccess = true, duration = 3000) {
-    const message = key.split('.').reduce((acc, k) => acc && acc[k], translations) || key;
-    prompt.textContent = message;
+    prompt.textContent = translations[key];
     prompt.classList.toggle('error', !isSuccess);
     if (window.promptTimeout) {
         clearTimeout(window.promptTimeout);
@@ -140,10 +143,10 @@ document.getElementById("save").addEventListener("click", () => {
                 for (const app of appsWithQuestion) {
                     exec(`sed -i 's/^${app}$/${app}?/' /data/adb/tricky_store/target.txt`);
                 }
-                showPrompt("prompt.saved_target");
+                showPrompt("prompt_saved_target");
                 refreshAppList();
             } else {
-                showPrompt("prompt.save_error", false);
+                showPrompt("prompt_save_error", false);
             }
         });
 });
@@ -179,9 +182,9 @@ document.querySelector(".uninstall-container").addEventListener("click", () => {
         exec(`sh ${basePath}/common/get_extra.sh --uninstall`)
             .then(({ errno }) => {
                 if (errno === 0) {
-                    showPrompt("prompt.uninstall_prompt");
+                    showPrompt("prompt_uninstall_prompt");
                 } else {
-                    showPrompt("prompt.uninstall_failed", false);
+                    showPrompt("prompt_uninstall_failed", false);
                 }
             });
     })
@@ -192,6 +195,14 @@ function checkMMRL() {
     if (window.$tricky_store && Object.keys($tricky_store).length > 0) {
         // Set status bars theme based on device theme
         $tricky_store.setLightStatusBars(!window.matchMedia('(prefers-color-scheme: dark)').matches)
+
+        // Create home screen shortcut
+        const shortcutButton = document.getElementById('shortcut');
+        shortcutButton.style.display = 'flex';
+        shortcutButton.addEventListener('click', () => {
+            $tricky_store.createShortcut();
+            showPrompt("prompt_shortcut_created", true);
+        });
     }
 }
 
@@ -248,16 +259,26 @@ export function applyRippleEffect() {
                 ripple.style.animationDuration = `${duration}s`;
                 ripple.style.transition = `opacity ${duration}s ease`;
 
-                // Adaptive color
-                const computedStyle = window.getComputedStyle(element);
-                const bgColor = computedStyle.backgroundColor || "rgba(0, 0, 0, 0)";
+                // Get effective background color (traverse up if transparent)
+                const getEffectiveBackgroundColor = (el) => {
+                    while (el && el !== document.documentElement) {
+                        const bg = window.getComputedStyle(el).backgroundColor;
+                        if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") {
+                            return bg;
+                        }
+                        el = el.parentElement;
+                    }
+                    return "rgba(255, 255, 255, 1)";
+                };
+
+                const bgColor = getEffectiveBackgroundColor(element);
                 const isDarkColor = (color) => {
                     const rgb = color.match(/\d+/g);
                     if (!rgb) return false;
                     const [r, g, b] = rgb.map(Number);
                     return (r * 0.299 + g * 0.587 + b * 0.114) < 96; // Luma formula
                 };
-                ripple.style.backgroundColor = isDarkColor(bgColor) ? "rgba(255, 255, 255, 0.2)" : "";
+                ripple.style.backgroundColor = isDarkColor(bgColor) ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.2)";
 
                 // Append ripple if not scrolling
                 await new Promise(resolve => setTimeout(resolve, 80));

@@ -1,4 +1,4 @@
-import { exec, toast } from './assets/kernelsu.js';
+import { exec, spawn, toast } from './assets/kernelsu.js';
 import { basePath, showPrompt, applyRippleEffect, refreshAppList } from './main.js';
 
 // Function to check or uncheck all app
@@ -115,7 +115,7 @@ export async function setupSystemAppMenu() {
             exec(`pm list packages -s | grep -q ${packageName}`)
                 .then(({ errno }) => {
                     if (errno !== 0) {
-                        showPrompt("prompt.system_app_not_found", false);
+                        showPrompt("prompt_system_app_not_found", false);
                     } else {
                         exec(`
                             touch "/data/adb/tricky_store/system_app"
@@ -193,7 +193,7 @@ KB_EOF
 async function aospkb() {
     const { stdout } = await exec(`xxd -r -p ${basePath}/common/.default | base64 -d`);
     const result = setKeybox(stdout);
-    showPrompt(result ? "prompt.aosp_key_set" : "prompt.key_set_error", result);
+    showPrompt(result ? "prompt_aosp_key_set" : "prompt_key_set_error", result);
 }
 
 // aosp kb eventlistener
@@ -203,10 +203,9 @@ document.getElementById("aospkb").addEventListener("click", async () => aospkb()
  * Fetch encoded keybox and decode
  * @param {String} link - link to fetch
  * @param {String} fallbackLink - fallback link
- * @param {Boolean} valid - fetching valid kb or not, default = false
  * @returns {void}
  */
-async function fetchkb(link, fallbackLink, valid = false) {
+async function fetchkb(link, fallbackLink) {
     fetch(link)
         .then(response => {
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -221,7 +220,7 @@ async function fetchkb(link, fallbackLink, valid = false) {
         })
         .then(data => {
             if (!data.trim()) {
-                showPrompt(valid ? "prompt.no_valid" : "prompt.key_set_error", false);
+                showPrompt("prompt_no_valid", false);
                 return;
             }
             try {
@@ -230,7 +229,7 @@ async function fetchkb(link, fallbackLink, valid = false) {
                 const source = atob(decodedHex);
                 const result = setKeybox(source);
                 if (result) {
-                    showPrompt(valid ? "prompt.valid_key_set" : "prompt.unknown_key_set");
+                    showPrompt("prompt_valid_key_set");
                 } else {
                     throw new Error("Failed to copy valid keybox");
                 }
@@ -239,24 +238,24 @@ async function fetchkb(link, fallbackLink, valid = false) {
             }
         })
         .catch(async error => {
-            showPrompt("prompt.no_internet", false);
+            showPrompt("prompt_no_internet", false);
         });
 }
 
 // unkown kb eventlistener
 document.getElementById("devicekb").addEventListener("click", async () => {
-    fetchkb(
-        "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/bot/.device",
-        "https://raw.gitmirror.com/KOWX712/Tricky-Addon-Update-Target-List/bot/.device"
-    )
+    const output = spawn("sh", [`${basePath}/common/get_extra.sh`, "--unknown-kb"],
+                    { cwd: "/data/local/tmp", env: { PATH: `$PATH:${basePath}/common`, OPENSSL_CONF: "/dev/null" }});
+    output.on('exit', (code) => {
+        showPrompt(code === 0 ? "prompt_unknown_key_set" : "prompt_key_set_error", code === 0);
+    });
 });
 
 // valid kb eventlistener
 document.getElementById("validkb").addEventListener("click", () => {
     fetchkb(
         "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/.extra",
-        "https://raw.gitmirror.com/KOWX712/Tricky-Addon-Update-Target-List/main/.extra",
-        true
+        "https://raw.gitmirror.com/KOWX712/Tricky-Addon-Update-Target-List/main/.extra"
     )
 });
 
@@ -339,7 +338,7 @@ async function listFiles(path, skipAnimation = false) {
                 } else {
                     const { stdout } = await exec(`cat "${item.path}"`);
                     const result = setKeybox(stdout);
-                    showPrompt(result ? "prompt.custom_key_set" : "prompt.custom_key_set_error", result);
+                    showPrompt(result ? "prompt_custom_key_set" : "prompt_custom_key_set_error", result);
                     closeCustomKeyboxSelector();
                 }
             });

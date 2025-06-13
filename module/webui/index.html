@@ -25,7 +25,7 @@
 <body>
     <!-- Header -->
     <div class="header">
-        <div id="title" data-i18n="header.title"></div><span id="module-version"></span>
+        <div id="title" data-i18n="header_title"></div><span id="module-version"></span>
         <button id="help-button" class="help-button">
             <svg xmlns="http://www.w3.org/2000/svg" height="21px" viewBox="0 -1060 960 990" width="21px" fill="#6E6E6E"><path d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" /></svg>
         </button>
@@ -38,53 +38,54 @@
                     <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px"><path d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-155.5t86-127Q252-817 325-848.5T480-880q83 0 155.5 31.5t127 86q54.5 54.5 86 127T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80Zm0-82q26-36 45-75t31-83H404q12 44 31 83t45 75Zm-104-16q-18-33-31.5-68.5T322-320H204q29 50 72.5 87t99.5 55Zm208 0q56-18 99.5-55t72.5-87H638q-9 38-22.5 73.5T584-178ZM170-400h136q-3-20-4.5-39.5T300-480q0-21 1.5-40.5T306-560H170q-5 20-7.5 39.5T160-480q0 21 2.5 40.5T170-400Zm216 0h188q3-20 4.5-39.5T580-480q0-21-1.5-40.5T574-560H386q-3 20-4.5 39.5T380-480q0 21 1.5 40.5T386-400Zm268 0h136q5-20 7.5-39.5T800-480q0-21-2.5-40.5T790-560H654q3 20 4.5 39.5T660-480q0 21-1.5 40.5T654-400Zm-16-240h118q-29-50-72.5-87T584-782q18 33 31.5 68.5T638-640Zm-234 0h152q-12-44-31-83t-45-75q-26 36-45 75t-31 83Zm-200 0h118q9-38 22.5-73.5T376-782q-56 18-99.5 55T204-640Z"/></svg>
                 </i>
             </button>
-            <div class="language-menu"></div>
+            <div class="language-menu blur-box"></div>
             <div id="language-overlay" class="language-overlay"></div>
         </div>
     </div>
 
     <!-- Loading Element -->
-    <div class="loading" data-i18n="loading.loading"></div>
+    <div class="loading" data-i18n="loading_loading"></div>
 
     <!-- Prompt Element -->
     <div id="prompt" class="prompt"></div>
 
     <!-- Floating Button Element -->
     <div class="floating-card">
-        <button class="floating-btn ripple-element" id="save" data-i18n="functional_button.save_and_update_button"></button>
+        <button class="floating-btn ripple-element" id="save" data-i18n="functional_button_save_and_update_button"></button>
     </div>
 
     <!-- Menu Options -->
     <div class="search-menu-container">
-        <div class="search-card ripple-element">
+        <div class="search-card ripple-element blur-box">
             <span class="search-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" height="19px" viewBox="0 -960 960 960" width="24px" fill="#6E6E6E"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" /></svg>
             </span>
-            <input type="text" class="search-input" id="search" placeholder="" data-i18n="search_bar.search_placeholder">
+            <input type="text" class="search-input" id="search" placeholder="" data-i18n="search_bar_search_placeholder">
             <button class="clear-btn" id="clear-btn">&#x2715;</button>
         </div>
         <div class="menu">
             <input type="checkbox" id="menu-toggle" class="menu-toggle">
-            <label for="menu-toggle" class="menu-button ripple-element" id="menu-button">
+            <label for="menu-toggle" class="menu-button ripple-element blur-box" id="menu-button">
                 <i class="menu-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -1060 960 960" width="24px"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
                 </i>
             </label>
-            <div id="menu-options" class="menu-options">
+            <div id="menu-options" class="menu-options blur-box">
                 <ul>
-                    <li class="ripple-element" id="refresh" data-i18n="menu.refresh"></li>
-                    <li class="ripple-element" id="select-all" data-i18n="menu.select_all"></li>
-                    <li class="ripple-element" id="deselect-all" data-i18n="menu.deselect_all"></li>
-                    <li class="ripple-element" id="select-denylist" data-i18n="menu.select_denylist"></li>
-                    <li class="ripple-element" id="deselect-unnecessary" data-i18n="menu.deselect_unnecessary"></li>
-                    <li class="ripple-element" id="add-system-app" data-i18n="menu.add_system_app"></li>
-                    <li class="ripple-element" id="aospkb" data-i18n="menu.set_aosp_keybox"></li>
-                    <li class="ripple-element" id="devicekb" data-i18n="menu.set_unknow_keybox"></li>
-                    <li class="ripple-element" id="validkb" data-i18n="menu.set_valid_keybox"></li>
-                    <li class="ripple-element" id="customkb" data-i18n="menu.set_custom_keybox"></li>
-                    <li class="ripple-element" id="boot-hash" data-i18n="menu.set_verified_boot_hash"></li>
-                    <li class="ripple-element" id="security-patch" data-i18n="menu.set_security_patch"></li>
-                    <li class="ripple-element" id="about" data-i18n="menu.about"></li>
+                    <li class="ripple-element" id="refresh" data-i18n="menu_refresh"></li>
+                    <li class="ripple-element" id="select-all" data-i18n="menu_select_all"></li>
+                    <li class="ripple-element" id="deselect-all" data-i18n="menu_deselect_all"></li>
+                    <li class="ripple-element" id="select-denylist" data-i18n="menu_select_denylist"></li>
+                    <li class="ripple-element" id="deselect-unnecessary" data-i18n="menu_deselect_unnecessary"></li>
+                    <li class="ripple-element" id="add-system-app" data-i18n="menu_add_system_app"></li>
+                    <li class="ripple-element" id="aospkb" data-i18n="menu_set_aosp_keybox"></li>
+                    <li class="ripple-element" id="devicekb" data-i18n="menu_set_unknown_keybox"></li>
+                    <li class="ripple-element" id="validkb" data-i18n="menu_set_valid_keybox"></li>
+                    <li class="ripple-element" id="customkb" data-i18n="menu_set_custom_keybox"></li>
+                    <li class="ripple-element" id="boot-hash" data-i18n="menu_set_verified_boot_hash"></li>
+                    <li class="ripple-element" id="security-patch" data-i18n="menu_set_security_patch"></li>
+                    <li class="ripple-element" id="shortcut" data-i18n="menu_shortcut"></li>
+                    <li class="ripple-element" id="about" data-i18n="menu_about"></li>
                 </ul>
             </div>
         </div>
@@ -94,8 +95,8 @@
     <!-- Applist Display -->
     <div id="apps-list"></div>
     <div class="update-card ripple-element" id="update-card">
-        <p id="update-available" data-i18n="update.update_available"></p>
-        <p id="redirect-to-release" data-i18n="update.redirect_to_release"></p>
+        <p id="update-available" data-i18n="update_update_available"></p>
+        <p id="redirect-to-release" data-i18n="update_redirect_to_release"></p>
     </div>
     <div class="mode-overlay"></div>
     <template id="app-template">
@@ -144,49 +145,49 @@
 
     <!-- Help Overlay -->
     <div id="help-overlay" class="help-overlay overlay">
-        <div class="help-menu overlay-content">
+        <div class="help-menu overlay-content blur-box">
             <button id="close-help" class="close-btn">&#x2715;</button>
             <div class="help-content">
-                <div class="help-content-header" data-i18n="help.help_instructions"></div>
+                <div class="help-content-header" data-i18n="help_help_instructions"></div>
                 <div class="instruction">
-                    <strong data-i18n="help.save_and_update"></strong>
-                    <p data-i18n="help.save_and_update_description"></p>
+                    <strong data-i18n="help_save_and_update"></strong>
+                    <p data-i18n="help_save_and_update_description"></p>
                 </div>
                 <div class="instruction">
-                    <strong data-i18n="help.refresh"></strong>
-                    <p data-i18n="help.refresh_description"></p>
+                    <strong data-i18n="help_refresh"></strong>
+                    <p data-i18n="help_refresh_description"></p>
                 </div>
                 <div class="instruction">
-                    <strong data-i18n="help.select_deselect"></strong>
-                    <p data-i18n="help.select_description"></p>
+                    <strong data-i18n="help_select_deselect"></strong>
+                    <p data-i18n="help_select_description"></p>
                 </div>
                 <div class="instruction">
-                    <strong data-i18n="help.select_denylist"></strong>
-                    <p data-i18n="help.select_denylist_description"></p>
+                    <strong data-i18n="help_select_denylist"></strong>
+                    <p data-i18n="help_select_denylist_description"></p>
                 </div>
                 <div class="instruction">
-                    <strong data-i18n="help.deselect_unnecessary"></strong>
-                    <p data-i18n="help.deselect_unnecessary_description"></p>
+                    <strong data-i18n="help_deselect_unnecessary"></strong>
+                    <p data-i18n="help_deselect_unnecessary_description"></p>
                 </div>
                 <div class="instruction">
-                    <strong data-i18n="help.add_system_app"></strong>
-                    <p data-i18n="help.add_system_app_description"></p>
+                    <strong data-i18n="help_add_system_app"></strong>
+                    <p data-i18n="help_add_system_app_description"></p>
                 </div>
                 <div class="instruction">
-                    <strong data-i18n="help.set_keybox"></strong>
-                    <p data-i18n="help.set_keybox_description"></p>
+                    <strong data-i18n="help_set_keybox"></strong>
+                    <p data-i18n="help_set_keybox_description"></p>
                 </div>
                 <div class="instruction">
-                    <strong data-i18n="help.set_custom_keybox"></strong>
-                    <p data-i18n="help.set_custom_keybox_description"></p>
+                    <strong data-i18n="help_set_custom_keybox"></strong>
+                    <p data-i18n="help_set_custom_keybox_description"></p>
                 </div>
                 <div class="instruction">
-                    <strong data-i18n="help.set_security_patch"></strong>
-                    <p data-i18n="help.set_security_patch_description"></p>
+                    <strong data-i18n="help_set_security_patch"></strong>
+                    <p data-i18n="help_set_security_patch_description"></p>
                 </div>
                 <div class="instruction">
-                    <strong data-i18n="help.set_verified_boot_hash"></strong>
-                    <p data-i18n="help.set_verified_boot_hash_description"></p>
+                    <strong data-i18n="help_set_verified_boot_hash"></strong>
+                    <p data-i18n="help_set_verified_boot_hash_description"></p>
                 </div>
             </div>
         </div>
@@ -194,35 +195,39 @@
 
     <!-- BootHash Input Overlay -->
     <div id="boot-hash-overlay" class="boot-hash-overlay overlay">
-        <div id="boot-hash-card" class="boot-hash-card overlay-content">
-            <div class="boot-hash-title" data-i18n="boot_hash.title"></div>
-            <textarea id="boot-hash-input" class="boot-hash-input" placeholder="Paste your verified Boot Hash here" data-i18n="boot_hash.input_placeholder" oninput="window.trimInput(this)"></textarea>
-            <button id="boot-hash-save-button" class="boot-hash-save-button ripple-element" data-i18n="boot_hash.save_button"></button>
+        <div id="boot-hash-card" class="boot-hash-card overlay-content blur-box">
+            <div class="boot-hash-title" data-i18n="boot_hash_title"></div>
+            <textarea id="boot-hash-input" class="boot-hash-input" placeholder="Paste your verified Boot Hash here" data-i18n="boot_hash_input_placeholder" oninput="window.trimInput(this)"></textarea>
+            <button id="boot-hash-save-button" class="boot-hash-save-button ripple-element" data-i18n="boot_hash_save_button"></button>
         </div>
     </div>
 
     <!-- About Overlay -->
     <div id="about-overlay" class="about-overlay overlay">
-        <div class="about-menu overlay-content">
+        <div class="about-menu overlay-content blur-box">
             <button id="close-about" class="close-btn">&#x2715;</button>
             <div class="about-title">
-                <p id="module_name_line1" data-i18n="about.module_name_line1"></p>
-                <p id="module_name_line2" data-i18n="about.module_name_line2"></p>
-                <p><span id="authored" data-i18n="about.by"></span> KOWX712</p>
+                <p id="module_name_line1" data-i18n="about_module_name_line1"></p>
+                <p id="module_name_line2" data-i18n="about_module_name_line2"></p>
+                <p><span id="authored" data-i18n="about_by"></span> KOWX712</p>
             </div>
-            <div id="disclaimer" data-i18n="about.disclaimer"></div>
+            <div id="disclaimer" data-i18n="about_disclaimer"></div>
             <div class="link">
                 <i class="link-icon ripple-element" id="telegram" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 496 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M248 8C111 8 0 119 0 256S111 504 248 504 496 393 496 256 385 8 248 8zM363 176.7c-3.7 39.2-19.9 134.4-28.1 178.3-3.5 18.6-10.3 24.8-16.9 25.4-14.4 1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25 5.3-39.5 3.7-3.8 67.1-61.5 68.3-66.7 .2-.7 .3-3.1-1.2-4.4s-3.6-.8-5.1-.5q-3.3 .7-104.6 69.1-14.8 10.2-26.9 9.9c-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3q.8-6.7 18.5-13.7 108.4-47.2 144.6-62.3c68.9-28.6 83.2-33.6 92.5-33.8 2.1 0 6.6 .5 9.6 2.9a10.5 10.5 0 0 1 3.5 6.7A43.8 43.8 0 0 1 363 176.7z"/></svg>
-                    <span id="link-text" data-i18n="about.telegram_channel"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M248 8C111 8 0 119 0 256S111 504 248 504 496 393 496 256 385 8 248 8zM363 176.7c-3.7 39.2-19.9 134.4-28.1 178.3-3.5 18.6-10.3 24.8-16.9 25.4-14.4 1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25 5.3-39.5 3.7-3.8 67.1-61.5 68.3-66.7 .2-.7 .3-3.1-1.2-4.4s-3.6-.8-5.1-.5q-3.3 .7-104.6 69.1-14.8 10.2-26.9 9.9c-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3q.8-6.7 18.5-13.7 108.4-47.2 144.6-62.3c68.9-28.6 83.2-33.6 92.5-33.8 2.1 0 6.6 .5 9.6 2.9a10.5 10.5 0 0 1 3.5 6.7A43.8 43.8 0 0 1 363 176.7z"/></svg>
+                    <span id="link-text" data-i18n="about_telegram_channel"></span>
                 </i>
                 <i class="link-icon ripple-element" id="github" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 496 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-                    <span id="link-text" data-i18n="about.github"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+                    <span id="link-text">GitHub</span>
+                </i>
+                <i class="link-icon ripple-element" id="canary" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"><path d="M200-120q-51 0-72.5-45.5T138-250l222-270v-240h-40q-17 0-28.5-11.5T280-800q0-17 11.5-28.5T320-840h320q17 0 28.5 11.5T680-800q0 17-11.5 28.5T640-760h-40v240l222 270q32 39 10.5 84.5T760-120H200Zm0-80h560L520-492v-268h-80v268L200-200Zm280-280Z"/></svg>
+                    <span id="link-text" data-i18n="about_canary_update"></span>
                 </i>
             </div>
             <div class="acknowledgment">
-                <p id="acknowledgment" data-i18n="about.acknowledgment"></p>
+                <p id="acknowledgment" data-i18n="about_acknowledgment"></p>
                 <p>j-hc/zygisk-detach: WebUI template</p>
                 <p>markedjs/marked: Markdown Support</p>
             </div>
@@ -231,14 +236,14 @@
 
     <!-- Update Overlay -->
     <div class="update-overlay overlay">
-        <div class="update-menu overlay-content">
+        <div class="update-menu overlay-content blur-box">
             <button id="close-update" class="close-btn">&#x2715;</button>
             <div class="update-content">
-                <h1 data-i18n="update.changelog"></h1>
+                <h1 data-i18n="update_changelog"></h1>
                 <div class="changelog"></div>
                 <div class="update-button-container">
-                    <button class="install ripple-element" data-i18n="update.install"></button>
-                    <button class="reboot ripple-element" data-i18n="update.reboot"></button>
+                    <button class="install ripple-element" data-i18n="update_install"></button>
+                    <button class="reboot ripple-element" data-i18n="update_reboot"></button>
                 </div>
             </div>
         </div>
@@ -246,7 +251,7 @@
 
     <!-- File Selector Overlay -->
     <div class="file-selector-overlay overlay">
-        <div class="file-selector overlay-content">
+        <div class="file-selector overlay-content blur-box">
             <div class="file-selector-header">
                 <button class="back-button">
                     <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="40 -1050 900 960" width="22px"><path d="M400-93.85 13.85-480 400-866.15l56.77 56.77L127.38-480l329.39 329.38L400-93.85Z"/></svg>
@@ -260,8 +265,8 @@
 
     <!-- Security Patch Overlay -->
     <div id="security-patch-overlay" class="security-patch-overlay overlay">
-        <div id="security-patch-card" class="security-patch-card overlay-content">
-            <div class="security-patch-header" data-i18n="security_patch.title"></div>
+        <div id="security-patch-card" class="security-patch-card overlay-content blur-box">
+            <div class="security-patch-header" data-i18n="security_patch_title"></div>
             <div class="security-patch-content">
                 <div id="normal-mode-inputs" class="normal-mode-inputs">
                     <div class="input-group">
@@ -294,14 +299,14 @@
                             </svg>
                         </span>
                     </label>
-                    <label for="advanced-mode" data-i18n="security_patch.advanced_mode"></label>
+                    <label for="advanced-mode" data-i18n="security_patch_advanced_mode"></label>
                 </div>
 
                 <div>
-                    <button id="get-patch" class="get-button ripple-element" data-i18n="security_patch.get_date"></button>
+                    <button id="get-patch" class="get-button ripple-element" data-i18n="security_patch_get_date"></button>
                     <div class="button-container">
-                        <button id="auto-config" class="auto-button ripple-element" data-i18n="security_patch.auto"></button>
-                        <button id="save-patch" class="save-button ripple-element" data-i18n="security_patch.save"></button>
+                        <button id="auto-config" class="auto-button ripple-element" data-i18n="security_patch_auto"></button>
+                        <button id="save-patch" class="save-button ripple-element" data-i18n="security_patch_save"></button>
                     </div>
                 </div>
             </div>
@@ -310,12 +315,12 @@
 
     <!-- Add System App Overlay -->
     <div id="add-system-app-overlay" class="add-system-app-overlay overlay">
-        <div id="add-system-app-card" class="add-system-app-card overlay-content">
-            <div class="add-system-app-title" data-i18n="add_system_app.title"></div>
+        <div id="add-system-app-card" class="add-system-app-card overlay-content blur-box">
+            <div class="add-system-app-title" data-i18n="add_system_app_title"></div>
             <div class="add-system-app-content">
                 <input type="text" id="system-app-input" placeholder="com.example.app" autocapitalize="none">
-                <button id="add-system-app-button" class="add-system-app-button ripple-element" data-i18n="add_system_app.add"></button>
-                <h3 class="current-system-app-list" data-i18n="add_system_app.current_list"></h3>
+                <button id="add-system-app-button" class="add-system-app-button ripple-element" data-i18n="add_system_app_add"></button>
+                <h3 class="current-system-app-list" data-i18n="add_system_app_current_list"></h3>
                 <div class="current-system-app-list-content"></div>
             </div>
         </div>
@@ -323,12 +328,12 @@
 
     <!-- Uninstall Confirmation Overlay -->
     <div class="uninstall-confirmation-overlay overlay" id="uninstall-confirmation-overlay">
-        <div class="uninstall-confirmation overlay-content">
-            <div class="uninstall-confirmation-title" data-i18n="confirmation.uninstall_title"></div>
-            <p data-i18n="confirmation.uninstall_message"></p>
+        <div class="uninstall-confirmation overlay-content blur-box">
+            <div class="uninstall-confirmation-title" data-i18n="confirmation_uninstall_title"></div>
+            <p data-i18n="confirmation_uninstall_message"></p>
             <div class="uninstall-confirmation-button-container">
-                <button class="uninstall-confirmation-button ripple-element" id="cancel-uninstall" data-i18n="confirmation.uninstall_cancel"></button>
-                <button class="uninstall-confirmation-button ripple-element" id="confirm-uninstall" data-i18n="confirmation.uninstall_confirm"></button>
+                <button class="uninstall-confirmation-button ripple-element" id="cancel-uninstall" data-i18n="confirmation_uninstall_cancel"></button>
+                <button class="uninstall-confirmation-button ripple-element" id="confirm-uninstall" data-i18n="confirmation_uninstall_confirm"></button>
             </div>
         </div>
     </div>
@@ -337,7 +342,7 @@
     <div class="footer">
         <div class="uninstall-container ripple-element hidden-uninstall">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" /></svg>
-            <span data-i18n="functional_button.uninstall_webui"></span>
+            <span data-i18n="functional_button_uninstall_webui"></span>
         </div>
     </div>
 </body>

@@ -7,6 +7,17 @@ export const appListContainer = document.getElementById('apps-list');
 export const updateCard = document.getElementById('update-card');
 
 let targetList = [];
+let wrapInputStream;
+
+if (typeof $packageManager !== 'undefined') {
+    import("https://mui.kernelsu.org/internal/assets/ext/wrapInputStream.mjs")
+        .then(module => {
+            wrapInputStream = module.wrapInputStream;
+        })
+        .catch(err => {
+            console.error("Failed to load wrapInputStream:", err);
+        });
+}
 
 // Fetch and render applist
 export async function fetchAppList() {
@@ -44,6 +55,13 @@ export async function fetchAppList() {
                     packageName
                 };
             }
+            if (typeof $packageManager !== 'undefined') {
+                const info = $packageManager.getApplicationInfo(packageName, 0, 0);
+                return {
+                    appName: info.getLabel(),
+                    packageName
+                };
+            }
             return new Promise((resolve) => {
                 const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--appname', packageName],
                                 { env: { PATH: `$PATH:${basePath}/common:/data/data/com.termux/files/usr/bin` } });
@@ -75,24 +93,43 @@ function renderAppList(data) {
         return (a.appName || "").localeCompare(b.appName || "");
     });
 
-    // Render
+    // Clear container
     appListContainer.innerHTML = "";
-    sortedApps.forEach(({ appName, packageName }) => {
+    loadingIndicator.style.display = "none";
+    hideFloatingBtn(false);
+    if (updateCard) appListContainer.appendChild(updateCard);
+
+    // Append app
+    const appendApps = (index) => {
+        if (index >= sortedApps.length) {
+            document.querySelector('.uninstall-container').classList.remove('hidden-uninstall');
+            toggleableCheckbox();
+            setupRadioButtonListeners();
+            setupModeMenu();
+            updateCheckboxColor();
+            applyRippleEffect();
+            if (typeof $packageManager !== 'undefined') {
+                setupIconIntersectionObserver();
+            }
+            return;
+        }
+
+        const { appName, packageName } = sortedApps[index];
         const appElement = document.importNode(appTemplate, true);
         const contentElement = appElement.querySelector(".content");
         contentElement.setAttribute("data-package", packageName);
-    
+
         // Set unique names for radio button groups
         const radioButtons = appElement.querySelectorAll('input[type="radio"]');
         radioButtons.forEach((radio) => {
             radio.name = `mode-radio-${packageName}`;
         });
-    
+
         // Preselect the radio button based on the package name
         const generateRadio = appElement.querySelector('#generate-mode');
         const hackRadio = appElement.querySelector('#hack-mode');
         const normalRadio = appElement.querySelector('#normal-mode');
-    
+
         if (appsWithExclamation.includes(packageName)) {
             generateRadio.checked = true;
         } else if (appsWithQuestion.includes(packageName)) {
@@ -100,9 +137,13 @@ function renderAppList(data) {
         } else {
             normalRadio.checked = true;
         }
-    
+
         const nameElement = appElement.querySelector(".name");
         nameElement.innerHTML = `
+            <div class="app-icon-container" style="display:${typeof $packageManager !== 'undefined' ? 'flex' : 'none'};">
+                <div class="loader" data-package="${packageName}"></div>
+                <img src="" class="app-icon" data-package="${packageName}" />
+            </div>
             <div class="app-info">
                 <div class="app-name"><strong>${appName}</strong></div>
                 <div class="package-name">${packageName}</div>
@@ -111,19 +152,76 @@ function renderAppList(data) {
         const checkbox = appElement.querySelector(".checkbox");
         checkbox.checked = targetList.includes(packageName);
         appListContainer.appendChild(appElement);
+        appendApps(index + 1);
+    };
+
+    appendApps(0);
+}
+
+/**
+ * Sets up an IntersectionObserver to load app icons when they enter the viewport
+ */
+function setupIconIntersectionObserver() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const container = entry.target;
+                const packageName = container.querySelector('.app-icon').getAttribute('data-package');
+                if (packageName) {
+                    loadIcons(packageName);
+                    observer.unobserve(container);
+                }
+            }
+        });
+    }, {
+        rootMargin: '100px',
+        threshold: 0.1
     });
 
-    loadingIndicator.style.display = "none";
-    hideFloatingBtn(false);
-    document.querySelector('.uninstall-container').classList.remove('hidden-uninstall');
-    toggleableCheckbox();
-    if (appListContainer.firstChild !== updateCard) {
-        appListContainer.insertBefore(updateCard, appListContainer.firstChild);
+    const iconContainers = document.querySelectorAll('.app-icon-container');
+    iconContainers.forEach(container => {
+        observer.observe(container);
+    });
+}
+
+const iconCache = new Map();
+
+/**
+ * Load all app icons asynchronously after UI is rendered
+ * @param {Array<string>} packageName - package names to load icons for
+ */
+function loadIcons(packageName) {
+    const imgElement = document.querySelector(`.app-icon[data-package="${packageName}"]`);
+    const loader = document.querySelector(`.loader[data-package="${packageName}"]`);
+
+    if (iconCache.has(packageName)) {
+        imgElement.src = iconCache.get(packageName);
+        loader.style.display = 'none';
+        imgElement.style.opacity = '1';
+    } else {
+        const stream = $packageManager.getApplicationIcon(packageName, 0, 0);
+        wrapInputStream(stream)
+            .then(r =>  r.arrayBuffer())
+            .then(buffer => {
+                const base64 = 'data:image/png;base64,' + arrayBufferToBase64(buffer);
+                iconCache.set(packageName, base64);
+                imgElement.src = base64;
+                loader.style.display = 'none';
+                imgElement.style.opacity = '1';
+            })
     }
-    setupRadioButtonListeners();
-    setupModeMenu();
-    updateCheckboxColor();
-    applyRippleEffect();
+}
+
+/**
+ * convert array buffer to base 64
+ * @param {string} buffer 
+ * @returns {string}
+ */
+function arrayBufferToBase64(buffer) {
+    const uint8Array = new Uint8Array(buffer);
+    let binary = '';
+    uint8Array.forEach(byte => binary += String.fromCharCode(byte));
+    return btoa(binary);
 }
 
 // Function to save app with ! and ? then process target list

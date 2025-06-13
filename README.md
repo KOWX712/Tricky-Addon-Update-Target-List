@@ -35,7 +35,7 @@ Configure Tricky Store target.txt with KSU WebUI.
 | Periodically add all app to target.txt                                                                                                                                       |   ❌    |
 
 ## Localization
-- Read [Translation Guide](https://github.com/KOWX712/Tricky-Addon-Update-Target-List/blob/main/module/webui/locales/A-translate.md)
+- Read [Translation Guide](https://github.com/KOWX712/Tricky-Addon-Update-Target-List/blob/main/module/webui/locales/GUIDE.md)
 
 ## Acknowledgement
 - [j-hc/zygisk-detach](https://github.com/j-hc/zygisk-detach) - KSU WebUI template
