@@ -131,13 +131,15 @@ set_security_patch() {
     TODAY=$(date +%Y%m%d)
     if [ -n "$formatted_security_patch" ] && [ "$TODAY" -lt "$security_patch_after_1y" ]; then
         TS_version=$(grep "versionCode=" "/data/adb/modules/tricky_store/module.prop" | cut -d'=' -f2)
-        if [ "$TS_version" -lt 158 ]; then
-            resetprop ro.vendor.build.security_patch "$security_patch"
-            resetprop ro.build.version.security_patch "$security_patch"
-        else
+        # Official TrickyStore which supports custom security patch
+        if [ "$TS_version" -ge 158 ]; then
             SECURITY_PATCH_FILE="/data/adb/tricky_store/security_patch.txt"
             printf "system=prop\nboot=%s\nvendor=%s\n" "$security_patch" "$security_patch" > "$SECURITY_PATCH_FILE"
             chmod 644 "$SECURITY_PATCH_FILE"
+        # Other
+        else
+            resetprop ro.vendor.build.security_patch "$security_patch"
+            resetprop ro.build.version.security_patch "$security_patch"
         fi
     else
         echo "not set"
