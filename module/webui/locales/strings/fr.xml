@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="system_default">Langage système</string>
+    <string name="more_language">Plus</string>
     <!-- Header -->
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
@@ -62,6 +63,7 @@
     <string name="about_module_name_line2">Mettre à jour la liste cible</string>
     <string name="about_by">par</string>
     <string name="about_telegram_channel">Canal Telegram</string>
+    <string name="about_canary_update">Mettre à jour vers la dernière version canary</string>
     <string name="about_disclaimer">Ce module ne fait pas partie du module Tricky Store. NE signalez PAS de problèmes à Tricky Store en cas d&apos;erreur.</string>
     <string name="about_acknowledgment">Remerciements</string>
     <!-- Prompt -->
@@ -77,7 +79,9 @@
     <string name="prompt_save_error">Échec de l&apos;enregistrement de la configuration</string>
     <string name="prompt_uninstall_prompt">La WebUI sera supprimée après le redémarrage</string>
     <string name="prompt_uninstall_failed">Échec de la désinstallation de la WebUI</string>
+    <string name="prompt_checking_update">Vérification de la mise à jour...</string>
     <string name="prompt_new_update">Une nouvelle mise à jour est disponible !</string>
+    <string name="prompt_no_update">Il aucune mise à jour disponible pour le moment</string>
     <string name="prompt_downloading">Téléchargement de la mise à jour…</string>
     <string name="prompt_downloaded">Téléchargement terminé</string>
     <string name="prompt_download_fail">Échec du téléchargement de la mise à jour</string>
@@ -101,6 +105,7 @@
     <string name="security_patch_fetching">Récupération…</string>
     <string name="security_patch_fetched">Terminé</string>
     <string name="security_patch_get_failed">Échec de la récupération de la date du patch de sécurité</string>
+    <string name="security_patch_unable_to_connect">Impossible de se connecter à source.android.com</string>
     <string name="security_patch_auto_success">Configuration automatique activée avec succès</string>
     <string name="security_patch_auto_failed">Échec de l&apos;activation de la configuration automatique</string>
     <string name="security_patch_save_success">Patch de sécurité enregistré avec succès</string>
