@@ -268,6 +268,7 @@
         <div id="security-patch-card" class="security-patch-card overlay-content blur-box">
             <div class="security-patch-header" data-i18n="security_patch_title"></div>
             <div class="security-patch-content">
+                <!-- Usual input -->
                 <div id="normal-mode-inputs" class="normal-mode-inputs">
                     <div class="input-group">
                         <label id="security_patch-all">All</label>
@@ -275,6 +276,7 @@
                     </div>
                 </div>
 
+                <!-- Advanced input -->
                 <div id="advanced-mode-inputs" class="advanced-mode-inputs hidden">
                     <div class="input-group">
                         <label id="security_patch-system">System</label>
@@ -282,14 +284,27 @@
                     </div>
                     <div class="input-group">
                         <label id="security_patch-boot">Boot</label>
-                        <input type="text" id="boot-patch" placeholder="2025-01-01" autocapitalize="none" oninput="formatDate(this, 'boot')" maxlength="10">
+                        <input type="text" id="boot-patch" placeholder="2025-01-01" autocapitalize="none" oninput="formatDate(this)" maxlength="10">
                     </div>
                     <div class="input-group">
                         <label id="security_patch-vendor">Vendor</label>
-                        <input type="text" id="vendor-patch" placeholder="2025-01-01" autocapitalize="none" oninput="formatDate(this, 'vendor')" maxlength="10">
+                        <input type="text" id="vendor-patch" placeholder="2025-01-01" autocapitalize="none" oninput="formatDate(this)" maxlength="10">
                     </div>
                 </div>
 
+                <!-- James' fork input -->
+                <div id="james-mode-inputs" class="normal-mode-inputs hidden">
+                    <div class="input-group">
+                        <label id="security_patch-james">Security Patch</label>
+                        <input type="text" id="james-patch" placeholder="2025-01-01" autocapitalize="none" oninput="formatDate(this)" maxlength="10">
+                    </div>
+                    <div class="input-group">
+                        <label id="os-james">OS Version</label>
+                        <input type="text" id="james-os" placeholder="34" maxlength="2" autocapitalize="none">
+                    </div>
+                </div>
+
+                <!-- Advanced Toggle -->
                 <div class="advanced-toggle">
                     <input type="checkbox" class="checkbox" id="advanced-mode" />
                     <label for="advanced-mode" class="custom-checkbox">

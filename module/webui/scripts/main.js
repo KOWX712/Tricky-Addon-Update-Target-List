@@ -68,13 +68,23 @@ function checkTrickyStoreVersion() {
     const securityPatchElement = document.getElementById('security-patch');
     exec(`
         TS_version=$(grep "versionCode=" "/data/adb/modules/tricky_store/module.prop" | cut -d'=' -f2)
-        [ "$TS_version" -ge 158 ]
-    `).then(({ errno }) => {
-        if (errno === 0) {
+        if grep -q "James" "/data/adb/modules/tricky_store/module.prop"; then
+            echo 0
+        elif [ "$TS_version" -ge 158 ]; then
+            echo 0
+        else
+            echo $TS_version
+        fi
+    `).then(({ stdout }) => {
+        if (stdout.trim() === "0") {
             securityPatchElement.style.display = "flex";
         } else {
-            console.log("Tricky Store version is lower than 158, or fail to check Tricky store version.");
+            console.log("Tricky Store version:", stdout.trim());
         }
+    }).catch(error => {
+        // debug usage
+        console.error("Error checking Tricky Store version:", error);
+        securityPatchElement.style.display = "flex";
     });
 }
 

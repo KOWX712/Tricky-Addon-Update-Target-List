@@ -1,15 +1,21 @@
 import { exec, spawn } from './assets/kernelsu.js';
 import { basePath, showPrompt } from './main.js';
 
+let jamesFork = false;
+
 const overlay = document.getElementById('security-patch-overlay');
 const overlayContent = document.querySelector('.security-patch-card');
+const advancedToggleElement = document.querySelector('.advanced-toggle');
 const advancedToggle = document.getElementById('advanced-mode');
 const normalInputs = document.getElementById('normal-mode-inputs');
 const advancedInputs = document.getElementById('advanced-mode-inputs');
+const jamesInputs = document.getElementById('james-mode-inputs');
 const allPatchInput = document.getElementById('all-patch');
 const bootPatchInput = document.getElementById('boot-patch');
 const systemPatchInput = document.getElementById('system-patch');
 const vendorPatchInput = document.getElementById('vendor-patch');
+const jamesPatchInput = document.getElementById('james-patch');
+const jamesOsInput = document.getElementById('james-os');
 const getButton = document.getElementById('get-patch');
 const autoButton = document.getElementById('auto-config');
 const saveButton = document.getElementById('save-patch');
@@ -24,22 +30,27 @@ const hideSecurityPatchDialog = () => {
     }, 200);
 }
 
-// Function to handle security patch operation
+/**
+ * Save the security patch configuration to file
+ * @param {string} mode - 'disable', 'manual'
+ * @param {string} value - The security patch value to save, if mode is 'manual'.
+ */
 function handleSecurityPatch(mode, value = null) {
     if (mode === 'disable') {
         exec(`
             rm -f /data/adb/tricky_store/security_patch_auto_config || true
             rm -f /data/adb/tricky_store/security_patch.txt || true
+            rm -f /data/adb/tricky_store/devconfig.toml || true
         `).then(({ errno }) => {
-            const result = errno === 0;
-            showPrompt(result ? 'security_patch_value_empty' : 'security_patch_save_failed', result);
-            return result;
+            showPrompt('security_patch_value_empty');
+            return errno === 0;
         });
     } else if (mode === 'manual') {
+        const configFile = jamesFork ? '/data/adb/tricky_store/devconfig.toml' : '/data/adb/tricky_store/security_patch.txt';
         exec(`
             rm -f /data/adb/tricky_store/security_patch_auto_config || true
-            echo "${value}" > /data/adb/tricky_store/security_patch.txt
-            chmod 644 /data/adb/tricky_store/security_patch.txt
+            echo "${value}" > ${configFile}
+            chmod 644 ${configFile}
         `).then(({ errno }) => {
             const result = errno === 0;
             showPrompt(result ? 'security_patch_save_success' : 'security_patch_save_failed', result);
@@ -53,7 +64,22 @@ async function loadCurrentConfig() {
     let allValue, systemValue, bootValue, vendorValue;
     try {
         const { errno } = await exec('[ -f /data/adb/tricky_store/security_patch_auto_config ]');
-        if (errno === 0) {
+        if (jamesFork) {
+            const { stdout } = await exec('cat /data/adb/tricky_store/devconfig.toml');
+            if (stdout.trim() !== '') {
+                const lines = stdout.split('\n');
+                for (const line of lines) {
+                    if (line.startsWith('securityPatch =')) {
+                        const jamesPatchValue = line.split('=')[1].trim().replace(/"/g, '');
+                        if (jamesPatchValue !== '') jamesPatchInput.value = jamesPatchValue;
+                    }
+                    if (line.startsWith('osVersion =')) {
+                        const jamesOsVersionValue = line.split('=')[1].trim().replace(/"/g, '');
+                        if (jamesOsVersionValue !== '') jamesOsInput.value = jamesOsVersionValue;
+                    }
+                }
+            }
+        } else if (errno === 0) {
             allValue = null;
             systemValue = null;
             bootValue = null;
@@ -62,8 +88,8 @@ async function loadCurrentConfig() {
             // Read values from tricky_store if manual mode
             const { stdout } = await exec('cat /data/adb/tricky_store/security_patch.txt');
             if (stdout.trim() !== '') {
-                const trickyLines = stdout.split('\n');
-                for (const line of trickyLines) {
+                const lines = stdout.split('\n');
+                for (const line of lines) {
                     if (line.startsWith('all=')) {
                         allValue = line.split('=')[1] || null;
                         if (allValue !== null) allPatchInput.value = allValue;
@@ -101,6 +127,7 @@ async function loadCurrentConfig() {
 
 // Function to check advanced mode
 function checkAdvanced(shouldCheck) {
+    if (jamesFork) return;
     if (shouldCheck) {
         advancedToggle.checked = true;
         normalInputs.classList.add('hidden');
@@ -113,7 +140,7 @@ function checkAdvanced(shouldCheck) {
 }
 
 // Unified date formatting function
-window.formatDate = function(input, type) {
+window.formatDate = function(input) {
     let value = input.value.replace(/-/g, '');
     let formatted = value.slice(0, 4);
 
@@ -191,6 +218,15 @@ function isValid8Digit(value) {
 
 // Initialize event listeners
 export function securityPatch() {
+    exec(`grep -q "James" "/data/adb/modules/tricky_store/module.prop"`)
+        .then(({ errno }) => {
+            if (errno === 0) {
+                jamesFork = true;
+                advancedToggleElement.style.display = 'none';
+                normalInputs.classList.add('hidden');
+                jamesInputs.classList.remove('hidden');
+            }
+        });
     document.getElementById("security-patch").addEventListener("click", () => {
         setTimeout(() => {
             document.body.classList.add("no-scroll");
@@ -245,7 +281,22 @@ export function securityPatch() {
 
     // Save button
     saveButton.addEventListener('click', async () => {
-        if (!advancedToggle.checked) {
+        if (jamesFork) {
+            const securityPatchValue = jamesPatchInput.value.trim();
+            const osVersionValue = jamesOsInput.value.trim();
+
+            if (!securityPatchValue) handleSecurityPatch('disable');
+            if (!securityPatchValue && !osVersionValue) {
+                hideSecurityPatchDialog();
+                return;
+            }
+
+            const config = [
+                securityPatchValue ? `securityPatch = \\"${securityPatchValue}\\"` : '',
+                osVersionValue ? `osVersion = ${osVersionValue}` : ''
+            ].filter(Boolean).join('\n');
+            handleSecurityPatch('manual', config);
+        } else if (!advancedToggle.checked) {
             // Normal mode validation
             const allValue = allPatchInput.value.trim();
             if (!allValue) {
@@ -298,9 +349,8 @@ export function securityPatch() {
                 systemValue ? `system=${systemValue}` : '',
                 bootValue ? `boot=${bootValue}` : '',
                 vendorValue ? `vendor=${vendorValue}` : ''
-            ].filter(Boolean);
-            const value = config.filter(Boolean).join('\n');
-            const result = handleSecurityPatch('manual', value);
+            ].filter(Boolean).join('\n');
+            const result = handleSecurityPatch('manual', config);
             if (result) {
                 // Reset inputs
                 allPatchInput.value = '';
@@ -323,6 +373,7 @@ export function securityPatch() {
             systemPatchInput.value = 'prop';
             bootPatchInput.value = data;
             vendorPatchInput.value = data;
+            jamesPatchInput.value = data;
         });
         output.stderr.on('data', (data) => {
             if (data.includes("failed")) {

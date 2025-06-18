@@ -136,6 +136,14 @@ set_security_patch() {
             SECURITY_PATCH_FILE="/data/adb/tricky_store/security_patch.txt"
             printf "system=prop\nboot=%s\nvendor=%s\n" "$security_patch" "$security_patch" > "$SECURITY_PATCH_FILE"
             chmod 644 "$SECURITY_PATCH_FILE"
+        # James Clef's TrickyStore fork (GitHub@qwq233/TrickyStore)
+        elif grep -q "James" "/data/adb/modules/tricky_store/module.prop"; then
+            SECURITY_PATCH_FILE="/data/adb/tricky_store/devconfig.toml"
+            if grep -q "^securityPatch" "$SECURITY_PATCH_FILE"; then
+                sed -i "s/^securityPatch .*/securityPatch = \"$security_patch\"/" "$SECURITY_PATCH_FILE"
+            else
+                echo "securityPatch = \"$security_patch\"" >> "$SECURITY_PATCH_FILE"
+            fi
         # Other
         else
             resetprop ro.vendor.build.security_patch "$security_patch"
