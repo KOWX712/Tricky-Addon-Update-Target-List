@@ -3,7 +3,6 @@
     <string name="system_default">Systemstandard</string>
     <string name="more_language">Mehr</string>
     <!-- Header -->
-    <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">Anleitung</string>
     <string name="help_save_and_update">Speichern</string>
@@ -54,12 +53,11 @@
     <string name="menu_set_security_patch">Sicherheitspatch setzen</string>
     <string name="menu_about">Über</string>
     <string name="menu_shortcut">Verknüpfung auf dem Startbildschirm erstellen</string>
-    <!-- Boot-Hash -->
+    <!-- Boot Hash -->
     <string name="boot_hash_title">Boot-Hash</string>
     <string name="boot_hash_input_placeholder">Füge hier deinen verifizierten Boot-Hash ein</string>
     <string name="boot_hash_save_button">Speichern</string>
     <!-- About -->
-    <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Ziel-Liste aktualisieren</string>
     <string name="about_by">von</string>
     <string name="about_telegram_channel">Telegram-Kanal</string>

@@ -17,13 +17,13 @@
     <string name="help_deselect_unnecessary_description">Ненужные категории: модули Xposed, менеджеры root, приложения, связанные с root, и общие приложения, которые никогда не проверяют статус загрузчика. Этот параметр требует подключения к интернету.</string>
     <string name="help_add_system_app">Добавить системное приложение</string>
     <string name="help_add_system_app_description">Добавить конкретное системное приложение в список приложений.</string>
-    <string name="help_set_keybox">Установить AOSP и действующий Keybox</string>
+    <string name="help_set_keybox">Установить AOSP &amp; и действующий keybox</string>
     <string name="help_set_keybox_description">Замените tricky store keybox.xml. Опция с действующим keybox требует подключения к интернету.</string>
-    <string name="help_set_custom_keybox">Установить пользовательский Keybox</string>
-    <string name="help_set_custom_keybox_description">Импортируйте файл keybox из вашего устройства в хранилище. Поддерживаются только xml файлы.</string>
-    <string name="help_set_security_patch">Установить Security Patch</string>
+    <string name="help_set_custom_keybox">Установить свой keybox</string>
+    <string name="help_set_custom_keybox_description">Импортируйте файл keybox из памяти своего устройства. Поддерживаются только файлы XML.</string>
+    <string name="help_set_security_patch">Установить патч безопасности</string>
     <string name="help_set_security_patch_description">Установите пользовательский патч безопасности. Автоматическая настройка будет использовать патч безопасности из модуля PIF. Оставьте пустым и сохраните, чтобы отключить автоматическую настройку.</string>
-    <string name="help_set_verified_boot_hash">Установить Verified Boot Hash</string>
+    <string name="help_set_verified_boot_hash">Установить verified boot hash</string>
     <string name="help_set_verified_boot_hash_description">Получите значение verifiedBootHash из Key Attestation Demo. Исправьте аномальное состояние загрузки, сбросив ro.boot.vbmeta.digest.</string>
     <!-- Update -->
     <string name="update_update_available">Доступна новая версия</string>
@@ -45,12 +45,12 @@
     <string name="menu_select_denylist">Выбрать из DenyList</string>
     <string name="menu_deselect_unnecessary">Отменить выбор ненужных</string>
     <string name="menu_add_system_app">Добавить системное приложение</string>
-    <string name="menu_set_aosp_keybox">Установить AOSP Keybox</string>
-    <string name="menu_set_unknown_keybox">Установить неизвестный Keybox</string>
+    <string name="menu_set_aosp_keybox">Установить keybox AOSP</string>
+    <string name="menu_set_unknown_keybox">Установить неизвестный keybox</string>
     <string name="menu_set_valid_keybox">Установить действующий Keybox</string>
-    <string name="menu_set_custom_keybox">Установить пользовательский Keybox</string>
-    <string name="menu_set_verified_boot_hash">Установить Verified Boot Hash</string>
-    <string name="menu_set_security_patch">Установить Security Patch</string>
+    <string name="menu_set_custom_keybox">Установить свой keybox</string>
+    <string name="menu_set_verified_boot_hash">Установить verified boot hash</string>
+    <string name="menu_set_security_patch">Установить security patch</string>
     <string name="menu_about">О программе</string>
     <string name="menu_shortcut">Создать ярлык на главном экране</string>
     <!-- Boot Hash -->
