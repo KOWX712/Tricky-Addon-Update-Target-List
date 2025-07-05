@@ -52,7 +52,6 @@
     <string name="menu_set_verified_boot_hash">Atur Verified Boot Hash</string>
     <string name="menu_set_security_patch">Atur Patch Keamanan</string>
     <string name="menu_about">Tentang</string>
-    <string name="menu_shortcut">Buat pintasan di layar utama</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Verified Boot Hash</string>
     <string name="boot_hash_input_placeholder">Tempel Verified Boot Hash Anda di sini</string>
@@ -91,7 +90,6 @@
     <string name="prompt_no_file_selected">Tidak ada file yang dipilih</string>
     <string name="prompt_system_app_not_found">Aplikasi sistem tidak ditemukan</string>
     <string name="prompt_system_app_error">Gagal menambahkan aplikasi sistem</string>
-    <string name="prompt_shortcut_created">Pintasan layar utama telah dibuat</string>
     <!-- Security Patch -->
     <string name="security_patch_title">Patch Keamanan</string>
     <string name="security_patch_advanced_mode">Mode Lanjutan</string>
