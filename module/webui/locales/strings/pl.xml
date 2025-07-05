@@ -53,7 +53,6 @@
     <string name="menu_set_verified_boot_hash">Ustaw zweryfikowany skrót rozruchowy</string>
     <string name="menu_set_security_patch">Ustaw poprawkę zabezpieczeń</string>
     <string name="menu_about">O Tricky Addon</string>
-    <string name="menu_shortcut">Utwórz skrót do ekranu głównego</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Skrót rozruchowy</string>
     <string name="boot_hash_input_placeholder">Wklej tutaj zweryfikowany skrót rozruchowy</string>
@@ -95,7 +94,6 @@
     <string name="prompt_no_file_selected">Nie wybrano pliku</string>
     <string name="prompt_system_app_not_found">Nie znaleziono aplikacji systemowej</string>
     <string name="prompt_system_app_error">Nie udało się dodać aplikacji systemowej</string>
-    <string name="prompt_shortcut_created">Utworzono skrót do ekranu głównego</string>
     <!-- Security Patch -->
     <string name="security_patch_title">Poprawka zabezpieczeń</string>
     <string name="security_patch_advanced_mode">Zaawansowane</string>

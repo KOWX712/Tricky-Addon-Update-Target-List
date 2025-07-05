@@ -53,7 +53,6 @@
     <string name="menu_set_verified_boot_hash">设置哈希值</string>
     <string name="menu_set_security_patch">设置安全补丁</string>
     <string name="menu_about">关于</string>
-    <string name="menu_shortcut">创建桌面快捷方式</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">哈希值</string>
     <string name="boot_hash_input_placeholder">在此粘贴您的哈希值</string>
@@ -95,7 +94,6 @@
     <string name="prompt_no_file_selected">未选择文件</string>
     <string name="prompt_system_app_not_found">未找到该系统应用</string>
     <string name="prompt_system_app_error">系统应用添加失败</string>
-    <string name="prompt_shortcut_created">桌面快捷方式已创建</string>
     <!-- Security Patch -->
     <string name="security_patch_title">安全补丁</string>
     <string name="security_patch_advanced_mode">高级</string>
