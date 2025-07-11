@@ -16,7 +16,7 @@ Configure Tricky Store target.txt with KSU WebUI.
 
 ### Magisk
 - Action button to open WebUI
-- Support [KSUWebUIStandalone](https://github.com/5ec1cff/KsuWebUIStandalone) and [MMRL](https://github.com/MMRLApp/MMRL)
+- Support [KSUWebUIStandalone](https://github.com/5ec1cff/KsuWebUIStandalone) and [WebUI X](https://github.com/MMRLApp/WebUI-X-Portable)
 - Automatic KSUWebUIStandalone install if none of them are installed.
 
 ### What Can This Module Do
