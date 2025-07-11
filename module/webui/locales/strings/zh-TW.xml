@@ -53,7 +53,6 @@
     <string name="menu_set_verified_boot_hash">設置哈希值</string>
     <string name="menu_set_security_patch">設置安全補丁</string>
     <string name="menu_about">關於</string>
-    <string name="menu_shortcut">建立主畫面捷徑</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">哈希值</string>
     <string name="boot_hash_input_placeholder">在此貼上您的哈希值</string>
@@ -95,7 +94,6 @@
     <string name="prompt_no_file_selected">未選擇文件</string>
     <string name="prompt_system_app_not_found">未找到該系統應用</string>
     <string name="prompt_system_app_error">系統應用添加失敗</string>
-    <string name="prompt_shortcut_created">主畫面捷徑已建立</string>
     <!-- Security Patch -->
     <string name="security_patch_title">安全補丁</string>
     <string name="security_patch_advanced_mode">進階</string>
