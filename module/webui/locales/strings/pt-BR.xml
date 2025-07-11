@@ -53,7 +53,6 @@
     <string name="menu_set_verified_boot_hash">Definir Hash de Boot Verificado</string>
     <string name="menu_set_security_patch">Definir Patch de segurança</string>
     <string name="menu_about">Sobre</string>
-    <string name="menu_shortcut">Criar atalho na tela inicial</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
     <string name="boot_hash_input_placeholder">Cole o seu Boot Hash verificado aqui</string>
@@ -95,7 +94,6 @@
     <string name="prompt_no_file_selected">Nenhum arquivo selecionado</string>
     <string name="prompt_system_app_not_found">App do sistema não encontrado</string>
     <string name="prompt_system_app_error">Falha ao adicionar app do sistema</string>
-    <string name="prompt_shortcut_created">Atalho na tela inicial criado com sucesso</string>
     <!-- Security Patch -->
     <string name="security_patch_title">Patch de segurança</string>
     <string name="security_patch_advanced_mode">Avançado</string>
