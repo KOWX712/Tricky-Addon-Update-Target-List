@@ -52,7 +52,6 @@
     <string name="menu_set_verified_boot_hash">Встановити перевірений хеш завантаження</string>
     <string name="menu_set_security_patch">Встановити патч безпеки</string>
     <string name="menu_about">Деталі</string>
-    <string name="menu_shortcut">Створити значок на домашньому екрані</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Хеш завантаження</string>
     <string name="boot_hash_input_placeholder">Вставте перевірений хеш завантаження сюди</string>
@@ -94,7 +93,6 @@
     <string name="prompt_no_file_selected">Не вибрано жодного файлу</string>
     <string name="prompt_system_app_not_found">Системний застосунок не знайдено</string>
     <string name="prompt_system_app_error">Не вдалося додати системний застосунок</string>
-    <string name="prompt_shortcut_created">Створено значок на домашньому екрані</string>
     <!-- Security Patch -->
     <string name="security_patch_title">Патч безпеки</string>
     <string name="security_patch_advanced_mode">Розширені</string>

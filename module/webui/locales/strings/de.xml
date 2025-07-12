@@ -52,7 +52,6 @@
     <string name="menu_set_verified_boot_hash">Verifizierten Boot-Hash setzen</string>
     <string name="menu_set_security_patch">Sicherheitspatch setzen</string>
     <string name="menu_about">Über</string>
-    <string name="menu_shortcut">Verknüpfung auf dem Startbildschirm erstellen</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot-Hash</string>
     <string name="boot_hash_input_placeholder">Füge hier deinen verifizierten Boot-Hash ein</string>
@@ -93,7 +92,6 @@
     <string name="prompt_no_file_selected">Keine Datei ausgewählt</string>
     <string name="prompt_system_app_not_found">System-App nicht gefunden</string>
     <string name="prompt_system_app_error">Fehler beim Hinzufügen der System-App</string>
-    <string name="prompt_shortcut_created">Verknüpfung auf dem Startbildschirm erstellt</string>
     <!-- Security Patch -->
     <string name="security_patch_title">Sicherheitspatch</string>
     <string name="security_patch_advanced_mode">Erweitert</string>

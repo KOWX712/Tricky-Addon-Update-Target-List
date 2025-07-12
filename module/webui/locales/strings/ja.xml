@@ -53,7 +53,6 @@
     <string name="menu_set_verified_boot_hash">確認付きブートハッシュを設定</string>
     <string name="menu_set_security_patch">セキュリティパッチを設定</string>
     <string name="menu_about">このアドオンについて</string>
-    <string name="menu_shortcut">ホーム画面にショートカットを作成</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">ブートハッシュ</string>
     <string name="boot_hash_input_placeholder">確認付きブートハッシュをここに貼り付け</string>
@@ -77,7 +76,7 @@
     <string name="prompt_boot_hash_set_error">確認付きブートハッシュの更新に失敗しました。</string>
     <string name="prompt_saved_target">設定を target.txt に保存しました。</string>
     <string name="prompt_save_error">設定の保存に失敗しました。</string>
-    <string name="prompt_uninstall_prompt">WebUI は再起動後に削除されます。</string>
+    <string name="prompt_uninstall_prompt">WebUI を再起動後に削除されます。</string>
     <string name="prompt_uninstall_failed">WebUI のアンインストールに失敗しました。</string>
     <string name="prompt_checking_update">更新を確認しています...</string>
     <string name="prompt_new_update">新しいバージョンがあります！</string>
@@ -95,7 +94,6 @@
     <string name="prompt_no_file_selected">ファイルが選択されていません</string>
     <string name="prompt_system_app_not_found">システムアプリが見つかりません</string>
     <string name="prompt_system_app_error">システムアプリの追加に失敗しました</string>
-    <string name="prompt_shortcut_created">ホーム画面にショートカットが作成されました</string>
     <!-- Security Patch -->
     <string name="security_patch_title">セキュリティパッチ</string>
     <string name="security_patch_advanced_mode">高度</string>
