@@ -52,7 +52,6 @@
     <string name="menu_set_verified_boot_hash">Όρισε Verified Boot Hash</string>
     <string name="menu_set_security_patch">Όρισε Security Patch</string>
     <string name="menu_about">Σχετικά</string>
-    <string name="menu_shortcut">Δημιουργία συντόμευσης στην αρχική οθόνη</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
     <string name="boot_hash_input_placeholder">Επικόλλησε εδώ το Verified Boot Hash σου</string>
@@ -91,7 +90,6 @@
     <string name="prompt_no_file_selected">Δεν επιλέχθηκε αρχείο</string>
     <string name="prompt_system_app_not_found">Η εφαρμογή συστήματος δεν βρέθηκε</string>
     <string name="prompt_system_app_error">Αποτυχία προσθήκης εφαρμογής συστήματος</string>
-    <string name="prompt_shortcut_created">Η συντόμευση στην αρχική οθόνη δημιουργήθηκε</string>
     <!-- Security Patch -->
     <string name="security_patch_title">Security Patch</string>
     <string name="security_patch_advanced_mode">Προχωρημένο</string>

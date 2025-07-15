@@ -53,7 +53,6 @@
     <string name="menu_set_verified_boot_hash">Définir le hash Verified Boot</string>
     <string name="menu_set_security_patch">Définir le patch de sécurité</string>
     <string name="menu_about">À propos</string>
-    <string name="menu_shortcut">Créer un raccourci sur l&apos;écran d&apos;accueil</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Hash de démarrage</string>
     <string name="boot_hash_input_placeholder">Collez votre hash Verified Boot ici</string>
@@ -95,7 +94,6 @@
     <string name="prompt_no_file_selected">Aucun fichier sélectionné</string>
     <string name="prompt_system_app_not_found">Application système introuvable</string>
     <string name="prompt_system_app_error">Échec de l&apos;ajout de l&apos;application système</string>
-    <string name="prompt_shortcut_created">Raccourci créé sur l&apos;écran d&apos;accueil</string>
     <!-- Security Patch -->
     <string name="security_patch_title">Patch de sécurité</string>
     <string name="security_patch_advanced_mode">Avancé</string>

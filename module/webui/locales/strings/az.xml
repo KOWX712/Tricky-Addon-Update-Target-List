@@ -52,7 +52,6 @@
     <string name="menu_set_verified_boot_hash">Təsdiqlənmiş Boot Hash təyin et</string>
     <string name="menu_set_security_patch">Təhlükəsizlik Təkmilləşdirməsini təyin et</string>
     <string name="menu_about">Haqqında</string>
-    <string name="menu_shortcut">Ana ekran qısayolu yarat</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
     <string name="boot_hash_input_placeholder">Təsdiqlənmiş Boot Hash-ı buraya yapışdırın</string>
@@ -91,7 +90,6 @@
     <string name="prompt_no_file_selected">Fayl seçilməyib</string>
     <string name="prompt_system_app_not_found">Sistem tətbiqi tapılmadı</string>
     <string name="prompt_system_app_error">Sistem tətbiqini əlavə etmək mümkün olmadı</string>
-    <string name="prompt_shortcut_created">Ana ekran qısayolu yaradıldı</string>
     <!-- Security Patch -->
     <string name="security_patch_title">Təhlükəsizlik Təkmilləşdirməsi</string>
     <string name="security_patch_advanced_mode">Ətraflı</string>

@@ -53,7 +53,6 @@
     <string name="menu_set_verified_boot_hash">Doğrulanmış Boot Hash Ayarla</string>
     <string name="menu_set_security_patch">Güvenlik Yaması Ayarla</string>
     <string name="menu_about">Hakkında</string>
-    <string name="menu_shortcut">Ana ekrana kısayol oluştur</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
     <string name="boot_hash_input_placeholder">Doğrulanmış Boot Hash&apos;inizi buraya yapıştırın</string>
@@ -95,7 +94,6 @@
     <string name="prompt_no_file_selected">Dosya seçilmedi</string>
     <string name="prompt_system_app_not_found">Sistem uygulaması bulunamadı</string>
     <string name="prompt_system_app_error">Sistem uygulaması ekleme hatası</string>
-    <string name="prompt_shortcut_created">Ana ekran kısayolu oluşturuldu</string>
     <!-- Security Patch -->
     <string name="security_patch_title">Güvenlik Yaması</string>
     <string name="security_patch_advanced_mode">Gelişmiş</string>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="system_default">پیش فرض سیستم</string>
+    <string name="more_language">بیشتر</string>
+    <!-- Header -->
+    <!-- Help Menu-->
+    <string name="help_help_instructions">راهنما</string>
+    <string name="help_save_and_update">ذخیره</string>
+    <string name="help_save_and_update_description">پیکربندی فعلی را در target.txt ذخیره کنید.</string>
+    <string name="help_refresh">تازه سازی</string>
+    <string name="help_refresh_description">لیست برنامه‌ها و لیست حذف را تازه کنید.</string>
+    <string name="help_select_deselect">انتخاب همه و لغو انتخاب</string>
+    <string name="help_select_description">همه برنامه‌ها را در رابط فعلی انتخاب کنید یا لغو انتخاب کنید.</string>
+    <string name="help_select_denylist">انتخاب از DenyList</string>
+    <string name="help_select_denylist_description">فقط در Magisk موجود است، برنامه‌هایی که در DenyList هستند را انتخاب کنید. توصیه شده.</string>
+    <string name="help_deselect_unnecessary">لغو انتخاب غیرضروری</string>
+    <string name="help_deselect_unnecessary_description">دسته غیرضروری: ماژول Xposed، مدیر root، برنامه‌های مرتبط با root، و برنامه‌های عمومی که هرگز وضعیت bootloader را بررسی نمی‌کنند. این گزینه نیاز به اتصال اینترنت دارد.</string>
+    <string name="help_add_system_app">افزودن برنامه سیستمی</string>
+    <string name="help_add_system_app_description">برنامه سیستمی خاص را به لیست برنامه‌ها اضافه کنید.</string>
+    <string name="help_set_keybox">تنظیم AOSP و Valid Keybox</string>
+    <string name="help_set_keybox_description">keybox.xml ذخیره tricky را جایگزین کنید. گزینه Valid keybox نیاز به اتصال اینترنت دارد و همیشه موجود نیست.</string>
+    <string name="help_set_custom_keybox">تنظیم Custom Keybox</string>
+    <string name="help_set_custom_keybox_description">keybox را از ذخیره‌سازی دستگاه خود وارد کنید. فقط فایل xml پشتیبانی می‌شود.</string>
+    <string name="help_set_security_patch">تنظیم Security Patch</string>
+    <string name="help_set_security_patch_description">Custom security patch spoof تنظیم کنید. Auto config از security patch ماژول PIF استفاده خواهد کرد. خالی بگذارید و ذخیره کنید تا auto config غیرفعال شود.</string>
+    <string name="help_set_verified_boot_hash">تنظیم Verified Boot Hash</string>
+    <string name="help_set_verified_boot_hash_description">مقدار verifiedBootHash را از Key Attestation Demo دریافت کنید. وضعیت boot غیرعادی را با بازنشانی ro.boot.vbmeta.digest برطرف کنید.</string>
+    <!-- Update -->
+    <string name="update_update_available">نسخه جدید آماده است</string>
+    <string name="update_redirect_to_release">برای دانلود آخرین نسخه ضربه بزنید</string>
+    <string name="update_changelog">تاریخچه تغییرات</string>
+    <string name="update_install">نصب</string>
+    <string name="update_reboot">راه‌اندازی مجدد</string>
+    <!-- Search -->
+    <string name="search_bar_search_placeholder">جُستجو</string>
+    <!-- Functional Button -->
+    <string name="functional_button_save_and_update_button">ذخیره</string>
+    <string name="functional_button_uninstall_webui">حذف WebUI</string>
+    <!-- Loading -->
+    <string name="loading_loading">در حال بارگیری...</string>
+    <!-- Menu -->
+    <string name="menu_refresh">رفرش</string>
+    <string name="menu_select_all">انتخاب همه</string>
+    <string name="menu_deselect_all">لغو انتخاب همه</string>
+    <string name="menu_select_denylist">انتخاب از DenyList</string>
+    <string name="menu_deselect_unnecessary">لغو انتخاب غیرضروری</string>
+    <string name="menu_add_system_app">افزودن برنامه سیستمی</string>
+    <string name="menu_set_aosp_keybox">تنظیم AOSP Keybox</string>
+    <string name="menu_set_unknown_keybox">تنظیم Unknown Keybox</string>
+    <string name="menu_set_valid_keybox">تنظیم Valid Keybox</string>
+    <string name="menu_set_custom_keybox">تنظیم Custom Keybox</string>
+    <string name="menu_set_verified_boot_hash">تنظیم Verified Boot Hash</string>
+    <string name="menu_set_security_patch">تنظیم Security Patch</string>
+    <string name="menu_about">درباره</string>
+    <!-- Boot Hash -->
+    <string name="boot_hash_input_placeholder">Verified Boot Hash خود را اینجا بچسبانید</string>
+    <string name="boot_hash_save_button">ذخیره</string>
+    <!-- About -->
+    <string name="about_by">از</string>
+    <string name="about_telegram_channel">کانال تلگرام</string>
+    <string name="about_canary_update">به‌روزرسانی به آخرین نسخه canary</string>
+    <string name="about_disclaimer">این ماژول بخشی از ماژول Tricky Store نیست. در صورت بروز مشکل، به Tricky Store گزارش ندهید.</string>
+    <string name="about_acknowledgment">تقدیر و تشکر</string>
+    <!-- Prompt -->
+    <string name="prompt_no_internet">اتصال به اینترنت خود را بررسی کنید</string>
+    <string name="prompt_aosp_key_set">AOSP keybox با موفقیت تنظیم شد</string>
+    <string name="prompt_key_set_error">به‌روزرسانی keybox ناموفق بود</string>
+    <string name="prompt_unknown_key_set">Unknown keybox با موفقیت تنظیم شد</string>
+    <string name="prompt_valid_key_set">Valid keybox با موفقیت تنظیم شد</string>
+    <string name="prompt_no_valid">هیچ valid keybox یافت نشد.</string>
+    <string name="prompt_boot_hash_set">Verified Boot Hash با موفقیت ذخیره شد</string>
+    <string name="prompt_boot_hash_set_error">به‌روزرسانی Verified Boot Hash ناموفق بود</string>
+    <string name="prompt_saved_target">پیکربندی در target.txt ذخیره شد</string>
+    <string name="prompt_save_error">ذخیره پیکربندی ناموفق بود</string>
+    <string name="prompt_uninstall_prompt">WebUI پس از راه‌اندازی مجدد حذف خواهد شد</string>
+    <string name="prompt_uninstall_failed">حذف WebUI ناموفق بود</string>
+    <string name="prompt_checking_update">بررسی به روز رسانی...</string>
+    <string name="prompt_new_update">یک بروزرسانی جدید دردسترس می‌باشد!</string>
+    <string name="prompt_no_update">در حال حاضر هیچ به‌روزرسانی موجود نیست</string>
+    <string name="prompt_downloading">دانلود به‌روزرسانی جدید...</string>
+    <string name="prompt_downloaded">بارگیری کامل شد</string>
+    <string name="prompt_download_fail">به روزرسانی بارگیری نشد</string>
+    <string name="prompt_installing">در حال نصب به‌روزرسانی...</string>
+    <string name="prompt_installed">با موفقیت نصب شد، اکنون راه‌اندازی مجدد کنید.</string>
+    <string name="prompt_install_fail">نصب ناموفق بود، لطفاً به صورت دستی به‌روزرسانی کنید</string>
+    <string name="prompt_rebooting">در حال راه اندازی مجدد…</string>
+    <string name="prompt_reboot_fail">راه‌اندازی مجدد ناموفق بود، لطفاً به صورت دستی راه‌اندازی مجدد کنید</string>
+    <string name="prompt_custom_key_set">Custom keybox با موفقیت تنظیم شد</string>
+    <string name="prompt_custom_key_set_error">تنظیم Custom keybox ناموفق بود</string>
+    <string name="prompt_no_file_selected">هیچ پرونده‌ای گزیده نشده</string>
+    <string name="prompt_system_app_not_found">برنامه سیستمی یافت نشد</string>
+    <string name="prompt_system_app_error">افزودن برنامه سیستمی ناموفق بود</string>
+    <!-- Security Patch -->
+    <string name="security_patch_advanced_mode">پیشرفته</string>
+    <string name="security_patch_get_date">دریافت تاریخ Security Patch</string>
+    <string name="security_patch_auto">خودکار</string>
+    <string name="security_patch_save">ذخیره</string>
+    <string name="security_patch_fetching">در حال دریافت...</string>
+    <string name="security_patch_fetched">انجام شده</string>
+    <string name="security_patch_get_failed">دریافت تاریخ security patch ناموفق بود</string>
+    <string name="security_patch_unable_to_connect">عدم امکان اتصال به source.android.com</string>
+    <string name="security_patch_auto_success">Auto config با موفقیت فعال شد</string>
+    <string name="security_patch_auto_failed">فعال‌سازی Auto config ناموفق بود</string>
+    <string name="security_patch_save_success">Security patch با موفقیت ذخیره شد</string>
+    <string name="security_patch_save_failed">ذخیره Security patch ناموفق بود</string>
+    <string name="security_patch_value_empty">پیکربندی Security patch غیرفعال است</string>
+    <string name="security_patch_invalid_all">قالب نامعتبر</string>
+    <string name="security_patch_invalid_boot">قالب boot نامعتبر</string>
+    <string name="security_patch_invalid_system">قالب system نامعتبر</string>
+    <string name="security_patch_invalid_vendor">قالب vendor نامعتبر</string>
+    <!-- Add System App -->
+    <string name="add_system_app_title">افزودن برنامه سیستمی</string>
+    <string name="add_system_app_add">افزودن</string>
+    <string name="add_system_app_current_list">لیست فعلی برنامه‌های سیستمی</string>
+    <!-- Uninstall confirmation -->
+    <string name="confirmation_uninstall_title">تأیید حذف؟</string>
+    <string name="confirmation_uninstall_message">آیا مطمئن هستید که می‌خواهید Tricky Addon را حذف کنید</string>
+    <string name="confirmation_uninstall_cancel">لغو</string>
+    <string name="confirmation_uninstall_confirm">تایید</string>
+</resources>

@@ -53,7 +53,6 @@
     <string name="menu_set_verified_boot_hash">تعيين تجزئة التمهيد الموثوق</string>
     <string name="menu_set_security_patch">تعيين تصحيح الأمان</string>
     <string name="menu_about">حول</string>
-    <string name="menu_shortcut">إنشاء اختصار على الشاشة الرئيسية</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">تجزئة التمهيد</string>
     <string name="boot_hash_input_placeholder">الصق تجزئة التمهيد الموثوق هنا</string>
@@ -95,7 +94,6 @@
     <string name="prompt_no_file_selected">لم يتم اختيار أي ملف</string>
     <string name="prompt_system_app_not_found">لم يتم العثور على تطبيق النظام</string>
     <string name="prompt_system_app_error">فشل في إضافة تطبيق النظام</string>
-    <string name="prompt_shortcut_created">تم إنشاء اختصار على الشاشة الرئيسية</string>
     <!-- Security Patch -->
     <string name="security_patch_title">تصحيح الأمان</string>
     <string name="security_patch_advanced_mode">متقدم</string>
