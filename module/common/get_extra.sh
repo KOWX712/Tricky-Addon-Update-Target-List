@@ -155,8 +155,8 @@ set_security_patch() {
                     sed -i "s/^\[deviceProps\]/securityPatch = \"$security_patch\"\n&/" "$SECURITY_PATCH_FILE"
                 fi
             fi
-        # Official TrickyStore which supports custom security patch
-        elif [ "$TS_version" -ge 158 ]; then
+        # Dakkshesh's fork (GitHub@beakthoven/TrickyStore) or Official TrickyStore which supports custom security patch
+        elif [ "$TS_version" -ge 158 ] || grep -q "beakthoven" "/data/adb/modules/tricky_store/module.prop"; then
             SECURITY_PATCH_FILE="/data/adb/tricky_store/security_patch.txt"
             printf "system=prop\nboot=%s\nvendor=%s\n" "$security_patch" "$security_patch" > "$SECURITY_PATCH_FILE"
             chmod 644 "$SECURITY_PATCH_FILE"
