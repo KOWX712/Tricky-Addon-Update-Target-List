@@ -144,7 +144,7 @@ set_security_patch() {
     if [ -n "$formatted_security_patch" ] && [ "$TODAY" -lt "$security_patch_after_1y" ]; then
         TS_version=$(grep "versionCode=" "/data/adb/modules/tricky_store/module.prop" | cut -d'=' -f2)
         # James Clef's TrickyStore fork (GitHub@qwq233/TrickyStore)
-        if grep -q "James" "/data/adb/modules/tricky_store/module.prop"; then
+        if grep -q "James" "/data/adb/modules/tricky_store/module.prop" && ! grep -q "beakthoven" "/data/adb/modules/tricky_store/module.prop"; then
             SECURITY_PATCH_FILE="/data/adb/tricky_store/devconfig.toml"
             if grep -q "^securityPatch" "$SECURITY_PATCH_FILE"; then
                 sed -i "s/^securityPatch .*/securityPatch = \"$security_patch\"/" "$SECURITY_PATCH_FILE"

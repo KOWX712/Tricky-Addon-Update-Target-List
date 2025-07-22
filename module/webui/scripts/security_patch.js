@@ -235,7 +235,7 @@ function isValid8Digit(value) {
 
 // Initialize event listeners
 export function securityPatch() {
-    exec(`grep -q "James" "/data/adb/modules/tricky_store/module.prop"`)
+    exec(`grep -q "James" "/data/adb/modules/tricky_store/module.prop" && ! grep -q "beakthoven" "/data/adb/modules/tricky_store/module.prop"`)
         .then(({ errno }) => {
             if (errno === 0) {
                 jamesFork = true;
