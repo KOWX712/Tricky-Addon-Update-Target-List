@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="system_default">Системный по умолчанию</string>
+    <string name="more_language">Больше</string>
     <!-- Header -->
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
@@ -51,6 +52,7 @@
     <string name="menu_set_custom_keybox">Установить свой keybox</string>
     <string name="menu_set_verified_boot_hash">Установить verified boot hash</string>
     <string name="menu_set_security_patch">Установить security patch</string>
+    <string name="menu_set_devconfig">Установить DevConfig</string>
     <string name="menu_about">О программе</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
@@ -61,6 +63,7 @@
     <string name="about_module_name_line2">Обновить список целей</string>
     <string name="about_by">от</string>
     <string name="about_telegram_channel">Канал в Telegram</string>
+    <string name="about_canary_update">Обновить до последней версии canary</string>
     <string name="about_disclaimer">Этот WebUI не является частью Tricky Store, НЕ сообщайте автору Tricky Store о любых возникающих проблемах.</string>
     <string name="about_acknowledgment">Благодарности</string>
     <!-- Prompt -->
@@ -76,7 +79,9 @@
     <string name="prompt_save_error">Не удалось сохранить конфигурацию</string>
     <string name="prompt_uninstall_prompt">WebUI будет удален после перезагрузки</string>
     <string name="prompt_uninstall_failed">Не удалось удалить WebUI</string>
+    <string name="prompt_checking_update">Проверяем обновления...</string>
     <string name="prompt_new_update">Доступно новое обновление!</string>
+    <string name="prompt_no_update">Обновлений на данный момент нет</string>
     <string name="prompt_downloading">Загрузка нового обновления...</string>
     <string name="prompt_downloaded">Загрузка завершена</string>
     <string name="prompt_download_fail">Не удалось загрузить обновление</string>
@@ -99,6 +104,7 @@
     <string name="security_patch_fetching">Получение...</string>
     <string name="security_patch_fetched">Готово</string>
     <string name="security_patch_get_failed">Не удалось получить дату патча безопасности</string>
+    <string name="security_patch_unable_to_connect">Не удалось подключиться к source.android.com</string>
     <string name="security_patch_auto_success">Автоматическая конфигурация успешно включена</string>
     <string name="security_patch_auto_failed">Не удалось включить автоматическую конфигурацию</string>
     <string name="security_patch_save_success">Патч безопасности успешно сохранен</string>
