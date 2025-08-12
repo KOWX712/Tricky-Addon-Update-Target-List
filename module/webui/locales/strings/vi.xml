@@ -77,8 +77,8 @@
     <string name="prompt_boot_hash_set_error">Không thể cập nhật Verified Boot Hash</string>
     <string name="prompt_saved_target">Đã lưu cấu hình vào target.txt</string>
     <string name="prompt_save_error">Không thể lưu cấu hình</string>
-    <string name="prompt_uninstall_prompt">WebUI sẽ bị gỡ sau khi khởi động lại</string>
-    <string name="prompt_uninstall_failed">Không thể gỡ WebUI</string>
+    <string name="prompt_uninstall_prompt">WebUI sẽ bị Gỡ cài đặt sau khi khởi động lại</string>
+    <string name="prompt_uninstall_failed">Không thể Gỡ cài đặt WebUI</string>
     <string name="prompt_checking_update">Đang kiểm tra cập nhật...</string>
     <string name="prompt_new_update">Có bản cập nhật mới!</string>
     <string name="prompt_no_update">Hiện không có bản cập nhật nào</string>
@@ -120,7 +120,7 @@
     <string name="add_system_app_current_list">Danh sách ứng dụng hệ thống hiện tại</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Xác nhận Gỡ cài đặt?</string>
-    <string name="confirmation_uninstall_message">Bạn có chắc muốn gỡ Tricky Addon</string>
+    <string name="confirmation_uninstall_message">Bạn có chắc muốn Gỡ cài đặt Tricky Addon không?</string>
     <string name="confirmation_uninstall_cancel">Hủy</string>
     <string name="confirmation_uninstall_confirm">Xác nhận</string>
 </resources>
