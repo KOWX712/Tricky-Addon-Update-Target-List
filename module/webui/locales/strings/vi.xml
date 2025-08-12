@@ -15,7 +15,7 @@
     <string name="help_select_denylist">Chọn từ DenyList</string>
     <string name="help_select_denylist_description">Chỉ khả dụng trong Magisk, chọn ứng dụng nằm trong DenyList. Khuyến nghị sử dụng</string>
     <string name="help_deselect_unnecessary">Bỏ chọn không cần thiết</string>
-    <string name="help_deselect_unnecessary_description">Danh mục không cần thiết: module Xposed, trình quản lý root, ứng dụng liên quan đến root và các ứng dụng thông thường không bao giờ kiểm tra trạng thái bootloader. Tùy chọn này yêu cầu kết nối Internet</string>
+    <string name="help_deselect_unnecessary_description">Danh mục không cần thiết: Trình quản lý root, module Xposed, ứng dụng liên quan đến root và các ứng dụng thông thường không bao giờ kiểm tra trạng thái bootloader. Tùy chọn này yêu cầu kết nối Internet</string>
     <string name="help_add_system_app">Thêm ứng dụng hệ thống</string>
     <string name="help_add_system_app_description">Thêm ứng dụng hệ thống cụ thể vào danh sách ứng dụng</string>
     <string name="help_set_keybox">Đặt AOSP &amp; Keybox hợp lệ</string>
