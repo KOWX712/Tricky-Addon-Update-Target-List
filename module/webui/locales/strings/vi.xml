@@ -63,15 +63,15 @@
     <string name="about_module_name_line2">Cập nhật danh sách mục tiêu</string>
     <string name="about_by">Bởi</string>
     <string name="about_telegram_channel">Kênh Telegram</string>
-    <string name="about_canary_update">Cập nhật lên phiên bản Canary mới nhất</string>
+    <string name="about_canary_update">Cập nhật lên phiên bản canary mới nhất</string>
     <string name="about_disclaimer">Module này không phải là một phần của module Tricky Store. KHÔNG báo cáo bất kỳ vấn đề nào cho Tricky Store nếu gặp phải</string>
     <string name="about_acknowledgment">Lời cảm ơn</string>
     <!-- Prompt -->
     <string name="prompt_no_internet">Vui lòng kiểm tra kết nối Internet của bạn</string>
-    <string name="prompt_aosp_key_set">Đã đặt AOSP Keybox thành công</string>
-    <string name="prompt_key_set_error">Không thể cập nhật Keybox</string>
-    <string name="prompt_unknown_key_set">Đã đặt Keybox không xác định thành công</string>
-    <string name="prompt_valid_key_set">Đã đặt Keybox hợp lệ thành công</string>
+    <string name="prompt_aosp_key_set">Đã đặt AOSP keybox thành công</string>
+    <string name="prompt_key_set_error">Không thể cập nhật keybox</string>
+    <string name="prompt_unknown_key_set">Đã đặt keybox không xác định thành công</string>
+    <string name="prompt_valid_key_set">Đã đặt keybox hợp lệ thành công</string>
     <string name="prompt_no_valid">Không tìm thấy Keybox hợp lệ</string>
     <string name="prompt_boot_hash_set">Đã lưu Verified Boot Hash thành công</string>
     <string name="prompt_boot_hash_set_error">Không thể cập nhật Verified Boot Hash</string>
@@ -90,8 +90,8 @@
     <string name="prompt_install_fail">Không thể cài đặt, vui lòng cập nhật thủ công</string>
     <string name="prompt_rebooting">Đang khởi động lại...</string>
     <string name="prompt_reboot_fail">Không thể khởi động lại, vui lòng khởi động lại thủ công</string>
-    <string name="prompt_custom_key_set">Đã đặt Keybox tùy chỉnh thành công</string>
-    <string name="prompt_custom_key_set_error">Không thể đặt Keybox tùy chỉnh</string>
+    <string name="prompt_custom_key_set">Đã đặt keybox tùy chỉnh thành công</string>
+    <string name="prompt_custom_key_set_error">Không thể đặt keybox tùy chỉnh</string>
     <string name="prompt_no_file_selected">Chưa chọn tệp nào</string>
     <string name="prompt_system_app_not_found">Không tìm thấy ứng dụng hệ thống</string>
     <string name="prompt_system_app_error">Không thể thêm ứng dụng hệ thống</string>
@@ -119,7 +119,7 @@
     <string name="add_system_app_add">Thêm</string>
     <string name="add_system_app_current_list">Danh sách ứng dụng hệ thống hiện tại</string>
     <!-- Uninstall confirmation -->
-    <string name="confirmation_uninstall_title">Xác nhận Gỡ cài đặt?</string>
+    <string name="confirmation_uninstall_title">Xác nhận gỡ cài đặt?</string>
     <string name="confirmation_uninstall_message">Bạn có chắc muốn Gỡ cài đặt Tricky Addon không?</string>
     <string name="confirmation_uninstall_cancel">Hủy</string>
     <string name="confirmation_uninstall_confirm">Xác nhận</string>
