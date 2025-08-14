@@ -41,6 +41,7 @@
 
 - [chisewaguri](https://github.com/chisewaguri)
 - [Rem01Gaming](https://github.com/Rem01Gaming)
+- [Mesazane](https://github.com/mesazane)
 
 ---
 
@@ -57,7 +58,13 @@
 
 ---
 
-### Polish
+## Korean
+
+- [dhlrunner](https://github.com/dhlrunner)
+
+---
+
+## Polish
 
 - [Bladius2024](https://github.com/Bladius2024)
 
@@ -67,6 +74,12 @@
 
 - [JeanxPereira](https://github.com/JeanxPereira)
 - [SecretGogeta](https://github.com/SecretGogeta)
+
+---
+
+## Russian
+
+- [Andfi](https://crowdin.com/profile/andfi)
 
 ---
 
@@ -87,3 +100,11 @@
 
 - [StepanSad](https://github.com/StepanSad)
 - [IlliaS](https://github.com/IlliaS)
+- [Валентин Паник](https://crowdin.com/profile/panikvalentin)
+
+---
+
+## Vietnamese
+
+- [doanvtamhuynh](https://github.com/doanvtamhuynh)
+- [SaleOff](https://github.com/SaleOff)
