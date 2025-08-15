@@ -52,6 +52,7 @@
     <string name="menu_set_custom_keybox">カスタム Keybox を設定</string>
     <string name="menu_set_verified_boot_hash">確認付きブートハッシュを設定</string>
     <string name="menu_set_security_patch">セキュリティパッチを設定</string>
+    <string name="menu_set_devconfig">DevConfig を設定</string>
     <string name="menu_about">このアドオンについて</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">ブートハッシュ</string>

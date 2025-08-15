@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="system_default">System Default</string>
+    <string name="more_language">Більше</string>
     <!-- Header -->
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
@@ -51,6 +52,7 @@
     <string name="menu_set_custom_keybox">Встановити користувацький ключ</string>
     <string name="menu_set_verified_boot_hash">Встановити перевірений хеш завантаження</string>
     <string name="menu_set_security_patch">Встановити патч безпеки</string>
+    <string name="menu_set_devconfig">Встановити конфігурацію розробника</string>
     <string name="menu_about">Деталі</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Хеш завантаження</string>
