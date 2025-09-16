@@ -52,6 +52,7 @@
     <string name="menu_set_custom_keybox">Ustaw niestandardowy klucz</string>
     <string name="menu_set_verified_boot_hash">Ustaw zweryfikowany skrót rozruchowy</string>
     <string name="menu_set_security_patch">Ustaw poprawkę zabezpieczeń</string>
+    <string name="menu_set_devconfig">Ustaw DevConfig</string>
     <string name="menu_about">O Tricky Addon</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Skrót rozruchowy</string>

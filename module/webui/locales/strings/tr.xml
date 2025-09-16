@@ -52,6 +52,7 @@
     <string name="menu_set_custom_keybox">Özel Keybox Ayarla</string>
     <string name="menu_set_verified_boot_hash">Doğrulanmış Boot Hash Ayarla</string>
     <string name="menu_set_security_patch">Güvenlik Yaması Ayarla</string>
+    <string name="menu_set_devconfig">DevConfig Ayarla</string>
     <string name="menu_about">Hakkında</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
