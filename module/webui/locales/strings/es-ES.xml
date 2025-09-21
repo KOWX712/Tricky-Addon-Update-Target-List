@@ -51,6 +51,7 @@
     <string name="menu_set_custom_keybox">Establecer Keybox Personalizado</string>
     <string name="menu_set_verified_boot_hash">Configurar Boot Hash Verificado</string>
     <string name="menu_set_security_patch">Configurar Parche de Seguridad</string>
+    <string name="menu_set_devconfig">Establecer DevConfig</string>
     <string name="menu_about">Acerca de</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
