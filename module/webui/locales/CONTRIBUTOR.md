@@ -22,6 +22,7 @@
 
 - [anaelle-dev](https://github.com/anaelle-dev)
 - [GhostFRR](https://github.com/GhostFRR)
+- [Stephane !](https://crowdin.com/profile/pallh)
 
 ---
 
@@ -86,6 +87,7 @@
 ## Spanish
 
 - [Keinta15](https://github.com/Keinta15)
+- [Marc Reventós Papo](https://github.com/mpapus)
 
 ---
 
