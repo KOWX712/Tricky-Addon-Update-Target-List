@@ -1,37 +1,19 @@
 @import './theme.css';
 
-.about-overlay {
-    z-index: 1100;
-    align-items: center;
-}
-
-.about-menu {
-    position: relative;
-    width: calc(90vw - 60px);
-    max-width: 800px;
-    background-color: var(--bg-secondary);
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.link,
-.about-menu p {
-    margin: 0;
-    font-size: 16px;
+#about-dialog {
+    --md-dialog-container-color: var(--md-sys-color-surface-container-high);
 }
 
 #module_name_line1 {
-    font-size: 26px;
+    font-size: 30px;
     user-select: none;
+    line-height: 1.3;
 }
 
 #module_name_line2 {
     font-size: 22px;
     user-select: none;
+    line-height: 1.5;
 }
 
 #authored {
@@ -42,51 +24,40 @@
 #disclaimer {
     font-family: serif;
     width: calc(100% - 20px);
+    margin: 10px 0;
     padding: 8px 10px;
     border-radius: 10px;
-    background-color: var(--border-color);
+    background-color: var(--md-sys-color-surface-container-highest);
+}
+
+.acknowledgment p {
+    margin: 5px;
 }
 
 #acknowledgment {
+    margin-top: 15px;
     font-weight: bold;
     font-size: 18px;
     user-select: none;
 }
 
-.link-icon {
-    font-size: 17px;
-    font-weight: bold;
-    min-height: calc(1em + 20px);
-    padding: 3px 10px;
-    color: #fff;
-    user-select: none;
-    display: inline-flex;
-    align-items: center;
-    font-style: normal;
-    border-radius: 8px;
-    box-sizing: border-box;
-    margin-bottom: 5px;
-    transition: background-color 0.2s ease;
-
-    svg {
-        fill: #fff;
-        padding-right: 3px;
-    }
-}
-
-[dir="rtl"] .link-icon svg {
-    padding-right: unset;
-    padding-left: 3px;
+.link {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 #telegram {
-    background-color: #38A7ED;
+    --md-sys-color-primary: #38A7ED;
+    --md-sys-color-on-primary: white;
 }
 
 #github {
-    background-color: #606060;
+    --md-sys-color-primary: var(--md-sys-color-inverse-surface);
+    --md-sys-color-on-primary: var(--md-sys-color-inverse-on-surface);
 }
 
 #canary {
-    background-color: #821284;
+    --md-sys-color-primary: #821284;
+    --md-sys-color-on-primary: white;
 }

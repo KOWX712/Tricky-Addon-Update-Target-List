@@ -1,15 +1,15 @@
 import { exec, spawn } from './assets/kernelsu.js';
-import { basePath, showPrompt, noConnection, linkRedirect } from './main.js';
+import { basePath, showPrompt, linkRedirect } from './main.js';
 import { updateCard } from './applist.js';
 
-const updateMenu = document.querySelector('.update-overlay');
-const updateMenuContent = document.querySelector('.update-menu');
+const updateDialog = document.getElementById('update-dialog');
 const closeUpdate = document.getElementById('close-update');
 const releaseNotes = document.querySelector('.changelog');
 const installButton = document.querySelector('.install');
 const rebootButton = document.querySelector('.reboot');
 
 let remoteVersionCode, remoteVersion, zipURL, changelogURL, downloading = false;
+export let connection = true;
 
 // Function to download file
 function downloadFile(targetURL, fileName) {
@@ -45,7 +45,7 @@ export async function updateCheck() {
                 return fetch("https://raw.gitmirror.com/KOWX712/Tricky-Addon-Update-Target-List/main/update.json");
             });
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        noConnection.style.display = "none";
+        connection = true;
         const data = await response.json();
         remoteVersionCode = data.versionCode;
         remoteVersion = data.version;
@@ -55,7 +55,6 @@ export async function updateCheck() {
         const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--check-update', `${remoteVersionCode}`]);
         output.stdout.on('data', (data) => {
             if (data.includes("update")) {
-                showPrompt("prompt_new_update", true, 1500);
                 updateCard.style.display = "flex";
                 setupUpdateMenu();
             }
@@ -63,7 +62,7 @@ export async function updateCheck() {
     } catch (error) {
         console.error("Error fetching JSON or executing command:", error);
         showPrompt("prompt_no_internet", false);
-        noConnection.style.display = "flex";
+        connection = false;
     }
 }
 
@@ -94,23 +93,6 @@ function renderChangelog() {
 
 // Function to setup update menu
 function setupUpdateMenu() {
-    function openUpdateMenu() {
-        updateMenu.style.display = "flex";
-        setTimeout(async () => {
-            updateMenu.style.opacity = "1";
-            updateMenuContent.classList.add('open');
-        }, 10);
-        document.body.classList.add("no-scroll");
-    }
-    function closeUpdateMenu() {
-        updateMenu.style.opacity = "0";
-        updateMenuContent.classList.remove('open');
-        document.body.classList.remove("no-scroll");
-        setTimeout(async () => {
-            updateMenu.style.display = "none";
-        }, 200);
-    }
-
     // Update card
     updateCard.addEventListener('click', async () => {
         const { stdout } = await exec(`
@@ -121,12 +103,12 @@ function setupUpdateMenu() {
         if (stdout.trim().includes("updated")) {
             installButton.style.display = "none";
             rebootButton.style.display = "flex";
-            openUpdateMenu();
+            updateDialog.show();
         } else if (stdout.trim().includes("noChangelog")) {
             showPrompt("prompt_downloading");
             await downloadFile(changelogURL, "changelog.md");
             renderChangelog();
-            openUpdateMenu();
+            updateDialog.show();
             setTimeout(() => {
                 updateCard.click();
             }, 200);
@@ -147,15 +129,12 @@ function setupUpdateMenu() {
         } else {
             installButton.style.display = "flex";
             renderChangelog();
-            openUpdateMenu();
+            updateDialog.show();
         }
     });
 
     // Close update menu
-    closeUpdate.addEventListener("click", closeUpdateMenu);
-    updateMenu.addEventListener("click", (event) => {
-        if (event.target === updateMenu) closeUpdateMenu();
-    });
+    closeUpdate.addEventListener("click", () => updateDialog.close());
 
     // Install button
     installButton.addEventListener('click', async () => {

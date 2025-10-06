@@ -1,49 +1,28 @@
 import { linkRedirect, basePath, showPrompt } from './main.js';
 import { spawn } from './assets/kernelsu.js';
 
-const aboutOverlay = document.getElementById('about-overlay');
-const aboutContent = document.querySelector('.about-menu');
+const aboutDialog = document.getElementById('about-dialog');
 const closeAbout = document.getElementById('close-about');
 
 let isDownloading = false;
 
 // Function to show about overlay
 document.getElementById("about").addEventListener("click", () => {
-    // Show about menu
-    setTimeout(() => {
-        document.body.classList.add("no-scroll");
-        aboutOverlay.style.display = 'flex';
-        setTimeout(() => {
-            aboutOverlay.style.opacity = '1';
-            aboutContent.classList.add('open');
-        }, 10);
-    }, 80);
+    aboutDialog.show();
 });
 
-const hideMenu = () => {
-    document.body.classList.remove("no-scroll");
-    aboutOverlay.style.opacity = '0';
-    aboutContent.classList.remove('open');
-    setTimeout(() => {
-        aboutOverlay.style.display = 'none';
-    }, 200);
-};
-
-closeAbout.addEventListener("click", hideMenu);
-aboutOverlay.addEventListener('click', (event) => {
-    if (event.target === aboutOverlay) hideMenu();
-});
+closeAbout.onclick = () => aboutDialog.close();
 
 // Event listener for link redirect
-document.getElementById('telegram').addEventListener('click', () => {
+document.getElementById('telegram').onclick = () => {
     linkRedirect('https://t.me/kowchannel');
-});
-document.getElementById('github').addEventListener('click', () => {
+}
+document.getElementById('github').onclick = () => {
     linkRedirect('https://github.com/KOWX712/Tricky-Addon-Update-Target-List');
-});
+}
 
 // Update to latest canary verison
-document.getElementById('canary').addEventListener('click', () => {
+document.getElementById('canary').onclick = () => {
     if (isDownloading) return;
     isDownloading = true;
 
@@ -59,7 +38,7 @@ document.getElementById('canary').addEventListener('click', () => {
         if (code === 0) {
             const parser = new DOMParser();
             const doc = parser.parseFromString(htmlContent, "text/html");
-            const zipURL = doc.querySelector('a[href$=".zip"]')?.href;
+            const zipURL = doc.querySelector('a[href$)=".zip"]')?.href;
 
             if (zipURL) {
                 // Extract versionCode
@@ -84,7 +63,7 @@ document.getElementById('canary').addEventListener('click', () => {
             isDownloading = false;
         }
     });
-});
+}
 
 /**
  * Funtion to download update

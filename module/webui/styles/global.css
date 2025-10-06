@@ -4,106 +4,79 @@
 @import './boot_hash.css';
 @import './file_selector.css';
 @import './header.css';
-@import './search_menu.css';
 @import './security_patch.css';
 @import './system_app.css';
 
 body {
-    color: var(--text-primary);
-    background-color: var(--bg-primary);
+    color: var(--md-sys-color-on-surface);
+    background-color: var(--md-sys-color-surface);
     padding-top: var(--top-inset);
     padding-bottom: var(--bottom-inset);
     margin: 0;
 }
 
-.no-scroll {
-    overflow: hidden;
-}
-
-.floating-card {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    width: 100%;
-    bottom: calc(var(--bottom-inset) + 50px);
-    transition: transform 0.4s ease;
-    pointer-events: none;
-    z-index: 2;
-}
-
 .floating-btn {
-    color: var(--btn-primary-text);
-    background-color: var(--btn-primary);
-    border: none;
-    box-shadow: 0 4px 8px #0003;
-    display: none;
-    bottom: 0;
-    padding: 10px 20px;
-    font-size: 22px;
-    font-weight: bold;
-    border-radius: 50px 50px;
-    user-select: none;
-    pointer-events: auto;
+    position: fixed;
+    bottom: calc(var(--bottom-inset) + 32px);
+    right: 16px;
+    z-index: 2;
+    transition: transform 0.2s ease;
+    --md-fab-container-color: var(--md-sys-color-primary-container);
+    --md-fab-icon-color: var(--md-sys-color-on-primary-container);
+    --md-fab-label-text-color: var(--md-sys-color-on-primary-container);
 }
 
-.overlay {
+.floating-btn.hide {
+    transform: translateY(200%);
+}
+
+.dialog-wrapper {
+    z-index: 100;
+    position: relative;
+}
+
+[slot="headline"] {
+    user-select: none;
+}
+
+.text-field-dialog {
+    margin-top: calc(10% + var(--top-inset));
+}
+
+.prompt-container {
     position: fixed;
-    top: 0;
+    bottom: calc(var(--bottom-inset) + 96px);
     left: 0;
     width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    display: none;
+    display: flex;
     justify-content: center;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
-.overlay-content {
-    transform: scale(0.8);
-    transition: transform 0.2s ease;
-}
-
-.overlay-content.open {
-    transform: scale(1);
-}
-
-.close-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: none;
-    border: none;
-    font-size: 18px;
-    color: var(--border-color);
-    user-select: none;
-}
-
-[dir="rtl"] .close-btn {
-    right: unset;
-    left: 12px;
+    pointer-events: none;
+    z-index: 10;
 }
 
 .prompt {
-    position: fixed;
-    bottom: 0;
-    left: 10px;
-    background-color: #4CAF50;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    color: white;
-    font-size: 15px;
-    padding: 5px 10px;
-    z-index: 2050;
-    width: auto;
-    max-width: calc(100% - 40px);
-    transform: translateY(100%);
-    transition: transform 0.2s ease;
+    background-color: var(--md-sys-color-inverse-surface);
+    color: var(--md-sys-color-inverse-on-surface);
+    width: calc(100% - 32px);
+    max-width: calc(100% - 32px);
+    padding: 14px 16px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.2s ease;
+}
+
+.prompt.show {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
 }
 
 .prompt.error {
-    background-color: #f44336;
+    background-color: var(--md-sys-color-error-container);
+    color: var(--md-sys-color-on-error-container);
 }
 
 .loading {
@@ -112,12 +85,12 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    color: #6E6E6E;
+    color: var(--md-sys-color-on-surface-variant);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px;
-    z-index: 1000;
+    z-index: 10;
 }
 
 .footer {
@@ -127,115 +100,10 @@ body {
 }
 
 .uninstall-container {
-    padding: 8px;
-    width: calc(100% - 20px);
-    max-width: 900px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px;
-    border: 3px solid var(--btn-uninstall);
-    box-sizing: border-box;
-    background-color: var(--bg-primary);
-    white-space: nowrap;
-    overflow: hidden;
-    user-select: none;
-
-    svg {
-        fill: var(--btn-uninstall);
-    }
-}
-
-.uninstall-container i {
-    margin-right: 5px;
-}
-
-.uninstall-container span {
-    font-size: 16px;
-    font-weight: bold;
-    color: var(--btn-uninstall);
-}
-
-.uninstall-container.hidden-uninstall {
+    --md-outlined-button-container-shape: 12px;
+    --md-filled-button-container-color: var(--md-sys-color-error);
+    --md-sys-color-on-primary: var(--md-sys-color-on-error);
     display: none;
-}
-
-.uninstall-confirmation-overlay {
-    align-items: center;
-    z-index: 2000;
-}
-
-.uninstall-confirmation {
-    width: 90%;
-    max-width: 600px;
-    max-height: 80%;
-    overflow-y: auto;
-    background-color: var(--bg-secondary);
-    border-radius: 15px;
-    padding: 30px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-}
-
-.uninstall-confirmation p {
-    user-select: none;
-}
-
-.uninstall-confirmation-title {
-    font-size: 26px;
-    user-select: none;
-}
-
-.uninstall-confirmation-button-container {
-    display: flex;
-    width: 100%;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.uninstall-confirmation-button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    font-size: 18px;
-    font-weight: bold;
-    user-select: none;
-    color: var(--text-primary);
-    background-color: var(--border-color);
-}
-
-#confirm-uninstall {
-    color: var(--btn-primary-text);
-    background-color: var(--btn-primary);
-}
-
-.blur-box {
-    backdrop-filter: blur(10px);
-}
-
-.ripple-element {
-    position: relative;
-    overflow: hidden;
-}
-
-.ripple {
-    position: absolute;
-    border-radius: 50%;
-    transform: scale(0);
-    opacity: 1;
-    animation: ripple-animation ease-out forwards;
-    pointer-events: none;
-    background: rgba(0, 0, 0, 0.2);
-}
-
-.ripple.end {
-    opacity: 0;
-}
-
-@keyframes ripple-animation {
-    to {
-        transform: scale(3);
-    }
+    width: calc(100% - 32px);
+    max-width: 900px;
 }

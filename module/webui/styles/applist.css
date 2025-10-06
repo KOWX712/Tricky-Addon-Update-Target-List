@@ -7,133 +7,64 @@
 }
 
 #apps-list {
-    margin-top: 100px;
+    margin-top: 76px;
     flex-direction: column;
 }
 
 .update-card {
     display: none;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
-    background-color: var(--border-color);
-    border: none;
-    border-radius: 12px;
+    gap: 15px;
+    background-color: var(--md-sys-color-surface-variant);
+    color: var(--md-sys-color-on-surface-variant);
+    padding: 10px 15px;
+    border-radius: 8px;
     box-sizing: border-box;
     margin: 0 auto;
     margin-bottom: 10px;
-    outline: none;
-    padding: 12px;
-    width: calc(100% - 20px);
+    position: relative;
+    overflow: hidden;
+    width: calc(100% - 32px);
     max-width: 900px;
-}
-
-#update-available {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 0;
     user-select: none;
 }
 
 #redirect-to-release {
-    text-align: center;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    user-select: none;
+    font-size: 0.8em;
 }
 
-.update-overlay {
-    z-index: 1800;
-    align-items: center;
-}
-
-.update-menu {
-    position: relative;
-    width: calc(90% - 60px);
-    max-width: 800px;
-    background-color: var(--bg-secondary);
-    padding: 30px;
-    border-radius: 15px;
-    text-align: left;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-.update-content h1,
-.update-content h3 {
+.update-dialog h3 {
     margin: 10px 0;
     margin-top: 0;
 }
 
-.update-content h3 {
-    font-size: 24px;
-}
-
-.changelog {
-    max-height: 65vh;
-    overflow-y: auto;
-}
-
 .changelog ul {
-    padding-left: 0;
+    padding-left: 15px;
     margin: 0;
 }
 
-.changelog ul li {
-    margin-left: 15px;
-    margin-bottom: 5px;
-    list-style-type: disc;
-}
-
 .changelog a {
-    color: var(--text-secondary);
+    color: var(--md-sys-color-primary);
     cursor: default;
-}
-
-.changelog a:active {
-    color: var(--btn-primary);
-}
-
-.update-button-container {
-    width: 100%;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
 }
 
 .install,
 .reboot {
     display: none;
-    justify-content: center;
-    font-weight: bold;
-    color: var(--text-primary);
-    background-color: var(--border-color);
-    width: 100%;
-    border: none;
-    padding: 12px;
-    border-radius: 12px;
-    font-size: 18px;
-    user-select: none;
-}
-
-.reboot {
-    color: var(--btn-primary-text);
-    background-color: var(--btn-primary);
 }
 
 .card {
-    background-color: var(--bg-secondary);
-    border: none;
-    box-sizing: border-box;
-    border-radius: 12px;
+    border-radius: 8px;
     margin: 0 auto;
     margin-bottom: 10px;
-    outline: none;
-    padding: 12px;
-    width: calc(100% - 20px);
+    width: calc(100% - 32px);
     max-width: 900px;
-    transition: background-color 0.2s ease;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    background-color: var(--md-sys-color-surface-container);
+    position: relative;
+    overflow: hidden;
 }
 
 .content {
@@ -143,95 +74,27 @@
     position: relative;
 }
 
-.mode {
-    display: none;
-    flex-direction: row;
-    gap: 10px;
-    padding: 10px 12px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: fit-content;
-    background-color: var(--border-color);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 50px 50px;
-    opacity: 0;
-    transform: scale(0);
-    transition: all 0.2s ease;
-    z-index: 1200;
-}
-
-.mode.show {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.mode-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: none;
-    z-index: 1100;
-}
-
-.mode-switch {
-    position: relative;
-    display: inline-block;
-}
-
-.mode-input {
-    opacity: 0;
-    position: absolute;
-    width: 0;
-    height: 0;
-}
-
-.status-indicator {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50px 50px;
-    box-sizing: border-box;
-    transition: all 0.2s ease;
-    border: 3px solid transparent;
-}
-
-#normal-indicator {
-    background-color: var(--btn-primary);
-}
-
-#hack-indicator {
-    background-color: #FF8400;
-}
-
-#generate-indicator {
-    background-color: #36DB2B;
-}
-
-.mode-input[type="radio"]:checked ~ .mode-icon .status-indicator {
-    transform: scale(1.1);
-    border-color: #fff;
+.checkbox {
+    margin: 0;
+    flex-shrink: 0;
 }
 
 .name {
     display: flex;
     align-items: center;
     margin: 0;
-    font-size: 15.5px;
-    max-width: calc(100% - 30px);
+    flex: 1 1 auto;
+    min-width: 0;
     user-select: none;
+    pointer-events: none;
 }
 
 .app-info {
-    display: inline-block;
-    overflow-wrap: break-word;
-    word-break: break-word;
+    text-align: initial;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 .app-icon-container {
@@ -241,6 +104,24 @@
     margin-right: 10px;
     position: relative;
     pointer-events: none;
+}
+
+.app-name,
+.package-name {
+    display: block;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.app-name {
+    display: inline;
+    color: var(--md-sys-color-on-surface);
+}
+
+.package-name {
+    color: var(--md-sys-color-outline);
+    font-size: 0.9em;
 }
 
 [dir="rtl"] .app-icon-container {
@@ -254,7 +135,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, var(--surfaceContainer), var(--surfaceContainerHigh), var(--surfaceContainer));
+    background: linear-gradient(90deg, var(--md-sys-color-surface-container), var(--md-sys-color-surface-container-high), var(--md-sys-color-surface-container));
     background-size: 200% 100%;
     animation: shimmer 1.2s infinite linear;
     border-radius: 6px;
@@ -276,90 +157,39 @@
     }
 }
 
-.checkbox-wrapper {
-    position: relative;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
+.mode-options {
+    margin: 12px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    user-select: none;
+    --md-sys-color-on-surface: var(--md-sys-color-primary);
+    --md-sys-color-on-surface-variant: var(--md-sys-color-primary);
 }
 
-.checkbox {
-    opacity: 0;
-    position: absolute;
-    width: 0;
-    height: 0;
+.mode-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.2em;
 }
 
-.custom-checkbox {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    transition: border-color 1s ease, transform 0.3s ease, background-color 0.2s ease;
+.mode-generated,
+.checkbox-checked-generate {
+    --md-sys-color-primary: #36DB2B;
 }
 
-.tick-symbol {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-    transition: transform 0.2s ease-out, opacity 0.3s ease;
-
-    svg {
-        fill: var(--btn-primary-text);
-    }
+.mode-generated {
+    --md-sys-color-on-surface: #36DB2B;
+    --md-sys-color-on-surface-variant: #36DB2B;
 }
 
-.checkbox:checked + .custom-checkbox {
-    border-color: var(--btn-primary);
-    background-color: var(--btn-primary);
-    transition: border-color 0.1s ease;
-    animation: checked-bounce 0.3s ease-out;
+.mode-hack,
+.checkbox-checked-hack {
+    --md-sys-color-primary: #FF8400;
 }
 
-.checkbox-checked-generate:checked + .custom-checkbox {
-    border-color: #36DB2B;
-    background-color: #36DB2B;
-}
-
-.checkbox-checked-hack:checked + .custom-checkbox {
-    border-color: #FF8400;
-    background-color: #FF8400;
-}
-
-.checkbox:not(:checked) + .custom-checkbox {
-    animation: unchecked-bounce 0.3s ease-out;
-}
-
-.checkbox:checked + .custom-checkbox .tick-symbol {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-}
-
-@keyframes checked-bounce {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(0.8);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes unchecked-bounce {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(0.8);
-    }
-    100% {
-        transform: scale(1);
-    }
+.mode-hack {
+    --md-sys-color-on-surface: #FF8400;
+    --md-sys-color-on-surface-variant: #FF8400;
 }

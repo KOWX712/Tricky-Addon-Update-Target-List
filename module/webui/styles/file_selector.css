@@ -1,40 +1,19 @@
 @import './theme.css';
 
-.file-selector-overlay {
-    z-index: 2000;
-    align-items: center;
-}
-
-.file-selector {
-    width: 90%;
-    max-width: 600px;
-    height: 80vh;
-    color: var(--text-primary);
-    background-color: var(--bg-secondary);
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
+#file-selector-dialog {
+    --md-dialog-container-color: var(--md-sys-color-surface-container-high);
+    width: calc(100% - 32px);
+    height: 80%;
 }
 
 .file-selector-header {
     display: flex;
     align-items: center;
-    padding: 10px;
-    border-bottom: 2px solid var(--border-color);
 }
 
 .current-path .separator {
-    color: var(--text-secondary);
+    color: var(--md-sys-color-on-surface-variant);
     padding: 0 4px;
-}
-
-.back-button {
-    background: none;
-    border: none;
-    fill: var(--border-color);
-    user-select: none;
 }
 
 .current-path {
@@ -45,19 +24,11 @@
     user-select: none;
 }
 
-.close-selector {
-    background: none;
-    border: none;
-    font-size: 20px;
-    color: var(--border-color);
-    padding: 0 5px;
-}
-
 .file-list {
     flex-grow: 1;
     overflow-y: auto;
-    padding: 10px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    padding: 10px 0;
+    transition: all 0.3s ease;
 }
 
 .file-list.switching {
@@ -73,15 +44,14 @@
     position: relative;
     overflow: hidden;
     user-select: none;
-
-    svg {
-        flex-shrink: 0;
-        margin-right: 10px;
-        fill: var(--text-secondary);
-    }
+    color: var(--md-sys-color-on-surface);
 }
 
-[dir="rtl"] .file-item svg {
+.file-item md-icon {
+    margin-right: 10px;
+}
+
+[dir="rtl"] .file-item md-icon {
     margin-right: unset;
     margin-left: 10px;
 }

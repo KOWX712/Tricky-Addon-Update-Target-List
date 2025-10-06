@@ -4,8 +4,7 @@ import { translations } from './language.js';
 
 let jamesFork = false;
 
-const overlay = document.getElementById('security-patch-overlay');
-const overlayContent = document.querySelector('.security-patch-card');
+const dialog = document.getElementById('security-patch-dialog');
 const advancedToggleElement = document.querySelector('.advanced-toggle');
 const advancedToggle = document.getElementById('advanced-mode');
 const normalInputs = document.getElementById('normal-mode-inputs');
@@ -34,16 +33,6 @@ const devconfigOption = [
     'imei',
     'imei2'
 ];
-
-// Hide security patch dialog
-const hideSecurityPatchDialog = () => {
-    document.body.classList.remove("no-scroll");
-    overlay.style.opacity = '0';
-    overlayContent.classList.remove('open');
-    setTimeout(() => {
-        overlay.style.display = 'none';
-    }, 200);
-}
 
 /**
  * Save the security patch configuration to file
@@ -246,28 +235,14 @@ export function securityPatch() {
             }
         });
     document.getElementById("security-patch").addEventListener("click", () => {
-        setTimeout(() => {
-            document.body.classList.add("no-scroll");
-            overlay.style.display = 'flex';
-            setTimeout(() => {
-                overlay.style.opacity = '1';
-                overlayContent.classList.add('open');
-                loadCurrentConfig();
-            }, 10);
-        }, 80);
+        dialog.show();
+        loadCurrentConfig();
     });
 
     // Toggle advanced mode
     advancedToggle.addEventListener('change', () => {
         normalInputs.classList.toggle('hidden');
         advancedInputs.classList.toggle('hidden');
-    });
-
-    // Close on overlay click
-    overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) {
-            hideSecurityPatchDialog();
-        }
     });
 
     // Auto config button
@@ -292,7 +267,7 @@ export function securityPatch() {
             } else {
                 showPrompt('security_patch_auto_failed', false);
             }
-            hideSecurityPatchDialog();
+            dialog.close();
             loadCurrentConfig();
         });
     });
@@ -309,7 +284,7 @@ export function securityPatch() {
 
             if (devconfig.size === 0) {
                 handleSecurityPatch('disable');
-                hideSecurityPatchDialog();
+                dialog.close();
                 return;
             }
 
@@ -327,10 +302,10 @@ export function securityPatch() {
                     if (key === 'osVersion') {
                         topLevel.push(`${key} = ${value}`);
                     } else {
-                        topLevel.push(`${key} = \\"${value}\\"`);
+                        topLevel.push(`${key} = \"${value}\"`);
                     }
                 } else {
-                    deviceProps.push(`${key} = \\"${value}\\"`);
+                    deviceProps.push(`${key} = \"${value}\"`);
                 }
             }
 
@@ -346,7 +321,7 @@ export function securityPatch() {
             if (!allValue) {
                 // Save empty value to disable auto config
                 handleSecurityPatch('disable');
-                hideSecurityPatchDialog();
+                dialog.close();
                 return;
             }
             if (!isValid8Digit(allValue)) {
@@ -370,7 +345,7 @@ export function securityPatch() {
             if (!bootValue && !systemValue && !vendorValue) {
                 // Save empty values to disable auto config
                 handleSecurityPatch('disable');
-                hideSecurityPatchDialog();
+                dialog.close();
                 return;
             }
 
@@ -400,8 +375,7 @@ export function securityPatch() {
                 allPatchInput.value = '';
             }
         }
-        overlayContent.scrollTop = 0;
-        hideSecurityPatchDialog();
+        dialog.close();
         loadCurrentConfig();
     });
 

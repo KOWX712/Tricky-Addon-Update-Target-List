@@ -1,8 +1,7 @@
 import { exec, spawn, toast, listPackages, getPackagesInfo, getPackagesIcon } from './assets/kernelsu.js';
-import { basePath, loadingIndicator, hideFloatingBtn, appsWithExclamation, appsWithQuestion, applyRippleEffect } from './main.js';
+import { basePath, loadingIndicator, appsWithExclamation, appsWithQuestion } from './main.js';
 
 const appTemplate = document.getElementById('app-template').content;
-const modeOverlay = document.querySelector('.mode-overlay');
 export const appListContainer = document.getElementById('apps-list');
 export const updateCard = document.getElementById('update-card');
 
@@ -26,24 +25,33 @@ export async function fetchAppList() {
         .then(({ errno, stdout }) => {
             if (errno === 0) {
                 targetList = processTargetList(stdout);
+            } else if (typeof ksu === 'undefined') {
+                targetList = processTargetList("com.example.one\ncom.example.two!\ncom.example.three?");
             } else {
                 toast("Failed to read target.txt!");
             }
         });
 
     // Fetch cached applist
-    let appList = [], appNameMap = {};
+    let appNameMap = {};
     try {
         const response = await fetch('applist.json');
-        appList = await response.json();
+        const appList = await response.json();
         appNameMap = appList.reduce((map, app) => {
             map[app.package_name] = app.app_name;
             return map;
         }, {});
     } catch (error) {
-        console.warn("Failed to fetch applist.json:", error);
-        appList = [];
-        appNameMap = {};
+        if (typeof ksu === 'undefined') {
+            appNameMap = {
+                "com.example.one": "One",
+                "com.example.two": "Two",
+                "com.example.three": "Three"
+            };
+        } else {
+            console.warn("Failed to fetch applist.json:", error);
+            appNameMap = {};
+        }
     }
 
     // Get installed packages
@@ -51,18 +59,29 @@ export async function fetchAppList() {
     const systemApp = await exec('cat "/data/adb/tricky_store/system_app" || true');
 
     const [userPkgs, systemPkgs] = await Promise.all([
-        listPackages('user'),
-        listPackages('system')
+        listPackages('user').catch(() => { return [] }),
+        listPackages('system').catch(() => { return [] })
     ]);
 
-        installedPackages.push(...userPkgs);
-        systemApp.stdout.split('\n').forEach((pkg) => {
+    installedPackages.push(...userPkgs);
+    systemApp.stdout.split('\n').forEach((pkg) => {
         if (pkg && systemPkgs.includes(pkg)) {
             installedPackages.push(pkg);
         }
     });
 
     installedPackages = Array.from(new Set(installedPackages));
+
+    if (typeof ksu === 'undefined') {
+        installedPackages = [
+            "com.example.one",
+            "com.example.two",
+            "com.example.three",
+            "com.example.four",
+            "com.example.five",
+            "com.example.six"
+        ];
+    }
 
     // Create appEntries array contain { appName, packageName }
     appEntries = await Promise.all(installedPackages.map(async (packageName) => {
@@ -100,6 +119,11 @@ export async function fetchAppList() {
                         packageName
                     });
                 });
+                output.on('exit', (code) => {
+                    if (code !== 0) {
+                        resolve({ appName: packageName, packageName });
+                    }
+                });
             });
         }
     }));
@@ -125,22 +149,20 @@ function renderAppList(data) {
     // Clear container
     appListContainer.innerHTML = "";
     loadingIndicator.style.display = "none";
-    hideFloatingBtn(false);
+    document.querySelector('.floating-btn').classList.remove('hide');
     if (updateCard) appListContainer.appendChild(updateCard);
     let showIcon = false;
-    if (typeof $packageManager !== 'undefined' || typeof ksu.getPackagesIcons === 'function') {
+    if (typeof $packageManager !== 'undefined' ||(typeof ksu !== 'undefined' && typeof ksu.getPackagesIcons === 'function')) {
         showIcon = true;
     }
 
     // Append app
     const appendApps = (index) => {
         if (index >= sortedApps.length) {
-            document.querySelector('.uninstall-container').classList.remove('hidden-uninstall');
+            document.querySelector('.uninstall-container').style.display = "flex";
             toggleableCheckbox();
-            setupRadioButtonListeners();
             setupModeMenu();
             updateCheckboxColor();
-            applyRippleEffect();
             if (showIcon) setupIconIntersectionObserver();
             return;
         }
@@ -149,27 +171,8 @@ function renderAppList(data) {
         const appElement = document.importNode(appTemplate, true);
         const contentElement = appElement.querySelector(".content");
         contentElement.setAttribute("data-package", packageName);
-
-        // Set unique names for radio button groups
-        const radioButtons = appElement.querySelectorAll('input[type="radio"]');
-        radioButtons.forEach((radio) => {
-            radio.name = `mode-radio-${packageName}`;
-        });
-
-        // Preselect the radio button based on the package name
-        const generateRadio = appElement.querySelector('#generate-mode');
-        const hackRadio = appElement.querySelector('#hack-mode');
-        const normalRadio = appElement.querySelector('#normal-mode');
-
-        if (appsWithExclamation.includes(packageName)) {
-            generateRadio.checked = true;
-        } else if (appsWithQuestion.includes(packageName)) {
-            hackRadio.checked = true;
-        } else {
-            normalRadio.checked = true;
-        }
-
         const nameElement = appElement.querySelector(".name");
+        nameElement.setAttribute("for", `checkbox-${packageName}`)
         nameElement.innerHTML = `
             <div class="app-icon-container" style="display:${showIcon ? 'flex' : 'none'};">
                 <div class="loader" data-package="${packageName}"></div>
@@ -180,7 +183,8 @@ function renderAppList(data) {
                 <div class="package-name">${packageName}</div>
             </div>
         `;
-        const checkbox = appElement.querySelector(".checkbox");
+        const checkbox = appElement.querySelector("md-checkbox");
+        checkbox.id = `checkbox-${packageName}`;
         checkbox.checked = targetList.includes(packageName);
         appListContainer.appendChild(appElement);
         appendApps(index + 1);
@@ -284,114 +288,103 @@ function processTargetList(targetFileContent) {
     return targetList;
 }
 
+let menuOpen = false;
+
 // Make checkboxes toggleable
 function toggleableCheckbox() {
     const appElements = appListContainer.querySelectorAll(".card");
     appElements.forEach(card => {
-        const content = card.querySelector(".content");
-        const checkbox = content.querySelector(".checkbox");
-        content.addEventListener("click", (event) => {
+        const checkbox = card.querySelector(".checkbox");
+        card.onclick = () => {
+            if (menuOpen) return;
             checkbox.checked = !checkbox.checked;
-        });
+        };
     });
-}
 
-// Add eventlistener to mode button
-function setupRadioButtonListeners() {
-    const radioButtons = appListContainer.querySelectorAll('input[type="radio"]');
-    radioButtons.forEach((radioButton) => {
-        radioButton.addEventListener('change', (event) => {
-            const card = radioButton.closest(".card");
-            const packageName = card.querySelector(".content").getAttribute("data-package");
-            if (radioButton.id === 'generate-mode') {
-                if (!appsWithExclamation.includes(packageName)) {
-                    appsWithExclamation.push(packageName);
-                }
-                const indexInQuestion = appsWithQuestion.indexOf(packageName);
-                if (indexInQuestion > -1) {
-                    appsWithQuestion.splice(indexInQuestion, 1);
-                }
-            } else if (radioButton.id === 'hack-mode') {
-                if (!appsWithQuestion.includes(packageName)) {
-                    appsWithQuestion.push(packageName);
-                }
-                const indexInExclamation = appsWithExclamation.indexOf(packageName);
-                if (indexInExclamation > -1) {
-                    appsWithExclamation.splice(indexInExclamation, 1);
-                }
-            } else if (radioButton.id === 'normal-mode') {
-                const indexInExclamation = appsWithExclamation.indexOf(packageName);
-                if (indexInExclamation > -1) {
-                    appsWithExclamation.splice(indexInExclamation, 1);
-                }
-                const indexInQuestion = appsWithQuestion.indexOf(packageName);
-                if (indexInQuestion > -1) {
-                    appsWithQuestion.splice(indexInQuestion, 1);
-                }
-            }
-            updateCheckboxColor();
-            console.log("Updated appsWithExclamation:", appsWithExclamation);
-            console.log("Updated appsWithQuestion:", appsWithQuestion);
-        });
+    // Skip when menu is open
+    document.querySelectorAll('md-menu').forEach(menu => {
+        if (!menu.dataset.closeListener) { 
+            menu.addEventListener('closing', () => menuOpen = true);
+            menu.addEventListener('closed', () => menuOpen = false);
+            menu.dataset.closeListener = 'true';
+        }
     });
 }
 
 // Hold to open menu
 function setupModeMenu() {
+    const modeDialog = document.getElementById('mode-dialog');
+    const modeAppName = document.getElementById('mode-dialog-appname');
     let holdTimeout;
-    function showMode(card) {
-        const modeElement = card.querySelector(".mode");
-        if (modeElement) {
-            modeElement.style.display = "flex";
-            modeOverlay.style.display = "flex";
-            setTimeout(() => {
-                modeElement.classList.add('show');
-            }, 10);
-        }
-    }
-    function hideAllModes() {
-        const allModeElements = appListContainer.querySelectorAll(".mode");
-        allModeElements.forEach((modeElement) => {
-            modeElement.classList.remove('show');
-            modeOverlay.style.display = "none";
-            setTimeout(() => {
-                modeElement.style.display = "none";
-            }, 200);
-        });
+    let currentCard = null;
+
+    function openModeDialog(card) {
+        currentCard = card;
+        const packageName = card.getAttribute('data-package');
+        const appNameEl = card.querySelector('.app-name strong');
+        const appName = appNameEl ? appNameEl.textContent : packageName;
+        modeAppName.innerHTML = `${appName}<br>${packageName}`;
+
+        const isGenerate = appsWithExclamation.includes(packageName);
+        const isHack = appsWithQuestion.includes(packageName);
+        document.getElementById('mode-default').checked = !isGenerate && !isHack;
+        document.getElementById('mode-generate').checked = isGenerate;
+        document.getElementById('mode-hack').checked = isHack;
+
+        modeDialog.show();
     }
 
-    const cards = appListContainer.querySelectorAll(".card");
+    function closeDialog(mode) {
+        if (!currentCard || !mode) {
+            modeDialog.close();
+            currentCard = null;
+            return;
+        }
+        const packageName = currentCard.getAttribute('data-package');
+        const exIndex = appsWithExclamation.indexOf(packageName);
+        if (exIndex > -1) appsWithExclamation.splice(exIndex, 1);
+        const qIndex = appsWithQuestion.indexOf(packageName);
+        if (qIndex > -1) appsWithQuestion.splice(qIndex, 1);
+
+        if (mode === 'generate') {
+            appsWithExclamation.push(packageName);
+        } else if (mode === 'hack') {
+            appsWithQuestion.push(packageName);
+        }
+        updateCheckboxColor();
+        currentCard = null;
+        setTimeout(() => modeDialog.close(), 200);
+    }
+
+    // Wire dialog item clicks
+    const defaultItem = document.getElementById('mode-default');
+    const genItem = document.getElementById('mode-generate');
+    const hackItem = document.getElementById('mode-hack');
+    defaultItem.addEventListener('click', () => closeDialog('normal'));
+    genItem.addEventListener('click', () => closeDialog('generate'));
+    hackItem.addEventListener('click', () => closeDialog('hack'));
+    document.getElementById('mode-cancel').addEventListener('click', () => closeDialog());
+
+    const cards = appListContainer.querySelectorAll('.card');
     cards.forEach((card) => {
-        card.addEventListener("pointerdown", () => {
-            const checkbox = card.querySelector(".checkbox");
+        card.addEventListener('pointerdown', (e) => {
+            // only start hold when checkbox is checked
+            const checkbox = card.querySelector('md-checkbox');
             if (checkbox && checkbox.checked) {
-                holdTimeout = setTimeout(() => {
-                    showMode(card);
-                }, 500);
+                holdTimeout = setTimeout(() => openModeDialog(card), 500);
             }
         });
-        card.addEventListener("pointerup", () => clearTimeout(holdTimeout));
-        card.addEventListener("pointercancel", () => clearTimeout(holdTimeout));
+        card.addEventListener('pointerup', () => clearTimeout(holdTimeout));
+        card.addEventListener('pointercancel', () => clearTimeout(holdTimeout));
     });
-
-    document.addEventListener("click", (event) => {
-        if (!event.target.closest(".mode") || modeOverlay.contains(event.target)) {
-            hideAllModes();
-        } else if (event.target.closest(".status-indicator")) {
-            setTimeout(() => {
-                hideAllModes();
-            }, 300);
-        }
-    });
-    window.addEventListener("scroll", hideAllModes);
 }
 
 // Function to update card borders color
 function updateCheckboxColor() {
     const cards = appListContainer.querySelectorAll(".card");
     cards.forEach((card) => {
-        const packageName = card.querySelector(".content").getAttribute("data-package");
-        const checkbox = card.querySelector(".checkbox");
+        const packageName = card.getAttribute("data-package");
+        const checkbox = card.querySelector("md-checkbox");
         checkbox.classList.remove("checkbox-checked-generate", "checkbox-checked-hack");
         if (appsWithExclamation.includes(packageName)) {
             checkbox.classList.add("checkbox-checked-generate");

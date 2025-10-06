@@ -1,145 +1,133 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TrickyAddon</title>
     <link rel="stylesheet" href="styles/global.css" type="text/css">
+    <script type="module" src="https://fastly.jsdelivr.net/npm/@material/web/all.js/+esm"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0">
     <script type="module" crossorigin src="scripts/main.js"></script>
     <script type="module" crossorigin src="scripts/about.js"></script>
-    <script type="module" crossorigin src="scripts/help.js"></script>
     <script type="module" crossorigin src="scripts/boot_hash.js"></script>
     <script type="module" crossorigin src="scripts/security_patch.js"></script>
     <script src="scripts/assets/marked.min.js"></script>
 </head>
-
 <body>
     <!-- Header -->
-    <div class="header">
-        <div id="title" data-i18n="header_title"></div><span id="module-version"></span>
-        <button id="help-button" class="help-button">
-            <svg xmlns="http://www.w3.org/2000/svg" height="21px" viewBox="0 -960 960 960" width="21px"><path d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" /></svg>
-        </button>
-        <div class="no-connection">
-            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"><path d="M790-56 414-434q-47 11-87.5 33T254-346l-84-86q32-32 69-56t79-42l-90-90q-41 21-76.5 46.5T84-516L0-602q32-32 66.5-57.5T140-708l-84-84 56-56 736 736-58 56Zm-310-64q-42 0-71-29.5T380-220q0-42 29-71t71-29q42 0 71 29t29 71q0 41-29 70.5T480-120Zm236-238-29-29-29-29-144-144q81 8 151.5 41T790-432l-74 74Zm160-158q-77-77-178.5-120.5T480-680q-21 0-40.5 1.5T400-674L298-776q44-12 89.5-18t92.5-6q142 0 265 53t215 145l-84 86Z" /></svg>
+    <div class="header header-bg">
+        <div id="title" data-i18n="header_title"></div>
+        <md-icon-button class="search-button" id="search-button">
+            <md-icon>search</md-icon>
+        </md-icon-button>
+        <div class="menu">
+            <md-icon-button id="menu-button">
+                <md-icon>more_vert</md-icon>
+            </md-icon-button>
+            <md-menu id="menu-options" anchor="menu-button">
+                <md-menu-item id="refresh" data-i18n="menu_refresh"></md-menu-item>
+                <md-menu-item id="select-all" data-i18n="menu_select_all"></md-menu-item>
+                <md-menu-item id="deselect-all" data-i18n="menu_deselect_all"></md-menu-item>
+                <md-menu-item id="select-denylist" data-i18n="menu_select_denylist"></md-menu-item>
+                <md-menu-item id="deselect-unnecessary" data-i18n="menu_deselect_unnecessary"></md-menu-item>
+                <md-menu-item id="add-system-app" data-i18n="menu_add_system_app"></md-menu-item>
+                <md-sub-menu anchor-corner="end-start" hover-close-delay="0">
+                    <md-menu-item slot="item">
+                        <div slot="headline" data-i18n="menu_keybox"></div>
+                        <md-icon slot="start" class="ltr-icon">chevron_left</md-icon>
+                        <md-icon slot="start" class="rtl-icon">chevron_right</md-icon>
+                    </md-menu-item>
+                    <md-menu positioning="popover" slot="menu">
+                        <md-menu-item id="aospkb" data-i18n="menu_keybox_aosp"></md-menu-item>
+                        <md-menu-item id="validkb" data-i18n="menu_keybox_valid"></md-menu-item>
+                        <md-menu-item id="devicekb" data-i18n="menu_keybox_unknown"></md-menu-item>
+                        <md-menu-item id="customkb" data-i18n="menu_keybox_custom"></md-menu-item>
+                    </md-menu>
+                </md-sub-menu>
+                <md-menu-item id="boot-hash" data-i18n="menu_set_verified_boot_hash"></md-menu-item>
+                <md-menu-item id="security-patch" data-i18n="menu_set_security_patch"></md-menu-item>
+                <md-menu-item id="help" data-i18n="menu_help"></md-menu-item>
+                <md-sub-menu anchor-corner="end-start" hover-close-delay="0">
+                    <md-menu-item slot="item">
+                        <div slot="headline" data-i18n="menu_language"></div>
+                        <md-icon slot="start">language</md-icon>
+                    </md-menu-item>
+                    <md-menu positioning="popover" slot="menu" id="language-menu"></md-menu>
+                </md-sub-menu>
+                <md-menu-item id="about" data-i18n="menu_about"></md-menu-item>
+            </md-menu>
         </div>
-        <div class="language-dropdown">
-            <button class="language-button">
-                <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px"><path d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-155.5t86-127Q252-817 325-848.5T480-880q83 0 155.5 31.5t127 86q54.5 54.5 86 127T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80Zm0-82q26-36 45-75t31-83H404q12 44 31 83t45 75Zm-104-16q-18-33-31.5-68.5T322-320H204q29 50 72.5 87t99.5 55Zm208 0q56-18 99.5-55t72.5-87H638q-9 38-22.5 73.5T584-178ZM170-400h136q-3-20-4.5-39.5T300-480q0-21 1.5-40.5T306-560H170q-5 20-7.5 39.5T160-480q0 21 2.5 40.5T170-400Zm216 0h188q3-20 4.5-39.5T580-480q0-21-1.5-40.5T574-560H386q-3 20-4.5 39.5T380-480q0 21 1.5 40.5T386-400Zm268 0h136q5-20 7.5-39.5T800-480q0-21-2.5-40.5T790-560H654q3 20 4.5 39.5T660-480q0 21-1.5 40.5T654-400Zm-16-240h118q-29-50-72.5-87T584-782q18 33 31.5 68.5T638-640Zm-234 0h152q-12-44-31-83t-45-75q-26 36-45 75t-31 83Zm-200 0h118q9-38 22.5-73.5T376-782q-56 18-99.5 55T204-640Z"/></svg>
-            </button>
-            <div class="language-menu">
-                <div class="language-list blur-box"></div>
-            </div>
-            <div id="language-overlay" class="language-overlay"></div>
-        </div>
+        <div class="search-background header-bg"></div>
+        <md-outlined-text-field class="search-input" id="search" data-i18n="search_bar_search_placeholder" placeholder="Search">
+            <md-icon slot="trailing-icon" id="clear-btn">close</md-icon>
+        </md-outlined-text-field>
     </div>
 
     <!-- Loading Element -->
     <div class="loading" data-i18n="loading_loading"></div>
 
     <!-- Prompt Element -->
-    <div id="prompt" class="prompt"></div>
+    <div class="prompt-container">
+        <span class="prompt" id="prompt"></span>
+    </div>
 
     <!-- Floating Button Element -->
-    <div class="floating-card">
-        <button class="floating-btn ripple-element" id="save" data-i18n="functional_button_save_and_update_button"></button>
-    </div>
-
-    <!-- Menu Options -->
-    <div class="search-menu-container">
-        <div class="search-card ripple-element blur-box">
-            <span class="search-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" height="19px" viewBox="0 -960 960 960" width="24px" fill="#6E6E6E"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" /></svg>
-            </span>
-            <input type="text" class="search-input" id="search" placeholder="" data-i18n="search_bar_search_placeholder">
-            <button class="clear-btn" id="clear-btn">&#x2715;</button>
-        </div>
-        <div class="menu">
-            <input type="checkbox" id="menu-toggle" class="menu-toggle">
-            <label for="menu-toggle" class="menu-button ripple-element blur-box" id="menu-button">
-                <i class="menu-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -1060 960 960" width="24px"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
-                </i>
-            </label>
-            <div id="menu-options" class="menu-options blur-box">
-                <ul>
-                    <li class="ripple-element" id="refresh" data-i18n="menu_refresh"></li>
-                    <li class="ripple-element" id="select-all" data-i18n="menu_select_all"></li>
-                    <li class="ripple-element" id="deselect-all" data-i18n="menu_deselect_all"></li>
-                    <li class="ripple-element" id="select-denylist" data-i18n="menu_select_denylist"></li>
-                    <li class="ripple-element" id="deselect-unnecessary" data-i18n="menu_deselect_unnecessary"></li>
-                    <li class="ripple-element" id="add-system-app" data-i18n="menu_add_system_app"></li>
-                    <li class="ripple-element" id="aospkb" data-i18n="menu_set_aosp_keybox"></li>
-                    <li class="ripple-element" id="devicekb" data-i18n="menu_set_unknown_keybox"></li>
-                    <li class="ripple-element" id="validkb" data-i18n="menu_set_valid_keybox"></li>
-                    <li class="ripple-element" id="customkb" data-i18n="menu_set_custom_keybox"></li>
-                    <li class="ripple-element" id="boot-hash" data-i18n="menu_set_verified_boot_hash"></li>
-                    <li class="ripple-element" id="security-patch" data-i18n="menu_set_security_patch"></li>
-                    <li class="ripple-element" id="about" data-i18n="menu_about"></li>
-                </ul>
-            </div>
-        </div>
-        <div id="menu-overlay" class="menu-overlay"></div>
-    </div>
+    <md-fab id="save" class="floating-btn hide" data-i18n="functional_button_save_and_update_button" label="Save">
+        <md-icon slot="icon">edit_note</md-icon>
+    </md-fab>
 
     <!-- Applist Display -->
     <div id="apps-list"></div>
-    <div class="update-card ripple-element" id="update-card">
-        <p id="update-available" data-i18n="update_update_available"></p>
-        <p id="redirect-to-release" data-i18n="update_redirect_to_release"></p>
+    <div class="update-card" id="update-card">
+        <md-ripple></md-ripple>
+        <md-icon>download</md-icon>
+        <div>
+            <div id="update-available" data-i18n="update_update_available"></div>
+            <div id="redirect-to-release" data-i18n="update_redirect_to_release"></div>
+        </div>
     </div>
-    <div class="mode-overlay"></div>
     <template id="app-template">
         <div class="card-box">
-            <div class="card ripple-element" id="card">
-                <div class="content" data-package="">
-                    <div class="mode">
-                        <label class="mode-switch" id="normal">
-                            <input type="radio" class="mode-input" id="normal-mode">
-                            <i class="mode-icon">
-                                <div class="status-indicator ripple-element" id="normal-indicator">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#ffffff"><path d="M480-480Zm0 280q-116 0-198-82t-82-198q0-116 82-198t198-82q116 0 198 82t82 198q0 116-82 198t-198 82Zm0-80q83 0 141.5-58.5T680-480q0-83-58.5-141.5T480-680q-83 0-141.5 58.5T280-480q0 83 58.5 141.5T480-280Z"/></svg>
-                                </div>
-                            </i>
-                        </label>
-                        <label class="mode-switch" id="generate">
-                            <input type="radio" class="mode-input" id="generate-mode">
-                            <i class="mode-icon">
-                                <div class="status-indicator ripple-element" id="generate-indicator">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="#ffffff"><path d="M480-120q-33 0-56.5-23.5T400-200q0-33 23.5-56.5T480-280q33 0 56.5 23.5T560-200q0 33-23.5 56.5T480-120Zm-80-240v-480h160v480H400Z"/></svg>
-                                </div>
-                            </i>
-                        </label>
-                        <label class="mode-switch" id="hack">
-                            <input type="radio" class="mode-input" id="hack-mode">
-                            <i class="mode-icon">
-                                <div class="status-indicator ripple-element" id="hack-indicator">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="19px" viewBox="0 -960 960 960" width="19px" fill="#ffffff"><path d="M424-320q0-81 14.5-116.5T500-514q41-36 62.5-62.5T584-637q0-41-27.5-68T480-732q-51 0-77.5 31T365-638l-103-44q21-64 77-111t141-47q105 0 161.5 58.5T698-641q0 50-21.5 85.5T609-475q-49 47-59.5 71.5T539-320H424Zm56 240q-33 0-56.5-23.5T400-160q0-33 23.5-56.5T480-240q33 0 56.5 23.5T560-160q0 33-23.5 56.5T480-80Z"/></svg>
-                                </div>
-                            </i>
-                        </label>
-                    </div>
-                    <p class="name"></p>
-                    <div class="checkbox-wrapper">
-                        <input type="checkbox" class="checkbox" id="checkbox1" disabled />
-                        <label for="checkbox1" class="custom-checkbox">
-                            <span class="tick-symbol">
-                                <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 -3 26 26" width="16px" height="16px" fill="#fff"><path d="M 22.566406 4.730469 L 20.773438 3.511719 C 20.277344 3.175781 19.597656 3.304688 19.265625 3.796875 L 10.476563 16.757813 L 6.4375 12.71875 C 6.015625 12.296875 5.328125 12.296875 4.90625 12.71875 L 3.371094 14.253906 C 2.949219 14.675781 2.949219 15.363281 3.371094 15.789063 L 9.582031 22 C 9.929688 22.347656 10.476563 22.613281 10.96875 22.613281 C 11.460938 22.613281 11.957031 22.304688 12.277344 21.839844 L 22.855469 6.234375 C 23.191406 5.742188 23.0625 5.066406 22.566406 4.730469 Z"/></svg>
-                            </span>
-                        </label>
-                    </div>
-                </div>
+            <div class="card content" data-package="">
+                <md-ripple></md-ripple>
+                <label class="name"></label>
+                <md-checkbox class="checkbox" touch-target="wrapper"></md-checkbox>
             </div>
         </div>
     </template>
 
-    <!-- Help Overlay -->
-    <div id="help-overlay" class="help-overlay overlay">
-        <div class="help-menu overlay-content blur-box">
-            <button id="close-help" class="close-btn">&#x2715;</button>
-            <div class="help-content">
-                <div class="help-content-header" data-i18n="help_help_instructions"></div>
+    <!-- Mode selection dialog (opened on long-press) -->
+    <div class="dialog-wrapper">
+        <md-dialog id="mode-dialog">
+            <div slot="headline" data-i18n="mode_dialog_title"></div>
+            <div slot="content" class="mode-dialog-content">
+                <div id="mode-dialog-appname"></div>
+                <div class="mode-options">
+                    <label class="mode-option">
+                        <md-radio id="mode-default" name="mode" value="normal"></md-radio>
+                        <span data-i18n="mode_auto"></span>
+                    </label>
+                    <label class="mode-option">
+                        <md-radio id="mode-generate" name="mode" value="generate" class="mode-generated"></md-radio>
+                        <span data-i18n="mode_certificate_generating"></span>
+                    </label>
+                    <label class="mode-option">
+                        <md-radio id="mode-hack" name="mode" value="hack" class="mode-hack"></md-radio>
+                        <span data-i18n="mode_leaf_hack"></span>
+                    </label>
+                </div>
+            </div>
+            <div slot="actions">
+                <md-text-button id="mode-cancel" data-i18n="confirmation_uninstall_cancel"></md-text-button>
+            </div>
+        </md-dialog>
+    </div>
+
+    <!-- Help Dialog -->
+    <div class="dialog-wrapper">
+        <md-dialog id="help-dialog">
+            <div slot="headline" data-i18n="help_help_instructions"></div>
+            <div slot="content" class="help-content">
                 <div class="instruction">
                     <strong data-i18n="help_save_and_update"></strong>
                     <p data-i18n="help_save_and_update_description"></p>
@@ -181,216 +169,175 @@
                     <p data-i18n="help_set_verified_boot_hash_description"></p>
                 </div>
             </div>
-        </div>
+            <div slot="actions">
+                <md-text-button id="close-help" data-i18n="functional_button_close"></md-text-button>
+            </div>
+        </md-dialog>
     </div>
 
-    <!-- BootHash Input Overlay -->
-    <div id="boot-hash-overlay" class="boot-hash-overlay overlay">
-        <div id="boot-hash-card" class="boot-hash-card overlay-content blur-box">
-            <div class="boot-hash-title" data-i18n="boot_hash_title"></div>
-            <textarea id="boot-hash-input" class="boot-hash-input" placeholder="Paste your verified Boot Hash here" data-i18n="boot_hash_input_placeholder" oninput="window.trimInput(this)"></textarea>
-            <button id="boot-hash-save-button" class="boot-hash-save-button ripple-element" data-i18n="boot_hash_save_button"></button>
-        </div>
+    <!-- BootHash Input Dialog -->
+    <div class="dialog-wrapper">
+        <md-dialog id="boot-hash-dialog" class="text-field-dialog">
+            <div slot="headline" data-i18n="boot_hash_title"></div>
+            <div slot="content">
+                <md-outlined-text-field id="boot-hash-input" type="textarea" rows="4" placeholder="Paste your verified Boot Hash here" data-i18n="boot_hash_input_placeholder" oninput="window.trimInput(this)"></md-outlined-text-field>
+            </div>
+            <div slot="actions">
+                <md-text-button id="cancel-boot-hash" data-i18n="confirmation_uninstall_cancel"></md-text-button>
+                <md-filled-button id="boot-hash-save-button" data-i18n="boot_hash_save_button"></md-filled-button>
+            </div>
+        </md-dialog>
     </div>
 
-    <!-- About Overlay -->
-    <div id="about-overlay" class="about-overlay overlay">
-        <div class="about-menu overlay-content blur-box">
-            <button id="close-about" class="close-btn">&#x2715;</button>
-            <div class="about-title">
-                <p id="module_name_line1" data-i18n="about_module_name_line1"></p>
-                <p id="module_name_line2" data-i18n="about_module_name_line2"></p>
-                <p><span id="authored" data-i18n="about_by"></span> KOWX712</p>
-            </div>
-            <div id="disclaimer" data-i18n="about_disclaimer"></div>
-            <div class="link">
-                <i class="link-icon ripple-element" id="telegram" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M248 8C111 8 0 119 0 256S111 504 248 504 496 393 496 256 385 8 248 8zM363 176.7c-3.7 39.2-19.9 134.4-28.1 178.3-3.5 18.6-10.3 24.8-16.9 25.4-14.4 1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25 5.3-39.5 3.7-3.8 67.1-61.5 68.3-66.7 .2-.7 .3-3.1-1.2-4.4s-3.6-.8-5.1-.5q-3.3 .7-104.6 69.1-14.8 10.2-26.9 9.9c-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3q.8-6.7 18.5-13.7 108.4-47.2 144.6-62.3c68.9-28.6 83.2-33.6 92.5-33.8 2.1 0 6.6 .5 9.6 2.9a10.5 10.5 0 0 1 3.5 6.7A43.8 43.8 0 0 1 363 176.7z"/></svg>
-                    <span id="link-text" data-i18n="about_telegram_channel"></span>
-                </i>
-                <i class="link-icon ripple-element" id="github" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-                    <span id="link-text">GitHub</span>
-                </i>
-                <i class="link-icon ripple-element" id="canary" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"><path d="M200-120q-51 0-72.5-45.5T138-250l222-270v-240h-40q-17 0-28.5-11.5T280-800q0-17 11.5-28.5T320-840h320q17 0 28.5 11.5T680-800q0 17-11.5 28.5T640-760h-40v240l222 270q32 39 10.5 84.5T760-120H200Zm0-80h560L520-492v-268h-80v268L200-200Zm280-280Z"/></svg>
-                    <span id="link-text" data-i18n="about_canary_update"></span>
-                </i>
-            </div>
-            <div class="acknowledgment">
-                <p id="acknowledgment" data-i18n="about_acknowledgment"></p>
-                <p>j-hc/zygisk-detach: WebUI template</p>
-                <p>markedjs/marked: Markdown Support</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Update Overlay -->
-    <div class="update-overlay overlay">
-        <div class="update-menu overlay-content blur-box">
-            <button id="close-update" class="close-btn">&#x2715;</button>
-            <div class="update-content">
-                <h1 data-i18n="update_changelog"></h1>
-                <div class="changelog"></div>
-                <div class="update-button-container">
-                    <button class="install ripple-element" data-i18n="update_install"></button>
-                    <button class="reboot ripple-element" data-i18n="update_reboot"></button>
+    <!-- About Dialog -->
+    <div class="dialog-wrapper">
+        <md-dialog id="about-dialog">
+            <div slot="content">
+                <span id="module_name_line1" data-i18n="about_module_name_line1"></span><br>
+                <span id="module_name_line2" data-i18n="about_module_name_line2"></span><br>
+                <span id="module-version"></span><br>
+                <span id="authored" data-i18n="about_by"></span> KOWX712
+                <div id="disclaimer" data-i18n="about_disclaimer"></div>
+                <div class="link">
+                    <md-filled-button id="telegram">
+                        <span data-i18n="about_telegram_channel"></span>
+                        <svg slot="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.114 9.291c.552-.552 1.1-1.84-1.2-.276a395.806 395.806 0 0 1-6.489 4.372 2.7 2.7 0 0 1-2.117.046c-1.38-.414-2.991-.966-2.991-.966s-1.1-.691.783-1.427c0 0 7.961-3.267 10.722-4.418 1.058-.46 4.647-1.932 4.647-1.932s1.657-.645 1.519.92c-.046.644-.414 2.9-.782 5.338-.553 3.451-1.151 7.225-1.151 7.225s-.092 1.058-.874 1.242a3.787 3.787 0 0 1-2.3-.828c-.184-.138-3.451-2.209-4.648-3.221a.872.872 0 0 1 .046-1.473 169.31 169.31 0 0 0 4.835-4.602Z"></path></svg>
+                    </md-filled-button>
+                    <md-filled-button id="github">
+                        <span>GitHub</span>
+                        <svg slot="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1A10.89 10.89 0 0 0 1 11.77 10.79 10.79 0 0 0 8.52 22c.55.1.75-.23.75-.52v-1.83c-3.06.65-3.71-1.44-3.71-1.44a2.86 2.86 0 0 0-1.22-1.58c-1-.66.08-.65.08-.65a2.31 2.31 0 0 1 1.68 1.11 2.37 2.37 0 0 0 3.2.89 2.33 2.33 0 0 1 .7-1.44c-2.44-.27-5-1.19-5-5.32a4.15 4.15 0 0 1 1.11-2.91 3.78 3.78 0 0 1 .11-2.84s.93-.29 3 1.1a10.68 10.68 0 0 1 5.5 0c2.1-1.39 3-1.1 3-1.1a3.78 3.78 0 0 1 .11 2.84A4.15 4.15 0 0 1 19 11.2c0 4.14-2.58 5.05-5 5.32a2.5 2.5 0 0 1 .75 2v2.95c0 .35.2.63.75.52A10.8 10.8 0 0 0 23 11.77 10.89 10.89 0 0 0 12 1"></path></svg>
+                    </md-filled-button>
+                    <md-filled-button id="canary">
+                        <span data-i18n="about_canary_update"></span>
+                        <md-icon slot="icon">science</md-icon>
+                    </md-filled-button>
+                </div>
+                <div class="acknowledgment">
+                    <p id="acknowledgment" data-i18n="about_acknowledgment"></p>
+                    <p>j-hc/zygisk-detach: WebUI template</p>
+                    <p>markedjs/marked: Markdown Support</p>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- File Selector Overlay -->
-    <div class="file-selector-overlay overlay">
-        <div class="file-selector overlay-content blur-box">
-            <div class="file-selector-header">
-                <button class="back-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="40 -1050 900 960" width="22px"><path d="M400-93.85 13.85-480 400-866.15l56.77 56.77L127.38-480l329.39 329.38L400-93.85Z"/></svg>
-                </button>
-                <div class="current-path">/storage/emulated/0/Download</div>
-                <button class="close-selector">&#x2715;</button>
+            <div slot="actions">
+                <md-text-button id="close-about" data-i18n="functional_button_close"></md-text-button>
             </div>
-            <div class="file-list"></div>
-        </div>
+        </md-dialog>
     </div>
 
-    <!-- Security Patch Overlay -->
-    <div id="security-patch-overlay" class="security-patch-overlay overlay">
-        <div id="security-patch-card" class="security-patch-card overlay-content blur-box">
-            <div class="security-patch-header" data-i18n="security_patch_title"></div>
-            <div class="security-patch-content">
+    <!-- Update Dialog -->
+    <div class="dialog-wrapper">
+        <md-dialog id="update-dialog" class="update-dialog">
+            <div slot="headline" data-i18n="update_changelog"></div>
+            <div slot="content" class="changelog"></div>
+            <div slot="actions">
+                <md-text-button id="close-update" data-i18n="functional_button_close"></md-text-button>
+                <md-filled-button class="install" data-i18n="update_install"></md-filled-button>
+                <md-filled-button class="reboot" data-i18n="update_reboot"></md-filled-button>
+            </div>
+        </md-dialog>
+    </div>
+
+    <!-- File Selector Dialog -->
+    <div class="dialog-wrapper">
+        <md-dialog id="file-selector-dialog">
+            <div slot="headline" class="file-selector-header">
+                <md-icon-button class="back-button">
+                    <md-icon>arrow_back</md-icon>
+                </md-icon-button>
+                <div class="current-path">/storage/emulated/0/Download</div>
+            </div>
+            <div slot="content">
+                <div class="file-list"></div>
+            </div>
+            <div slot="actions">
+                <md-text-button class="close-selector" data-i18n="confirmation_uninstall_cancel"></md-text-button>
+            </div>
+        </md-dialog>
+    </div>
+
+    <!-- Security Patch Dialog -->
+    <div class="dialog-wrapper">
+        <md-dialog id="security-patch-dialog" class="text-field-dialog">
+            <div slot="headline" data-i18n="security_patch_title"></div>
+            <div slot="content">
                 <!-- Usual input -->
-                <div id="normal-mode-inputs" class="normal-mode-inputs">
-                    <div class="input-group">
-                        <label id="security_patch-all">All</label>
-                        <input type="text" id="all-patch" placeholder="20250101" maxlength="8" autocapitalize="none">
-                    </div>
+                <div id="normal-mode-inputs" class="normal-mode-inputs input-group">
+                    <md-outlined-text-field id="all-patch" label="All" placeholder="20250101" maxlength="8" autocapitalize="none"></md-outlined-text-field>
                 </div>
 
                 <!-- Advanced input -->
-                <div id="advanced-mode-inputs" class="advanced-mode-inputs hidden">
-                    <div class="input-group">
-                        <label id="security_patch-system">System</label>
-                        <input type="text" id="system-patch" placeholder="202501" maxlength="6" autocapitalize="none">
-                    </div>
-                    <div class="input-group">
-                        <label id="security_patch-boot">Boot</label>
-                        <input type="text" id="boot-patch" placeholder="2025-01-01" autocapitalize="none" oninput="formatDate(this)" maxlength="10">
-                    </div>
-                    <div class="input-group">
-                        <label id="security_patch-vendor">Vendor</label>
-                        <input type="text" id="vendor-patch" placeholder="2025-01-01" autocapitalize="none" oninput="formatDate(this)" maxlength="10">
-                    </div>
+                <div id="advanced-mode-inputs" class="advanced-mode-inputs hidden input-group">
+                    <md-outlined-text-field id="system-patch" label="System" placeholder="202501" maxlength="6" autocapitalize="none"></md-outlined-text-field>
+                    <md-outlined-text-field id="boot-patch" label="Boot" placeholder="2025-01-01" autocapitalize="none" oninput="formatDate(this)" maxlength="10"></md-outlined-text-field>
+                    <md-outlined-text-field id="vendor-patch" label="Vendor" placeholder="2025-01-01" autocapitalize="none" oninput="formatDate(this)" maxlength="10"></md-outlined-text-field>
                 </div>
 
                 <!-- James' fork input -->
                 <div id="devconfig-mode-inputs" class="normal-mode-inputs hidden">
-                    <div class="input-group">
-                        <label>Security Patch</label>
-                        <input type="text" id="devconfig-securityPatch" placeholder="2025-01-01" autocapitalize="none" oninput="formatDate(this)" maxlength="10">
-                    </div>
-                    <div class="input-group">
-                        <label>OS Version</label>
-                        <input type="text" id="devconfig-osVersion" placeholder="34" maxlength="2" autocapitalize="none">
-                    </div>
-                    <div class="input-group">
-                        <br>
-                        <label>Device Property</label>
-                    </div>
-                    <div class="input-group">
-                        <label>brand</label>
-                        <input type="text" id="devconfig-brand" placeholder="google" autocapitalize="none">
-                    </div>
-                    <div class="input-group">
-                        <label>device</label>
-                        <input type="text" id="devconfig-device" placeholder="oriole" autocapitalize="none">
-                    </div>
-                    <div class="input-group">
-                        <label>product</label>
-                        <input type="text" id="devconfig-product" placeholder="oriole_beta" autocapitalize="none">
-                    </div>
-                    <div class="input-group">
-                        <label>manufacturer</label>
-                        <input type="text" id="devconfig-manufacturer" placeholder="Google" autocapitalize="none">
-                    </div>
-                    <div class="input-group">
-                        <label>model</label>
-                        <input type="text" id="devconfig-model" placeholder="Pixel 6" autocapitalize="none">
-                    </div>
-                    <div class="input-group">
-                        <label>serial</label>
-                        <input type="text" id="devconfig-serial" placeholder="5e043839" autocapitalize="none">
-                    </div>
-                    <div class="input-group">
-                        <label>meid</label>
-                        <input type="text" id="devconfig-meid" placeholder="32b6af4d93aca6" autocapitalize="none">
-                    </div>
-                    <div class="input-group">
-                        <label>imei</label>
-                        <input type="text" id="devconfig-imei" placeholder="73598126407" autocapitalize="none">
-                    </div>
-                    <div class="input-group">
-                        <label>imei2</label>
-                        <input type="text" id="devconfig-imei2" placeholder="77983102465" autocapitalize="none">
-                    </div>
+                    <md-outlined-text-field id="devconfig-securityPatch" label="Security Patch" placeholder="2025-01-01" autocapitalize="none" oninput="formatDate(this)" maxlength="10"></md-outlined-text-field>
+                    <md-outlined-text-field id="devconfig-osVersion" label="OS Version" placeholder="34" maxlength="2" autocapitalize="none"></md-outlined-text-field>
+                    <br>
+                    <label>Device Property</label>
+                    <md-outlined-text-field id="devconfig-brand" label="brand" placeholder="google" autocapitalize="none"></md-outlined-text-field>
+                    <md-outlined-text-field id="devconfig-device" label="device" placeholder="oriole" autocapitalize="none"></md-outlined-text-field>
+                    <md-outlined-text-field id="devconfig-product" label="product" placeholder="oriole_beta" autocapitalize="none"></md-outlined-text-field>
+                    <md-outlined-text-field id="devconfig-manufacturer" label="manufacturer" placeholder="Google" autocapitalize="none"></md-outlined-text-field>
+                    <md-outlined-text-field id="devconfig-model" label="model" placeholder="Pixel 6" autocapitalize="none"></md-outlined-text-field>
+                    <md-outlined-text-field id="devconfig-serial" label="serial" placeholder="5e043839" autocapitalize="none"></md-outlined-text-field>
+                    <md-outlined-text-field id="devconfig-meid" label="meid" placeholder="32b6af4d93aca6" autocapitalize="none"></md-outlined-text-field>
+                    <md-outlined-text-field id="devconfig-imei" label="imei" placeholder="73598126407" autocapitalize="none"></md-outlined-text-field>
+                    <md-outlined-text-field id="devconfig-imei2" label="imei2" placeholder="77983102465" autocapitalize="none"></md-outlined-text-field>
                 </div>
 
                 <!-- Advanced Toggle -->
                 <div class="advanced-toggle">
-                    <input type="checkbox" class="checkbox" id="advanced-mode" />
-                    <label for="advanced-mode" class="custom-checkbox">
-                        <span class="tick-symbol">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -3 26 26" width="16px" height="16px" fill="#fff">
-                                <path d="M 22.566406 4.730469 L 20.773438 3.511719 C 20.277344 3.175781 19.597656 3.304688 19.265625 3.796875 L 10.476563 16.757813 L 6.4375 12.71875 C 6.015625 12.296875 5.328125 12.296875 4.90625 12.71875 L 3.371094 14.253906 C 2.949219 14.675781 2.949219 15.363281 3.371094 15.789063 L 9.582031 22 C 9.929688 22.347656 10.476563 22.613281 10.96875 22.613281 C 11.460938 22.613281 11.957031 22.304688 12.277344 21.839844 L 22.855469 6.234375 C 23.191406 5.742188 23.0625 5.066406 22.566406 4.730469 Z"/>
-                            </svg>
-                        </span>
-                    </label>
+                    <md-checkbox id="advanced-mode"></md-checkbox>
                     <label for="advanced-mode" data-i18n="security_patch_advanced_mode"></label>
                 </div>
-
-                <div>
-                    <button id="get-patch" class="get-button ripple-element" data-i18n="security_patch_get_date"></button>
-                    <div class="button-container">
-                        <button id="auto-config" class="auto-button ripple-element" data-i18n="security_patch_auto"></button>
-                        <button id="save-patch" class="save-button ripple-element" data-i18n="security_patch_save"></button>
-                    </div>
-                </div>
             </div>
-        </div>
+            <div class="security-patch-actions" slot="actions">
+                <md-outlined-button id="get-patch" data-i18n="security_patch_get_date"></md-outlined-button>
+                <md-outlined-button id="auto-config" data-i18n="security_patch_auto"></md-outlined-button>
+                <md-filled-button id="save-patch" data-i18n="security_patch_save"></md-filled-button>
+            </div>
+        </md-dialog>
     </div>
 
-    <!-- Add System App Overlay -->
-    <div id="add-system-app-overlay" class="add-system-app-overlay overlay">
-        <div id="add-system-app-card" class="add-system-app-card overlay-content blur-box">
-            <div class="add-system-app-title" data-i18n="add_system_app_title"></div>
-            <div class="add-system-app-content">
-                <input type="text" id="system-app-input" placeholder="com.example.app" autocapitalize="none">
-                <button id="add-system-app-button" class="add-system-app-button ripple-element" data-i18n="add_system_app_add"></button>
+    <!-- Add System App Dialog -->
+    <div class="dialog-wrapper">
+        <md-dialog id="add-system-app-dialog" class="text-field-dialog">
+            <div slot="headline" data-i18n="add_system_app_title"></div>
+            <div slot="content">
+                <md-outlined-text-field id="system-app-input" placeholder="com.example.app" autocapitalize="none"></md-outlined-text-field>
                 <h3 class="current-system-app-list" data-i18n="add_system_app_current_list"></h3>
                 <div class="current-system-app-list-content"></div>
             </div>
-        </div>
+            <div slot="actions">
+                <md-text-button id="cancel-add-system-app" data-i18n="confirmation_uninstall_cancel"></md-text-button>
+                <md-filled-button id="add-system-app-button" data-i18n="add_system_app_add"></md-filled-button>
+            </div>
+        </md-dialog>
     </div>
 
-    <!-- Uninstall Confirmation Overlay -->
-    <div class="uninstall-confirmation-overlay overlay" id="uninstall-confirmation-overlay">
-        <div class="uninstall-confirmation overlay-content blur-box">
-            <div class="uninstall-confirmation-title" data-i18n="confirmation_uninstall_title"></div>
-            <p data-i18n="confirmation_uninstall_message"></p>
-            <div class="uninstall-confirmation-button-container">
-                <button class="uninstall-confirmation-button ripple-element" id="cancel-uninstall" data-i18n="confirmation_uninstall_cancel"></button>
-                <button class="uninstall-confirmation-button ripple-element" id="confirm-uninstall" data-i18n="confirmation_uninstall_confirm"></button>
+    <!-- Uninstall Confirmation Dialog -->
+    <div class="dialog-wrapper">
+        <md-dialog id="uninstall-confirmation-dialog" type="alert">
+            <div slot="headline" data-i18n="confirmation_uninstall_title"></div>
+            <md-icon slot="icon">delete</md-icon>
+            <div slot="content" data-i18n="confirmation_uninstall_message"></div>
+            <div slot="actions">
+                <md-text-button id="cancel-uninstall" data-i18n="confirmation_uninstall_cancel"></md-text-button>
+                <md-filled-button id="confirm-uninstall" data-i18n="confirmation_uninstall_confirm"></md-filled-button>
             </div>
-        </div>
+        </md-dialog>
     </div>
 
     <!-- Footer -->
     <div class="footer">
-        <div class="uninstall-container ripple-element hidden-uninstall">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" /></svg>
+        <md-filled-button class="uninstall-container">
+            <md-icon slot="icon">delete</md-icon>
             <span data-i18n="functional_button_uninstall_webui"></span>
-        </div>
+        </md-filled-button>
     </div>
 </body>
-
 </html>

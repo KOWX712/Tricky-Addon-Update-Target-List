@@ -46,13 +46,16 @@
     <string name="menu_select_denylist">Select From DenyList</string>
     <string name="menu_deselect_unnecessary">Deselect Unnecessary</string>
     <string name="menu_add_system_app">Add System App</string>
-    <string name="menu_set_aosp_keybox">Set AOSP Keybox</string>
-    <string name="menu_set_unknown_keybox">Set Unknown Keybox</string>
-    <string name="menu_set_valid_keybox">Set Valid Keybox</string>
-    <string name="menu_set_custom_keybox">Set Custom Keybox</string>
+    <string name="menu_keybox">Keybox</string>
+    <string name="menu_keybox_aosp">AOSP</string>
+    <string name="menu_keybox_unknown">Unknown</string>
+    <string name="menu_keybox_valid">Valid</string>
+    <string name="menu_keybox_custom">Custom</string>
     <string name="menu_set_verified_boot_hash">Set Verified Boot Hash</string>
     <string name="menu_set_security_patch">Set Security Patch</string>
     <string name="menu_set_devconfig">Set DevConfig</string>
+    <string name="menu_help">Help</string>
+    <string name="menu_language">Language</string>
     <string name="menu_about">About</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
@@ -123,4 +126,9 @@
     <string name="confirmation_uninstall_message">Are you sure you want to uninstall Tricky Addon</string>
     <string name="confirmation_uninstall_cancel">Cancel</string>
     <string name="confirmation_uninstall_confirm">Confirm</string>
+    <!-- Mode dialog -->
+    <string name="mode_dialog_title">Mode</string>
+    <string name="mode_auto">Auto</string>
+    <string name="mode_certificate_generate">Cert Generate (!)</string>
+    <string name="mode_leaf_hack">Leaf Hack (?)</string>
 </resources>

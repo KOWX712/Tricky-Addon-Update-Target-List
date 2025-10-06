@@ -1,9 +1,6 @@
-import { applyRippleEffect, linkRedirect } from './main.js';
+import { linkRedirect } from './main.js';
 
-const languageButton = document.querySelector('.language-button');
-const languageMenu = document.querySelector('.language-menu');
-const languageOptions = document.querySelectorAll('.language-option');
-const languageOverlay = document.getElementById('language-overlay');
+const languageMenu = document.getElementById('language-menu');
 const rtlLang = [
   'ar',  // Arabic
   'fa',  // Persian
@@ -110,7 +107,6 @@ export async function loadTranslations() {
         translations = baseTranslations;
     }
     applyTranslations();
-    applyRippleEffect();
 }
 
 /**
@@ -124,6 +120,8 @@ function applyTranslations() {
         if (translation) {
             if (el.hasAttribute("placeholder")) {
                 el.setAttribute("placeholder", translation);
+            } else if (el.hasAttribute("label")) {
+                el.setAttribute("label", translation);
             } else {
                 el.textContent = translation;
             }
@@ -132,50 +130,13 @@ function applyTranslations() {
 }
 
 /**
- * Function to setup the language menu
+ * Function to set a language
+ * @param {string} language - Target langauge to set
  * @returns {void}
  */
-export function setupLanguageMenu() {
-    languageButton.addEventListener("click", (event) => {
-        event.stopPropagation();
-        const isVisible = languageMenu.classList.contains("show");
-        if (isVisible) {
-            closeLanguageMenu();
-        } else {
-            languageOverlay.style.display = 'flex';
-            setTimeout(() => languageMenu.classList.add("show"), 10);
-        }
-    });
-    document.addEventListener("click", (event) => {
-        if (!languageButton.contains(event.target) && !languageMenu.contains(event.target)) {
-            closeLanguageMenu();
-        }
-    });
-    languageOptions.forEach(option => {
-        option.addEventListener("click", () => {
-            closeLanguageMenu();
-        });
-    });
-    window.addEventListener('scroll', () => {
-        if (languageMenu.classList.contains("show")) {
-            closeLanguageMenu();
-        }
-    });
-    const closeLanguageMenu = () => {
-        setTimeout(() => {
-            languageMenu.classList.remove("show");
-            languageOverlay.style.display = 'none';
-        }, 80)
-    }
-    languageMenu.addEventListener("click", async (e) => {
-        if (e.target.classList.contains("language-option")) {
-            const lang = e.target.getAttribute("data-lang");
-            if (lang) {
-                localStorage.setItem('trickyAddonLanguage', lang);
-                window.location.reload();
-            }
-        }
-    });
+function setLanguage(language) {
+    localStorage.setItem('trickyAddonLanguage', language);
+    window.location.reload();
 }
 
 /**
@@ -184,15 +145,13 @@ export function setupLanguageMenu() {
  * @returns {Promise<void>}
  */
 async function generateLanguageMenu() {
-    const languageList = languageMenu.querySelector('.language-list');
-    languageList.innerHTML = '';
-    
+    languageMenu.innerHTML = '';
+
     // Add System Default option
-    const defaultButton = document.createElement('button');
-    defaultButton.classList.add('language-option', 'ripple-element');
-    defaultButton.setAttribute('data-lang', 'default');
+    const defaultButton = document.createElement('md-menu-item');
     defaultButton.setAttribute('data-i18n', 'system_default');
-    languageList.appendChild(defaultButton);
+    defaultButton.onclick = () => setLanguage('default');
+    languageMenu.appendChild(defaultButton);
 
     // Create and sort language entries
     const sortedLanguages = Object.entries(languageNames)
@@ -201,17 +160,15 @@ async function generateLanguageMenu() {
 
     // Add language buttons
     sortedLanguages.forEach(({ lang, name }) => {
-        const button = document.createElement('button');
-        button.classList.add('language-option', 'ripple-element');
-        button.setAttribute('data-lang', lang);
+        const button = document.createElement('md-menu-item');
         button.textContent = name;
-        languageList.appendChild(button);
+        button.onclick = () => setLanguage(lang);
+        languageMenu.appendChild(button);
     });
 
     // Add translation guide button
-    const moreBtn = document.createElement('button');
-    moreBtn.classList.add('language-option', 'ripple-element');
+    const moreBtn = document.createElement('md-menu-item');
     moreBtn.textContent = translations.more_language;
-    moreBtn.onclick = () => linkRedirect('https://github.com/KOWX712/Tricky-Addon-Update-Target-List/blob/main/module/webui/locales/GUIDE.md');
-    languageList.appendChild(moreBtn);
+    moreBtn.onclick = () => linkRedirect('https://github.com/KOWX712/Tricky-Addon-Update-Target-List/blob/main/module/webui/locales/GUIDE.md');;
+    languageMenu.appendChild(moreBtn);
 }

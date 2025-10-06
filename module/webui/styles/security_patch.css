@@ -1,35 +1,13 @@
 @import './theme.css';
 
-.security-patch-overlay {
-    z-index: 2000;
-}
-
-.security-patch-card {
-    display: block;
-    position: fixed;
-    top: 10%;
-    color: var(--text-primary);
-    background-color: var(--bg-secondary);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    width: calc(90% - 60px);
-    max-width: 300px;
-    max-height: calc(60% - 60px);
-    overflow-y: auto;
+#security-patch-dialog {
+    --md-dialog-container-color: var(--md-sys-color-surface-container-high);
 }
 
 .security-patch-content {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-.security-patch-header {
-    width: 100%;
-    text-align: center;
-    font-size: 26px;
-    user-select: none;
 }
 
 .advanced-toggle {
@@ -40,109 +18,17 @@
     user-select: none;
 }
 
-.advanced-toggle .checkbox-wrapper {
-    position: relative;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-left: auto;
-}
-
-.advanced-toggle .checkbox {
-    opacity: 0;
-    position: absolute;
-    width: 0;
-    height: 0;
-}
-
-.advanced-toggle .custom-checkbox {
-    position: relative;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--border-color);
-    border-radius: 4px;
-    box-sizing: border-box;
-    transition: border-color 1s ease, transform 0.3s ease, background-color 0.4s ease;
-}
-
-.advanced-toggle .tick-symbol {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-    transition: transform 0.2s ease-out, opacity 0.3s ease;
-
-    svg {
-        fill: var(--btn-primary-text);
-    }
-}
-
-.advanced-toggle .checkbox:checked + .custom-checkbox {
-    border-color: var(--btn-primary);
-    background-color: var(--btn-primary);
-    transition: border-color 0.1s ease;
-    animation: checked-bounce 0.3s ease-out;
-}
-
-.advanced-toggle .checkbox:checked + .custom-checkbox .tick-symbol {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-}
-
 .input-group {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 8px;
 }
 
-.input-group label {
-    padding-top: 10px;
-    font-size: 14px;
-    color: var(--text-secondary);
-    user-select: none;
-}
-
-.input-group input {
-    padding: 15px;
-    color: var(--text-primary);
-    background-color: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    outline-color: var(--btn-primary);
-    border-radius: 10px;
-    font-size: 16px;
-}
-
-.button-container {
+.security-patch-actions {
     display: flex;
-    width: 100%;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.get-button,
-.auto-button,
-.save-button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.get-button,
-.auto-button {
-    color: var(--text-primary);
-    background-color: var(--border-color);
-    user-select: none;
-}
-
-.save-button {
-    background-color: var(--btn-primary);
-    color: var(--btn-primary-text);
-    user-select: none;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .hidden {

@@ -1,67 +1,10 @@
 @import './theme.css';
 
-.add-system-app-overlay {
-    z-index: 2000;
-}
-
-.add-system-app-card {
-    position: fixed;
-    display: flex;
-    top: 10%;
-    flex-direction: column;
-    align-items: center;
-    width: calc(90vw - 60px);
-    max-width: 400px;
-    max-height: calc(80vh - 60px);
-    overflow-y: auto;
-    padding: 30px;
-    background-color: var(--bg-secondary);
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-.add-system-app-title {
-    text-align: center;
-    font-size: 26px;
-    user-select: none;
-    margin-bottom: 20px;
-}
-
-.add-system-app-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-.add-system-app-content input {
-    width: 100%;
-    padding: 15px;
-    color: var(--text-primary);
-    background-color: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    outline-color: var(--btn-primary);
-    border-radius: 10px;
-    box-sizing: border-box;
-    font-size: 16px;
-}
-
-.add-system-app-button {
-    margin-top: 15px;
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    font-size: 18px;
-    font-weight: bold;
-    background-color: var(--btn-primary);
-    color: var(--btn-primary-text);
-    user-select: none;
+#add-system-app-dialog {
+    --md-dialog-container-color: var(--md-sys-color-surface-container-high);
 }
 
 .current-system-app-list {
-    text-align: center;
     margin-top: 25px;
     margin-bottom: 10px;
     user-select: none;
@@ -81,7 +24,7 @@
     justify-content: space-between;
     width: 100%;
     max-width: 100%;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
     padding: 10px;
     word-wrap: break-word;
     overflow-wrap: anywhere;
@@ -93,14 +36,6 @@
 }
 
 .remove-system-app-button {
-    flex-shrink: 0;
-    margin-left: 10px;
-    background-color: #e84d4d;
-    border: none;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
+    --md-sys-color-primary: var(--md-sys-color-error);
+    --md-sys-color-on-primary: var(--md-sys-color-on-error);
 }
