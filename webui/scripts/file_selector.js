@@ -1,4 +1,4 @@
-import { exec } from './assets/kernelsu.js';
+import { exec } from 'kernelsu-alt';
 
 let fileType;
 

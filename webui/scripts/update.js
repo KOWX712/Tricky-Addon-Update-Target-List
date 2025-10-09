@@ -1,6 +1,7 @@
-import { exec, spawn } from './assets/kernelsu.js';
+import { exec, spawn } from 'kernelsu-alt';
 import { basePath, showPrompt, linkRedirect } from './main.js';
 import { updateCard } from './applist.js';
+import { marked } from 'marked';
 
 const updateDialog = document.getElementById('update-dialog');
 const closeUpdate = document.getElementById('close-update');

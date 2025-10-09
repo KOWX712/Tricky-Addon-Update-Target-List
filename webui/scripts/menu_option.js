@@ -1,4 +1,4 @@
-import { exec, spawn, toast } from './assets/kernelsu.js';
+import { exec, spawn, toast } from 'kernelsu-alt';
 import { basePath, showPrompt, refreshAppList } from './main.js';
 import { openFileSelector } from './file_selector.js';
 

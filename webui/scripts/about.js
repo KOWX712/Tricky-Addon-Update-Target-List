@@ -1,5 +1,5 @@
 import { linkRedirect, basePath, showPrompt } from './main.js';
-import { spawn } from './assets/kernelsu.js';
+import { spawn } from 'kernelsu-alt';
 
 const aboutDialog = document.getElementById('about-dialog');
 const closeAbout = document.getElementById('close-about');

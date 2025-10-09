@@ -2,3 +2,4 @@ __MACOSX
 .DS_Store
 applist.json
 changelog_draft.md
+module/webui

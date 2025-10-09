@@ -58,7 +58,7 @@ body {
     background-color: var(--md-sys-color-inverse-surface);
     color: var(--md-sys-color-inverse-on-surface);
     width: calc(100% - 32px);
-    max-width: calc(100% - 32px);
+    max-width: 900px;
     padding: 14px 16px;
     border-radius: 4px;
     box-sizing: border-box;

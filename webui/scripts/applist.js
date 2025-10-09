@@ -1,4 +1,4 @@
-import { exec, spawn, toast, listPackages, getPackagesInfo, getPackagesIcon } from './assets/kernelsu.js';
+import { exec, spawn, toast, listPackages, getPackagesInfo, getPackagesIcon } from 'kernelsu-alt';
 import { basePath, loadingIndicator, appsWithExclamation, appsWithQuestion } from './main.js';
 
 const appTemplate = document.getElementById('app-template').content;

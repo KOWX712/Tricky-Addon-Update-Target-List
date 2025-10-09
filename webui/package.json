@@ -1,0 +1,24 @@
+{
+  "name": "tricky_addon",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "vite",
+    "clean": "rimraf ../module/webui/*",
+    "build": "npm run clean && vite build"
+  },
+  "keywords": [
+    "tricky_addon"
+  ],
+  "author": "KOWX712",
+  "license": "GPL-3.0-only",
+  "type": "module",
+  "dependencies": {
+    "@fontsource/material-symbols-outlined": "^5.2.25",
+    "@material/web": "^2.4.0",
+    "kernelsu-alt": "^1.0.2",
+    "marked": "^16.4.0",
+    "rimraf": "^6.0.1",
+    "vite": "^7.1.9"
+  }
+}

@@ -1,4 +1,4 @@
-import { exec, spawn } from './assets/kernelsu.js';
+import { exec, spawn } from 'kernelsu-alt';
 import { basePath, showPrompt } from './main.js';
 import { translations } from './language.js';
 
