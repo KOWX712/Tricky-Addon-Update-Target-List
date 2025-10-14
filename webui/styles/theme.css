@@ -83,3 +83,28 @@
         --md-sys-color-surface-container-highest: var(--surfaceContainerHighest, #36343B);
     }
 }
+
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/webui/material-symbols-outlined.woff2) format('woff2'),
+         url(https://raw.gitmirror.com/KOWX712/Tricky-Addon-Update-Target-List/main/webui/material-symbols-outlined.woff2) format('woff2');
+}
+
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -moz-font-feature-settings: 'liga';
+    -moz-osx-font-smoothing: grayscale;
+}

@@ -14,12 +14,12 @@
   "license": "GPL-3.0-only",
   "type": "module",
   "dependencies": {
-    "@fontsource/material-symbols-outlined": "^5.2.25",
     "@material/web": "^2.4.0",
     "kernelsu-alt": "^1.0.2",
     "marked": "^16.4.0",
     "rimraf": "^6.0.1",
     "vite": "^7.1.9",
+    "vite-plugin-html": "^3.2.2",
     "webuix": "^0.0.18"
   }
 }

@@ -1,4 +1,4 @@
-import '@fontsource/material-symbols-outlined/400.css';
+import '@material/web/icon/icon.js';
 import '@material/web/button/filled-button.js';
 import '@material/web/button/outlined-button.js';
 import '@material/web/button/text-button.js';
