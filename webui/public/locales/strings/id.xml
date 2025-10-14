@@ -46,10 +46,6 @@
     <string name="menu_select_denylist">Pilih dari Denylist</string>
     <string name="menu_deselect_unnecessary">Batalkan Pilihan yang Tidak Perlu</string>
     <string name="menu_add_system_app">Tambahkan Aplikasi Sistem</string>
-    <string name="menu_set_aosp_keybox">Gunakan Keybox AOSP</string>
-    <string name="menu_set_unknown_keybox">Gunakan Keybox Tidak Dikenal</string>
-    <string name="menu_set_valid_keybox">Gunakan Keybox Valid</string>
-    <string name="menu_set_custom_keybox">Gunakan Keybox Kustom</string>
     <string name="menu_set_verified_boot_hash">Atur Verified Boot Hash</string>
     <string name="menu_set_security_patch">Atur Patch Keamanan</string>
     <string name="menu_set_devconfig">Atur Konfigurasi Pengembang</string>
@@ -123,4 +119,5 @@
     <string name="confirmation_uninstall_message">Apakah Anda yakin ingin menghapus Tricky Addon</string>
     <string name="confirmation_uninstall_cancel">Batal</string>
     <string name="confirmation_uninstall_confirm">Konfirmasi</string>
+    <!-- Mode dialog -->
 </resources>

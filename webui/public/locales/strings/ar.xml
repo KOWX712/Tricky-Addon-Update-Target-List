@@ -46,10 +46,6 @@
     <string name="menu_select_denylist">تحديد من قائمة الرفض</string>
     <string name="menu_deselect_unnecessary">إلغاء تحديد غير الضروري</string>
     <string name="menu_add_system_app">إضافة تطبيق نظام</string>
-    <string name="menu_set_aosp_keybox">تعيين Keybox AOSP</string>
-    <string name="menu_set_unknown_keybox">تعيين Keybox غير معروف</string>
-    <string name="menu_set_valid_keybox">تعيين Keybox صالح</string>
-    <string name="menu_set_custom_keybox">تعيين Keybox مخصص</string>
     <string name="menu_set_verified_boot_hash">تعيين تجزئة التمهيد الموثوق</string>
     <string name="menu_set_security_patch">تعيين تصحيح الأمان</string>
     <string name="menu_about">حول</string>
@@ -122,4 +118,5 @@
     <string name="confirmation_uninstall_message">هل أنت متأكد أنك تريد إلغاء تثبيت Tricky Addon</string>
     <string name="confirmation_uninstall_cancel">إلغاء</string>
     <string name="confirmation_uninstall_confirm">تأكيد</string>
+    <!-- Mode dialog -->
 </resources>

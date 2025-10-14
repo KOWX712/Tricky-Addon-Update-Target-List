@@ -45,10 +45,6 @@
     <string name="menu_select_denylist">DenyList থেকে নির্বাচন করুন</string>
     <string name="menu_deselect_unnecessary">অপ্রয়োজনীয় নির্বাচন প্রত্যাহার করুন</string>
     <string name="menu_add_system_app">সিস্টেম অ্যাপ যোগ করুন</string>
-    <string name="menu_set_aosp_keybox">AOSP Keybox সেট করুন</string>
-    <string name="menu_set_unknown_keybox">Unknown Keybox সেট করুন</string>
-    <string name="menu_set_valid_keybox">Valid Keybox সেট করুন</string>
-    <string name="menu_set_custom_keybox">Custom Keybox সেট করুন</string>
     <string name="menu_set_verified_boot_hash">Verified Boot Hash সেট করুন</string>
     <string name="menu_set_security_patch">Security Patch সেট করুন</string>
     <string name="menu_about">সম্পর্কে</string>
@@ -117,4 +113,5 @@
     <string name="confirmation_uninstall_message">আপনি কি নিশ্চিত যে আপনি Tricky Addon আনইনস্টল করতে চান</string>
     <string name="confirmation_uninstall_cancel">ক্যানসেল করুন</string>
     <string name="confirmation_uninstall_confirm">নিশ্চিত করুন</string>
+    <!-- Mode dialog -->
 </resources>

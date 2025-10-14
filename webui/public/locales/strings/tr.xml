@@ -46,10 +46,6 @@
     <string name="menu_select_denylist">Reddetme Listesinden Seç</string>
     <string name="menu_deselect_unnecessary">Gereksizleri Seçme</string>
     <string name="menu_add_system_app">Sistem Uygulaması Ekle</string>
-    <string name="menu_set_aosp_keybox">AOSP Keybox Ayarla</string>
-    <string name="menu_set_unknown_keybox">Bilinmeyen Keybox Ayarla</string>
-    <string name="menu_set_valid_keybox">Geçerli Keybox Ayarla</string>
-    <string name="menu_set_custom_keybox">Özel Keybox Ayarla</string>
     <string name="menu_set_verified_boot_hash">Doğrulanmış Boot Hash Ayarla</string>
     <string name="menu_set_security_patch">Güvenlik Yaması Ayarla</string>
     <string name="menu_set_devconfig">DevConfig Ayarla</string>
@@ -123,4 +119,5 @@
     <string name="confirmation_uninstall_message">Tricky Addon&apos;u kaldırmak istediğinizden emin misiniz</string>
     <string name="confirmation_uninstall_cancel">İptal</string>
     <string name="confirmation_uninstall_confirm">Onayla</string>
+    <!-- Mode dialog -->
 </resources>

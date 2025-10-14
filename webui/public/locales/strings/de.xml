@@ -45,10 +45,6 @@
     <string name="menu_select_denylist">Aus DenyList auswählen</string>
     <string name="menu_deselect_unnecessary">Unnötige abwählen</string>
     <string name="menu_add_system_app">System App hinzufügen</string>
-    <string name="menu_set_aosp_keybox">AOSP Keybox setzen</string>
-    <string name="menu_set_unknown_keybox">Unbekannte Keybox setzen</string>
-    <string name="menu_set_valid_keybox">Gültige Keybox setzen</string>
-    <string name="menu_set_custom_keybox">Benutzerdefinierte Keybox setzen</string>
     <string name="menu_set_verified_boot_hash">Verifizierten Boot-Hash setzen</string>
     <string name="menu_set_security_patch">Sicherheitspatch setzen</string>
     <string name="menu_about">Über</string>
@@ -120,4 +116,5 @@
     <string name="confirmation_uninstall_message">Möchtest du Tricky Addon wirklich deinstallieren?</string>
     <string name="confirmation_uninstall_cancel">Abbrechen</string>
     <string name="confirmation_uninstall_confirm">Bestätigen</string>
+    <!-- Mode dialog -->
 </resources>

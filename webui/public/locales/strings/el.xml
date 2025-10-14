@@ -45,10 +45,6 @@
     <string name="menu_select_denylist">Επίλεξε από DenyList</string>
     <string name="menu_deselect_unnecessary">Αποεπίλεξε Άχρηστα</string>
     <string name="menu_add_system_app">Πρόσθεσε Εφαρμογή Συστήματος</string>
-    <string name="menu_set_aosp_keybox">Όρισε AOSP Keybox</string>
-    <string name="menu_set_unknown_keybox">Όρισε Unknown Keybox</string>
-    <string name="menu_set_valid_keybox">Όρισε Valid Keybox</string>
-    <string name="menu_set_custom_keybox">Όρισε Custom Keybox</string>
     <string name="menu_set_verified_boot_hash">Όρισε Verified Boot Hash</string>
     <string name="menu_set_security_patch">Όρισε Security Patch</string>
     <string name="menu_about">Σχετικά</string>
@@ -117,4 +113,5 @@
     <string name="confirmation_uninstall_message">Είσαι σίγουρος ότι θέλεις να απεγκαταστήσεις το Tricky Addon;</string>
     <string name="confirmation_uninstall_cancel">Άκυρο</string>
     <string name="confirmation_uninstall_confirm">Επιβεβαίωση</string>
+    <!-- Mode dialog -->
 </resources>

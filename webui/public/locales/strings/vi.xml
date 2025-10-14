@@ -46,10 +46,6 @@
     <string name="menu_select_denylist">Chọn từ DenyList</string>
     <string name="menu_deselect_unnecessary">Bỏ chọn không cần thiết</string>
     <string name="menu_add_system_app">Thêm ứng dụng hệ thống</string>
-    <string name="menu_set_aosp_keybox">Đặt AOSP Keybox</string>
-    <string name="menu_set_unknown_keybox">Đặt Keybox không xác định</string>
-    <string name="menu_set_valid_keybox">Đặt Keybox hợp lệ</string>
-    <string name="menu_set_custom_keybox">Đặt Keybox tùy chỉnh</string>
     <string name="menu_set_verified_boot_hash">Đặt Verified Boot Hash</string>
     <string name="menu_set_security_patch">Đặt bản vá bảo mật</string>
     <string name="menu_set_devconfig">Đặt DevConfig</string>
@@ -123,4 +119,5 @@
     <string name="confirmation_uninstall_message">Bạn có chắc muốn Gỡ cài đặt Tricky Addon không?</string>
     <string name="confirmation_uninstall_cancel">Huỷ</string>
     <string name="confirmation_uninstall_confirm">Xác nhận</string>
+    <!-- Mode dialog -->
 </resources>

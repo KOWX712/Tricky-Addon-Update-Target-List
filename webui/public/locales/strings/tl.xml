@@ -45,10 +45,6 @@
     <string name="menu_select_denylist">Piliin mula sa DenyList</string>
     <string name="menu_deselect_unnecessary">Huwag Pumili ng Hindi Kinakailangan</string>
     <string name="menu_add_system_app">Magdagdag ng System App</string>
-    <string name="menu_set_aosp_keybox">I-set ang AOSP Keybox</string>
-    <string name="menu_set_unknown_keybox">I-set ang Hindi Kilalang Keybox</string>
-    <string name="menu_set_valid_keybox">I-set ang Valid Keybox</string>
-    <string name="menu_set_custom_keybox">I-set ang Custom Keybox</string>
     <string name="menu_set_verified_boot_hash">I-set ang Verified Boot Hash</string>
     <string name="menu_set_security_patch">I-set ang Security Patch</string>
     <string name="menu_about">Tungkol</string>
@@ -117,4 +113,5 @@
     <string name="confirmation_uninstall_message">Sigurado ka bang gusto mong i-uninstall ang Tricky Addon</string>
     <string name="confirmation_uninstall_cancel">Kanselahin</string>
     <string name="confirmation_uninstall_confirm">Kumpirmahin</string>
+    <!-- Mode dialog -->
 </resources>

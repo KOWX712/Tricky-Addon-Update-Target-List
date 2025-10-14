@@ -46,10 +46,6 @@
     <string name="menu_select_denylist">Вибрати із DenyList</string>
     <string name="menu_deselect_unnecessary">Прибрати необов&apos;язкові</string>
     <string name="menu_add_system_app">Додати системний застосунок</string>
-    <string name="menu_set_aosp_keybox">Встановити AOSP ключ</string>
-    <string name="menu_set_unknown_keybox">Встановити невідомий ключ</string>
-    <string name="menu_set_valid_keybox">Встановити валідний ключ</string>
-    <string name="menu_set_custom_keybox">Встановити користувацький ключ</string>
     <string name="menu_set_verified_boot_hash">Встановити перевірений хеш завантаження</string>
     <string name="menu_set_security_patch">Встановити патч безпеки</string>
     <string name="menu_set_devconfig">Встановити конфігурацію розробника</string>
@@ -123,4 +119,5 @@
     <string name="confirmation_uninstall_message">Ви дійсно хочете видалити Tricky Addon?</string>
     <string name="confirmation_uninstall_cancel">Скасувати</string>
     <string name="confirmation_uninstall_confirm">Підтвердити</string>
+    <!-- Mode dialog -->
 </resources>
