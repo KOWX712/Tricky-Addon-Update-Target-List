@@ -1,3 +1,4 @@
+import { wrapInputStream } from 'webuix';
 import { exec, spawn, toast, listPackages, getPackagesInfo, getPackagesIcon } from 'kernelsu-alt';
 import { basePath, loadingIndicator, appsWithExclamation, appsWithQuestion } from './main.js';
 
@@ -6,17 +7,6 @@ export const appListContainer = document.getElementById('apps-list');
 export const updateCard = document.getElementById('update-card');
 
 let targetList = [];
-let wrapInputStream;
-
-if (typeof $packageManager !== 'undefined') {
-    import("https://mui.kernelsu.org/internal/assets/ext/wrapInputStream.mjs")
-        .then(module => {
-            wrapInputStream = module.wrapInputStream;
-        })
-        .catch(err => {
-            console.error("Failed to load wrapInputStream:", err);
-        });
-}
 
 // Fetch and render applist
 export async function fetchAppList() {
@@ -176,7 +166,7 @@ function renderAppList(data) {
         nameElement.innerHTML = `
             <div class="app-icon-container" style="display:${showIcon ? 'flex' : 'none'};">
                 <div class="loader" data-package="${packageName}"></div>
-                <img src="" class="app-icon" data-package="${packageName}" />
+                <img class="app-icon" data-package="${packageName}" />
             </div>
             <div class="app-info">
                 <div class="app-name"><strong>${appName}</strong></div>
@@ -246,7 +236,7 @@ function loadIcons(packageName) {
     } else if (typeof $packageManager !== 'undefined') {
         const stream = $packageManager.getApplicationIcon(packageName, 0, 0);
         wrapInputStream(stream)
-            .then(r =>  r.arrayBuffer())
+            .then(r => r.arrayBuffer())
             .then(buffer => {
                 const base64 = 'data:image/png;base64,' + arrayBufferToBase64(buffer);
                 iconCache.set(packageName, base64);

@@ -15,6 +15,7 @@ import '@material/web/radio/radio.js';
 import '@material/web/ripple/ripple.js';
 import '@material/web/textfield/outlined-text-field.js';
 import { exec, toast } from 'kernelsu-alt';
+import { WXEventHandler } from 'webuix';
 import { appListContainer, fetchAppList } from './applist.js';
 import { loadTranslations, translations } from './language.js';
 import { setupSystemAppMenu } from './menu_option.js';
@@ -33,8 +34,9 @@ export const appsWithQuestion = [];
 const ADDITIONAL_APPS = []; // Deprecated
 
 // Variables
-let e = 0;
 let isRefreshing = false;
+
+window.wx = new WXEventHandler();
 
 // Function to set basePath
 async function getBasePath() {
@@ -255,6 +257,16 @@ window.addEventListener('scroll', () => {
     });
 
     lastScrollY = window.scrollY;
+});
+
+wx.on(window, 'back', () => {
+    for (const dialog of document.querySelectorAll('md-dialog')) {
+        if (dialog.open) {
+            dialog.close();
+            return;
+        }
+    }
+    webui.exit();
 });
 
 // Initial load
