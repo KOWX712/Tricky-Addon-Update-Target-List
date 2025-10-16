@@ -37,6 +37,7 @@
     <!-- Functional Button -->
     <string name="functional_button_save_and_update_button">保存</string>
     <string name="functional_button_uninstall_webui">卸载 WebUI</string>
+    <string name="functional_button_close">关闭</string>
     <!-- Loading -->
     <string name="loading_loading">加载中...</string>
     <!-- Menu -->
@@ -46,12 +47,16 @@
     <string name="menu_select_denylist">从排除列表中选择</string>
     <string name="menu_deselect_unnecessary">取消选择非必要应用</string>
     <string name="menu_add_system_app">添加系统应用</string>
-    <string name="menu_set_aosp_keybox">设置 AOSP 密钥</string>
-    <string name="menu_set_unknown_keybox">设置未知密钥</string>
-    <string name="menu_set_valid_keybox">设置有效密钥</string>
-    <string name="menu_set_custom_keybox">设置自定义密钥</string>
+    <string name="menu_keybox">密钥</string>
+    <string name="menu_keybox_aosp">AOSP</string>
+    <string name="menu_keybox_unknown">未知</string>
+    <string name="menu_keybox_valid">有效</string>
+    <string name="menu_keybox_custom">自定义</string>
     <string name="menu_set_verified_boot_hash">设置哈希值</string>
     <string name="menu_set_security_patch">设置安全补丁</string>
+    <string name="menu_set_devconfig">设置 DevConfig</string>
+    <string name="menu_help">帮助</string>
+    <string name="menu_language">语言</string>
     <string name="menu_about">关于</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">哈希值</string>
@@ -122,4 +127,9 @@
     <string name="confirmation_uninstall_message">您确定要卸载 TS 插件吗</string>
     <string name="confirmation_uninstall_cancel">取消</string>
     <string name="confirmation_uninstall_confirm">确认</string>
+    <!-- Mode dialog -->
+    <string name="mode_dialog_title">模式</string>
+    <string name="mode_auto">自动</string>
+    <string name="mode_certificate_generating">生成证书链（！）</string>
+    <string name="mode_leaf_hack">修改证书链（？）</string>
 </resources>
