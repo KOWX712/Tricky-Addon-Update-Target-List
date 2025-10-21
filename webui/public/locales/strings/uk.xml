@@ -6,7 +6,6 @@
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">Вказівки</string>
-    <string name="help_save_and_update">Зберегти</string>
     <string name="help_save_and_update_description">Зберегти поточну конфігурацію до файлу target.txt</string>
     <string name="help_refresh">Оновити</string>
     <string name="help_refresh_description">Оновити список застосунків та перелік виключень.</string>
@@ -35,8 +34,10 @@
     <!-- Search -->
     <string name="search_bar_search_placeholder">Пошук</string>
     <!-- Functional Button -->
-    <string name="functional_button_save_and_update_button">Зберегти</string>
+    <string name="functional_button_save">Зберегти</string>
     <string name="functional_button_uninstall_webui">Деінсталювати WebUI</string>
+    <string name="functional_button_cancel">Скасувати</string>
+    <string name="functional_button_confirm">Підтвердити</string>
     <!-- Loading -->
     <string name="loading_loading">Завантаження...</string>
     <!-- Menu -->
@@ -46,10 +47,6 @@
     <string name="menu_select_denylist">Вибрати із DenyList</string>
     <string name="menu_deselect_unnecessary">Прибрати необов&apos;язкові</string>
     <string name="menu_add_system_app">Додати системний застосунок</string>
-    <string name="menu_set_aosp_keybox">Встановити AOSP ключ</string>
-    <string name="menu_set_unknown_keybox">Встановити невідомий ключ</string>
-    <string name="menu_set_valid_keybox">Встановити валідний ключ</string>
-    <string name="menu_set_custom_keybox">Встановити користувацький ключ</string>
     <string name="menu_set_verified_boot_hash">Встановити перевірений хеш завантаження</string>
     <string name="menu_set_security_patch">Встановити патч безпеки</string>
     <string name="menu_set_devconfig">Встановити конфігурацію розробника</string>
@@ -57,7 +54,6 @@
     <!-- Boot Hash -->
     <string name="boot_hash_title">Хеш завантаження</string>
     <string name="boot_hash_input_placeholder">Вставте перевірений хеш завантаження сюди</string>
-    <string name="boot_hash_save_button">Зберегти</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Оновити Target List</string>
@@ -100,7 +96,6 @@
     <string name="security_patch_advanced_mode">Розширені</string>
     <string name="security_patch_get_date">Отримати дату патчу безпеки</string>
     <string name="security_patch_auto">Авто</string>
-    <string name="security_patch_save">Зберегти</string>
     <string name="security_patch_fetching">Робимо запит...</string>
     <string name="security_patch_fetched">Готово</string>
     <string name="security_patch_get_failed">Не вдалося отримати дату патчу безпеки</string>
@@ -121,6 +116,5 @@
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Підтверджуєте видалення?</string>
     <string name="confirmation_uninstall_message">Ви дійсно хочете видалити Tricky Addon?</string>
-    <string name="confirmation_uninstall_cancel">Скасувати</string>
-    <string name="confirmation_uninstall_confirm">Підтвердити</string>
+    <!-- Mode dialog -->
 </resources>

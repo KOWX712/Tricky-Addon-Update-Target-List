@@ -6,7 +6,6 @@
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">설명서</string>
-    <string name="help_save_and_update">저장</string>
     <string name="help_save_and_update_description">현재 설정을 target.txt에 저장합니다.</string>
     <string name="help_refresh">새로 고침</string>
     <string name="help_refresh_description">앱 리스트와 제외 리스트를 새로 고칩니다.</string>
@@ -35,8 +34,10 @@
     <!-- Search -->
     <string name="search_bar_search_placeholder">검색</string>
     <!-- Functional Button -->
-    <string name="functional_button_save_and_update_button">저장</string>
+    <string name="functional_button_save">저장</string>
     <string name="functional_button_uninstall_webui">WebUI 제거</string>
+    <string name="functional_button_cancel">취소</string>
+    <string name="functional_button_confirm">확인</string>
     <!-- Loading -->
     <string name="loading_loading">로드 중...</string>
     <!-- Menu -->
@@ -46,10 +47,6 @@
     <string name="menu_select_denylist">DenyList에서 선택</string>
     <string name="menu_deselect_unnecessary">필요 없는 앱 선택 해제</string>
     <string name="menu_add_system_app">시스템 앱 추가</string>
-    <string name="menu_set_aosp_keybox">AOSP 키박스 설정</string>
-    <string name="menu_set_unknown_keybox">알 수 없는 키박스 설정</string>
-    <string name="menu_set_valid_keybox">유효 키박스 설정</string>
-    <string name="menu_set_custom_keybox">유저 정의 키박스 설정</string>
     <string name="menu_set_verified_boot_hash">Verified Boot 해시 설정</string>
     <string name="menu_set_security_patch">보안 패치 설정</string>
     <string name="menu_set_devconfig">DevConfig 설정</string>
@@ -57,7 +54,6 @@
     <!-- Boot Hash -->
     <string name="boot_hash_title">부트 해시</string>
     <string name="boot_hash_input_placeholder">여기에 Verified Boot Hash 값을 입력하세요.</string>
-    <string name="boot_hash_save_button">저장</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Update Target List</string>
@@ -100,7 +96,6 @@
     <string name="security_patch_advanced_mode">고급</string>
     <string name="security_patch_get_date">보안 패치 날짜 가져오기</string>
     <string name="security_patch_auto">자동</string>
-    <string name="security_patch_save">저장</string>
     <string name="security_patch_fetching">가져오는 중...</string>
     <string name="security_patch_fetched">완료</string>
     <string name="security_patch_get_failed">보안 패치 날짜 취득에 실패했습니다.</string>
@@ -121,6 +116,5 @@
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">삭제 확인</string>
     <string name="confirmation_uninstall_message">정말 Tricky Addon을 삭제할까요?</string>
-    <string name="confirmation_uninstall_cancel">취소</string>
-    <string name="confirmation_uninstall_confirm">확인</string>
+    <!-- Mode dialog -->
 </resources>

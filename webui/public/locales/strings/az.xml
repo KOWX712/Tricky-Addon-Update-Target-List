@@ -5,7 +5,6 @@
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">Təlimatlar</string>
-    <string name="help_save_and_update">Yadda saxla</string>
     <string name="help_save_and_update_description">Cari konfiqurasiyanı target.txt faylına yadda saxla.</string>
     <string name="help_refresh">Təzələ</string>
     <string name="help_refresh_description">Proqram siyahısını və istisna siyahısını təzələ.</string>
@@ -34,8 +33,10 @@
     <!-- Search -->
     <string name="search_bar_search_placeholder">Axtar</string>
     <!-- Functional Button -->
-    <string name="functional_button_save_and_update_button">Yadda saxla</string>
+    <string name="functional_button_save">Yadda saxla</string>
     <string name="functional_button_uninstall_webui">WebUI-ni sil</string>
+    <string name="functional_button_cancel">İmtina et</string>
+    <string name="functional_button_confirm">Təsdiqlə</string>
     <!-- Loading -->
     <string name="loading_loading">Yüklənir...</string>
     <!-- Menu -->
@@ -45,17 +46,12 @@
     <string name="menu_select_denylist">DenyList-dən seç</string>
     <string name="menu_deselect_unnecessary">Lazımsızları seçmə</string>
     <string name="menu_add_system_app">Sistem Tətbiqi Əlavə et</string>
-    <string name="menu_set_aosp_keybox">AOSP Keybox təyin et</string>
-    <string name="menu_set_unknown_keybox">Naməlum Keybox təyin et</string>
-    <string name="menu_set_valid_keybox">Etibarlı Keybox təyin et</string>
-    <string name="menu_set_custom_keybox">Özəl Keybox təyin et</string>
     <string name="menu_set_verified_boot_hash">Təsdiqlənmiş Boot Hash təyin et</string>
     <string name="menu_set_security_patch">Təhlükəsizlik Təkmilləşdirməsini təyin et</string>
     <string name="menu_about">Haqqında</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
     <string name="boot_hash_input_placeholder">Təsdiqlənmiş Boot Hash-ı buraya yapışdırın</string>
-    <string name="boot_hash_save_button">Yadda saxla</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Hədəf Siyahısını Yenilə</string>
@@ -95,7 +91,6 @@
     <string name="security_patch_advanced_mode">Ətraflı</string>
     <string name="security_patch_get_date">Təhlükəsizlik Təkmilləşdirməsinin Tarixini Al</string>
     <string name="security_patch_auto">Avtomatik</string>
-    <string name="security_patch_save">Yadda saxla</string>
     <string name="security_patch_fetching">Yığılır...</string>
     <string name="security_patch_fetched">Tamam</string>
     <string name="security_patch_get_failed">Təhlükəsizlik təkmilləşdirməsinin tarixini almaq mümkün olmadı</string>
@@ -115,6 +110,5 @@
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Silinməni Təsdiqləyirsiniz?</string>
     <string name="confirmation_uninstall_message">Tricky Addon-u silmək istədiyinizə əminsinizmi?</string>
-    <string name="confirmation_uninstall_cancel">İmtina et</string>
-    <string name="confirmation_uninstall_confirm">Təsdiqlə</string>
+    <!-- Mode dialog -->
 </resources>

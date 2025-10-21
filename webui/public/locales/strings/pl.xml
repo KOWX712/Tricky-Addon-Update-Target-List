@@ -6,7 +6,6 @@
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">Instrukcje</string>
-    <string name="help_save_and_update">Zapisz</string>
     <string name="help_save_and_update_description">Zapisywanie obecnej konfiguracji do pliku target.txt.</string>
     <string name="help_refresh">Odśwież</string>
     <string name="help_refresh_description">Odśwież listę aplikacji i wykluczeń.</string>
@@ -35,8 +34,10 @@
     <!-- Search -->
     <string name="search_bar_search_placeholder">Szukaj</string>
     <!-- Functional Button -->
-    <string name="functional_button_save_and_update_button">Zapisz</string>
+    <string name="functional_button_save">Zapisz</string>
     <string name="functional_button_uninstall_webui">Odinstaluj WebUI</string>
+    <string name="functional_button_cancel">Anuluj</string>
+    <string name="functional_button_confirm">Potwierdź</string>
     <!-- Loading -->
     <string name="loading_loading">Ładowanie...</string>
     <!-- Menu -->
@@ -46,10 +47,6 @@
     <string name="menu_select_denylist">Wybierz z listy odrzuconych</string>
     <string name="menu_deselect_unnecessary">Odznacz niepotrzebne</string>
     <string name="menu_add_system_app">Dodaj aplikację systemową</string>
-    <string name="menu_set_aosp_keybox">Ustaw klucz AOSP</string>
-    <string name="menu_set_unknown_keybox">Ustaw nieznany klucz</string>
-    <string name="menu_set_valid_keybox">Ustaw działający klucz</string>
-    <string name="menu_set_custom_keybox">Ustaw niestandardowy klucz</string>
     <string name="menu_set_verified_boot_hash">Ustaw zweryfikowany skrót rozruchowy</string>
     <string name="menu_set_security_patch">Ustaw poprawkę zabezpieczeń</string>
     <string name="menu_set_devconfig">Ustaw DevConfig</string>
@@ -57,7 +54,6 @@
     <!-- Boot Hash -->
     <string name="boot_hash_title">Skrót rozruchowy</string>
     <string name="boot_hash_input_placeholder">Wklej tutaj zweryfikowany skrót rozruchowy</string>
-    <string name="boot_hash_save_button">Zapisz</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Uaktualnij listę celów</string>
@@ -100,7 +96,6 @@
     <string name="security_patch_advanced_mode">Zaawansowane</string>
     <string name="security_patch_get_date">Pobierz datę poprawki zabezpieczeń</string>
     <string name="security_patch_auto">Automatycznie</string>
-    <string name="security_patch_save">Zapisz</string>
     <string name="security_patch_fetching">Pobieranie...</string>
     <string name="security_patch_fetched">Gotowe</string>
     <string name="security_patch_get_failed">Nie udało się pobrać daty poprawki zabezpieczeń</string>
@@ -121,6 +116,5 @@
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Potwierdzić odinstalowanie?</string>
     <string name="confirmation_uninstall_message">Czy na pewno chcesz odinstalować Tricky Addon?</string>
-    <string name="confirmation_uninstall_cancel">Anuluj</string>
-    <string name="confirmation_uninstall_confirm">Potwierdź</string>
+    <!-- Mode dialog -->
 </resources>

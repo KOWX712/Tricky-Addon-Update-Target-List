@@ -5,7 +5,6 @@
     <!-- Header -->
     <!-- Help Menu-->
     <string name="help_help_instructions">راهنما</string>
-    <string name="help_save_and_update">ذخیره</string>
     <string name="help_save_and_update_description">پیکربندی فعلی را در target.txt ذخیره کنید.</string>
     <string name="help_refresh">تازه سازی</string>
     <string name="help_refresh_description">لیست برنامه‌ها و لیست حذف را تازه کنید.</string>
@@ -34,8 +33,10 @@
     <!-- Search -->
     <string name="search_bar_search_placeholder">جُستجو</string>
     <!-- Functional Button -->
-    <string name="functional_button_save_and_update_button">ذخیره</string>
+    <string name="functional_button_save">ذخیره</string>
     <string name="functional_button_uninstall_webui">حذف WebUI</string>
+    <string name="functional_button_cancel">لغو</string>
+    <string name="functional_button_confirm">تایید</string>
     <!-- Loading -->
     <string name="loading_loading">در حال بارگیری...</string>
     <!-- Menu -->
@@ -45,16 +46,11 @@
     <string name="menu_select_denylist">انتخاب از DenyList</string>
     <string name="menu_deselect_unnecessary">لغو انتخاب غیرضروری</string>
     <string name="menu_add_system_app">افزودن برنامه سیستمی</string>
-    <string name="menu_set_aosp_keybox">تنظیم AOSP Keybox</string>
-    <string name="menu_set_unknown_keybox">تنظیم Unknown Keybox</string>
-    <string name="menu_set_valid_keybox">تنظیم Valid Keybox</string>
-    <string name="menu_set_custom_keybox">تنظیم Custom Keybox</string>
     <string name="menu_set_verified_boot_hash">تنظیم Verified Boot Hash</string>
     <string name="menu_set_security_patch">تنظیم Security Patch</string>
     <string name="menu_about">درباره</string>
     <!-- Boot Hash -->
     <string name="boot_hash_input_placeholder">Verified Boot Hash خود را اینجا بچسبانید</string>
-    <string name="boot_hash_save_button">ذخیره</string>
     <!-- About -->
     <string name="about_by">از</string>
     <string name="about_telegram_channel">کانال تلگرام</string>
@@ -94,7 +90,6 @@
     <string name="security_patch_advanced_mode">پیشرفته</string>
     <string name="security_patch_get_date">دریافت تاریخ Security Patch</string>
     <string name="security_patch_auto">خودکار</string>
-    <string name="security_patch_save">ذخیره</string>
     <string name="security_patch_fetching">در حال دریافت...</string>
     <string name="security_patch_fetched">انجام شده</string>
     <string name="security_patch_get_failed">دریافت تاریخ security patch ناموفق بود</string>
@@ -115,6 +110,5 @@
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">تأیید حذف؟</string>
     <string name="confirmation_uninstall_message">آیا مطمئن هستید که می‌خواهید Tricky Addon را حذف کنید</string>
-    <string name="confirmation_uninstall_cancel">لغو</string>
-    <string name="confirmation_uninstall_confirm">تایید</string>
+    <!-- Mode dialog -->
 </resources>

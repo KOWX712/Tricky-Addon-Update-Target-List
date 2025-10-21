@@ -5,7 +5,6 @@
     <!-- Header -->
     <!-- Help Menu-->
     <string name="help_help_instructions">নির্দেশনা</string>
-    <string name="help_save_and_update">সেভ করুন</string>
     <string name="help_save_and_update_description">বর্তমান কনফিগারেশন target.txt এ সেভ করুন।</string>
     <string name="help_refresh">রিফ্রেশ</string>
     <string name="help_refresh_description">অ্যাপ তালিকা এবং এক্সক্লুড তালিকা রিফ্রেশ করুন।</string>
@@ -34,8 +33,10 @@
     <!-- Search -->
     <string name="search_bar_search_placeholder">খুঁজুন</string>
     <!-- Functional Button -->
-    <string name="functional_button_save_and_update_button">সেভ করুন</string>
+    <string name="functional_button_save">সেভ করুন</string>
     <string name="functional_button_uninstall_webui">WebUI আনইনস্টল করুন</string>
+    <string name="functional_button_cancel">ক্যানসেল করুন</string>
+    <string name="functional_button_confirm">নিশ্চিত করুন</string>
     <!-- Loading -->
     <string name="loading_loading">লোড হচ্ছে...</string>
     <!-- Menu -->
@@ -45,16 +46,11 @@
     <string name="menu_select_denylist">DenyList থেকে নির্বাচন করুন</string>
     <string name="menu_deselect_unnecessary">অপ্রয়োজনীয় নির্বাচন প্রত্যাহার করুন</string>
     <string name="menu_add_system_app">সিস্টেম অ্যাপ যোগ করুন</string>
-    <string name="menu_set_aosp_keybox">AOSP Keybox সেট করুন</string>
-    <string name="menu_set_unknown_keybox">Unknown Keybox সেট করুন</string>
-    <string name="menu_set_valid_keybox">Valid Keybox সেট করুন</string>
-    <string name="menu_set_custom_keybox">Custom Keybox সেট করুন</string>
     <string name="menu_set_verified_boot_hash">Verified Boot Hash সেট করুন</string>
     <string name="menu_set_security_patch">Security Patch সেট করুন</string>
     <string name="menu_about">সম্পর্কে</string>
     <!-- Boot Hash -->
     <string name="boot_hash_input_placeholder">আপনার verified Boot Hash এখানে পেস্ট করুন</string>
-    <string name="boot_hash_save_button">সেভ করুন</string>
     <!-- About -->
     <string name="about_by">দ্বারা</string>
     <string name="about_telegram_channel">টেলিগ্রাম চ্যানেল</string>
@@ -94,7 +90,6 @@
     <string name="security_patch_advanced_mode">অগ্রসর</string>
     <string name="security_patch_get_date">Security Patch Date পান</string>
     <string name="security_patch_auto">অটো</string>
-    <string name="security_patch_save">সেভ করুন</string>
     <string name="security_patch_fetching">আনয়ন হচ্ছে...</string>
     <string name="security_patch_fetched">সম্পন্ন</string>
     <string name="security_patch_get_failed">Security patch date আনয়ন করতে ব্যর্থ</string>
@@ -115,6 +110,5 @@
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">আনইনস্টল নিশ্চিত করুন?</string>
     <string name="confirmation_uninstall_message">আপনি কি নিশ্চিত যে আপনি Tricky Addon আনইনস্টল করতে চান</string>
-    <string name="confirmation_uninstall_cancel">ক্যানসেল করুন</string>
-    <string name="confirmation_uninstall_confirm">নিশ্চিত করুন</string>
+    <!-- Mode dialog -->
 </resources>

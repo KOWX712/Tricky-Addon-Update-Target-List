@@ -6,7 +6,6 @@
     <string name="header_title">TS 插件</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">使用指南</string>
-    <string name="help_save_and_update">保存</string>
     <string name="help_save_and_update_description">保存當前配置到目標列表（target.txt）。</string>
     <string name="help_refresh">刷新</string>
     <string name="help_refresh_description">刷新應用列表和排除列表。</string>
@@ -35,8 +34,11 @@
     <!-- Search -->
     <string name="search_bar_search_placeholder">搜索</string>
     <!-- Functional Button -->
-    <string name="functional_button_save_and_update_button">保存</string>
+    <string name="functional_button_save">保存</string>
     <string name="functional_button_uninstall_webui">卸載 WebUI</string>
+    <string name="functional_button_close">關閉</string>
+    <string name="functional_button_cancel">取消</string>
+    <string name="functional_button_confirm">確認</string>
     <!-- Loading -->
     <string name="loading_loading">加載中...</string>
     <!-- Menu -->
@@ -46,17 +48,20 @@
     <string name="menu_select_denylist">從排除列表中選擇</string>
     <string name="menu_deselect_unnecessary">取消選擇非必要應用</string>
     <string name="menu_add_system_app">添加系統應用</string>
-    <string name="menu_set_aosp_keybox">設置 AOSP 密鑰</string>
-    <string name="menu_set_unknown_keybox">設置未知密鑰</string>
-    <string name="menu_set_valid_keybox">設置有效密鑰</string>
-    <string name="menu_set_custom_keybox">設置自定義密鑰</string>
+    <string name="menu_keybox">密鑰</string>
+    <string name="menu_keybox_aosp">AOSP</string>
+    <string name="menu_keybox_unknown">未知</string>
+    <string name="menu_keybox_valid">有效</string>
+    <string name="menu_keybox_custom">自定義</string>
     <string name="menu_set_verified_boot_hash">設置哈希值</string>
     <string name="menu_set_security_patch">設置安全補丁</string>
+    <string name="menu_set_devconfig">設定 DevConfig</string>
+    <string name="menu_help">幫助</string>
+    <string name="menu_language">語言</string>
     <string name="menu_about">關於</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">哈希值</string>
     <string name="boot_hash_input_placeholder">在此貼上您的哈希值</string>
-    <string name="boot_hash_save_button">保存</string>
     <!-- About -->
     <string name="about_module_name_line1">TS 插件</string>
     <string name="about_module_name_line2">更新目標列表</string>
@@ -99,7 +104,6 @@
     <string name="security_patch_advanced_mode">進階</string>
     <string name="security_patch_get_date">獲取安全補丁日期</string>
     <string name="security_patch_auto">自動</string>
-    <string name="security_patch_save">保存</string>
     <string name="security_patch_fetching">獲取中...</string>
     <string name="security_patch_fetched">完成</string>
     <string name="security_patch_get_failed">獲取安全補丁日期失敗</string>
@@ -120,6 +124,9 @@
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">確認卸載？</string>
     <string name="confirmation_uninstall_message">您確定要卸載 TS 插件嗎</string>
-    <string name="confirmation_uninstall_cancel">取消</string>
-    <string name="confirmation_uninstall_confirm">確認</string>
+    <!-- Mode dialog -->
+    <string name="mode_dialog_title">模式</string>
+    <string name="mode_auto">自動</string>
+    <string name="mode_certificate_generating">生成證書鏈（！）</string>
+    <string name="mode_leaf_hack">修改證書鏈（？）</string>
 </resources>

@@ -6,7 +6,6 @@
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">Инструкции</string>
-    <string name="help_save_and_update">Сохранить</string>
     <string name="help_save_and_update_description">Сохранить текущую конфигурацию в target.txt.</string>
     <string name="help_refresh">Обновить</string>
     <string name="help_refresh_description">Обновить список приложений и список исключений.</string>
@@ -35,8 +34,11 @@
     <!-- Search -->
     <string name="search_bar_search_placeholder">Поиск</string>
     <!-- Functional Button -->
-    <string name="functional_button_save_and_update_button">Сохранить</string>
+    <string name="functional_button_save">Сохранить</string>
     <string name="functional_button_uninstall_webui">Удалить WebUI</string>
+    <string name="functional_button_close">Закрыть</string>
+    <string name="functional_button_cancel">Отмена</string>
+    <string name="functional_button_confirm">Подтвердить</string>
     <!-- Loading -->
     <string name="loading_loading">Загрузка...</string>
     <!-- Menu -->
@@ -46,18 +48,18 @@
     <string name="menu_select_denylist">Выбрать из DenyList</string>
     <string name="menu_deselect_unnecessary">Отменить выбор ненужных</string>
     <string name="menu_add_system_app">Добавить системное приложение</string>
-    <string name="menu_set_aosp_keybox">Установить keybox AOSP</string>
-    <string name="menu_set_unknown_keybox">Установить неизвестный keybox</string>
-    <string name="menu_set_valid_keybox">Установить действующий Keybox</string>
-    <string name="menu_set_custom_keybox">Установить свой keybox</string>
+    <string name="menu_keybox_unknown">Неизвестно</string>
+    <string name="menu_keybox_valid">Действительный</string>
+    <string name="menu_keybox_custom">По выбору</string>
     <string name="menu_set_verified_boot_hash">Установить verified boot hash</string>
     <string name="menu_set_security_patch">Установить security patch</string>
     <string name="menu_set_devconfig">Установить DevConfig</string>
+    <string name="menu_help">Справка</string>
+    <string name="menu_language">Язык</string>
     <string name="menu_about">О программе</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
     <string name="boot_hash_input_placeholder">Вставьте свой проверенный Boot Hash сюда</string>
-    <string name="boot_hash_save_button">Сохранить</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Обновить список целей</string>
@@ -100,7 +102,6 @@
     <string name="security_patch_advanced_mode">Расширенный</string>
     <string name="security_patch_get_date">Получить дату патча безопасности</string>
     <string name="security_patch_auto">Авто</string>
-    <string name="security_patch_save">Сохранить</string>
     <string name="security_patch_fetching">Получение...</string>
     <string name="security_patch_fetched">Готово</string>
     <string name="security_patch_get_failed">Не удалось получить дату патча безопасности</string>
@@ -121,6 +122,8 @@
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Подтвердить удаление?</string>
     <string name="confirmation_uninstall_message">Вы уверены, что хотите удалить Tricky Addon</string>
-    <string name="confirmation_uninstall_cancel">Отмена</string>
-    <string name="confirmation_uninstall_confirm">Подтвердить</string>
+    <!-- Mode dialog -->
+    <string name="mode_dialog_title">Режим</string>
+    <string name="mode_auto">Авто</string>
+    <string name="mode_certificate_generating">Создать сертификат (!)</string>
 </resources>
