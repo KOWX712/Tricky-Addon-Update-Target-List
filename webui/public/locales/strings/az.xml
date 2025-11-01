@@ -6,10 +6,6 @@
     <!-- Help Menu-->
     <string name="help_help_instructions">Təlimatlar</string>
     <string name="help_save_and_update_description">Cari konfiqurasiyanı target.txt faylına yadda saxla.</string>
-    <string name="help_refresh">Təzələ</string>
-    <string name="help_refresh_description">Proqram siyahısını və istisna siyahısını təzələ.</string>
-    <string name="help_select_deselect">Hamısını seç və seçimi ləğv et</string>
-    <string name="help_select_description">Cari interfeysdəki bütün tətbiqləri seç və ya seçimdən çıxar.</string>
     <string name="help_select_denylist">DenyList-dən seç</string>
     <string name="help_select_denylist_description">Yalnız Magisk-də mövcuddur, DenyList-də olan tətbiqləri seçin. Tövsiyə olunur.</string>
     <string name="help_deselect_unnecessary">Lazımsızları seçmə</string>

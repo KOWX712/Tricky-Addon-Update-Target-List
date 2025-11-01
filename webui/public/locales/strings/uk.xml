@@ -7,10 +7,6 @@
     <!-- Help Menu-->
     <string name="help_help_instructions">Вказівки</string>
     <string name="help_save_and_update_description">Зберегти поточну конфігурацію до файлу target.txt</string>
-    <string name="help_refresh">Оновити</string>
-    <string name="help_refresh_description">Оновити список застосунків та перелік виключень.</string>
-    <string name="help_select_deselect">Виділити та прибрати виділення всіх</string>
-    <string name="help_select_description">Вибрати чи прибрати виділення всіх застосунків у поточному інтерфейсі.</string>
     <string name="help_select_denylist">Виберіть із DenyList</string>
     <string name="help_select_denylist_description">Доступно лише у Magisk, обрати застосунки, які входять до DenyList. Рекомендовано.</string>
     <string name="help_deselect_unnecessary">Зняти виділення з необов&apos;язкових</string>

@@ -6,10 +6,6 @@
     <!-- Help Menu-->
     <string name="help_help_instructions">Anleitung</string>
     <string name="help_save_and_update_description">Aktuelle Konfiguration in target.txt speichern.</string>
-    <string name="help_refresh">Aktualisieren</string>
-    <string name="help_refresh_description">App-Liste und Ausschlussliste aktualisieren.</string>
-    <string name="help_select_deselect">Alle auswählen &amp; abwählen</string>
-    <string name="help_select_description">Alle Apps in der aktuellen Ansicht auswählen oder abwählen.</string>
     <string name="help_select_denylist">Aus DenyList auswählen</string>
     <string name="help_select_denylist_description">Nur in Magisk verfügbar, wähle Apps aus der DenyList aus. Empfohlen.</string>
     <string name="help_deselect_unnecessary">Unnötige abwählen</string>
