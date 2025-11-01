@@ -20,7 +20,6 @@ jobs:
       uses: crowdin/github-action@v2
       with:
         upload_sources: true
-        upload_translations: true
         download_translations: true
         skip_untranslated_files: false
         skip_untranslated_strings: true
