@@ -6,10 +6,6 @@
     <!-- Help Menu-->
     <string name="help_help_instructions">Mga Tagubilin</string>
     <string name="help_save_and_update_description">I-save ang kasalukuyang configuration sa target.txt.</string>
-    <string name="help_refresh">I-refresh</string>
-    <string name="help_refresh_description">I-refresh ang listahan ng apps at exclude list.</string>
-    <string name="help_select_deselect">Piliin &amp; Huwag Pumili ng Lahat</string>
-    <string name="help_select_description">Piliin o huwag piliin ang lahat ng apps sa kasalukuyang interface.</string>
     <string name="help_select_denylist">Piliin mula sa DenyList</string>
     <string name="help_select_denylist_description">Available lang sa Magisk, piliin ang mga app na nasa DenyList. Inirerekomenda.</string>
     <string name="help_deselect_unnecessary">Huwag Pumili ng Hindi Kinakailangan</string>

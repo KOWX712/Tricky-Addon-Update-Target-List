@@ -7,10 +7,6 @@
     <!-- Help Menu-->
     <string name="help_help_instructions">Instruções</string>
     <string name="help_save_and_update_description">Salve a configuração atual para Target.txt.</string>
-    <string name="help_refresh">Atualizar</string>
-    <string name="help_refresh_description">Atualizar a lista de aplicativos e excluir a lista.</string>
-    <string name="help_select_deselect">Selecione e desmarque tudo</string>
-    <string name="help_select_description">Selecione ou desmarque todos os aplicativos na interface atual.</string>
     <string name="help_select_denylist">Selecione no DenyList</string>
     <string name="help_select_denylist_description">Disponível apenas no Magisk, selecione aplicativos que estão no DenyList. Recomendado.</string>
     <string name="help_deselect_unnecessary">Desmarque desnecessário</string>
@@ -36,6 +32,7 @@
     <!-- Functional Button -->
     <string name="functional_button_save">Salvar</string>
     <string name="functional_button_uninstall_webui">Desinstalar WebUI</string>
+    <string name="functional_button_close">Fechar</string>
     <string name="functional_button_cancel">Cancelar</string>
     <string name="functional_button_confirm">Confirmar</string>
     <!-- Loading -->
@@ -47,8 +44,16 @@
     <string name="menu_select_denylist">Selecione de denylist</string>
     <string name="menu_deselect_unnecessary">Desmarcar desnecessário</string>
     <string name="menu_add_system_app">Adicionar app do sistema</string>
+    <string name="menu_keybox">Keybox</string>
+    <string name="menu_keybox_aosp">AOSP</string>
+    <string name="menu_keybox_unknown">Desconhecido</string>
+    <string name="menu_keybox_valid">Válido</string>
+    <string name="menu_keybox_custom">Custom</string>
     <string name="menu_set_verified_boot_hash">Definir Hash de Boot Verificado</string>
     <string name="menu_set_security_patch">Definir Patch de segurança</string>
+    <string name="menu_set_devconfig">Definir DevConfig</string>
+    <string name="menu_help">Ajuda</string>
+    <string name="menu_language">Linguagem</string>
     <string name="menu_about">Sobre</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
@@ -116,4 +121,8 @@
     <string name="confirmation_uninstall_title">Confirmar desinstalar?</string>
     <string name="confirmation_uninstall_message">Tem certeza que deseja desinstalar Tricky Addon</string>
     <!-- Mode dialog -->
+    <string name="mode_dialog_title">Modo</string>
+    <string name="mode_auto">Auto</string>
+    <string name="mode_certificate_generating">Geração de Certificados (!)</string>
+    <string name="mode_leaf_hack">Hack Leaf (?)</string>
 </resources>

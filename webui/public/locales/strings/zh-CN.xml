@@ -7,10 +7,6 @@
     <!-- Help Menu-->
     <string name="help_help_instructions">使用指南</string>
     <string name="help_save_and_update_description">保存当前配置到目标列表（target.txt）。</string>
-    <string name="help_refresh">刷新</string>
-    <string name="help_refresh_description">刷新应用列表和排除列表。</string>
-    <string name="help_select_deselect">全选 &amp; 取消全选</string>
-    <string name="help_select_description">选择或取消选择当前界面中的所有应用。</string>
     <string name="help_select_denylist">从排除列表中选择</string>
     <string name="help_select_denylist_description">仅适用于 Magisk，选择在排除列表中的应用。推荐使用。</string>
     <string name="help_deselect_unnecessary">取消选择非必要应用</string>
@@ -68,6 +64,7 @@
     <string name="about_by">作者：</string>
     <string name="about_telegram_channel">TG频道</string>
     <string name="about_canary_update">下载最新测试版</string>
+    <string name="about_translation_update">更新翻译包</string>
     <string name="about_disclaimer">此 WebUI 不是 Tricky Store 的一部分，遇到任何问题请勿向 Tricky Store 作者反馈。</string>
     <string name="about_acknowledgment">特别鸣谢</string>
     <!-- Prompt -->
@@ -94,6 +91,8 @@
     <string name="prompt_install_fail">安装失败，请手动更新</string>
     <string name="prompt_rebooting">正在重启...</string>
     <string name="prompt_reboot_fail">重启失败，请手动重启</string>
+    <string name="prompt_translation_updated">翻译包更新成功</string>
+    <string name="prompt_translation_update_failed">翻译包更新失败</string>
     <string name="prompt_custom_key_set">成功设置自定义密钥</string>
     <string name="prompt_custom_key_set_error">设置自定义密钥失败</string>
     <string name="prompt_no_file_selected">未选择文件</string>

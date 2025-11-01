@@ -6,25 +6,21 @@
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">Hướng dẫn</string>
-    <string name="help_save_and_update_description">Lưu cấu hình hiện tại vào target.txt</string>
-    <string name="help_refresh">Làm mới</string>
-    <string name="help_refresh_description">Làm mới danh sách ứng dụng và danh sách loại trừ</string>
-    <string name="help_select_deselect">Chọn &amp; Bỏ chọn tất cả</string>
-    <string name="help_select_description">Chọn hoặc bỏ chọn tất cả ứng dụng trong giao diện hiện tại</string>
+    <string name="help_save_and_update_description">Lưu cấu hình hiện tại vào target.txt.</string>
     <string name="help_select_denylist">Chọn từ DenyList</string>
-    <string name="help_select_denylist_description">Chỉ khả dụng trong Magisk, chọn ứng dụng nằm trong DenyList. Khuyến nghị sử dụng</string>
+    <string name="help_select_denylist_description">Chỉ khả dụng trong Magisk, chọn ứng dụng nằm trong DenyList. Khuyến nghị sử dụng.</string>
     <string name="help_deselect_unnecessary">Bỏ chọn không cần thiết</string>
-    <string name="help_deselect_unnecessary_description">Danh mục không cần thiết: Trình quản lý root, module Xposed, ứng dụng liên quan đến root và các ứng dụng thông thường không bao giờ kiểm tra trạng thái bootloader. Tùy chọn này yêu cầu kết nối Internet</string>
+    <string name="help_deselect_unnecessary_description">Danh mục không cần thiết: Trình quản lý root, module Xposed, ứng dụng liên quan đến root và các ứng dụng thông thường không bao giờ kiểm tra trạng thái bootloader. Tùy chọn này yêu cầu kết nối Internet.</string>
     <string name="help_add_system_app">Thêm ứng dụng hệ thống</string>
-    <string name="help_add_system_app_description">Thêm ứng dụng hệ thống cụ thể vào danh sách ứng dụng</string>
+    <string name="help_add_system_app_description">Thêm ứng dụng hệ thống cụ thể vào danh sách ứng dụng.</string>
     <string name="help_set_keybox">Đặt AOSP &amp; Keybox hợp lệ</string>
-    <string name="help_set_keybox_description">Thay thế keybox.xml của Tricky Store. Tùy chọn Keybox hợp lệ yêu cầu kết nối Internet và không phải lúc nào cũng khả dụng</string>
+    <string name="help_set_keybox_description">Thay thế keybox.xml của Tricky Store. Tùy chọn Keybox hợp lệ yêu cầu kết nối Internet và không phải lúc nào cũng khả dụng.</string>
     <string name="help_set_custom_keybox">Đặt Keybox tùy chỉnh</string>
-    <string name="help_set_custom_keybox_description">Nhập Keybox từ bộ nhớ thiết bị của bạn. Chỉ hỗ trợ tệp xml</string>
+    <string name="help_set_custom_keybox_description">Nhập Keybox từ bộ nhớ thiết bị của bạn. Chỉ hỗ trợ tệp xml.</string>
     <string name="help_set_security_patch">Đặt bản vá bảo mật</string>
-    <string name="help_set_security_patch_description">Đặt spoof bản vá bảo mật tùy chỉnh. Cấu hình tự động sẽ sử dụng bản vá bảo mật từ module PIF. Để trống và lưu để tắt cấu hình tự động</string>
+    <string name="help_set_security_patch_description">Đặt spoof bản vá bảo mật tùy chỉnh. Cấu hình tự động sẽ sử dụng bản vá bảo mật từ module PIF. Để trống và lưu để tắt cấu hình tự động.</string>
     <string name="help_set_verified_boot_hash">Đặt Verified Boot Hash</string>
-    <string name="help_set_verified_boot_hash_description">Lấy giá trị verifiedBootHash từ Key Attestation Demo. Sửa trạng thái boot bất thường bằng cách đặt lại ro.boot.vbmeta.digest</string>
+    <string name="help_set_verified_boot_hash_description">Lấy giá trị verifiedBootHash từ Key Attestation Demo. Sửa trạng thái boot bất thường bằng cách đặt lại ro.boot.vbmeta.digest.</string>
     <!-- Update -->
     <string name="update_update_available">Đã có phiên bản mới</string>
     <string name="update_redirect_to_release">Nhấn để tải phiên bản mới nhất</string>
@@ -68,7 +64,8 @@
     <string name="about_by">Bởi</string>
     <string name="about_telegram_channel">Kênh Telegram</string>
     <string name="about_canary_update">Cập nhật lên phiên bản Canary mới nhất</string>
-    <string name="about_disclaimer">Module này không phải là một phần của module Tricky Store. KHÔNG báo cáo bất kỳ vấn đề nào cho Tricky Store nếu gặp phải</string>
+    <string name="about_translation_update">Cập nhật gói dịch thuật</string>
+    <string name="about_disclaimer">Module này không phải là một phần của module Tricky Store. KHÔNG báo cáo bất kỳ vấn đề nào cho Tricky Store nếu gặp phải.</string>
     <string name="about_acknowledgment">Lời cảm ơn</string>
     <!-- Prompt -->
     <string name="prompt_no_internet">Vui lòng kiểm tra kết nối Internet của bạn</string>
@@ -94,6 +91,8 @@
     <string name="prompt_install_fail">Không thể cài đặt, vui lòng cập nhật thủ công</string>
     <string name="prompt_rebooting">Đang khởi động lại...</string>
     <string name="prompt_reboot_fail">Không thể khởi động lại, vui lòng khởi động lại thủ công</string>
+    <string name="prompt_translation_updated">Gói dịch thuật đã được cập nhật thành công</string>
+    <string name="prompt_translation_update_failed">Gói dịch thuật cập nhật thất bại</string>
     <string name="prompt_custom_key_set">Đã đặt Keybox tùy chỉnh thành công</string>
     <string name="prompt_custom_key_set_error">Không thể đặt Keybox tùy chỉnh</string>
     <string name="prompt_no_file_selected">Chưa chọn tệp nào</string>
