@@ -97,20 +97,52 @@
     position: relative;
 }
 
+.menu md-menu {
+    --md-sys-shape-corner-extra-small: 24px;
+    max-width: 60vw;
+}
+
+.menu md-sub-menu md-menu {
+    --md-sys-shape-corner-extra-small: 8px;
+    max-width: 40vw;
+}
+
+.menu md-menu-item {
+    width: max-content;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.menu-item-button-container {
+    padding: 2px 4px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    gap: 4px;
+    box-sizing: border-box;
+}
+
 #menu-button {
     --md-icon-button-icon-color: var(--md-sys-color-on-surface);
 }
 
-.menu md-menu-item {
-    white-space: nowrap;
-}
-
 #menu-options {
-    --md-menu-container-color: var(--md-sys-color-surface-container-high);
     max-height: calc(100vh - var(--top-inset) - var(--bottom-inset) - 80px);
 }
 
 #select-denylist,
 #security-patch {
     display: none;
+}
+
+.instruction {
+    margin-bottom: 32px;
+}
+
+.instruction p {
+    margin: 8px 0;
+}
+
+.instruction-header {
+    font-size: 1.3em;
 }

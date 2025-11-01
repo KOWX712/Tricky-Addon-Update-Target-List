@@ -41,6 +41,14 @@ body[unresolved] {
     transform: translateY(200%);
 }
 
+.top-inset {
+    padding-top: var(--top-inset);
+}
+
+.bottom-inset {
+    padding-bottom: var(--bottom-inset);
+}
+
 .dialog-wrapper {
     z-index: 5;
     position: relative;

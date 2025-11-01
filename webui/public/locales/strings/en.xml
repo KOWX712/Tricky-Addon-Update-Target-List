@@ -7,10 +7,6 @@
     <!-- Help Menu-->
     <string name="help_help_instructions">Instructions</string>
     <string name="help_save_and_update_description">Save current configure to target.txt.</string>
-    <string name="help_refresh">Refresh</string>
-    <string name="help_refresh_description">Refresh app list and exclude list.</string>
-    <string name="help_select_deselect">Select &amp; Deselect All</string>
-    <string name="help_select_description">Select or deselect all apps in the current interface.</string>
     <string name="help_select_denylist">Select From DenyList</string>
     <string name="help_select_denylist_description">Available in Magisk only, select apps that are in the DenyList. Recommended.</string>
     <string name="help_deselect_unnecessary">Deselect Unnecessary</string>

@@ -5,12 +5,18 @@ import { openFileSelector } from './file_selector.js';
 // Function to check or uncheck all app
 function toggleCheckboxes(shouldCheck) {
     document.querySelectorAll("md-checkbox").forEach(checkbox => {
-        if (checkbox.closest(".card").style.display !== "none") {
+        const card = checkbox.closest(".card");
+        if (card && card.style.display !== "none") {
             checkbox.checked = shouldCheck;
-            checkbox.closest(".card").classList.toggle('selected', shouldCheck);
+            card.classList.toggle('selected', shouldCheck);
         }
     });
 }
+
+// Close menu on button click
+document.querySelector('.menu-item-button-container').addEventListener('click', (e) => {
+    document.getElementById('menu-options').close();
+});
 
 // Function to select all visible apps
 document.getElementById("select-all").onclick = () => toggleCheckboxes(true);
@@ -152,6 +158,16 @@ export async function setupSystemAppMenu() {
         });
     }
 }
+
+// Override default behaviour
+document.querySelectorAll('.sub-menu-entry').forEach(entry => {
+    entry.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const menu = entry.parentElement;
+        menu.open ? menu.close() : menu.show();;
+        menu.open = !menu.open;
+    });
+})
 
 /**
  * Backup previous keybox and set new keybox

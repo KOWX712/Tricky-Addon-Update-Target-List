@@ -22,15 +22,17 @@
                 <md-icon>more_vert</md-icon>
             </md-icon-button>
             <md-menu id="menu-options" anchor="menu-button">
-                <md-menu-item id="refresh" data-i18n="menu_refresh"></md-menu-item>
-                <md-menu-item id="select-all" data-i18n="menu_select_all"></md-menu-item>
-                <md-menu-item id="deselect-all" data-i18n="menu_deselect_all"></md-menu-item>
+                <div class="menu-item-button-container">
+                    <md-filled-tonal-icon-button id="select-all"><md-icon>select_all</md-icon></md-filled-tonal-icon-button>
+                    <md-filled-tonal-icon-button id="deselect-all"><md-icon>deselect</md-icon></md-filled-tonal-icon-button>
+                    <md-filled-tonal-icon-button id="refresh"><md-icon>refresh</md-icon></md-filled-tonal-icon-button>
+                </div>
                 <md-menu-item id="select-denylist" data-i18n="menu_select_denylist"></md-menu-item>
                 <md-menu-item id="deselect-unnecessary" data-i18n="menu_deselect_unnecessary"></md-menu-item>
                 <md-menu-item id="add-system-app" data-i18n="menu_add_system_app"></md-menu-item>
                 <md-divider role="separator" tabindex="-1"></md-divider>
-                <md-sub-menu anchor-corner="end-start" hover-close-delay="0">
-                    <md-menu-item slot="item">
+                <md-sub-menu hover-close-delay="0">
+                    <md-menu-item slot="item" class="sub-menu-entry">
                         <div slot="headline" data-i18n="menu_keybox"></div>
                         <md-icon slot="start" class="ltr-icon">chevron_left</md-icon>
                         <md-icon slot="start" class="rtl-icon">chevron_right</md-icon>
@@ -46,8 +48,8 @@
                 <md-menu-item id="security-patch" data-i18n="menu_set_security_patch"></md-menu-item>
                 <md-divider role="separator" tabindex="-1"></md-divider>
                 <md-menu-item id="help" data-i18n="menu_help"></md-menu-item>
-                <md-sub-menu anchor-corner="end-start" hover-close-delay="0">
-                    <md-menu-item slot="item">
+                <md-sub-menu hover-close-delay="0">
+                    <md-menu-item slot="item" class="sub-menu-entry">
                         <div slot="headline" data-i18n="menu_language"></div>
                         <md-icon slot="end">language</md-icon>
                     </md-menu-item>
@@ -126,43 +128,35 @@
             <div slot="headline" data-i18n="help_help_instructions"></div>
             <div slot="content" class="help-content">
                 <div class="instruction">
-                    <strong data-i18n="functional_button_save"></strong>
+                    <p class="instruction-header" data-i18n="functional_button_save"></p>
                     <p data-i18n="help_save_and_update_description"></p>
                 </div>
                 <div class="instruction">
-                    <strong data-i18n="help_refresh"></strong>
-                    <p data-i18n="help_refresh_description"></p>
-                </div>
-                <div class="instruction">
-                    <strong data-i18n="help_select_deselect"></strong>
-                    <p data-i18n="help_select_description"></p>
-                </div>
-                <div class="instruction">
-                    <strong data-i18n="help_select_denylist"></strong>
+                    <p class="instruction-header" data-i18n="help_select_denylist"></p>
                     <p data-i18n="help_select_denylist_description"></p>
                 </div>
                 <div class="instruction">
-                    <strong data-i18n="help_deselect_unnecessary"></strong>
+                    <p class="instruction-header" data-i18n="help_deselect_unnecessary"></p>
                     <p data-i18n="help_deselect_unnecessary_description"></p>
                 </div>
                 <div class="instruction">
-                    <strong data-i18n="help_add_system_app"></strong>
+                    <p class="instruction-header" data-i18n="help_add_system_app"></p>
                     <p data-i18n="help_add_system_app_description"></p>
                 </div>
                 <div class="instruction">
-                    <strong data-i18n="help_set_keybox"></strong>
+                    <p class="instruction-header" data-i18n="help_set_keybox"></p>
                     <p data-i18n="help_set_keybox_description"></p>
                 </div>
                 <div class="instruction">
-                    <strong data-i18n="help_set_custom_keybox"></strong>
+                    <p class="instruction-header" data-i18n="help_set_custom_keybox"></p>
                     <p data-i18n="help_set_custom_keybox_description"></p>
                 </div>
                 <div class="instruction">
-                    <strong data-i18n="help_set_security_patch"></strong>
+                    <p class="instruction-header" data-i18n="help_set_security_patch"></p>
                     <p data-i18n="help_set_security_patch_description"></p>
                 </div>
                 <div class="instruction">
-                    <strong data-i18n="help_set_verified_boot_hash"></strong>
+                    <p class="instruction-header" data-i18n="help_set_verified_boot_hash"></p>
                     <p data-i18n="help_set_verified_boot_hash_description"></p>
                 </div>
             </div>
