@@ -7,10 +7,6 @@
     <!-- Help Menu-->
     <string name="help_help_instructions">Talimatlar</string>
     <string name="help_save_and_update_description">Mevcut yapılandırmayı target.txt dosyasına kaydet.</string>
-    <string name="help_refresh">Yenile</string>
-    <string name="help_refresh_description">Uygulama ve hariç tutma listesini yenile.</string>
-    <string name="help_select_deselect">Tümünü Seç &amp; Seçimi Kaldır</string>
-    <string name="help_select_description">Mevcut arayüzdeki tüm uygulamaları seç veya seçimini kaldır.</string>
     <string name="help_select_denylist">Reddetme Listesinden Seç</string>
     <string name="help_select_denylist_description">Yalnızca Magisk&apos;te mevcut, Reddetme Listesindeki uygulamaları seç. Tavsiye edilir.</string>
     <string name="help_deselect_unnecessary">Gereksizleri Seçme</string>

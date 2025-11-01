@@ -6,10 +6,6 @@
     <!-- Help Menu-->
     <string name="help_help_instructions">راهنما</string>
     <string name="help_save_and_update_description">پیکربندی فعلی را در target.txt ذخیره کنید.</string>
-    <string name="help_refresh">تازه سازی</string>
-    <string name="help_refresh_description">لیست برنامه‌ها و لیست حذف را تازه کنید.</string>
-    <string name="help_select_deselect">انتخاب همه و لغو انتخاب</string>
-    <string name="help_select_description">همه برنامه‌ها را در رابط فعلی انتخاب کنید یا لغو انتخاب کنید.</string>
     <string name="help_select_denylist">انتخاب از DenyList</string>
     <string name="help_select_denylist_description">فقط در Magisk موجود است، برنامه‌هایی که در DenyList هستند را انتخاب کنید. توصیه شده.</string>
     <string name="help_deselect_unnecessary">لغو انتخاب غیرضروری</string>
