@@ -7,10 +7,6 @@
     <!-- Help Menu-->
     <string name="help_help_instructions">使い方</string>
     <string name="help_save_and_update_description">現在の設定を target.txt に保存します。</string>
-    <string name="help_refresh">更新</string>
-    <string name="help_refresh_description">アプリリストと除外リストを更新します。</string>
-    <string name="help_select_deselect">すべてを選択と解除</string>
-    <string name="help_select_description">現在のインターフェースのすべてのアプリを選択または解除します。</string>
     <string name="help_select_denylist">DenyList から選択</string>
     <string name="help_select_denylist_description">Magisk の環境でのみ使用可能です。DenyList 内のアプリを選択します(推奨)。</string>
     <string name="help_deselect_unnecessary">不要な選択を解除</string>

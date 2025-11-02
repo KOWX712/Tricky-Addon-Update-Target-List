@@ -6,18 +6,14 @@
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">Instrukcje</string>
-    <string name="help_save_and_update_description">Zapisywanie obecnej konfiguracji do pliku target.txt.</string>
-    <string name="help_refresh">Odśwież</string>
-    <string name="help_refresh_description">Odśwież listę aplikacji i wykluczeń.</string>
-    <string name="help_select_deselect">Zaznacz i odznacz wszystko</string>
-    <string name="help_select_description">Zaznacz lub odznacz wszystkie aplikacje w bieżącym interfejsie.</string>
+    <string name="help_save_and_update_description">Zapisz bieżącą konfigurację do pliku target.txt.</string>
     <string name="help_select_denylist">Wybierz z listy odrzuconych</string>
     <string name="help_select_denylist_description">Dostępne tylko w Magisk, wybrane aplikacje, które są na liście odrzuconych. Zalecane.</string>
     <string name="help_deselect_unnecessary">Odznacz niepotrzebne</string>
     <string name="help_deselect_unnecessary_description">Kategoria niepotrzebne: moduł Xposed, menedżer root, aplikacje związane z rootem i ogólne aplikacje, które nigdy nie sprawdzają stanu bootloadera. Ta opcja wymaga połączenia internetowego.</string>
     <string name="help_add_system_app">Dodaj aplikację systemową</string>
     <string name="help_add_system_app_description">Dodaj konkretną aplikację systemową do listy aplikacji.</string>
-    <string name="help_set_keybox">Ustaw działający klucz AOSP</string>
+    <string name="help_set_keybox">Ustaw ważny klucz AOSP</string>
     <string name="help_set_keybox_description">Zastąp klucz keybox.xml. Funkcja wymaga połączenia internetowego.</string>
     <string name="help_set_custom_keybox">Ustaw niestandardowy klucz</string>
     <string name="help_set_custom_keybox_description">Importuj klucz z pamięci urządzenia. Obsługuje tylko pliki xml.</string>
@@ -26,7 +22,7 @@
     <string name="help_set_verified_boot_hash">Ustaw zweryfikowany skrót rozruchowy</string>
     <string name="help_set_verified_boot_hash_description">Pobierz zweryfikowaną wartość skrótu rozruchowego z Key Attestation. Napraw nieprawidłowy stan rozruchu, resetując ro.boot.vbmeta.digest.</string>
     <!-- Update -->
-    <string name="update_update_available">Nowa wersja jest dostępna!</string>
+    <string name="update_update_available">Dostępna jest nowa wersja</string>
     <string name="update_redirect_to_release">dotknij, aby pobrać najnowszą wersję</string>
     <string name="update_changelog">Historia zmian</string>
     <string name="update_install">Zainstaluj</string>
@@ -36,6 +32,7 @@
     <!-- Functional Button -->
     <string name="functional_button_save">Zapisz</string>
     <string name="functional_button_uninstall_webui">Odinstaluj WebUI</string>
+    <string name="functional_button_close">Zamknij</string>
     <string name="functional_button_cancel">Anuluj</string>
     <string name="functional_button_confirm">Potwierdź</string>
     <!-- Loading -->
@@ -47,19 +44,27 @@
     <string name="menu_select_denylist">Wybierz z listy odrzuconych</string>
     <string name="menu_deselect_unnecessary">Odznacz niepotrzebne</string>
     <string name="menu_add_system_app">Dodaj aplikację systemową</string>
+    <string name="menu_keybox">Klucz</string>
+    <string name="menu_keybox_aosp">AOSP</string>
+    <string name="menu_keybox_unknown">Nieznany</string>
+    <string name="menu_keybox_valid">Ważny</string>
+    <string name="menu_keybox_custom">Niestandardowy</string>
     <string name="menu_set_verified_boot_hash">Ustaw zweryfikowany skrót rozruchowy</string>
     <string name="menu_set_security_patch">Ustaw poprawkę zabezpieczeń</string>
-    <string name="menu_set_devconfig">Ustaw DevConfig</string>
+    <string name="menu_set_devconfig">Ustaw konfigurację dewelopera</string>
+    <string name="menu_help">Pomoc</string>
+    <string name="menu_language">Język</string>
     <string name="menu_about">O Tricky Addon</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Skrót rozruchowy</string>
     <string name="boot_hash_input_placeholder">Wklej tutaj zweryfikowany skrót rozruchowy</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
-    <string name="about_module_name_line2">Uaktualnij listę celów</string>
+    <string name="about_module_name_line2">Uaktualnij listę docelową</string>
     <string name="about_by">wydany przez:</string>
     <string name="about_telegram_channel">Kanał na Telegramie</string>
-    <string name="about_canary_update">Aktualizacja do najnowszej wersji Canary</string>
+    <string name="about_canary_update">Zaktualizuj do najnowszej wersji Canary</string>
+    <string name="about_translation_update">Zaktualizuj pakiet tłumaczenia</string>
     <string name="about_disclaimer">Ten moduł nie jest częścią modułu Tricky Store. Nie zgłaszaj żadnych problemów do Tricky Store, jeśli je napotkasz.</string>
     <string name="about_acknowledgment">Podziękowania dla:</string>
     <!-- Prompt -->
@@ -67,8 +72,8 @@
     <string name="prompt_aosp_key_set">Klucz AOSP ustawiony pomyślnie</string>
     <string name="prompt_key_set_error">Nie udało się zaktualizować klucza</string>
     <string name="prompt_unknown_key_set">Nieznany klucz ustawiony pomyślnie</string>
-    <string name="prompt_valid_key_set">Działający klucz ustawiony pomyślnie</string>
-    <string name="prompt_no_valid">Nie znaleziono działającego klucza</string>
+    <string name="prompt_valid_key_set">Ważny klucz ustawiony pomyślnie</string>
+    <string name="prompt_no_valid">Nie znaleziono ważnego klucza.</string>
     <string name="prompt_boot_hash_set">Zweryfikowany skrót rozruchowy zapisany pomyślnie</string>
     <string name="prompt_boot_hash_set_error">Nie udało się zaktualizować zweryfikowanego skrótu rozruchowego</string>
     <string name="prompt_saved_target">Konfiguracja zapisana do pliku target.txt</string>
@@ -76,7 +81,7 @@
     <string name="prompt_uninstall_prompt">WebUI zostanie odinstalowany po ponownym uruchomieniu</string>
     <string name="prompt_uninstall_failed">Nie udało się odinstalować WebUI</string>
     <string name="prompt_checking_update">Sprawdzanie aktualizacji...</string>
-    <string name="prompt_new_update">Nowa aktualizacja jest dostępna!</string>
+    <string name="prompt_new_update">Dostępna jest nowa aktualizacja!</string>
     <string name="prompt_no_update">Obecnie nie ma dostępnych aktualizacji</string>
     <string name="prompt_downloading">Pobieranie nowej aktualizacji...</string>
     <string name="prompt_downloaded">Pobieranie zakończone</string>
@@ -84,8 +89,10 @@
     <string name="prompt_installing">Instalowanie aktualizacji...</string>
     <string name="prompt_installed">Zainstalowano pomyślnie, uruchom ponownie.</string>
     <string name="prompt_install_fail">Nie udało się zainstalować, zaktualizuj ręcznie</string>
-    <string name="prompt_rebooting">Ponowne uruchamienie...</string>
+    <string name="prompt_rebooting">Ponowne uruchamianie...</string>
     <string name="prompt_reboot_fail">Nie udało się ponownie uruchomić, proszę wykonać to ręcznie</string>
+    <string name="prompt_translation_updated">Zaktualizowano pakiet tłumaczenia</string>
+    <string name="prompt_translation_update_failed">Nie udało się zaktualizować pakietu tłumaczenia</string>
     <string name="prompt_custom_key_set">Niestandardowy klucz ustawiony pomyślnie</string>
     <string name="prompt_custom_key_set_error">Nie udało się ustawić niestandardowego klucza</string>
     <string name="prompt_no_file_selected">Nie wybrano pliku</string>
@@ -114,7 +121,11 @@
     <string name="add_system_app_add">Dodaj</string>
     <string name="add_system_app_current_list">Aktualna lista aplikacji systemowych</string>
     <!-- Uninstall confirmation -->
-    <string name="confirmation_uninstall_title">Potwierdzić odinstalowanie?</string>
+    <string name="confirmation_uninstall_title">Potwierdzasz odinstalowanie?</string>
     <string name="confirmation_uninstall_message">Czy na pewno chcesz odinstalować Tricky Addon?</string>
     <!-- Mode dialog -->
+    <string name="mode_dialog_title">Tryb</string>
+    <string name="mode_auto">Automatyczny</string>
+    <string name="mode_certificate_generating">Generowanie certyfikatów (!)</string>
+    <string name="mode_leaf_hack">Obejście sposobem (?)</string>
 </resources>

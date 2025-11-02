@@ -7,10 +7,6 @@
     <!-- Help Menu-->
     <string name="help_help_instructions">Вказівки</string>
     <string name="help_save_and_update_description">Зберегти поточну конфігурацію до файлу target.txt</string>
-    <string name="help_refresh">Оновити</string>
-    <string name="help_refresh_description">Оновити список застосунків та перелік виключень.</string>
-    <string name="help_select_deselect">Виділити та прибрати виділення всіх</string>
-    <string name="help_select_description">Вибрати чи прибрати виділення всіх застосунків у поточному інтерфейсі.</string>
     <string name="help_select_denylist">Виберіть із DenyList</string>
     <string name="help_select_denylist_description">Доступно лише у Magisk, обрати застосунки, які входять до DenyList. Рекомендовано.</string>
     <string name="help_deselect_unnecessary">Зняти виділення з необов&apos;язкових</string>
@@ -36,6 +32,7 @@
     <!-- Functional Button -->
     <string name="functional_button_save">Зберегти</string>
     <string name="functional_button_uninstall_webui">Деінсталювати WebUI</string>
+    <string name="functional_button_close">Закрити</string>
     <string name="functional_button_cancel">Скасувати</string>
     <string name="functional_button_confirm">Підтвердити</string>
     <!-- Loading -->
@@ -47,9 +44,15 @@
     <string name="menu_select_denylist">Вибрати із DenyList</string>
     <string name="menu_deselect_unnecessary">Прибрати необов&apos;язкові</string>
     <string name="menu_add_system_app">Додати системний застосунок</string>
+    <string name="menu_keybox">Ключ</string>
+    <string name="menu_keybox_unknown">Невідомий</string>
+    <string name="menu_keybox_valid">Валідний</string>
+    <string name="menu_keybox_custom">Користувацький</string>
     <string name="menu_set_verified_boot_hash">Встановити перевірений хеш завантаження</string>
     <string name="menu_set_security_patch">Встановити патч безпеки</string>
     <string name="menu_set_devconfig">Встановити конфігурацію розробника</string>
+    <string name="menu_help">Вказівки</string>
+    <string name="menu_language">Мова</string>
     <string name="menu_about">Деталі</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Хеш завантаження</string>
@@ -60,6 +63,7 @@
     <string name="about_by">by</string>
     <string name="about_telegram_channel">Телеґрам-канал</string>
     <string name="about_canary_update">Оновити до останньої canary версії</string>
+    <string name="about_translation_update">Оновити мовний пакет</string>
     <string name="about_disclaimer">Цей модуль не є частиною модуля Tricky Store. НЕ повідомляйте Tricky Store про будь-які проблеми, якщо вони виникли.</string>
     <string name="about_acknowledgment">Подяка</string>
     <!-- Prompt -->
@@ -86,6 +90,8 @@
     <string name="prompt_install_fail">Не вдалося встановити, будь ласка, оновіть вручну</string>
     <string name="prompt_rebooting">Перезавантаження...</string>
     <string name="prompt_reboot_fail">Не вдається перезавантажити, будь ласка, перезавантажте вручну</string>
+    <string name="prompt_translation_updated">Мовний пакет успішно оновлено</string>
+    <string name="prompt_translation_update_failed">Не вдалося оновити мовний пакет</string>
     <string name="prompt_custom_key_set">Успішне встановлення користувацького ключа</string>
     <string name="prompt_custom_key_set_error">Не вдалося встановити користувальницький ключ</string>
     <string name="prompt_no_file_selected">Не вибрано жодного файлу</string>
@@ -117,4 +123,8 @@
     <string name="confirmation_uninstall_title">Підтверджуєте видалення?</string>
     <string name="confirmation_uninstall_message">Ви дійсно хочете видалити Tricky Addon?</string>
     <!-- Mode dialog -->
+    <string name="mode_dialog_title">Режим</string>
+    <string name="mode_auto">Авто</string>
+    <string name="mode_certificate_generating">Генерація сертифікату (!)</string>
+    <string name="mode_leaf_hack">Leaf Hack (?)</string>
 </resources>

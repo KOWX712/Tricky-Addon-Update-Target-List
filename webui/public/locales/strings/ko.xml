@@ -7,10 +7,6 @@
     <!-- Help Menu-->
     <string name="help_help_instructions">설명서</string>
     <string name="help_save_and_update_description">현재 설정을 target.txt에 저장합니다.</string>
-    <string name="help_refresh">새로 고침</string>
-    <string name="help_refresh_description">앱 리스트와 제외 리스트를 새로 고칩니다.</string>
-    <string name="help_select_deselect">모두 선택 &amp; 모두 선택 해제</string>
-    <string name="help_select_description">현재 표시된 리스트에서 모든 앱을 선택하거나 선택 해제합니다.</string>
     <string name="help_select_denylist">DenyList에서 선택</string>
     <string name="help_select_denylist_description">(권장됨) Magisk 사용자만 사용할 수 있으며, DenyList에 포함된 앱을 선택합니다.</string>
     <string name="help_deselect_unnecessary">필요 없는 앱 선택 해제</string>

@@ -7,10 +7,6 @@
     <!-- Help Menu-->
     <string name="help_help_instructions">Instructions</string>
     <string name="help_save_and_update_description">Enregistrer la configuration actuelle dans target.txt.</string>
-    <string name="help_refresh">Actualiser</string>
-    <string name="help_refresh_description">Actualiser la liste des applications et la liste d&apos;exclusions.</string>
-    <string name="help_select_deselect">Tout sélectionner &amp; désélectionner</string>
-    <string name="help_select_description">Sélectionner ou désélectionner toutes les applications de l&apos;interface actuelle.</string>
     <string name="help_select_denylist">Sélectionner depuis la DenyList</string>
     <string name="help_select_denylist_description">Disponible uniquement sur Magisk, sélectionner les applications présentes dans la DenyList. Recommandé.</string>
     <string name="help_deselect_unnecessary">Désélectionner les applications inutiles</string>
@@ -36,6 +32,7 @@
     <!-- Functional Button -->
     <string name="functional_button_save">Enregistrer</string>
     <string name="functional_button_uninstall_webui">Désinstaller la WebUI</string>
+    <string name="functional_button_close">Fermer</string>
     <string name="functional_button_cancel">Annuler</string>
     <string name="functional_button_confirm">Confirmer</string>
     <!-- Loading -->
@@ -47,8 +44,16 @@
     <string name="menu_select_denylist">Sélectionner depuis la DenyList</string>
     <string name="menu_deselect_unnecessary">Désélectionner les applications inutiles</string>
     <string name="menu_add_system_app">Ajouter une application système</string>
+    <string name="menu_keybox">Keybox</string>
+    <string name="menu_keybox_aosp">AOSP</string>
+    <string name="menu_keybox_unknown">Inconnue</string>
+    <string name="menu_keybox_valid">Valide</string>
+    <string name="menu_keybox_custom">Customisée</string>
     <string name="menu_set_verified_boot_hash">Définir le hash Verified Boot</string>
     <string name="menu_set_security_patch">Définir le patch de sécurité</string>
+    <string name="menu_set_devconfig">Mettre en place une configuration de développement</string>
+    <string name="menu_help">Aide</string>
+    <string name="menu_language">Langue</string>
     <string name="menu_about">À propos</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Hash de démarrage</string>
@@ -59,6 +64,7 @@
     <string name="about_by">par</string>
     <string name="about_telegram_channel">Canal Telegram</string>
     <string name="about_canary_update">Mettre à jour vers la dernière version canary</string>
+    <string name="about_translation_update">Mettre à jour le pack de traduction</string>
     <string name="about_disclaimer">Ce module ne fait pas partie du module Tricky Store. NE signalez PAS de problèmes à Tricky Store en cas d&apos;erreur.</string>
     <string name="about_acknowledgment">Remerciements</string>
     <!-- Prompt -->
@@ -85,6 +91,8 @@
     <string name="prompt_install_fail">Échec de l&apos;installation, veuillez mettre à jour manuellement</string>
     <string name="prompt_rebooting">Redémarrage…</string>
     <string name="prompt_reboot_fail">Échec du redémarrage, veuillez redémarrer manuellement</string>
+    <string name="prompt_translation_updated">Pack de traduction mis à jour avec succès</string>
+    <string name="prompt_translation_update_failed">Échec de la mise à jour du pack de traduction</string>
     <string name="prompt_custom_key_set">Keybox personnalisée définie avec succès</string>
     <string name="prompt_custom_key_set_error">Échec de la définition de la Keybox personnalisée</string>
     <string name="prompt_no_file_selected">Aucun fichier sélectionné</string>
@@ -116,4 +124,8 @@
     <string name="confirmation_uninstall_title">Confirmer la désinstallation ?</string>
     <string name="confirmation_uninstall_message">Êtes-vous sûr(e) de vouloir désinstaller Tricky Addon</string>
     <!-- Mode dialog -->
+    <string name="mode_dialog_title">Mode</string>
+    <string name="mode_auto">Automatique</string>
+    <string name="mode_certificate_generating">Génération de certificats (!)</string>
+    <string name="mode_leaf_hack">Leaf Hack (?)</string>
 </resources>

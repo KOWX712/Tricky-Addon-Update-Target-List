@@ -7,10 +7,6 @@
     <!-- Help Menu-->
     <string name="help_help_instructions">تعليمات</string>
     <string name="help_save_and_update_description">حفظ الإعدادات الحالية إلى target.txt.</string>
-    <string name="help_refresh">تحديث</string>
-    <string name="help_refresh_description">تحديث قائمة التطبيقات وقائمة الاستبعاد.</string>
-    <string name="help_select_deselect">تحديد وإلغاء تحديد الكل</string>
-    <string name="help_select_description">تحديد أو إلغاء تحديد جميع التطبيقات في الواجهة الحالية.</string>
     <string name="help_select_denylist">تحديد من قائمة الرفض</string>
     <string name="help_select_denylist_description">متاح في Magisk فقط، حدد التطبيقات الموجودة في قائمة الرفض. موصى به.</string>
     <string name="help_deselect_unnecessary">إلغاء تحديد غير الضروري</string>
@@ -68,6 +64,7 @@
     <string name="about_by">بواسطة</string>
     <string name="about_telegram_channel">قناة التليجرام</string>
     <string name="about_canary_update">تحديث إلى أحدث إصدار تجريبي</string>
+    <string name="about_translation_update">تحديث حزمة ملفات الترجمة</string>
     <string name="about_disclaimer">هذه الوحدة ليست جزءًا من وحدة Tricky Store. لا تقم بالإبلاغ عن أي مشاكل إلى Tricky Store إذا واجهت أيًا منها.</string>
     <string name="about_acknowledgment">شكر وتقدير</string>
     <!-- Prompt -->
@@ -94,6 +91,8 @@
     <string name="prompt_install_fail">فشل في التثبيت، يرجى التحديث يدويًا</string>
     <string name="prompt_rebooting">جارٍ إعادة التشغيل...</string>
     <string name="prompt_reboot_fail">فشل في إعادة التشغيل، يرجى إعادة التشغيل يدويًا</string>
+    <string name="prompt_translation_updated">تم تحديث حزمة ملفات الترجمة</string>
+    <string name="prompt_translation_update_failed">فشل تحديث حزمة ملفات الترجمة</string>
     <string name="prompt_custom_key_set">تم تعيين keybox مخصص بنجاح</string>
     <string name="prompt_custom_key_set_error">فشل في تعيين keybox مخصص</string>
     <string name="prompt_no_file_selected">لم يتم اختيار أي ملف</string>

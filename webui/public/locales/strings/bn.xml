@@ -6,10 +6,6 @@
     <!-- Help Menu-->
     <string name="help_help_instructions">নির্দেশনা</string>
     <string name="help_save_and_update_description">বর্তমান কনফিগারেশন target.txt এ সেভ করুন।</string>
-    <string name="help_refresh">রিফ্রেশ</string>
-    <string name="help_refresh_description">অ্যাপ তালিকা এবং এক্সক্লুড তালিকা রিফ্রেশ করুন।</string>
-    <string name="help_select_deselect">সব নির্বাচন করুন এবং নির্বাচন প্রত্যাহার করুন</string>
-    <string name="help_select_description">বর্তমান ইন্টারফেসে সব অ্যাপ নির্বাচন করুন বা নির্বাচন প্রত্যাহার করুন।</string>
     <string name="help_select_denylist">DenyList থেকে নির্বাচন করুন</string>
     <string name="help_select_denylist_description">শুধুমাত্র Magisk এ উপলব্ধ, DenyList এ থাকা অ্যাপগুলি নির্বাচন করুন। সুপারিশকৃত।</string>
     <string name="help_deselect_unnecessary">অপ্রয়োজনীয় নির্বাচন প্রত্যাহার করুন</string>

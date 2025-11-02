@@ -7,10 +7,6 @@
     <!-- Help Menu-->
     <string name="help_help_instructions">Panduan</string>
     <string name="help_save_and_update_description">Simpan konfigurasi saat ini ke target.txt.</string>
-    <string name="help_refresh">Segarkan</string>
-    <string name="help_refresh_description">Perbarui daftar aplikasi dan daftar pengecualian.</string>
-    <string name="help_select_deselect">Pilih &amp; Batalkan Pilihan Semua</string>
-    <string name="help_select_description">Pilih atau batalkan pilihan semua aplikasi yang ditampilkan.</string>
     <string name="help_select_denylist">Pilih dari Denylist</string>
     <string name="help_select_denylist_description">Hanya untuk Magisk, pilih aplikasi yang ada di Denylist. Disarankan.</string>
     <string name="help_deselect_unnecessary">Batalkan Pilihan yang Tidak Perlu</string>

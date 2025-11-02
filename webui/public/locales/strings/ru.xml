@@ -7,10 +7,6 @@
     <!-- Help Menu-->
     <string name="help_help_instructions">Инструкции</string>
     <string name="help_save_and_update_description">Сохранить текущую конфигурацию в target.txt.</string>
-    <string name="help_refresh">Обновить</string>
-    <string name="help_refresh_description">Обновить список приложений и список исключений.</string>
-    <string name="help_select_deselect">Выбрать и отменить выбор всех</string>
-    <string name="help_select_description">Выбрать или отменить выбор всех приложений в текущем интерфейсе.</string>
     <string name="help_select_denylist">Выбрать из DenyList</string>
     <string name="help_select_denylist_description">Доступно только в Magisk, выберите приложения, которые находятся в DenyList. Рекомендуется.</string>
     <string name="help_deselect_unnecessary">Отменить выбор ненужных</string>
