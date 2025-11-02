@@ -3,6 +3,7 @@
 ## Arabic
 
 - [ZG089](https://github.com/ZG089)
+- [Jasem Al-heedry](https://crowdin.com/profile/7asem34)
 
 ---
 
@@ -75,6 +76,7 @@
 
 - [JeanxPereira](https://github.com/JeanxPereira)
 - [SecretGogeta](https://github.com/SecretGogeta)
+- [@Gabriel Santos](https://crowdin.com/profile/gabriellsantosu)
 
 ---
 
@@ -88,6 +90,7 @@
 
 - [Keinta15](https://github.com/Keinta15)
 - [Marc Reventós Papo](https://github.com/mpapus)
+- [Juan Martín Zavalla](https://crowdin.com/profile/juanma11)
 
 ---
 
@@ -110,3 +113,4 @@
 
 - [doanvtamhuynh](https://github.com/doanvtamhuynh)
 - [SaleOff](https://github.com/SaleOff)
+- [Vietnamese's](https://crowdin.com/profile/vietnamesetranslations)
