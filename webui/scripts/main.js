@@ -80,7 +80,7 @@ function checkTrickyStoreVersion() {
     const securityPatchElement = document.getElementById('security-patch');
     exec(`
         TS_version=$(grep "versionCode=" "/data/adb/modules/tricky_store/module.prop" | cut -d'=' -f2)
-        if grep -qE "James|beakthoven" "/data/adb/modules/tricky_store/module.prop"; then
+        if grep -qE "James|beakthoven|JingMatrix" "/data/adb/modules/tricky_store/module.prop"; then
             echo 0
         elif [ "$TS_version" -ge 158 ]; then
             echo 0
