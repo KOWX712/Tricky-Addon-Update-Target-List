@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="system_default">Domyślne ustawienia systemu</string>
+    <string name="system_default">Język urządzenia</string>
     <string name="more_language">Więcej języków</string>
     <!-- Header -->
     <string name="header_title">Tricky Addon</string>
@@ -14,7 +14,7 @@
     <string name="help_add_system_app">Dodaj aplikację systemową</string>
     <string name="help_add_system_app_description">Dodaj konkretną aplikację systemową do listy aplikacji.</string>
     <string name="help_set_keybox">Ustaw ważny klucz AOSP</string>
-    <string name="help_set_keybox_description">Zastąp klucz keybox.xml. Funkcja wymaga połączenia internetowego.</string>
+    <string name="help_set_keybox_description">Zastąp klucz keybox.xml. Opcja wymaga połączenia internetowego i nie zawsze jest dostępna.</string>
     <string name="help_set_custom_keybox">Ustaw niestandardowy klucz</string>
     <string name="help_set_custom_keybox_description">Importuj klucz z pamięci urządzenia. Obsługuje tylko pliki xml.</string>
     <string name="help_set_security_patch">Ustaw poprawkę zabezpieczeń</string>
@@ -51,7 +51,7 @@
     <string name="menu_keybox_custom">Niestandardowy</string>
     <string name="menu_set_verified_boot_hash">Ustaw zweryfikowany skrót rozruchowy</string>
     <string name="menu_set_security_patch">Ustaw poprawkę zabezpieczeń</string>
-    <string name="menu_set_devconfig">Ustaw konfigurację dewelopera</string>
+    <string name="menu_set_devconfig">Ustaw konfigurację programisty</string>
     <string name="menu_help">Pomoc</string>
     <string name="menu_language">Język</string>
     <string name="menu_about">O Tricky Addon</string>
@@ -62,13 +62,13 @@
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Uaktualnij listę docelową</string>
     <string name="about_by">wydany przez:</string>
-    <string name="about_telegram_channel">Kanał na Telegramie</string>
+    <string name="about_telegram_channel">Telegram</string>
     <string name="about_canary_update">Zaktualizuj do najnowszej wersji Canary</string>
     <string name="about_translation_update">Zaktualizuj pakiet tłumaczenia</string>
     <string name="about_disclaimer">Ten moduł nie jest częścią modułu Tricky Store. Nie zgłaszaj żadnych problemów do Tricky Store, jeśli je napotkasz.</string>
     <string name="about_acknowledgment">Podziękowania dla:</string>
     <!-- Prompt -->
-    <string name="prompt_no_internet">Sprawdź swoje połączenie internetowe</string>
+    <string name="prompt_no_internet">Sprawdź połączenie internetowe</string>
     <string name="prompt_aosp_key_set">Klucz AOSP ustawiony pomyślnie</string>
     <string name="prompt_key_set_error">Nie udało się zaktualizować klucza</string>
     <string name="prompt_unknown_key_set">Nieznany klucz ustawiony pomyślnie</string>
