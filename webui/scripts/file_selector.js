@@ -148,7 +148,7 @@ fileSelectorDialog.querySelector('.close-selector').addEventListener('click', ()
 /**
  * Open file selector overlay
  * @param {string} type - Type of file to display
- * @returns {Promise<string>} Resolves with the content of the selected JSON file or true in txt file
+ * @returns {Promise<string>} Resolves with the content of the selected file
  */
 export async function openFileSelector(type) {
     fileType = type;
@@ -164,7 +164,7 @@ export async function openFileSelector(type) {
     });
     await listFiles(currentPath, true);
 
-    // Return a promise that resolves with the selected JSON content
+    // Return a promise that resolves with the selected file content
     return new Promise((resolve, reject) => {
         const fileList = fileSelectorDialog.querySelector('.file-list');
         fileList.addEventListener('click', (event) => {
