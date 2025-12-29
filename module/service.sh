@@ -65,41 +65,12 @@ if [ ! -e "$TS/webroot" ]; then
     ln -s "$MODPATH/webui" "$TS/webroot"
 fi
 
-# Optimization
-OUTPUT_APP="$MODPATH/webui/applist.json"
-
 until [ "$(getprop sys.boot_completed)" = "1" ]; do
     sleep 1
 done
 
 # Create temporary directory
 mkdir -p "$MODPATH/common/tmp"
-
-# Additional system apps
-if [ -f "/data/adb/tricky_store/system_app" ]; then
-    SYSTEM_APP=$(cat "/data/adb/tricky_store/system_app" | tr '\n' '|' | sed 's/|*$//')
-else
-    SYSTEM_APP=""
-fi
-
-# Initialize cache files to save app list and skip list
-echo "[" > "$OUTPUT_APP"
-
-# Get list of third party apps and specific system apps, then cache app name
-# Check Xposed module
-{ 
-    pm list packages -3 </dev/null 2>&1 | cat | awk -F: '{print $2}' 2>/dev/null
-    pm list packages -s </dev/null 2>&1 | cat | awk -F: '{print $2}' | grep -Ex "$SYSTEM_APP" 2>/dev/null || true
-} | while read -r PACKAGE; do
-    # Get APK path for the package
-    APK_PATH=$(pm path "$PACKAGE" 2>/dev/null | head -n1 | awk -F: '{print $2}')
-    APP_NAME=$(aapt dump badging "$APK_PATH" 2>/dev/null | grep "application-label:" | sed "s/application-label://g; s/'//g" | tr -d '\n')
-    [ -z "$APP_NAME" ] && APP_NAME="$PACKAGE"
-    echo "  {\"app_name\": \"$APP_NAME\", \"package_name\": \"$PACKAGE\"}," >> "$OUTPUT_APP"
-done
-
-sed -i '$ s/,$//' "$OUTPUT_APP"
-echo "]" >> "$OUTPUT_APP"
 
 sh "$MODPATH/common/get_extra.sh" --xposed >/dev/null 2>&1 &
 

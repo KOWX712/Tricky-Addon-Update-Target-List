@@ -1,6 +1,6 @@
 import { wrapInputStream } from 'webuix';
-import { exec, spawn, toast, listPackages, getPackagesInfo } from 'kernelsu-alt';
-import { basePath, loadingIndicator, appsWithExclamation, appsWithQuestion, checkSukiSu } from './main.js';
+import { exec, toast, listPackages, getPackagesInfo } from 'kernelsu-alt';
+import { loadingIndicator, appsWithExclamation, appsWithQuestion, checkSukiSu } from './main.js';
 import fallbackIcon from '../icon.png';
 
 const appTemplate = document.getElementById('app-template').content;
@@ -23,48 +23,21 @@ export async function fetchAppList() {
             }
         });
 
-    // Fetch cached applist
-    let appNameMap = {};
-    try {
-        const response = await fetch('applist.json');
-        const appList = await response.json();
-        appNameMap = appList.reduce((map, app) => {
-            map[app.package_name] = app.app_name;
-            return map;
-        }, {});
-    } catch (error) {
-        if (import.meta.env.DEV) {
-            appNameMap = {
-                "com.example.one": "One",
-                "com.example.two": "Two",
-                "com.example.three": "Three"
-            }
-        } else {
-            console.warn("Failed to fetch applist.json:", error);
-            appNameMap = {};
-        }
-    }
-
     // Get installed packages
-    let appEntries = [], installedPackages = [];
+    let appEntries = [];
     const systemApp = await exec('cat "/data/adb/tricky_store/system_app" || true');
 
-    const [userPkgs, systemPkgs] = await Promise.all([
-        listPackages('user').catch(() => { return [] }),
-        listPackages('system').catch(() => { return [] })
-    ]);
+    let installedPkgs = await listPackages('user').catch(() => []);
+    const systemPkgs = await listPackages('system').catch(() => []);
 
-    installedPackages.push(...userPkgs);
     systemApp.stdout.split('\n').forEach((pkg) => {
         if (pkg && systemPkgs.includes(pkg)) {
-            installedPackages.push(pkg);
+            installedPkgs.push(pkg);
         }
     });
 
-    installedPackages = Array.from(new Set(installedPackages));
-
     if (import.meta.env.DEV) {
-        installedPackages = [
+        installedPkgs = [
             "com.example.one",
             "com.example.two",
             "com.example.three",
@@ -74,53 +47,21 @@ export async function fetchAppList() {
         ];
     }
 
-    // Create appEntries array contain { appName, packageName }
-    appEntries = await Promise.all(installedPackages.map(async (packageName) => {
-        try {
-            // KernelSU package manager API
-            if (typeof globalThis.ksu?.getPackagesInfo !== 'undefined') {
-                const info = await getPackagesInfo(packageName);
-                return {
-                    appName: info.appLabel,
-                    packageName
-                }
-            }
-            // WebUI-X package manager API
-            if (typeof $packageManager !== 'undefined') {
-                const info = $packageManager.getApplicationInfo(packageName, 0, 0);
-                return {
-                    appName: info.getLabel(),
-                    packageName
-                }
-            }
+    // appEntries object: { appName, packageName }
+    try {
+        if (typeof globalThis.ksu?.getPackagesInfo === 'undefined') {
             throw new Error('No pm api found, fallback to old method');
-        } catch (error) {
-            // Look from cached result
-            if (appNameMap[packageName] && appNameMap[packageName].trim() !== '') {
-                return {
-                    appName: appNameMap[packageName].trim(),
-                    packageName
-                }
-            } else {
-                // Fallback with aapt
-                return new Promise((resolve) => {
-                    const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--appname', packageName],
-                                    { env: { PATH: `$PATH:${basePath}/common/bin:/data/data/com.termux/files/usr/bin` } });
-                    output.stdout.on('data', (data) => {
-                        resolve({
-                            appName: data.trim() === '' ? packageName : data.trim(),
-                            packageName
-                        });
-                    });
-                    output.on('exit', (code) => {
-                        if (code !== 0) {
-                            resolve({ appName: packageName, packageName });
-                        }
-                    });
-                });
-            }
         }
-    }));
+        const infos = await getPackagesInfo(installedPkgs);
+        appEntries = installedPkgs.map((packageName, index) => {
+            return {
+                appName: infos[index]?.appLabel || packageName,
+                packageName
+            };
+        });
+    } catch (error) {
+        appEntries = installedPkgs.map(packageName => ({ appName: packageName, packageName }));
+    }
     renderAppList(appEntries);
 }
 
@@ -146,7 +87,7 @@ function renderAppList(data) {
     document.querySelector('.floating-btn').classList.remove('hide');
     if (updateCard) appListContainer.appendChild(updateCard);
     let showIcon = false;
-    if (typeof $packageManager !== 'undefined' || (typeof globalThis.ksu?.listPackages === 'function')) {
+    if (typeof globalThis.ksu?.listPackages === 'function') {
         showIcon = true;
     }
 
@@ -217,8 +158,6 @@ function setupIconIntersectionObserver() {
     });
 }
 
-const iconCache = new Map();
-
 /**
  * Load all app icons asynchronously after UI is rendered
  * @param {Array<string>} packageName - package names to load icons for
@@ -227,32 +166,28 @@ function loadIcons(packageName) {
     const imgElement = document.querySelector(`.app-icon[data-package="${packageName}"]`);
     const loader = document.querySelector(`.loader[data-package="${packageName}"]`);
 
-    if (typeof globalThis.ksu?.getPackagesInfo === 'function') {
-        imgElement.onload = () => {
-            loader.style.display = 'none';
-            imgElement.style.opacity = '1';
-        }
-        imgElement.onerror = () => {
-            imgElement.src = fallbackIcon;
-            loader.style.display = 'none';
-            imgElement.style.opacity = '1';
-        }
-        imgElement.src = "ksu://icon/" + packageName;
-    } else if (iconCache.has(packageName)) {
-        imgElement.src = iconCache.get(packageName);
+    imgElement.onload = () => {
         loader.style.display = 'none';
         imgElement.style.opacity = '1';
-    } else if (typeof $packageManager !== 'undefined') {
+    }
+    imgElement.onerror = () => {
+        imgElement.src = fallbackIcon;
+        loader.style.display = 'none';
+        imgElement.style.opacity = '1';
+    }
+
+    if (typeof $packageManager !== 'undefined') {
         const stream = $packageManager.getApplicationIcon(packageName, 0, 0);
         wrapInputStream(stream)
             .then(r => r.arrayBuffer())
             .then(buffer => {
                 const base64 = 'data:image/png;base64,' + arrayBufferToBase64(buffer);
-                iconCache.set(packageName, base64);
                 imgElement.src = base64;
                 loader.style.display = 'none';
                 imgElement.style.opacity = '1';
             })
+    } else if (typeof globalThis.ksu?.getPackagesInfo === 'function') {
+        imgElement.src = "ksu://icon/" + packageName;
     }
 }
 

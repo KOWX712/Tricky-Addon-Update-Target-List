@@ -40,19 +40,6 @@ get_xposed() {
     cat "$XPOSED"
 }
 
-get_applist() {
-    pm list packages -3 | awk -F: '{print $2}'
-    [ -s "/data/adb/tricky_store/system_app" ] && SYSTEM_APP=$(cat "/data/adb/tricky_store/system_app" | tr '\n' '|' | sed 's/|*$//') || SYSTEM_APP=""
-    [ -z "$SYSTEM_APP" ] || pm list packages -s | awk -F: '{print $2}' | grep -Ex "$SYSTEM_APP" || true
-}
-
-get_appname() {
-    base_apk=$(pm path $package_name | head -n1 | awk -F: '{print $2}')
-    app_name=$(aapt dump badging $base_apk 2>/dev/null | grep "application-label:" | sed "s/application-label://; s/'//g")
-    [ -z "$app_name" ] && app_name="$package_name"
-    echo "$app_name"
-}
-
 check_update() {
     [ -f "$MODDIR/disable" ] && rm -f "$MODDIR/disable"
     LOCAL_VERSION=$(grep '^versionCode=' "$MODPATH/update/module.prop" | awk -F= '{print $2}')
@@ -277,15 +264,6 @@ case "$1" in
     ;;
 --xposed)
     get_xposed
-    exit
-    ;;
---applist)
-    get_applist
-    exit
-    ;;
---appname)
-    package_name="$2"
-    get_appname
     exit
     ;;
 --check-update)

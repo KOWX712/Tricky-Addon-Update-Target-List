@@ -15,7 +15,7 @@ initialize() {
         cp "$MODPATH/uninstall.sh" "$COMPATH/update/uninstall.sh"
     fi
 
-    # Set aapt binary
+    # Set binary permission
     cp "$MODPATH/module.prop" "$COMPATH/update/module.prop"
     mkdir -p "$COMPATH/bin"
     mv "$MODPATH/bin/$(getprop ro.product.cpu.abi)/"* "$COMPATH/bin/"
