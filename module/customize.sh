@@ -10,9 +10,11 @@ kb="$COMPATH/.default"
 
 ui_print " "
 if [ "$APATCH" ]; then
+    [ "$APATCH_VER_CODE" -ge 11159 ] || abort "! Unsupported APatch version, please update APatch to 11159 or higher"
     ui_print "- APatch:$APATCH_VER│$APATCH_VER_CODE"
     ACTION=false
 elif [ "$KSU" ]; then
+    [ "$KSU_VER_CODE" -ge 32234 ] || abort "! Unsupported KernelSU version, please update KernelSU to 32234 or higher"
     if [ "$KSU_NEXT" ]; then
         ui_print "- KernelSU Next:$KSU_KERNEL_VER_CODE│$KSU_VER_CODE"
     else
