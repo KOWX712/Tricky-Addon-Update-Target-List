@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Help Menu-->
+    <string name="help_help_instructions">คำแนะนำการใช้งาน</string>
+    <string name="help_save_and_update_description">บันทึกการตั้งค่าปัจจุบันลงใน target.txt</string>
+    <string name="help_select_denylist">เลือกจาก DenyList</string>
+    <string name="help_select_denylist_description">ใช้งานได้เฉพาะใน Magisk เท่านั้น โดยเลือกแอปที่อยู่ใน DenyList (แนะนำ)</string>
+    <string name="help_deselect_unnecessary">ยกเลิกการเลือกที่ไม่จำเป็น</string>
+    <string name="help_deselect_unnecessary_description">หมวดหมู่ที่ไม่จำเป็น: โมดูล Xposed, แอปจัดการรูท, แอปที่เกี่ยวข้องกับรูท และแอปทั่วไปที่ไม่เคยตรวจสอบสถานะ Bootloader ตัวเลือกนี้ต้องใช้การเชื่อมต่ออินเทอร์เน็ต</string>
+    <string name="help_add_system_app">เพิ่มแอประบบ (System App)</string>
+    <string name="help_add_system_app_description">เพิ่มแอปพลิเคชันระบบที่ระบุลงในรายการแอป</string>
+    <string name="help_set_keybox">ตั้งค่า AOSP &amp; Valid Keybox</string>
+    <string name="help_set_keybox_description">แทนที่ keybox.xml ของ tricky store ตัวเลือก Valid keybox ต้องใช้การเชื่อมต่ออินเทอร์เน็ตและอาจไม่พร้อมใช้งานเสมอไป</string>
+    <string name="help_set_custom_keybox">ตั้งค่า Keybox กำหนดเอง</string>
+    <string name="help_set_custom_keybox_description">นำเข้า keybox จากที่เก็บข้อมูลในระบบ รองรับเฉพาะไฟล์ .xml เท่านั้น</string>
+    <string name="help_set_security_patch">ตั้งค่า Security Patch</string>
+    <string name="help_set_security_patch_description">ตั้งค่าการหลอก (spoof) แพตช์ความปลอดภัย การกำหนดค่าอัตโนมัติจะใช้แพตช์ความปลอดภัยจากโมดูล PIF หากเว้นว่างไว้และบันทึกจะเป็นการปิดใช้งานการตั้งค่าอัตโนมัติ</string>
+    <string name="help_set_verified_boot_hash">ตั้งค่า Verified Boot Hash</string>
+    <string name="help_set_verified_boot_hash_description">รับค่า verifiedBootHash จากแอป Key Attestation Demo แก้ไขสถานะการบูตที่ผิดปกติโดยการรีเซ็ต ro.boot.vbmeta.digest</string>
+    <!-- Update -->
+    <string name="update_update_available">มีเวอร์ชันใหม่พร้อมใช้งาน</string>
+    <string name="update_redirect_to_release">แตะเพื่อดาวน์โหลดเวอร์ชันล่าสุด</string>
+    <string name="update_changelog">บันทึกการเปลี่ยนแปลง</string>
+    <string name="update_install">ติดตั้ง</string>
+    <string name="update_reboot">รีบูต</string>
+    <!-- Search -->
+    <string name="search_bar_search_placeholder">ค้นหา</string>
+    <!-- Functional Button -->
+    <string name="functional_button_save">บันทึก</string>
+    <string name="functional_button_uninstall_webui">ถอนการติดตั้ง WebUI</string>
+    <string name="functional_button_close">ปิด</string>
+    <string name="functional_button_cancel">ยกเลิก</string>
+    <string name="functional_button_confirm">ยืนยัน</string>
+    <!-- Loading -->
+    <string name="loading_loading">กำลังโหลด...</string>
+    <!-- Menu -->
+    <string name="menu_refresh">รีเฟรช</string>
+    <string name="menu_select_all">เลือกทั้งหมด</string>
+    <string name="menu_deselect_all">ยกเลิกการเลือกทั้งหมด</string>
+    <string name="menu_select_denylist">เลือกจาก DenyList</string>
+    <string name="menu_deselect_unnecessary">ยกเลิกการเลือกที่ไม่จำเป็น</string>
+    <string name="menu_add_system_app">เพิ่มแอประบบ (System App)</string>
+    <string name="menu_keybox">Keybox</string>
+    <string name="menu_keybox_aosp">AOSP</string>
+    <string name="menu_keybox_unknown">ไม่รู้จัก (Unknown)</string>
+    <string name="menu_keybox_valid">ใช้งานได้ (Valid)</string>
+    <string name="menu_keybox_custom">กำหนดเอง</string>
+    <string name="menu_set_verified_boot_hash">ตั้งค่า Verified Boot Hash</string>
+    <string name="menu_set_security_patch">ตั้งค่า Security Patch</string>
+    <string name="menu_set_devconfig">ตั้งค่า DevConfig</string>
+    <string name="menu_help">ช่วยเหลือ</string>
+    <string name="menu_language">ภาษา</string>
+    <string name="menu_about">เกี่ยวกับ</string>
+    <!-- Boot Hash -->
+    <string name="boot_hash_input_placeholder">วาง verified Boot Hash ของคุณที่นี่</string>
+    <!-- About -->
+    <string name="about_module_name_line2">อัปเดตรายการเป้าหมาย</string>
+    <string name="about_by">โดย</string>
+    <string name="about_telegram_channel">ช่อง Telegram</string>
+    <string name="about_canary_update">อัปเดตเป็นเวอร์ชัน Canary ล่าสุด</string>
+    <string name="about_translation_update">อัปเดตชุดคำแปลภาษา</string>
+    <string name="about_disclaimer">โมดูลนี้ไม่ได้เป็นส่วนหนึ่งของโมดูล Tricky Store กรุณาอย่ารายงานปัญหาใดๆ ไปยัง Tricky Store หากพบข้อผิดพลาด</string>
+    <string name="about_acknowledgment">กิตติกรรมประกาศ</string>
+    <!-- Prompt -->
+    <string name="prompt_no_internet">กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณ</string>
+    <string name="prompt_aosp_key_set">ตั้งค่า AOSP keybox สำเร็จแล้ว</string>
+    <string name="prompt_key_set_error">อัปเดต keybox ไม่สำเร็จ</string>
+    <string name="prompt_unknown_key_set">ตั้งค่า Unknown keybox สำเร็จแล้ว</string>
+    <string name="prompt_valid_key_set">ตั้งค่า Valid keybox สำเร็จแล้ว</string>
+    <string name="prompt_no_valid">ไม่พบ keybox ที่ใช้งานได้</string>
+    <string name="prompt_boot_hash_set">บันทึก Verified Boot Hash สำเร็จแล้ว</string>
+    <string name="prompt_boot_hash_set_error">อัปเดต Verified Boot Hash ไม่สำเร็จ</string>
+    <string name="prompt_saved_target">บันทึกการตั้งค่าลงใน target.txt แล้ว</string>
+    <string name="prompt_save_error">บันทึกการตั้งค่าไม่สำเร็จ</string>
+    <string name="prompt_uninstall_prompt">WebUI จะถูกลบออกหลังจากรีบูต</string>
+    <string name="prompt_uninstall_failed">ถอนการติดตั้ง WebUI ไม่สำเร็จ</string>
+    <string name="prompt_checking_update">กำลังตรวจสอบการอัปเดต...</string>
+    <string name="prompt_new_update">มีการอัปเดตใหม่พร้อมใช้งาน!</string>
+    <string name="prompt_no_update">ขณะนี้ไม่มีการอัปเดตใหม่</string>
+    <string name="prompt_downloading">กำลังดาวน์โหลดอัปเดตใหม่...</string>
+    <string name="prompt_downloaded">ดาวน์โหลดเสร็จสมบูรณ์</string>
+    <string name="prompt_download_fail">ดาวน์โหลดอัปเดตไม่สำเร็จ</string>
+    <string name="prompt_installing">กำลังติดตั้งอัปเดต...</string>
+    <string name="prompt_installed">ติดตั้งสำเร็จแล้ว กรุณารีบูตระบบ</string>
+    <string name="prompt_install_fail">ติดตั้งไม่สำเร็จ โปรดอัปเดตด้วยตนเอง</string>
+    <string name="prompt_rebooting">กำลังรีบูต...</string>
+    <string name="prompt_reboot_fail">รีบูตไม่สำเร็จ โปรดรีบูตด้วยตนเอง</string>
+    <string name="prompt_translation_updated">อัปเดตชุดคำแปลสำเร็จแล้ว</string>
+    <string name="prompt_translation_update_failed">อัปเดตชุดคำแปลไม่สำเร็จ</string>
+    <string name="prompt_custom_key_set">ตั้งค่า Custom keybox สำเร็จแล้ว</string>
+    <string name="prompt_custom_key_set_error">ตั้งค่า Custom keybox ไม่สำเร็จ</string>
+    <string name="prompt_no_file_selected">ไม่ได้เลือกไฟล์</string>
+    <string name="prompt_system_app_not_found">ไม่พบแอประบบ</string>
+    <string name="prompt_system_app_error">เพิ่มแอประบบไม่สำเร็จ</string>
+    <!-- Security Patch -->
+    <string name="security_patch_title">Security Patch</string>
+    <string name="security_patch_advanced_mode">ขั้นสูง</string>
+    <string name="security_patch_get_date">ดึงวันที่ของแพตช์ความปลอดภัย</string>
+    <string name="security_patch_auto">อัตโนมัติ</string>
+    <string name="security_patch_fetching">กำลังดึงข้อมูล...</string>
+    <string name="security_patch_fetched">เสร็จสิ้น</string>
+    <string name="security_patch_get_failed">ดึงข้อมูลวันที่แพตช์ความปลอดภัยไม่สำเร็จ</string>
+    <string name="security_patch_unable_to_connect">ไม่สามารถเชื่อมต่อกับ source.android.com ได้</string>
+    <string name="security_patch_auto_success">เปิดใช้งานการตั้งค่าอัตโนมัติสำเร็จแล้ว</string>
+    <string name="security_patch_auto_failed">เปิดใช้งานการตั้งค่าอัตโนมัติไม่สำเร็จ</string>
+    <string name="security_patch_save_success">บันทึกแพตช์ความปลอดภัยสำเร็จแล้ว</string>
+    <string name="security_patch_save_failed">บันทึกแพตช์ความปลอดภัยไม่สำเร็จ</string>
+    <string name="security_patch_value_empty">การตั้งค่าแพตช์ความปลอดภัยถูกปิดใช้งาน</string>
+    <string name="security_patch_invalid_all">รูปแบบไม่ถูกต้อง</string>
+    <string name="security_patch_invalid_boot">รูปแบบ boot ไม่ถูกต้อง</string>
+    <string name="security_patch_invalid_system">รูปแบบ system ไม่ถูกต้อง</string>
+    <string name="security_patch_invalid_vendor">รูปแบบ vendor ไม่ถูกต้อง</string>
+    <!-- Add System App -->
+    <string name="add_system_app_title">เพิ่มแอประบบ</string>
+    <string name="add_system_app_add">เพิ่ม</string>
+    <string name="add_system_app_current_list">รายการแอประบบปัจจุบัน</string>
+    <!-- Uninstall confirmation -->
+    <string name="confirmation_uninstall_title">ยืนยันการถอนการติดตั้ง?</string>
+    <string name="confirmation_uninstall_message">คุณแน่ใจหรือไม่ว่าต้องการถอนการติดตั้ง Tricky Addon</string>
+    <!-- Mode dialog -->
+    <string name="mode_dialog_title">โหมด</string>
+    <string name="mode_auto">อัตโนมัติ</string>
+    <string name="mode_certificate_generating">การสร้างใบรับรอง (!)</string>
+</resources>
