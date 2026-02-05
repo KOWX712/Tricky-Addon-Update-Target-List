@@ -65,11 +65,23 @@ jobs:
           # Push all commits
           git push --force
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 'latest'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+          cache: 'pnpm'
+          cache-dependency-path: webui/pnpm-lock.yaml
+
       - name: Build WebUI
         run: |
           cd webui
-          npm ci
-          npm run build
+          pnpm install --frozen-lockfile
+          pnpm build
 
       - name: Extract Module Info
         id: extract_info
@@ -156,11 +168,23 @@ jobs:
           git commit --amend --no-edit
           git push --force
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 'latest'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+          cache: 'pnpm'
+          cache-dependency-path: webui/pnpm-lock.yaml
+
       - name: Build WebUI
         run: |
           cd webui
-          npm ci
-          npm run build
+          pnpm install --frozen-lockfile
+          pnpm build
 
       - name: Compress module folder
         run: |
