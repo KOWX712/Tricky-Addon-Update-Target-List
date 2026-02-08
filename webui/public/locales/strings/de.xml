@@ -3,6 +3,7 @@
     <string name="system_default">Systemstandard</string>
     <string name="more_language">Mehr</string>
     <!-- Header -->
+    <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">Anleitung</string>
     <string name="help_save_and_update_description">Aktuelle Konfiguration in target.txt speichern.</string>
@@ -31,6 +32,7 @@
     <!-- Functional Button -->
     <string name="functional_button_save">Speichern</string>
     <string name="functional_button_uninstall_webui">WebUI deinstallieren</string>
+    <string name="functional_button_close">Schließen</string>
     <string name="functional_button_cancel">Abbrechen</string>
     <string name="functional_button_confirm">Bestätigen</string>
     <!-- Loading -->
@@ -42,17 +44,26 @@
     <string name="menu_select_denylist">Aus DenyList auswählen</string>
     <string name="menu_deselect_unnecessary">Unnötige abwählen</string>
     <string name="menu_add_system_app">System App hinzufügen</string>
+    <string name="menu_keybox">Keybox</string>
+    <string name="menu_keybox_aosp">AOSP</string>
+    <string name="menu_keybox_unknown">Unbekannt</string>
+    <string name="menu_keybox_valid">Valide</string>
+    <string name="menu_keybox_custom">Benutzerdefiniert</string>
     <string name="menu_set_verified_boot_hash">Verifizierten Boot-Hash setzen</string>
     <string name="menu_set_security_patch">Sicherheitspatch setzen</string>
+    <string name="menu_help">Hilfe</string>
+    <string name="menu_language">Sprache</string>
     <string name="menu_about">Über</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
     <string name="boot_hash_input_placeholder">Füge hier deinen verifizierten Boot Hash ein</string>
     <!-- About -->
+    <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Ziel­liste aktualisieren</string>
     <string name="about_by">von</string>
     <string name="about_telegram_channel">Telegram Kanal</string>
     <string name="about_canary_update">Auf die neueste Canary Version aktualisieren</string>
+    <string name="about_translation_update">Übersetzungspaket aktualisieren</string>
     <string name="about_disclaimer">Dieses Modul ist kein Teil des Tricky Store Moduls. BITTE melde keine Probleme an Tricky Store.</string>
     <string name="about_acknowledgment">Danksagung</string>
     <!-- Prompt -->
@@ -79,6 +90,8 @@
     <string name="prompt_install_fail">Fehler bei der Installation, bitte manuell aktualisieren</string>
     <string name="prompt_rebooting">Neustart...</string>
     <string name="prompt_reboot_fail">Neustart fehlgeschlagen, bitte manuell neu starten</string>
+    <string name="prompt_translation_updated">Übersetzungspaket erfolgreich aktualisiert</string>
+    <string name="prompt_translation_update_failed">Fehler beim Aktualisieren des Übersetzungspakets</string>
     <string name="prompt_custom_key_set">Benutzerdefinierte Keybox erfolgreich gesetzt</string>
     <string name="prompt_custom_key_set_error">Fehler beim Setzen der benutzerdefinierten Keybox</string>
     <string name="prompt_no_file_selected">Keine Datei ausgewählt</string>
@@ -110,4 +123,6 @@
     <string name="confirmation_uninstall_title">Deinstallation bestätigen?</string>
     <string name="confirmation_uninstall_message">Möchtest du Tricky Addon wirklich deinstallieren?</string>
     <!-- Mode dialog -->
+    <string name="mode_dialog_title">Modus</string>
+    <string name="mode_auto">Auto</string>
 </resources>

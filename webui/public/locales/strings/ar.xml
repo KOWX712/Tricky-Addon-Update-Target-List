@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="system_default">الإعدادات الافتراضية للنظام</string>
+    <string name="system_default">النظام الافتراضي</string>
     <string name="more_language">المزيد</string>
     <!-- Header -->
     <string name="header_title">Tricky Addon</string>
