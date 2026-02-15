@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Header -->
     <!-- Help Menu-->
     <string name="help_help_instructions">คำแนะนำการใช้งาน</string>
     <string name="help_save_and_update_description">บันทึกการตั้งค่าปัจจุบันลงใน target.txt</string>
@@ -40,8 +41,6 @@
     <string name="menu_select_denylist">เลือกจาก DenyList</string>
     <string name="menu_deselect_unnecessary">ยกเลิกการเลือกที่ไม่จำเป็น</string>
     <string name="menu_add_system_app">เพิ่มแอประบบ (System App)</string>
-    <string name="menu_keybox">Keybox</string>
-    <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">ไม่รู้จัก (Unknown)</string>
     <string name="menu_keybox_valid">ใช้งานได้ (Valid)</string>
     <string name="menu_keybox_custom">กำหนดเอง</string>
@@ -93,7 +92,6 @@
     <string name="prompt_system_app_not_found">ไม่พบแอประบบ</string>
     <string name="prompt_system_app_error">เพิ่มแอประบบไม่สำเร็จ</string>
     <!-- Security Patch -->
-    <string name="security_patch_title">Security Patch</string>
     <string name="security_patch_advanced_mode">ขั้นสูง</string>
     <string name="security_patch_get_date">ดึงวันที่ของแพตช์ความปลอดภัย</string>
     <string name="security_patch_auto">อัตโนมัติ</string>
