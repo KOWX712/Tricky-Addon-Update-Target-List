@@ -176,7 +176,7 @@ document.querySelectorAll('.sub-menu-entry').forEach(entry => {
  * @param {String} content - kb content to save
  * @returns {Promise<Boolean>}
  */
-async function setKeybox(content) {
+export async function setKeybox(content) {
     const { errno } = await exec(`
         mv -f /data/adb/tricky_store/keybox.xml /data/adb/tricky_store/keybox.xml.bak 2>/dev/null
         cat << 'KB_EOF' > /data/adb/tricky_store/keybox.xml
@@ -263,8 +263,8 @@ document.getElementById("validkb").onclick = () => {
     )
 }
 
-// Open custom keybox selector
-document.getElementById('customkb').onclick = async () => {
+// Open local keybox selector
+document.getElementById('localkb').onclick = async () => {
     try {
         const content = await openFileSelector('xml');
         const result = await setKeybox(content);
@@ -273,6 +273,14 @@ document.getElementById('customkb').onclick = async () => {
         showPrompt("prompt_key_set_error", false);
     }
 }
+
+// Custom keybox provider
+document.getElementById('customkb').onclick = () => {
+    document.getElementById('customkb-name-input').value = '';
+    document.getElementById('customkb-link-input').value = '';
+    document.getElementById('customkb-script-input').value = '';
+    document.getElementById('customkb-dialog').show();
+};
 
 // Instruction menu
 const helpDialog = document.getElementById('help-dialog');

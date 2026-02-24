@@ -130,3 +130,23 @@ body {
     max-width: 900px;
     margin-top: 8px;
 }
+
+.customkb-input {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.customkb-actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+#clear-all-customkb {
+    margin-inline-end: auto;
+}
+
+.hidden {
+    display: none;
+}

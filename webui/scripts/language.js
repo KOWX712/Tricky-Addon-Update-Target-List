@@ -118,10 +118,10 @@ function applyTranslations() {
         const key = el.getAttribute("data-i18n");
         const translation = translations[key];
         if (translation) {
-            if (el.hasAttribute("placeholder")) {
-                el.setAttribute("placeholder", translation);
-            } else if (el.hasAttribute("label")) {
+            if (el.hasAttribute("label")) {
                 el.setAttribute("label", translation);
+            } else if (el.hasAttribute("placeholder")) {
+                el.setAttribute("placeholder", translation);
             } else {
                 el.textContent = translation;
             }

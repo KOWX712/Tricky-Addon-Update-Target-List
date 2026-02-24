@@ -21,6 +21,7 @@ import { WXEventHandler } from 'webuix';
 import { appListContainer, fetchAppList } from './applist.js';
 import { loadTranslations, translations } from './language.js';
 import { setupSystemAppMenu } from './menu_option.js';
+import { initCustomKeybox } from './custom_provider.js';
 import { searchInput } from './search_menu.js';
 import { updateCheck, connection } from './update.js';
 import { securityPatch } from './security_patch.js';
@@ -426,6 +427,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     checkMMRL();
     getModuleVersion();
     setupSystemAppMenu();
+    initCustomKeybox();
     fetchAppList();
     checkTrickyStoreVersion();
     checkMagisk();

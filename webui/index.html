@@ -41,7 +41,9 @@
                         <md-menu-item id="aospkb" data-i18n="menu_keybox_aosp"></md-menu-item>
                         <md-menu-item id="validkb" data-i18n="menu_keybox_valid"></md-menu-item>
                         <md-menu-item id="devicekb" data-i18n="menu_keybox_unknown"></md-menu-item>
+                        <md-menu-item id="localkb" data-i18n="menu_keybox_local"></md-menu-item>
                         <md-menu-item id="customkb" data-i18n="menu_keybox_custom"></md-menu-item>
+                        <md-divider id="customkb-divider" role="separator" tabindex="-1" style="display: none;"></md-divider>
                     </md-menu>
                 </md-sub-menu>
                 <md-menu-item id="boot-hash" data-i18n="menu_set_verified_boot_hash"></md-menu-item>
@@ -300,6 +302,46 @@
             <div slot="actions">
                 <md-text-button id="cancel-add-system-app" data-i18n="functional_button_cancel"></md-text-button>
                 <md-filled-button id="add-system-app-button" data-i18n="add_system_app_add"></md-filled-button>
+            </div>
+        </md-dialog>
+
+        <!-- Custom keybox Dialog -->
+        <md-dialog id="customkb-dialog" class="text-field-dialog">
+            <div slot="headline" data-i18n="customkb_dialog_title"></div>
+            <div slot="content">
+                <md-outlined-text-field id="customkb-name-input" label="Name" data-i18n="customkb_name_placeholder" class="customkb-input">
+                    <md-icon slot="trailing-icon" class="hidden">error</md-icon>
+                </md-outlined-text-field>
+                <md-outlined-text-field id="customkb-link-input" label="URL" type="url" placeholder="https://raw.githubusercontent.com/" class="customkb-input">
+                    <md-icon slot="trailing-icon" class="hidden">error</md-icon>
+                </md-outlined-text-field>
+                <md-outlined-text-field id="customkb-script-input" label="Decode Script" placeholder="base64 -d" data-i18n="customkb_script_placeholder" class="customkb-input">
+                    <md-icon slot="trailing-icon" class="hidden">error</md-icon>
+                </md-outlined-text-field>
+                <md-divider></md-divider>
+                <div class="customkb-actions">
+                    <md-filled-tonal-icon-button id="customkb-import"><md-icon>download</md-icon></md-filled-tonal-icon-button>
+                    <md-filled-tonal-icon-button id="customkb-export"><md-icon>upload</md-icon></md-filled-tonal-icon-button>
+                </div>
+            </div>
+            <div slot="actions">
+                <md-text-button id="clear-all-customkb" data-i18n="customkb_clear_all"></md-text-button>
+                <md-text-button id="cancel-customkb" data-i18n="functional_button_cancel"></md-text-button>
+                <md-text-button id="save-customkb" data-i18n="functional_button_save"></md-text-button>
+            </div>
+        </md-dialog>
+
+        <!-- Custom keybox Remove Confirmation Dialog -->
+        <md-dialog id="customkb-remove-dialog" type="alert">
+            <div slot="headline" data-i18n="customkb_remove_title"></div>
+            <md-icon slot="icon">delete</md-icon>
+            <div slot="content">
+                <div id="customkb-remove-single" data-i18n="customkb_remove_message"></div>
+                <div id="customkb-remove-all" data-i18n="customkb_remove_all_message" style="display: none;"></div>
+            </div>
+            <div slot="actions">
+                <md-text-button id="cancel-remove-customkb" data-i18n="functional_button_cancel"></md-text-button>
+                <md-filled-button id="confirm-remove-customkb" data-i18n="functional_button_confirm"></md-filled-button>
             </div>
         </md-dialog>
 
