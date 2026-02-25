@@ -1,4 +1,4 @@
-import { linkRedirect } from './main.js';
+import { parseMarkdown } from './main.js';
 
 const languageMenu = document.getElementById('language-menu');
 const rtlLang = [
@@ -199,6 +199,26 @@ async function generateLanguageMenu() {
     const moreBtn = document.createElement('md-menu-item');
     moreBtn.className = 'bottom-inset';
     moreBtn.textContent = translations.more_language;
-    moreBtn.onclick = () => linkRedirect('https://github.com/KOWX712/Tricky-Addon-Update-Target-List/blob/main/module/webui/locales/GUIDE.md');
+    moreBtn.onclick = async () => {
+        const guideDialog = document.getElementById('guide-dialog');
+        const guideContent = guideDialog.querySelector('.guide-content');
+        const closeGuide = document.getElementById('close-guide');
+        closeGuide.onclick = () => guideDialog.close();
+
+        const link = "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/refs/heads/main/webui/public/locales/GUIDE.md";
+        try {
+            let response = await fetch(link).catch(() => null);
+            if (!response || !response.ok) {
+                response = await fetch(`https://gh.sevencdn.com/${link}`);
+            }
+            if (!response.ok) throw new Error(`HTTP error status: ${response.status}`);
+            const text = await response.text();
+
+            parseMarkdown(guideContent, text);
+            guideDialog.show();
+        } catch (error) {
+            console.error("Error fetching guide:", error);
+        }
+    };
     languageMenu.appendChild(moreBtn);
 }

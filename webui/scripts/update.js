@@ -1,8 +1,7 @@
 import { exec, spawn } from 'kernelsu-alt';
-import { basePath, showPrompt, linkRedirect } from './main.js';
+import { basePath, showPrompt, parseMarkdown } from './main.js';
 import { getString } from './language.js';
 import { updateCard } from './applist.js';
-import { marked } from 'marked';
 
 const updateDialog = document.getElementById('update-dialog');
 const closeUpdate = document.getElementById('close-update');
@@ -73,24 +72,11 @@ export async function updateCheck() {
 function renderChangelog() {
     exec(`sh ${basePath}/common/get_extra.sh --release-note ${remoteVersion}`)
         .then(({ stdout }) => {
-            window.linkRedirect = linkRedirect;
-            marked.setOptions({
-                sanitize: true,
-                walkTokens(token) {
-                    if (token.type === 'link') {
-                        const href = token.href;
-                        token.href = "javascript:void(0);";
-                        token.type = "html";
-                        token.text = `<a href="javascript:void(0);" onclick="linkRedirect('${href}')">${token.text}</a>`;
-                    }
-                }
-            });
             const cleanedChangelog = stdout
                 .split('\n')
                 .filter(line => line.trim() !== '')
                 .join('\n');
-            const formattedChangelog = marked.parse(cleanedChangelog);
-            releaseNotes.innerHTML = formattedChangelog;
+            parseMarkdown(releaseNotes, cleanedChangelog);
         });
 }
 

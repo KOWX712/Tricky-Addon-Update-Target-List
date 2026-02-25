@@ -18,6 +18,7 @@ import '@material/web/ripple/ripple.js';
 import '@material/web/textfield/outlined-text-field.js';
 import { exec, toast } from 'kernelsu-alt';
 import { WXEventHandler } from 'webuix';
+import { marked } from 'marked';
 import { appListContainer, fetchAppList } from './applist.js';
 import { loadTranslations, getString } from './language.js';
 import { setupSystemAppMenu } from './menu_option.js';
@@ -229,9 +230,28 @@ export function linkRedirect(link) {
     setTimeout(() => {
         exec(`am start -a android.intent.action.VIEW -d ${link}`)
             .then(({ errno }) => {
-                if (errno !== 0) toast("Failed to open link");
+                if (errno !== 0) window.open(link, "_blank");
             });
     }, 100);
+}
+
+/**
+ * Parse markdown and replace links with linkRedirect
+ * @param {HTMLElement} container - The container to render the markdown in
+ * @param {string} text - The markdown text to parse
+ */
+export function parseMarkdown(container, text) {
+    container.innerHTML = marked.parse(text);
+    container.querySelectorAll('a').forEach(a => {
+        const href = a.getAttribute('href');
+        if (href && (href.startsWith('http') || href.startsWith('https'))) {
+            a.href = 'javascript:void(0);';
+            a.onclick = (e) => {
+                e.preventDefault();
+                linkRedirect(href);
+            };
+        }
+    });
 }
 
 // Save configure and preserve ! and ? in target.txt

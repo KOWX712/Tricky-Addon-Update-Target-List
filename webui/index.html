@@ -218,10 +218,18 @@
             </div>
         </md-dialog>
 
+        <!-- Guide Dialog -->
+        <md-dialog id="guide-dialog" class="update-dialog">
+            <div slot="content" class="guide-content markdown"></div>
+            <div slot="actions">
+                <md-text-button id="close-guide" data-i18n="functional_button_close"></md-text-button>
+            </div>
+        </md-dialog>
+
         <!-- Update Dialog -->
         <md-dialog id="update-dialog" class="update-dialog">
             <div slot="headline" data-i18n="update_changelog"></div>
-            <div slot="content" class="changelog"></div>
+            <div slot="content" class="changelog markdown"></div>
             <div slot="actions">
                 <md-text-button id="close-update" data-i18n="functional_button_close"></md-text-button>
                 <md-filled-button class="install" data-i18n="update_install"></md-filled-button>
