@@ -19,7 +19,7 @@ import '@material/web/textfield/outlined-text-field.js';
 import { exec, toast } from 'kernelsu-alt';
 import { WXEventHandler } from 'webuix';
 import { appListContainer, fetchAppList } from './applist.js';
-import { loadTranslations, translations } from './language.js';
+import { loadTranslations, getString } from './language.js';
 import { setupSystemAppMenu } from './menu_option.js';
 import { initCustomKeybox } from './custom_provider.js';
 import { searchInput } from './search_menu.js';
@@ -203,8 +203,8 @@ function hexOrRgbToHsla(input, alpha, dim) {
 }
 
 // Function to show the prompt with a success or error message
-export function showPrompt(key, isSuccess = true, duration = 3000) {
-    prompt.textContent = translations[key];
+export function showPrompt(message, isSuccess = true, duration = 3000) {
+    prompt.textContent = message;
     prompt.classList.toggle('error', !isSuccess);
     prompt.classList.add('show');
     const container = document.querySelector('.prompt-container');
@@ -262,10 +262,10 @@ document.getElementById("save").onclick = () => {
                 for (const app of appsWithQuestion) {
                     exec(`sed -i 's/^${app}$/${app}?/' /data/adb/tricky_store/target.txt`);
                 }
-                showPrompt("prompt_saved_target");
+                showPrompt(getString("prompt_saved_target"));
                 refreshAppList();
             } else {
-                showPrompt("prompt_save_error", false);
+                showPrompt(getString("prompt_save_error"), false);
             }
         });
 }
@@ -283,9 +283,9 @@ document.querySelector(".uninstall-container").onclick = () => {
         exec(`sh ${basePath}/common/get_extra.sh --uninstall`)
             .then(({ errno }) => {
                 if (errno === 0) {
-                    showPrompt("prompt_uninstall_prompt");
+                    showPrompt(getString("prompt_uninstall_prompt"));
                 } else {
-                    showPrompt("prompt_uninstall_failed", false);
+                    showPrompt(getString("prompt_uninstall_failed"), false);
                 }
             });
         uninstallDialog.close();

@@ -1,6 +1,6 @@
 import { exec, spawn } from 'kernelsu-alt';
 import { basePath, showPrompt } from './main.js';
-import { translations } from './language.js';
+import { getString } from './language.js';
 
 let jamesFork = false;
 
@@ -47,7 +47,7 @@ function handleSecurityPatch(mode, value = null) {
             rm -f /data/adb/tricky_store/security_patch.txt || true
             rm -f /data/adb/tricky_store/devconfig.toml || true
         `).then(({ errno }) => {
-            showPrompt('security_patch_value_empty');
+            showPrompt(getString('security_patch_value_empty'));
             return errno === 0;
         });
     } else if (mode === 'manual') {
@@ -58,7 +58,7 @@ function handleSecurityPatch(mode, value = null) {
             chmod 644 ${configFile}
         `).then(({ errno }) => {
             const result = errno === 0;
-            showPrompt(result ? 'security_patch_save_success' : 'security_patch_save_failed', result);
+            showPrompt(getString(result ? 'security_patch_save_success' : 'security_patch_save_failed'), result);
             return result;
         });
     }
@@ -228,7 +228,7 @@ export function securityPatch() {
         .then(({ errno }) => {
             if (errno === 0) {
                 jamesFork = true;
-                document.getElementById('security-patch').textContent = translations.menu_set_devconfig;
+                document.getElementById('security-patch').textContent = getString('menu_set_devconfig');
                 advancedToggleElement.style.display = 'none';
                 normalInputs.classList.add('hidden');
                 devconfigInputs.classList.remove('hidden');
@@ -250,7 +250,7 @@ export function securityPatch() {
         const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--security-patch']);
         output.stdout.on('data', (data) => {
             if (data.includes("not set")) {
-                showPrompt('security_patch_auto_failed', false);
+                showPrompt(getString('security_patch_auto_failed'), false);
             }
         });
         output.on('exit', (code) => {
@@ -263,9 +263,9 @@ export function securityPatch() {
                 vendorPatchInput.value = '';
 
                 checkAdvanced(false);
-                showPrompt('security_patch_auto_success');
+                showPrompt(getString('security_patch_auto_success'));
             } else {
-                showPrompt('security_patch_auto_failed', false);
+                showPrompt(getString('security_patch_auto_failed'), false);
             }
             dialog.close();
             loadCurrentConfig();
@@ -325,7 +325,7 @@ export function securityPatch() {
                 return;
             }
             if (!isValid8Digit(allValue)) {
-                showPrompt('security_patch_invalid_all', false);
+                showPrompt(getString('security_patch_invalid_all'), false);
                 return;
             }
             const value = `all=${allValue}`;
@@ -350,17 +350,17 @@ export function securityPatch() {
             }
 
             if (systemValue && !isValid6Digit(systemValue)) {
-                showPrompt('security_patch_invalid_system', false);
+                showPrompt(getString('security_patch_invalid_system'), false);
                 return;
             }
 
             if (bootValue && !isValidDateFormat(bootValue)) {
-                showPrompt('security_patch_invalid_boot', false);
+                showPrompt(getString('security_patch_invalid_boot'), false);
                 return;
             }
 
             if (vendorValue && !isValidDateFormat(vendorValue)) {
-                showPrompt('security_patch_invalid_vendor', false);
+                showPrompt(getString('security_patch_invalid_vendor'), false);
                 return;
             }
 
@@ -381,11 +381,11 @@ export function securityPatch() {
 
     // Get button
     getButton.addEventListener('click', async () => {
-        showPrompt('security_patch_fetching');
+        showPrompt(getString('security_patch_fetching'));
         const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--get-security-patch'],
                         { cwd: "/data/local/tmp", env: { PATH: "/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk:/data/data/com.termux/files/usr/bin:$PATH" }});
         output.stdout.on('data', (data) => {
-            showPrompt('security_patch_fetched', true, 1000);
+            showPrompt(getString('security_patch_fetched'), true, 1000);
             checkAdvanced(true);
 
             allPatchInput.value = data.replace(/-/g, '');
@@ -396,13 +396,13 @@ export function securityPatch() {
         });
         output.stderr.on('data', (data) => {
             if (data.includes("failed")) {
-                showPrompt('security_patch_unable_to_connect', false);
+                showPrompt(getString('security_patch_unable_to_connect'), false);
             } else {
                 console.error(data);
             }
         });
         output.on('exit', (code) => {
-            if (code !== 0) showPrompt('security_patch_get_failed', false);
+            if (code !== 0) showPrompt(getString('security_patch_get_failed'), false);
         });
     });
 }

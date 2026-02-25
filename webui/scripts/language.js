@@ -13,10 +13,34 @@ const rtlLang = [
   'dv',  // Dhivehi
 ];
 
-export let translations = {};
+export let lang;
+let translations = {};
 let baseTranslations = {};
 let availableLanguages = ['en'];
 let languageNames = {};
+
+/**
+ * Get a formatted string based on the language key and optional arguments
+ * Supported formats: %s, %d, %f, %x, %1$s, %2$d, etc.
+ * @param {string} id - The translation key
+ * @param {...any} args - Arguments to format into the string
+ * @returns {string} - The formatted translation
+ */
+export function getString(id, ...args) {
+    let translation = translations[id] || (baseTranslations && baseTranslations[id]) || id;
+    if (args.length === 0) return translation;
+
+    let argIndex = 0;
+    return translation.replace(/%(?:(\d+)\$)?([%sdfx])/g, (match, index, type) => {
+        if (type === '%') return '%';
+        if (index) {
+            const i = parseInt(index) - 1;
+            return args[i] !== undefined ? args[i] : match;
+        } else {
+            return args[argIndex++] !== undefined ? args[argIndex - 1] : match;
+        }
+    });
+}
 
 /**
  * Parse XML translation file into a JavaScript object
@@ -32,7 +56,7 @@ function parseTranslationsXML(xmlText) {
     for (let i = 0; i < strings.length; i++) {
         const string = strings[i];
         const name = string.getAttribute('name');
-        const value = string.textContent;
+        const value = string.textContent.replace(/\\n/g, '\n');
         translations[name] = value;
     }
 
@@ -86,7 +110,7 @@ export async function loadTranslations() {
         baseTranslations = parseTranslationsXML(baseXML);
 
         // load user's language if available
-        const lang = await detectUserLanguage();
+        lang = await detectUserLanguage();
         if (lang !== 'en') {
             const response = await fetch(`locales/strings/${lang}.xml`);
             const userXML = await response.text();
@@ -98,8 +122,12 @@ export async function loadTranslations() {
 
         // Support for rtl language
         const isRTL = rtlLang.includes(lang.split('-')[0]);
-        document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
- 
+        const dir = isRTL ? 'rtl' : 'ltr';
+        document.documentElement.setAttribute('dir', dir);
+        document.querySelectorAll('[flip-icon-in-rtl="true"]').forEach(el => {
+            el.style.transform = dir === 'rtl' ? 'scaleX(-1)' : 'scaleX(1)';
+        });
+
         // Generate language menu
         await generateLanguageMenu();
     } catch (error) {

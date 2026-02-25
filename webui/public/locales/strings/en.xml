@@ -130,8 +130,9 @@
     <string name="customkb_name_placeholder">Name</string>
     <string name="customkb_script_placeholder">Decode script</string>
     <string name="customkb_clear_all">Clear All</string>
-    <string name="customkb_export_success">Config exported</string>
+    <string name="customkb_export_success">Config exported to %s</string>
     <string name="customkb_export_error">Failed to export config</string>
+    <string name="customkb_export_empty">Nothing to export</string>
     <string name="customkb_import_success">Config imported</string>
     <string name="customkb_import_error">Invalid config file</string>
     <string name="customkb_import_duplicate">Some entries were skipped (duplicate names)</string>

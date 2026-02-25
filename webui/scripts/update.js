@@ -1,5 +1,6 @@
 import { exec, spawn } from 'kernelsu-alt';
 import { basePath, showPrompt, linkRedirect } from './main.js';
+import { getString } from './language.js';
 import { updateCard } from './applist.js';
 import { marked } from 'marked';
 
@@ -62,7 +63,7 @@ export async function updateCheck() {
         });
     } catch (error) {
         console.error("Error fetching JSON or executing command:", error);
-        showPrompt("prompt_no_internet", false);
+        showPrompt(getString("prompt_no_internet"), false);
         connection = false;
     }
 }
@@ -106,7 +107,7 @@ function setupUpdateMenu() {
             rebootButton.style.display = "flex";
             updateDialog.show();
         } else if (stdout.trim().includes("noChangelog")) {
-            showPrompt("prompt_downloading");
+            showPrompt(getString("prompt_downloading"));
             await downloadFile(changelogURL, "changelog.md");
             renderChangelog();
             updateDialog.show();
@@ -121,10 +122,10 @@ function setupUpdateMenu() {
             download.on('exit', (code) => {
                 downloading = false;
                 if (code === 0) {
-                    showPrompt("prompt_downloaded");
+                    showPrompt(getString("prompt_downloaded"));
                     installButton.style.display = "flex";
                 } else {
-                    showPrompt("prompt_download_fail", false);
+                    showPrompt(getString("prompt_download_fail"), false);
                 }
             });
         } else {
@@ -139,7 +140,7 @@ function setupUpdateMenu() {
 
     // Install button
     installButton.addEventListener('click', async () => {
-        showPrompt("prompt_installing");
+        showPrompt(getString("prompt_installing"));
         const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--install-update'],
                         { env: { PATH: "$PATH:/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk" } });
         output.stderr.on('data', (data) => {
@@ -147,11 +148,11 @@ function setupUpdateMenu() {
         });
         output.on('exit', (code) => {
             if (code === 0) {
-                showPrompt("prompt_installed");
+                showPrompt(getString("prompt_installed"));
                 installButton.style.display = "none";
                 rebootButton.style.display = "flex";
             } else {
-                showPrompt("prompt_install_fail", false);
+                showPrompt(getString("prompt_install_fail"), false);
             }
         });
     });
@@ -159,11 +160,11 @@ function setupUpdateMenu() {
     // Reboot button
     rebootButton.addEventListener('click', async () => {
         try {
-            showPrompt("prompt_rebooting");
+            showPrompt(getString("prompt_rebooting"));
             await new Promise(resolve => setTimeout(resolve, 1000));
             await exec("svc power reboot");
         } catch (error) {
-            showPrompt("prompt_reboot_fail", false);
+            showPrompt(getString("prompt_reboot_fail"), false);
             console.error('Fail to reboot:', error);
         }
     });

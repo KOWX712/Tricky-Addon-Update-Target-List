@@ -2,7 +2,7 @@ import { exec } from 'kernelsu-alt';
 import { basePath, showPrompt } from './main.js';
 import { setKeybox } from './menu_option.js';
 import { openFileSelector } from './file_selector.js';
-import { translations } from './language.js';
+import { getString } from './language.js';
 
 /**
  * Custom keybox provider
@@ -82,15 +82,15 @@ CUSTOMKB_EOF`,
         );
 
         if (errno !== 0 || !stdout.trim()) {
-            showPrompt("prompt_custom_fetch_error", false);
+            showPrompt(getString("prompt_custom_fetch_error"), false);
             return;
         }
 
         const result = await setKeybox(stdout);
-        showPrompt(result ? "prompt_custom_key_set" : "prompt_key_set_error", result);
+        showPrompt(getString(result ? "prompt_custom_key_set" : "prompt_key_set_error"), result);
     } catch (error) {
         console.error("Custom keybox fetch error:", error);
-        showPrompt("prompt_custom_fetch_error", false);
+        showPrompt(getString("prompt_custom_fetch_error"), false);
     }
 }
 
@@ -110,7 +110,7 @@ function saveCustomKeyboxEntry() {
     try {
         validateScript(scriptInput.value.trim());
     } catch (error) {
-        showPrompt("prompt_custom_invalid_script", false);
+        showPrompt(getString("prompt_custom_invalid_script"), false);
         return;
     }
 
@@ -126,7 +126,7 @@ function saveCustomKeyboxEntry() {
     renderCustomKeyboxEntries();
 
     customkbDialog.close();
-    showPrompt("prompt_custom_saved");
+    showPrompt(getString("prompt_custom_saved"));
 }
 
 function removeCustomKeyboxEntry() {
@@ -134,7 +134,7 @@ function removeCustomKeyboxEntry() {
         saveCustomKeyboxEntries([]);
         renderCustomKeyboxEntries();
         document.getElementById('customkb-remove-dialog').close();
-        showPrompt("prompt_custom_removed");
+        showPrompt(getString("prompt_custom_removed"));
         isRemoveAll = false;
         return;
     }
@@ -146,14 +146,14 @@ function removeCustomKeyboxEntry() {
     renderCustomKeyboxEntries();
 
     document.getElementById('customkb-remove-dialog').close();
-    showPrompt("prompt_custom_removed");
+        showPrompt(getString("prompt_custom_removed"));
     currentRemoveName = null;
 }
 
 async function exportCustomKeyboxConfig() {
     const entries = getCustomKeyboxEntries();
     if (entries.length === 0) {
-        showPrompt("customkb_export_error", false);
+        showPrompt(getString("customkb_export_empty"), false);
         return;
     }
 
@@ -168,14 +168,15 @@ async function exportCustomKeyboxConfig() {
     };
 
     const configStr = JSON.stringify(config, null, 2);
-    const { errno } = await exec(`cat > "/storage/emulated/0/Download/${fileName}" << 'EXPORT_EOF'
+    const filePath = `/storage/emulated/0/Download/${fileName}`;
+    const { errno } = await exec(`cat > "${filePath}" << 'EXPORT_EOF'
 ${configStr}
 EXPORT_EOF`);
 
     if (errno === 0) {
-        showPrompt("customkb_export_success");
+        showPrompt(getString("customkb_export_success", filePath));
     } else {
-        showPrompt("customkb_export_error", false);
+        showPrompt(getString("customkb_export_error"), false);
     }
 }
 
@@ -186,7 +187,7 @@ async function importCustomKeyboxConfig() {
         const config = JSON.parse(content);
 
         if (!config || config.metadata !== CONFIG_METADATA || !Array.isArray(config.entries)) {
-            showPrompt("customkb_import_error", false);
+            showPrompt(getString("customkb_import_error"), false);
             return;
         }
 
@@ -200,10 +201,10 @@ async function importCustomKeyboxConfig() {
             renderCustomKeyboxEntries();
         }
 
-        showPrompt(hasDuplicates ? "customkb_import_duplicate" : "customkb_import_success");
+        showPrompt(getString(hasDuplicates ? "customkb_import_duplicate" : "customkb_import_success"));
     } catch (error) {
         console.error("Import error:", error);
-        showPrompt("customkb_import_error", false);
+        showPrompt(getString("customkb_import_error"), false);
     }
 }
 
@@ -253,7 +254,7 @@ export function initCustomKeybox() {
         }
     }
 
-    scriptInput.setAttribute('error-text', translations.prompt_custom_invalid_script);
+    scriptInput.setAttribute('error-text', getString('prompt_custom_invalid_script'));
     scriptInput.oninput = () => {
         const value = scriptInput.value.trim();
         const errorIcon = scriptInput.querySelector('md-icon[slot="trailing-icon"]');

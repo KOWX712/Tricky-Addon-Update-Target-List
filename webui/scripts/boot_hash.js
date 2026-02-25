@@ -1,5 +1,6 @@
 import { exec } from 'kernelsu-alt';
 import { showPrompt } from './main.js';
+import { getString } from './language.js';
 
 const bootHashDialog = document.getElementById('boot-hash-dialog');
 const inputBox = document.getElementById('boot-hash-input');
@@ -38,7 +39,7 @@ saveButton.addEventListener("click", async () => {
         }
     `, { env: { PATH: "/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk:$PATH" } })
         .then(() => {
-            showPrompt("prompt_boot_hash_set");
+            showPrompt(getString("prompt_boot_hash_set"));
             bootHashDialog.close();
         });
 });

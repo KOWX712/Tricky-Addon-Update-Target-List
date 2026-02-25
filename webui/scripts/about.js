@@ -1,4 +1,5 @@
 import { linkRedirect, basePath, showPrompt } from './main.js';
+import { getString } from './language.js';
 import { spawn } from 'kernelsu-alt';
 
 const aboutDialog = document.getElementById('about-dialog');
@@ -27,7 +28,7 @@ document.getElementById('canary').onclick = () => {
     isDownloading = true;
 
     aboutDialog.close();
-    showPrompt("prompt_checking_update", true, 10000);
+    showPrompt(getString("prompt_checking_update"), true, 10000);
     let htmlContent = '';
     const link = "https://nightly.link/KOWX712/Tricky-Addon-Update-Target-List/workflows/build/main?preview"
     const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--download', `${link}`],
@@ -50,7 +51,7 @@ document.getElementById('canary').onclick = () => {
                 const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--check-update', `${version}`], { env: { CANARY: "true" } });
                 output.on('exit', (code) => {
                     if (code === 0) {
-                        showPrompt("prompt_no_update");
+                        showPrompt(getString("prompt_no_update"));
                         isDownloading = false;
                     } else if (code === 1) {
                         downloadUpdate(zipURL);
@@ -72,7 +73,7 @@ document.getElementById('locales').onclick = () => {
     isDownloading = true;
 
     aboutDialog.close();
-    showPrompt("prompt_checking_update", true, 10000);
+    showPrompt(getString("prompt_checking_update"), true, 10000);
     fetch("https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/bot/locales_version")
         .then(response => {
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -90,20 +91,20 @@ document.getElementById('locales').onclick = () => {
             const local_version = await fetch('locales/version').then(response => response.text()).then(text => text.trim());
 
             if (Number(remote_version) <= Number(local_version)) {
-                showPrompt("prompt_no_update");
+                showPrompt(getString("prompt_no_update"));
                 isDownloading = false;
             } else {
-                showPrompt("prompt_downloading", true, 20000);
+                showPrompt(getString("prompt_downloading"), true, 20000);
                 const result = spawn('sh', [`${basePath}/common/get_extra.sh`, '--update-locales']);
                 result.on('exit', (code) => {
                     isDownloading = false;
-                    showPrompt(code === 0 ? "prompt_translation_updated" : "prompt_translation_update_failed", code === 0);
+                    showPrompt(getString(code === 0 ? "prompt_translation_updated" : "prompt_translation_update_failed"), code === 0);
                     if (code === 0) window.location.reload();
                 });
             }
         })
         .catch(error => {
-            showPrompt("prompt_translation_update_failed", false);
+            showPrompt(getString("prompt_translation_update_failed"), false);
             isDownloading = false;
         });
 }
@@ -114,14 +115,14 @@ document.getElementById('locales').onclick = () => {
  * @returns {void}
  */
 function downloadUpdate(link) {
-    showPrompt("prompt_downloading", true, 20000);
+    showPrompt(getString("prompt_downloading"), true, 20000);
     const download = spawn('sh', [`${basePath}/common/get_extra.sh`, '--get-update', `${link}`],
                         { env: { PATH: "$PATH:/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk:/data/data/com.termux/files/usr/bin" } });
     download.on('exit', (code) => {
         if (code === 0) {
             installUpdate();
         } else {
-            showPrompt("prompt_download_fail", false);
+            showPrompt(getString("prompt_download_fail"), false);
             isDownloading = false;
         }
     });
@@ -132,7 +133,7 @@ function downloadUpdate(link) {
  * @returns {void}
  */
 function installUpdate() {
-    showPrompt("prompt_installing");
+    showPrompt(getString("prompt_installing"));
     const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--install-update'],
                     { env: { PATH: "$PATH:/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk" } });
     output.stderr.on('data', (data) => {
@@ -140,9 +141,9 @@ function installUpdate() {
     });
     output.on('exit', (code) => {
         if (code === 0) {
-            showPrompt("prompt_installed");
+            showPrompt(getString("prompt_installed"));
         } else {
-            showPrompt("prompt_install_fail", false);
+            showPrompt(getString("prompt_install_fail"), false);
         }
         isDownloading = false;
     });

@@ -1,5 +1,6 @@
 import { exec, toast } from 'kernelsu-alt';
 import { basePath, showPrompt, refreshAppList } from './main.js';
+import { getString } from './language.js';
 import { openFileSelector } from './file_selector.js';
 import { generateUnknownKeybox } from './keygen.js';
 
@@ -104,7 +105,7 @@ export async function setupSystemAppMenu() {
             exec(`pm list packages -s | grep -q ${packageName}`)
                 .then(({ errno }) => {
                     if (errno !== 0) {
-                        showPrompt("prompt_system_app_not_found", false);
+                        showPrompt(getString("prompt_system_app_not_found"), false);
                     } else {
                         exec(`
                             touch "/data/adb/tricky_store/system_app"
@@ -194,7 +195,7 @@ KB_EOF
 async function aospkb() {
     const { stdout } = await exec(`xxd -r -p ${basePath}/common/.default | base64 -d`);
     const result = await setKeybox(stdout);
-    showPrompt(result ? "prompt_aosp_key_set" : "prompt_key_set_error", result);
+    showPrompt(getString(result ? "prompt_aosp_key_set" : "prompt_key_set_error"), result);
 }
 
 // aosp kb eventlistener
@@ -221,7 +222,7 @@ async function fetchkb(link, fallbackLink) {
         })
         .then(async (data) => {
             if (!data.trim()) {
-                showPrompt("prompt_no_valid", false);
+                showPrompt(getString("prompt_no_valid"), false);
                 return;
             }
             try {
@@ -230,7 +231,7 @@ async function fetchkb(link, fallbackLink) {
                 const source = atob(decodedHex);
                 const result = await setKeybox(source);
                 if (result) {
-                    showPrompt("prompt_valid_key_set");
+                    showPrompt(getString("prompt_valid_key_set"));
                 } else {
                     throw new Error("Failed to copy valid keybox");
                 }
@@ -239,7 +240,7 @@ async function fetchkb(link, fallbackLink) {
             }
         })
         .catch(async error => {
-            showPrompt("prompt_no_internet", false);
+            showPrompt(getString("prompt_no_internet"), false);
         });
 }
 
@@ -248,10 +249,10 @@ document.getElementById("devicekb").onclick = async () => {
     try {
         const keyboxContent = await generateUnknownKeybox();
         const result = await setKeybox(keyboxContent);
-        showPrompt(result ? "prompt_unknown_key_set" : "prompt_key_set_error", result);
+        showPrompt(getString(result ? "prompt_unknown_key_set" : "prompt_key_set_error"), result);
     } catch (error) {
         console.error(error);
-        showPrompt("prompt_key_set_error", false);
+        showPrompt(getString("prompt_key_set_error"), false);
     }
 }
 
@@ -268,9 +269,9 @@ document.getElementById('localkb').onclick = async () => {
     try {
         const content = await openFileSelector('xml');
         const result = await setKeybox(content);
-        showPrompt(result ? "prompt_custom_key_set" : "prompt_key_set_error", result);
+        showPrompt(getString(result ? "prompt_custom_key_set" : "prompt_key_set_error"), result);
     } catch (error) {
-        showPrompt("prompt_key_set_error", false);
+        showPrompt(getString("prompt_key_set_error"), false);
     }
 }
 
