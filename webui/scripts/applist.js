@@ -250,7 +250,6 @@ function toggleableCheckbox() {
 function setupModeMenu() {
     const modeDialog = document.getElementById('mode-dialog');
     const modeAppName = document.getElementById('mode-dialog-appname');
-    let holdTimeout;
     let currentCard = null;
 
     function openModeDialog(card) {
@@ -302,15 +301,14 @@ function setupModeMenu() {
 
     const cards = appListContainer.querySelectorAll('.card');
     cards.forEach((card) => {
-        card.addEventListener('pointerdown', (e) => {
-            // only start hold when checkbox is checked
+        card.addEventListener('contextmenu', (e) => {
+            // only open menu when checkbox is checked
             const checkbox = card.querySelector('md-checkbox');
             if (checkbox && checkbox.checked) {
-                holdTimeout = setTimeout(() => openModeDialog(card), 500);
+                e.preventDefault();
+                openModeDialog(card);
             }
         });
-        card.addEventListener('pointerup', () => clearTimeout(holdTimeout));
-        card.addEventListener('pointercancel', () => clearTimeout(holdTimeout));
     });
 }
 
