@@ -199,6 +199,6 @@ async function generateLanguageMenu() {
     const moreBtn = document.createElement('md-menu-item');
     moreBtn.className = 'bottom-inset';
     moreBtn.textContent = translations.more_language;
-    moreBtn.onclick = () => linkRedirect('https://github.com/KOWX712/Tricky-Addon-Update-Target-List/blob/main/module/webui/locales/GUIDE.md');;
+    moreBtn.onclick = () => linkRedirect('https://github.com/KOWX712/Tricky-Addon-Update-Target-List/blob/main/module/webui/locales/GUIDE.md');
     languageMenu.appendChild(moreBtn);
 }

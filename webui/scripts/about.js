@@ -68,45 +68,46 @@ document.getElementById('canary').onclick = () => {
 }
 
 // Update translation bundle
-document.getElementById('locales').onclick = () => {
+document.getElementById('locales').onclick = async () => {
     if (isDownloading) return;
     isDownloading = true;
 
     aboutDialog.close();
     showPrompt(getString("prompt_checking_update"), true, 10000);
-    fetch("https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/bot/locales_version")
-        .then(response => {
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            return response.text();
-        })
-        .catch(async () => {
-            return fetch("https://hub.gitmirror.com/raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/bot/locales_version")
-                .then(response => {
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    return response.text()
-                });
-        })
-        .then(async (version) => {
-            const remote_version = version.trim();
-            const local_version = await fetch('locales/version').then(response => response.text()).then(text => text.trim());
+    const link = "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/bot/locales_version";
+    let response = await fetch(link).catch(() => null);
+    if (!response || !response.ok) {
+        response = await fetch(`https://gh.sevencdn.com/${link}`).catch(() => null);
+    }
 
-            if (Number(remote_version) <= Number(local_version)) {
-                showPrompt(getString("prompt_no_update"));
-                isDownloading = false;
-            } else {
-                showPrompt(getString("prompt_downloading"), true, 20000);
-                const result = spawn('sh', [`${basePath}/common/get_extra.sh`, '--update-locales']);
-                result.on('exit', (code) => {
-                    isDownloading = false;
-                    showPrompt(getString(code === 0 ? "prompt_translation_updated" : "prompt_translation_update_failed"), code === 0);
-                    if (code === 0) window.location.reload();
-                });
-            }
-        })
-        .catch(error => {
-            showPrompt(getString("prompt_translation_update_failed"), false);
+    if (!response || !response.ok) {
+        showPrompt(getString("prompt_translation_update_failed"), false);
+        isDownloading = false;
+        return;
+    }
+
+    try {
+        const version = await response.text();
+        const remote_version = version.trim();
+        const localVersionResponse = await fetch('locales/version').catch(() => null);
+        const local_version = localVersionResponse ? (await localVersionResponse.text()).trim() : '0';
+
+        if (Number(remote_version) <= Number(local_version)) {
+            showPrompt(getString("prompt_no_update"));
             isDownloading = false;
-        });
+        } else {
+            showPrompt(getString("prompt_downloading"), true, 20000);
+            const result = spawn('sh', [`${basePath}/common/get_extra.sh`, '--update-locales']);
+            result.on('exit', (code) => {
+                isDownloading = false;
+                showPrompt(getString(code === 0 ? "prompt_translation_updated" : "prompt_translation_update_failed"), code === 0);
+                if (code === 0) window.location.reload();
+            });
+        }
+    } catch (error) {
+        showPrompt(getString("prompt_translation_update_failed"), false);
+        isDownloading = false;
+    }
 }
 
 /**

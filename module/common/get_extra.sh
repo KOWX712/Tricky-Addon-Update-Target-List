@@ -57,7 +57,7 @@ check_update() {
 
 update_locales() {
     link1="https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/bot/locales.zip"
-    link2="https://raw.gitmirror.com/KOWX712/Tricky-Addon-Update-Target-List/bot/locales.zip"
+    link2="https://gh.sevencdn.com/$link1"
     error=0
     download "$link1" > "$MODPATH/tmp/locales.zip" || download "$link2" > "$MODPATH/tmp/locales.zip"
     [ -s "$MODPATH/tmp/locales.zip" ] || error=1

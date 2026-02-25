@@ -49,28 +49,19 @@ document.getElementById("select-denylist").onclick =  () => {
 // Function to read the exclude list and uncheck corresponding apps
 document.getElementById("deselect-unnecessary").onclick = async () => {
     try {
-        const excludeList = await fetch("https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/more-exclude.json")
-            .then(response => {
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                return response.json();
-            })
-            .catch(async () => {
-                return fetch("https://hub.gitmirror.com/raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/more-exclude.json")
-                    .then(response => {
-                        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                        return response.json();
-                    });
-            })
-            .then(data => {
-                return data.data
-                    .flatMap(category => category.apps)
-                    .map(app => app['package-name'])
-                    .join('\n');
-            })
-            .catch(error => {
-                toast("Failed to download unnecessary apps!");
-                throw error;
-            });
+        const link = "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/more-exclude.json"
+        let response = await fetch(link).catch(() => null);
+        if (!response || !response.ok) {
+            response = await fetch(`https://gh.sevencdn.com/${link}`).catch(() => null);
+        }
+
+        if (!response || !response.ok) throw new Error("Failed to download unnecessary apps!");
+
+        const data = await response.json();
+        const excludeList = data.data
+            .flatMap(category => category.apps)
+            .map(app => app['package-name'])
+            .join('\n');
         exec(`sh ${basePath}/common/get_extra.sh --xposed`)
             .then(({ stdout }) => {
                 const unnecessaryApps = excludeList.split("\n").map(app => app.trim())
@@ -208,40 +199,33 @@ document.getElementById("aospkb").onclick = aospkb;
  * @returns {void}
  */
 async function fetchkb(link, fallbackLink) {
-    fetch(link)
-        .then(response => {
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            return response.text();
-        })
-        .catch(async () => {
-            return fetch(fallbackLink)
-                .then(response => {
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    return response.text();
-                });
-        })
-        .then(async (data) => {
-            if (!data.trim()) {
-                showPrompt(getString("prompt_no_valid"), false);
-                return;
-            }
-            try {
-                const hexBytes = new Uint8Array(data.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
-                const decodedHex = new TextDecoder().decode(hexBytes);
-                const source = atob(decodedHex);
-                const result = await setKeybox(source);
-                if (result) {
-                    showPrompt(getString("prompt_valid_key_set"));
-                } else {
-                    throw new Error("Failed to copy valid keybox");
-                }
-            } catch (error) {
-                throw new Error("Failed to decode keybox data");
-            }
-        })
-        .catch(async error => {
-            showPrompt(getString("prompt_no_internet"), false);
-        });
+    let response = await fetch(link).catch(() => null);
+    if (!response || !response.ok) {
+        response = await fetch(fallbackLink).catch(() => null);
+    }
+    if (!response || !response.ok) {
+        showPrompt(getString("prompt_no_internet"), false);
+        return;
+    }
+
+    try {
+        const data = await response.text();
+        if (!data.trim()) {
+            showPrompt(getString("prompt_no_valid"), false);
+            return;
+        }
+        const hexBytes = new Uint8Array(data.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+        const decodedHex = new TextDecoder().decode(hexBytes);
+        const source = atob(decodedHex);
+        const result = await setKeybox(source);
+        if (result) {
+            showPrompt(getString("prompt_valid_key_set"));
+        } else {
+            throw new Error("Failed to copy valid keybox");
+        }
+    } catch (error) {
+        showPrompt(getString("prompt_no_internet"), false);
+    }
 }
 
 // unkown kb eventlistener
@@ -258,10 +242,8 @@ document.getElementById("devicekb").onclick = async () => {
 
 // valid kb eventlistener
 document.getElementById("validkb").onclick = () => {
-    fetchkb(
-        "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/.extra",
-        "https://hub.gitmirror.com/raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/.extra"
-    )
+    const link = "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/.extra";
+    fetchkb(link, `https://gh.sevencdn.com/${link}`);
 }
 
 // Open local keybox selector
