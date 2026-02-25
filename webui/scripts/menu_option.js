@@ -1,7 +1,7 @@
 import { exec, toast } from 'kernelsu-alt';
 import { basePath, showPrompt, refreshAppList } from './main.js';
 import { getString } from './language.js';
-import { openFileSelector } from './file_selector.js';
+import { FileSelector } from './file_selector.js';
 import { generateUnknownKeybox } from './keygen.js';
 
 // Function to check or uncheck all app
@@ -267,7 +267,8 @@ document.getElementById("validkb").onclick = () => {
 // Open local keybox selector
 document.getElementById('localkb').onclick = async () => {
     try {
-        const content = await openFileSelector('xml');
+        const content = await FileSelector.getFileContent('xml');
+        if (!content) return;
         const result = await setKeybox(content);
         showPrompt(getString(result ? "prompt_custom_key_set" : "prompt_key_set_error"), result);
     } catch (error) {

@@ -12,13 +12,13 @@ let currentPath = '/storage/emulated/0/Download';
 function updateCurrentPath() {
     const currentPathElement = fileSelectorDialog.querySelector('.current-path');
     const segments = currentPath.split('/').filter(Boolean);
-    
+
     // Create spans with data-path attribute for each segment
     const pathHTML = segments.map((segment, index) => {
         const fullPath = '/' + segments.slice(0, index + 1).join('/');
         return `<span class="path-segment" data-path="${fullPath}">${segment}</span>`;
     }).join('<span class="separator">›</span>');
-    
+
     currentPathElement.innerHTML = pathHTML;
     currentPathElement.scrollTo({
         left: currentPathElement.scrollWidth,
@@ -38,17 +38,16 @@ async function listFiles(path, skipAnimation = false) {
         fileList.classList.add('switching');
         await new Promise(resolve => setTimeout(resolve, 150));
     }
-
+    // List files and directories
     const result = await exec(`
         cd "${path}"
-        find . -maxdepth 1 -type f -name "*.${fileType}" -o -type d ! -name ".*" -o -type l | sort
+        # List directories and filtered files
+        for f in *; do
+            [ -d "$f" ] && echo "d|$f" || { [[ "$f" == *.${fileType} ]] && echo "f|$f"; }
+        done | sort
     `);
+
     if (result.errno === 0) {
-        const items = result.stdout.split('\n').filter(Boolean).map(item => ({
-            path: path + '/' + item.replace(/^\.\//, ''),
-            name: item.split('/').pop(),
-            isDirectory: !item.endsWith('.' + fileType),
-        }));
         fileList.innerHTML = '';
 
         // Add back button item if not in root directory
@@ -60,14 +59,22 @@ async function listFiles(path, skipAnimation = false) {
                 <md-icon>folder</md-icon>
                 <span>..</span>
             `;
-            backItem.addEventListener('click', () => {
+            backItem.onclick = () => {
                 fileSelectorDialog.querySelector('.back-button').click();
-            });
+            };
             fileList.appendChild(backItem);
         }
-        // Add folder and file file selector
-        items.forEach(item => {
-            if (item.path === path) return;
+
+        const processedItems = result.stdout.split('\n').filter(Boolean).map(line => {
+            const [type, name] = [line.slice(0, 1), line.slice(2)];
+            return {
+                name,
+                path: path + '/' + name,
+                isDirectory: type === 'd'
+            };
+        });
+
+        processedItems.forEach(item => {
             const itemElement = document.createElement('div');
             itemElement.className = 'file-item';
             itemElement.innerHTML = `
@@ -75,23 +82,22 @@ async function listFiles(path, skipAnimation = false) {
                 <md-icon>${item.isDirectory ? 'folder' : 'description'}</md-icon>
                 <span>${item.name}</span>
             `;
-            // Attach click event
-            itemElement.addEventListener('click', async () => {
+            itemElement.onclick = async () => {
                 if (item.isDirectory) {
-                    // Go into directory
                     currentPath = item.path;
-                    const currentPathElement = document.querySelector('.current-path');
-                    currentPathElement.innerHTML = currentPath.split('/').filter(Boolean).join('<span class="separator">›</span>');
-                    currentPathElement.scrollTo({
-                        left: currentPathElement.scrollWidth,
-                        behavior: 'smooth'
-                    });
+                    updateCurrentPath();
                     await listFiles(item.path);
+                } else {
+                    if (window.fileSelectorResolve) {
+                        window.fileSelectorResolve(item.path);
+                        window.fileSelectorResolve = null;
+                        closeFileSelector();
+                    }
                 }
-            });
+            };
             fileList.appendChild(itemElement);
         });
-        
+
         if (!skipAnimation) {
             fileList.classList.remove('switching');
         }
@@ -104,78 +110,119 @@ async function listFiles(path, skipAnimation = false) {
     updateCurrentPath();
 }
 
-fileSelectorDialog.querySelector('.current-path').addEventListener('click', async (event) => {
-    const segment = event.target.closest('.path-segment');
-    if (!segment) return;
-
-    const targetPath = segment.dataset.path;
-    if (!targetPath || targetPath === currentPath) return;
-
-    // Return if already at /storage/emulated/0
-    const clickedSegment = segment.textContent;
-    if ((clickedSegment === 'storage' || clickedSegment === 'emulated') && 
-        currentPath === '/storage/emulated/0') {
-        return;
-    }
-
-    // Always stay within /storage/emulated/0
-    if (targetPath.split('/').length <= 3) {
-        currentPath = '/storage/emulated/0';
-    } else {
-        currentPath = targetPath;
-    }
-    updateCurrentPath();
-    await listFiles(currentPath);
-});
-
-// Back button
-fileSelectorDialog.querySelector('.back-button').addEventListener('click', async () => {
-    if (currentPath === '/storage/emulated/0') return;
-    currentPath = currentPath.split('/').slice(0, -1).join('/');
-    if (currentPath === '') currentPath = '/storage/emulated/0';
-    const currentPathElement = fileSelectorDialog.querySelector('.current-path');
-    currentPathElement.innerHTML = currentPath.split('/').filter(Boolean).join('<span class="separator">›</span>');
-    currentPathElement.scrollTo({
-        left: currentPathElement.scrollWidth,
-        behavior: 'smooth'
-    });
-    await listFiles(currentPath);
-});
-
-// Close file selector overlay
-fileSelectorDialog.querySelector('.close-selector').addEventListener('click', () => fileSelectorDialog.close());
+let listenersSetup = false;
 
 /**
- * Open file selector overlay
- * @param {string} type - Type of file to display
- * @returns {Promise<string>} Resolves with the content of the selected file
+ * Setup init listener
+ * @returns {void}
  */
-export async function openFileSelector(type) {
-    fileType = type;
-    currentPath = '/storage/emulated/0/Download';
-
-    fileSelectorDialog.show();
+function setupListeners() {
+    if (listenersSetup) return;
+    listenersSetup = true;
 
     const currentPathElement = fileSelectorDialog.querySelector('.current-path');
-    currentPathElement.innerHTML = currentPath.split('/').filter(Boolean).join('<span class="separator">›</span>');
-    currentPathElement.scrollTo({
-        left: currentPathElement.scrollWidth,
-        behavior: 'smooth'
-    });
-    await listFiles(currentPath, true);
+    currentPathElement.onclick = async (event) => {
+        const segment = event.target.closest('.path-segment');
+        if (!segment) return;
 
-    // Return a promise that resolves with the selected file content
-    return new Promise((resolve, reject) => {
-        const fileList = fileSelectorDialog.querySelector('.file-list');
-        fileList.addEventListener('click', (event) => {
-            const item = event.target.closest('.file-item');
-            if (item && item.querySelector('span').textContent.endsWith('.' + fileType)) {
-                exec(`cat "${currentPath}/${item.querySelector('span').textContent}"`)
-                    .then(({ errno, stdout, stderr }) => {
-                        errno === 0 ? resolve(stdout) : reject(stderr);
-                        fileSelectorDialog.close();
-                    });
-            }
-        });
-    });
+        const targetPath = segment.dataset.path;
+        if (!targetPath || targetPath === currentPath) return;
+
+        // Return if already at /storage/emulated/0
+        const clickedSegment = segment.textContent;
+        if ((clickedSegment === 'storage' || clickedSegment === 'emulated') && 
+            currentPath === '/storage/emulated/0') {
+            return;
+        }
+
+        // Always stay within /storage/emulated/0
+        if (targetPath.split('/').length <= 3) {
+            currentPath = '/storage/emulated/0';
+        } else {
+            currentPath = targetPath;
+        }
+        updateCurrentPath();
+        await listFiles(currentPath);
+    };
+
+    // Back button
+    fileSelectorDialog.querySelector('.back-button').onclick = async () => {
+        if (currentPath === '/storage/emulated/0') return;
+        currentPath = currentPath.split('/').slice(0, -1).join('/');
+        if (currentPath === '') currentPath = '/storage/emulated/0';
+        const currentPathElement = document.querySelector('.current-path');
+        if (currentPathElement) {
+            currentPathElement.innerHTML = currentPath.split('/').filter(Boolean).join('<span class="separator">›</span>');
+            currentPathElement.scrollTo({ 
+                left: currentPathElement.scrollWidth,
+                behavior: 'smooth'
+            });
+        }
+        await listFiles(currentPath);
+    };
+
+    // Close button
+    fileSelectorDialog.querySelector('.close-selector').onclick = () => closeFileSelector();
 }
+
+/**
+ * Function to close file selector
+ * @returns {void}
+ */
+function closeFileSelector() {
+    fileSelectorDialog.close();
+    if (window.fileSelectorResolve) {
+        window.fileSelectorResolve(null);
+        window.fileSelectorResolve = null;
+    }
+}
+
+/**
+ * FileSelector namespace for handling file selection tasks.
+ * @namespace
+ */
+export const FileSelector = {
+    /**
+     * Open file selector overlay and return the selected file path.
+     * @param {string} type - Type of file to display (e.g., "json", "txt").
+     * @returns {Promise<string|null>} Resolves with the selected file path or null if closed.
+     */
+    getFilePath: async function (type) {
+        fileType = type;
+        currentPath = '/storage/emulated/0/Download';
+
+        // Show file selector overlay
+        fileSelectorDialog.show();
+        setupListeners();
+
+        const currentPathElement = document.querySelector('.current-path');
+        currentPathElement.innerHTML = currentPath.split('/').filter(Boolean).join('<span class="separator">›</span>');
+        currentPathElement.scrollTo({
+            left: currentPathElement.scrollWidth,
+            behavior: 'smooth'
+        });
+        await listFiles(currentPath, true);
+
+        return new Promise((resolve) => {
+            window.fileSelectorResolve = resolve;
+        });
+    },
+
+    /**
+     * Open file selector overlay and return the content of the selected file.
+     * @param {string} type - Type of file to display (e.g., "json", "txt").
+     * @returns {Promise<string|null>} Resolves with the file content or null if closed/failed.
+     */
+    getFileContent: async function (type) {
+        const filePath = await this.getFilePath(type);
+        if (!filePath) return null;
+
+        const result = await exec(`cat "${filePath}"`);
+        if (result.errno === 0) {
+            return result.stdout;
+        } else {
+            console.error(`Failed to read file content: ${result.stderr}`);
+            return null;
+        }
+    }
+};

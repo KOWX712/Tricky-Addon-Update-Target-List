@@ -1,7 +1,7 @@
 import { exec } from 'kernelsu-alt';
 import { basePath, showPrompt } from './main.js';
 import { setKeybox } from './menu_option.js';
-import { openFileSelector } from './file_selector.js';
+import { FileSelector } from './file_selector.js';
 import { getString } from './language.js';
 
 /**
@@ -183,7 +183,8 @@ EXPORT_EOF`);
 async function importCustomKeyboxConfig() {
     customkbDialog.close();
     try {
-        const content = await openFileSelector('json');
+        const content = await FileSelector.getFileContent('json');
+        if (!content) return;
         const config = JSON.parse(content);
 
         if (!config || config.metadata !== CONFIG_METADATA || !Array.isArray(config.entries)) {
