@@ -49,6 +49,7 @@
     <string name="menu_keybox_unknown">Inconnue</string>
     <string name="menu_keybox_valid">Valide</string>
     <string name="menu_keybox_custom">Customisée</string>
+    <string name="menu_keybox_local">Local</string>
     <string name="menu_set_verified_boot_hash">Définir le hash Verified Boot</string>
     <string name="menu_set_security_patch">Définir le patch de sécurité</string>
     <string name="menu_set_devconfig">Mettre en place une configuration de développement</string>
@@ -120,6 +121,8 @@
     <string name="add_system_app_title">Ajouter une application système</string>
     <string name="add_system_app_add">Ajouter</string>
     <string name="add_system_app_current_list">Liste des applications système actuelles</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">Confirmer la suppression?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Confirmer la désinstallation ?</string>
     <string name="confirmation_uninstall_message">Êtes-vous sûr(e) de vouloir désinstaller Tricky Addon</string>

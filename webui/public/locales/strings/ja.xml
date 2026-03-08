@@ -43,6 +43,8 @@
     <string name="menu_select_denylist">DenyList から選択</string>
     <string name="menu_deselect_unnecessary">不要な選択を解除</string>
     <string name="menu_add_system_app">システムアプリを追加</string>
+    <string name="menu_keybox_custom">カスタム</string>
+    <string name="menu_keybox_local">ローカル</string>
     <string name="menu_set_verified_boot_hash">確認付きブートハッシュを設定</string>
     <string name="menu_set_security_patch">セキュリティパッチを設定</string>
     <string name="menu_set_devconfig">DevConfig を設定</string>
@@ -109,6 +111,8 @@
     <string name="add_system_app_title">システムアプリを追加</string>
     <string name="add_system_app_add">追加</string>
     <string name="add_system_app_current_list">現在のシステムアプリリスト</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">削除の確認?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">アンインストールしますか？</string>
     <string name="confirmation_uninstall_message">Tricky Addon をアンインストールしてもよろしいですか</string>
