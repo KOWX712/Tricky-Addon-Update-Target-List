@@ -42,6 +42,8 @@
     <string name="menu_select_denylist">Piliin mula sa DenyList</string>
     <string name="menu_deselect_unnecessary">Huwag Pumili ng Hindi Kinakailangan</string>
     <string name="menu_add_system_app">Magdagdag ng System App</string>
+    <string name="menu_keybox_custom">Kustom</string>
+    <string name="menu_keybox_local">Lokal</string>
     <string name="menu_set_verified_boot_hash">I-set ang Verified Boot Hash</string>
     <string name="menu_set_security_patch">I-set ang Security Patch</string>
     <string name="menu_about">Tungkol</string>
@@ -103,6 +105,8 @@
     <string name="add_system_app_title">Magdagdag ng System App</string>
     <string name="add_system_app_add">Idagdag</string>
     <string name="add_system_app_current_list">Kasalukuyang Listahan ng System App</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">Підтвердити видалення?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Kumpirmahin ang Pag-uninstall?</string>
     <string name="confirmation_uninstall_message">Sigurado ka bang gusto mong i-uninstall ang Tricky Addon</string>
