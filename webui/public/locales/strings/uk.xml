@@ -48,6 +48,7 @@
     <string name="menu_keybox_unknown">Невідомий</string>
     <string name="menu_keybox_valid">Валідний</string>
     <string name="menu_keybox_custom">Користувацький</string>
+    <string name="menu_keybox_local">Локальне</string>
     <string name="menu_set_verified_boot_hash">Встановити перевірений хеш завантаження</string>
     <string name="menu_set_security_patch">Встановити патч безпеки</string>
     <string name="menu_set_devconfig">Встановити конфігурацію розробника</string>
@@ -119,6 +120,8 @@
     <string name="add_system_app_title">Додати системний застосунок</string>
     <string name="add_system_app_add">Add</string>
     <string name="add_system_app_current_list">Поточний список системних застосунків</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">Підтвердити видалення?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Підтверджуєте видалення?</string>
     <string name="confirmation_uninstall_message">Ви дійсно хочете видалити Tricky Addon?</string>

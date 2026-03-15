@@ -47,6 +47,7 @@
     <string name="menu_keybox_unknown">Неизвестно</string>
     <string name="menu_keybox_valid">Действительный</string>
     <string name="menu_keybox_custom">По выбору</string>
+    <string name="menu_keybox_local">Локальная</string>
     <string name="menu_set_verified_boot_hash">Установить verified boot hash</string>
     <string name="menu_set_security_patch">Установить security patch</string>
     <string name="menu_set_devconfig">Установить DevConfig</string>
@@ -62,6 +63,7 @@
     <string name="about_by">от</string>
     <string name="about_telegram_channel">Канал в Telegram</string>
     <string name="about_canary_update">Обновить до последней версии canary</string>
+    <string name="about_translation_update">Обновить пакет переводов</string>
     <string name="about_disclaimer">Этот WebUI не является частью Tricky Store, НЕ сообщайте автору Tricky Store о любых возникающих проблемах.</string>
     <string name="about_acknowledgment">Благодарности</string>
     <!-- Prompt -->
@@ -88,6 +90,8 @@
     <string name="prompt_install_fail">Не удалось установить, обновите вручную</string>
     <string name="prompt_rebooting">Перезагрузка...</string>
     <string name="prompt_reboot_fail">Не удалось перезагрузить, перезагрузите вручную</string>
+    <string name="prompt_translation_updated">Пакет переводов успешно обновлен</string>
+    <string name="prompt_translation_update_failed">Не удалось обновить пакет переводов</string>
     <string name="prompt_custom_key_set">Пользовательский keybox успешно установлен</string>
     <string name="prompt_custom_key_set_error">Не удалось установить пользовательский keybox</string>
     <string name="prompt_no_file_selected">Файл не выбран</string>
@@ -115,6 +119,8 @@
     <string name="add_system_app_title">Добавить системное приложение</string>
     <string name="add_system_app_add">Добавить</string>
     <string name="add_system_app_current_list">Текущий список системных приложений</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">Подтвердить удаление?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Подтвердить удаление?</string>
     <string name="confirmation_uninstall_message">Вы уверены, что хотите удалить Tricky Addon</string>
@@ -122,4 +128,5 @@
     <string name="mode_dialog_title">Режим</string>
     <string name="mode_auto">Авто</string>
     <string name="mode_certificate_generating">Создать сертификат (!)</string>
+    <string name="mode_leaf_hack">Хакнуть (?)</string>
 </resources>
