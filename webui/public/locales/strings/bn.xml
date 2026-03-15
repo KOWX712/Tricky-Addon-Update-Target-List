@@ -42,6 +42,8 @@
     <string name="menu_select_denylist">DenyList থেকে নির্বাচন করুন</string>
     <string name="menu_deselect_unnecessary">অপ্রয়োজনীয় নির্বাচন প্রত্যাহার করুন</string>
     <string name="menu_add_system_app">সিস্টেম অ্যাপ যোগ করুন</string>
+    <string name="menu_keybox_custom">পছন্দসই</string>
+    <string name="menu_keybox_local">স্থানীয়</string>
     <string name="menu_set_verified_boot_hash">Verified Boot Hash সেট করুন</string>
     <string name="menu_set_security_patch">Security Patch সেট করুন</string>
     <string name="menu_about">সম্পর্কে</string>
@@ -103,6 +105,8 @@
     <string name="add_system_app_title">সিস্টেম অ্যাপ যোগ করুন</string>
     <string name="add_system_app_add">যোগ করুন</string>
     <string name="add_system_app_current_list">বর্তমান সিস্টেম অ্যাপ তালিকা</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">টেমপ্লেট সংরক্ষণ করো</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">আনইনস্টল নিশ্চিত করুন?</string>
     <string name="confirmation_uninstall_message">আপনি কি নিশ্চিত যে আপনি Tricky Addon আনইনস্টল করতে চান</string>

@@ -49,6 +49,7 @@
     <string name="menu_keybox_unknown">Không xác định</string>
     <string name="menu_keybox_valid">Hợp lệ</string>
     <string name="menu_keybox_custom">Tuỳ chỉnh</string>
+    <string name="menu_keybox_local">Vị trí</string>
     <string name="menu_set_verified_boot_hash">Đặt Verified Boot Hash</string>
     <string name="menu_set_security_patch">Đặt bản vá bảo mật</string>
     <string name="menu_set_devconfig">Đặt DevConfig</string>
@@ -120,6 +121,11 @@
     <string name="add_system_app_title">Thêm ứng dụng hệ thống</string>
     <string name="add_system_app_add">Thêm</string>
     <string name="add_system_app_current_list">Danh sách ứng dụng hệ thống hiện tại</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_name_placeholder">Tên</string>
+    <string name="customkb_clear_all">Xóa tất cả</string>
+    <string name="customkb_export_empty">Không có gì để xuất</string>
+    <string name="customkb_remove_title">Xác nhận Xóa?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Xác nhận Gỡ cài đặt?</string>
     <string name="confirmation_uninstall_message">Bạn có chắc muốn Gỡ cài đặt Tricky Addon không?</string>

@@ -32,6 +32,7 @@
     <!-- Functional Button -->
     <string name="functional_button_save">저장</string>
     <string name="functional_button_uninstall_webui">WebUI 제거</string>
+    <string name="functional_button_close">닫기</string>
     <string name="functional_button_cancel">취소</string>
     <string name="functional_button_confirm">확인</string>
     <!-- Loading -->
@@ -43,9 +44,15 @@
     <string name="menu_select_denylist">DenyList에서 선택</string>
     <string name="menu_deselect_unnecessary">필요 없는 앱 선택 해제</string>
     <string name="menu_add_system_app">시스템 앱 추가</string>
+    <string name="menu_keybox_unknown">알 수 없음</string>
+    <string name="menu_keybox_valid">유효</string>
+    <string name="menu_keybox_custom">사용자 정의</string>
+    <string name="menu_keybox_local">로컬</string>
     <string name="menu_set_verified_boot_hash">Verified Boot 해시 설정</string>
     <string name="menu_set_security_patch">보안 패치 설정</string>
     <string name="menu_set_devconfig">DevConfig 설정</string>
+    <string name="menu_help">도움</string>
+    <string name="menu_language">언어</string>
     <string name="menu_about">정보</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">부트 해시</string>
@@ -56,6 +63,7 @@
     <string name="about_by">by</string>
     <string name="about_telegram_channel">텔레그램 채널</string>
     <string name="about_canary_update">최신 canary 버전으로 업데이트하기</string>
+    <string name="about_translation_update">번역 번들 업데이트</string>
     <string name="about_disclaimer">이 모듈은 Tricky Store 모듈의 일부가 아닙니다! 문제가 발생하더라도 Tricky Store에 절대로 보고하지 마십시오.</string>
     <string name="about_acknowledgment">크레딧</string>
     <!-- Prompt -->
@@ -82,6 +90,8 @@
     <string name="prompt_install_fail">설치에 실패했습니다. 수동으로 업데이트해 주세요.</string>
     <string name="prompt_rebooting">재부팅 중...</string>
     <string name="prompt_reboot_fail">재부팅에 실패했습니다. 수동으로 재부팅해 주세요.</string>
+    <string name="prompt_translation_updated">번역 번들 업데이트 성공</string>
+    <string name="prompt_translation_update_failed">번역 번들 업데이트 실패</string>
     <string name="prompt_custom_key_set">유저 정의 키박스가 성공적으로 설정되었습니다.</string>
     <string name="prompt_custom_key_set_error">유저 정의 키박스 설정에 실패했습니다.</string>
     <string name="prompt_no_file_selected">선택된 파일이 없습니다.</string>
@@ -109,8 +119,12 @@
     <string name="add_system_app_title">시스템 앱 추가</string>
     <string name="add_system_app_add">추가</string>
     <string name="add_system_app_current_list">현재 시스탬 앱 리스트</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">변경사항 취소?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">삭제 확인</string>
     <string name="confirmation_uninstall_message">정말 Tricky Addon을 삭제할까요?</string>
     <!-- Mode dialog -->
+    <string name="mode_dialog_title">모드</string>
+    <string name="mode_auto">자동</string>
 </resources>

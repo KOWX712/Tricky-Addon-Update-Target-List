@@ -49,6 +49,7 @@
     <string name="menu_keybox_unknown">未知</string>
     <string name="menu_keybox_valid">有效</string>
     <string name="menu_keybox_custom">自定義</string>
+    <string name="menu_keybox_local">本機</string>
     <string name="menu_set_verified_boot_hash">設置哈希值</string>
     <string name="menu_set_security_patch">設置安全補丁</string>
     <string name="menu_set_devconfig">設定 DevConfig</string>
@@ -94,7 +95,11 @@
     <string name="prompt_translation_updated">翻譯包更新成功</string>
     <string name="prompt_translation_update_failed">翻譯包更新失敗</string>
     <string name="prompt_custom_key_set">成功設置自定義密鑰</string>
-    <string name="prompt_custom_key_set_error">設置自定義密鑰失敗</string>
+    <string name="prompt_custom_key_set_error">自定義密鑰設置失敗</string>
+    <string name="prompt_custom_saved">已儲存自訂密鑰入口</string>
+    <string name="prompt_custom_fetch_error">取得密鑰失敗</string>
+    <string name="prompt_custom_invalid_script">腳本不被允許</string>
+    <string name="prompt_custom_removed">已移除自訂密鑰入口</string>
     <string name="prompt_no_file_selected">未選擇文件</string>
     <string name="prompt_system_app_not_found">未找到該系統應用</string>
     <string name="prompt_system_app_error">系統應用添加失敗</string>
@@ -120,6 +125,20 @@
     <string name="add_system_app_title">添加系統應用</string>
     <string name="add_system_app_add">添加</string>
     <string name="add_system_app_current_list">當前系統應用列表</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_dialog_title">自訂密鑰提供者</string>
+    <string name="customkb_name_placeholder">名稱</string>
+    <string name="customkb_script_placeholder">解碼腳本</string>
+    <string name="customkb_clear_all">全部清除</string>
+    <string name="customkb_export_success">配置已儲存至 %s</string>
+    <string name="customkb_export_error">配置匯出失敗</string>
+    <string name="customkb_export_empty">沒有任何東西可匯出</string>
+    <string name="customkb_import_success">已導入配置</string>
+    <string name="customkb_import_error">設定檔無效</string>
+    <string name="customkb_import_duplicate">有些條目已跳過 (重複名稱)</string>
+    <string name="customkb_remove_title">確認刪除？</string>
+    <string name="customkb_remove_message">移除此自定义密钥入口？</string>
+    <string name="customkb_remove_all_message">移除此自訂密鑰入口？</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">確認卸載？</string>
     <string name="confirmation_uninstall_message">您確定要卸載 TS 插件嗎</string>

@@ -42,6 +42,8 @@
     <string name="menu_select_denylist">DenyList-dən seç</string>
     <string name="menu_deselect_unnecessary">Lazımsızları seçmə</string>
     <string name="menu_add_system_app">Sistem Tətbiqi Əlavə et</string>
+    <string name="menu_keybox_custom">Özəl</string>
+    <string name="menu_keybox_local">Lokal</string>
     <string name="menu_set_verified_boot_hash">Təsdiqlənmiş Boot Hash təyin et</string>
     <string name="menu_set_security_patch">Təhlükəsizlik Təkmilləşdirməsini təyin et</string>
     <string name="menu_about">Haqqında</string>
@@ -103,6 +105,8 @@
     <string name="add_system_app_title">Sistem Tətbiqi Əlavə et</string>
     <string name="add_system_app_add">Əlavə et</string>
     <string name="add_system_app_current_list">Cari Sistem Tətbiqi Siyahısı</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">Çıxarılmanı Təsdiqlə</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Silinməni Təsdiqləyirsiniz?</string>
     <string name="confirmation_uninstall_message">Tricky Addon-u silmək istədiyinizə əminsinizmi?</string>
