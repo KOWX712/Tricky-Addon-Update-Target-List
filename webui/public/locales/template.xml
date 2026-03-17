@@ -47,8 +47,7 @@
     <string name="menu_keybox">Keybox</string>
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">Unknown</string>
-    <string name="menu_keybox_valid">Valid</string>
-    <string name="menu_keybox_custom">Custom</string>
+    <string name="menu_keybox_local">Local</string>
     <string name="menu_set_verified_boot_hash">Set Verified Boot Hash</string>
     <string name="menu_set_security_patch">Set Security Patch</string>
     <string name="menu_set_devconfig">Set DevConfig</string>
@@ -72,8 +71,6 @@
     <string name="prompt_aosp_key_set">AOSP keybox set successfully</string>
     <string name="prompt_key_set_error">Failed to update keybox</string>
     <string name="prompt_unknown_key_set">Unknown keybox set successfully</string>
-    <string name="prompt_valid_key_set">Valid keybox set successfully</string>
-    <string name="prompt_no_valid">No valid keybox found.</string>
     <string name="prompt_boot_hash_set">Verified Boot Hash saved successfully</string>
     <string name="prompt_boot_hash_set_error">Failed to update Verified Boot Hash</string>
     <string name="prompt_saved_target">Config saved to target.txt</string>
@@ -95,6 +92,10 @@
     <string name="prompt_translation_update_failed">Failed to update translation bundle</string>
     <string name="prompt_custom_key_set">Custom keybox set successfully</string>
     <string name="prompt_custom_key_set_error">Failed to set custom keybox</string>
+    <string name="prompt_custom_saved">Custom keybox entry saved</string>
+    <string name="prompt_custom_fetch_error">Failed to fetch keybox</string>
+    <string name="prompt_custom_invalid_script">Script not allowed</string>
+    <string name="prompt_custom_removed">Custom keybox entry removed</string>
     <string name="prompt_no_file_selected">No file selected</string>
     <string name="prompt_system_app_not_found">System app not found</string>
     <string name="prompt_system_app_error">Failed to add system app</string>
@@ -120,6 +121,20 @@
     <string name="add_system_app_title">Add System App</string>
     <string name="add_system_app_add">Add</string>
     <string name="add_system_app_current_list">Current System App List</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_dialog_title">Custom Keybox Provider</string>
+    <string name="customkb_name_placeholder">Name</string>
+    <string name="customkb_script_placeholder">Decode script</string>
+    <string name="customkb_clear_all">Clear All</string>
+    <string name="customkb_export_success">Config exported to %s</string>
+    <string name="customkb_export_error">Failed to export config</string>
+    <string name="customkb_export_empty">Nothing to export</string>
+    <string name="customkb_import_success">Config imported</string>
+    <string name="customkb_import_error">Invalid config file</string>
+    <string name="customkb_import_duplicate">Some entries were skipped (duplicate names)</string>
+    <string name="customkb_remove_title">Confirm Remove?</string>
+    <string name="customkb_remove_message">Remove this custom keybox provider?</string>
+    <string name="customkb_remove_all_message">Remove all custom keybox providers?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Confirm Uninstall?</string>
     <string name="confirmation_uninstall_message">Are you sure you want to uninstall Tricky Addon</string>

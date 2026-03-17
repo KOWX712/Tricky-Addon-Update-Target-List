@@ -1,5 +1,5 @@
 import { exec } from 'kernelsu-alt';
-import { basePath, showPrompt } from './main.js';
+import { showPrompt } from './main.js';
 import { setKeybox } from './menu_option.js';
 import { FileSelector } from './file_selector.js';
 import { getString } from './language.js';
@@ -12,12 +12,22 @@ const STORAGE_KEY = 'trickyAddonCustomkb';
 const CONFIG_METADATA = 'tricky_addon_custom_keybox_config';
 const BLOCKED_PATTERNS = /\b(dd|rm|rmdir|eval|chmod|chown|mv|cp|ln|passwd|shutdown|reboot|poweroff)\b/i;
 const customkbDialog = document.getElementById('customkb-dialog');
+const defaultEntries = [
+    {
+        name: "Addon",
+        link: "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/keybox/.extra",
+        script: "xxd -r -p | base64 -d"
+    }
+];
 
 function getCustomKeyboxEntries() {
     try {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        const entries = localStorage.getItem(STORAGE_KEY);
+        if (!entries) throw new Error("No custom keybox entries found");
+        return JSON.parse(entries);
     } catch {
-        return [];
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultEntries));
+        return defaultEntries;
     }
 }
 
@@ -37,24 +47,17 @@ let isRemoveAll = false;
 
 function renderCustomKeyboxEntries() {
     const entries = getCustomKeyboxEntries();
-    const divider = document.getElementById('customkb-divider');
     const customkb = document.getElementById('customkb');
 
     document.querySelectorAll('.customkb-entry').forEach(el => el.remove());
 
-    if (entries.length === 0) {
-        divider.style.display = 'none';
-        return;
-    }
-
-    divider.style.display = '';
-    customkb.parentNode.insertBefore(divider, customkb.nextSibling);
+    if (entries.length === 0) return;
 
     entries.forEach(entry => {
         const menuItem = document.createElement('md-menu-item');
         menuItem.className = 'customkb-entry';
         menuItem.innerHTML = `<div slot="headline">${entry.name}</div>`;
-        customkb.parentNode.insertBefore(menuItem, divider.nextSibling);
+        customkb.parentNode.insertBefore(menuItem, customkb);
         menuItem.onclick = () => fetchCustomKeybox(entry.link, entry.script);
         menuItem.oncontextmenu = (e) => {
             e.preventDefault();
@@ -75,7 +78,7 @@ async function fetchCustomKeybox(link, script) {
         const data = await response.text();
         const execScript = script || "cat";
         const { stdout, errno } = await exec(
-            `${execScript} << 'CUSTOMKB_EOF'
+            `(${execScript}) << 'CUSTOMKB_EOF'
 ${data}
 CUSTOMKB_EOF`,
             { cwd: "/data/local/tmp" }

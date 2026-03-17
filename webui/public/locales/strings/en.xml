@@ -47,8 +47,6 @@
     <string name="menu_keybox">Keybox</string>
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">Unknown</string>
-    <string name="menu_keybox_valid">Valid</string>
-    <string name="menu_keybox_custom">Custom</string>
     <string name="menu_keybox_local">Local</string>
     <string name="menu_set_verified_boot_hash">Set Verified Boot Hash</string>
     <string name="menu_set_security_patch">Set Security Patch</string>
@@ -73,8 +71,6 @@
     <string name="prompt_aosp_key_set">AOSP keybox set successfully</string>
     <string name="prompt_key_set_error">Failed to update keybox</string>
     <string name="prompt_unknown_key_set">Unknown keybox set successfully</string>
-    <string name="prompt_valid_key_set">Valid keybox set successfully</string>
-    <string name="prompt_no_valid">No valid keybox found.</string>
     <string name="prompt_boot_hash_set">Verified Boot Hash saved successfully</string>
     <string name="prompt_boot_hash_set_error">Failed to update Verified Boot Hash</string>
     <string name="prompt_saved_target">Config saved to target.txt</string>

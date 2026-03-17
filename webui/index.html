@@ -39,11 +39,12 @@
                     </md-menu-item>
                     <md-menu positioning="popover" slot="menu">
                         <md-menu-item id="aospkb" data-i18n="menu_keybox_aosp"></md-menu-item>
-                        <md-menu-item id="validkb" data-i18n="menu_keybox_valid"></md-menu-item>
                         <md-menu-item id="devicekb" data-i18n="menu_keybox_unknown"></md-menu-item>
                         <md-menu-item id="localkb" data-i18n="menu_keybox_local"></md-menu-item>
-                        <md-menu-item id="customkb" data-i18n="menu_keybox_custom"></md-menu-item>
-                        <md-divider id="customkb-divider" role="separator" tabindex="-1" style="display: none;"></md-divider>
+                        <md-divider id="customkb-divider" role="separator" tabindex="-1"></md-divider>
+                        <md-menu-item id="customkb" class="icon-item">
+                            <div><md-filled-tonal-icon-button><md-icon>add</md-icon></md-filled-tonal-icon-button></div>
+                        </md-menu-item>
                     </md-menu>
                 </md-sub-menu>
                 <md-menu-item id="boot-hash" data-i18n="menu_set_verified_boot_hash"></md-menu-item>

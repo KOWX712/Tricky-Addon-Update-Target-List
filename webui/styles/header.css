@@ -111,6 +111,12 @@
     max-width: 100%;
 }
 
+.menu md-menu-item.icon-item div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .menu-item-button-container {
     padding: 2px 4px;
     display: flex;

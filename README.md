@@ -31,7 +31,6 @@ Configure Tricky Store target.txt with KSU WebUI.
 | Provide AOSP Keybox `optional`                                                                                                                                               |   ✅    |
 | Import custom Keybox from device storage                                                                                                                                     |   ✅    |
 | Add system apps `not recommended`                                                                                                                                            |   ✅    |
-| Valid Keybox `not guaranteed`                                                                                                                                                |   ❌    |
 | Periodically add all app to target.txt                                                                                                                                       |   ❌    |
 
 ## Localization

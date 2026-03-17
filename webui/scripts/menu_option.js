@@ -192,42 +192,6 @@ async function aospkb() {
 // aosp kb eventlistener
 document.getElementById("aospkb").onclick = aospkb;
 
-/**
- * Fetch encoded keybox and decode
- * @param {String} link - link to fetch
- * @param {String} fallbackLink - fallback link
- * @returns {void}
- */
-async function fetchkb(link, fallbackLink) {
-    let response = await fetch(link).catch(() => null);
-    if (!response || !response.ok) {
-        response = await fetch(fallbackLink).catch(() => null);
-    }
-    if (!response || !response.ok) {
-        showPrompt(getString("prompt_no_internet"), false);
-        return;
-    }
-
-    try {
-        const data = await response.text();
-        if (!data.trim()) {
-            showPrompt(getString("prompt_no_valid"), false);
-            return;
-        }
-        const hexBytes = new Uint8Array(data.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
-        const decodedHex = new TextDecoder().decode(hexBytes);
-        const source = atob(decodedHex);
-        const result = await setKeybox(source);
-        if (result) {
-            showPrompt(getString("prompt_valid_key_set"));
-        } else {
-            throw new Error("Failed to copy valid keybox");
-        }
-    } catch (error) {
-        showPrompt(getString("prompt_no_internet"), false);
-    }
-}
-
 // unkown kb eventlistener
 document.getElementById("devicekb").onclick = async () => {
     try {
@@ -238,12 +202,6 @@ document.getElementById("devicekb").onclick = async () => {
         console.error(error);
         showPrompt(getString("prompt_key_set_error"), false);
     }
-}
-
-// valid kb eventlistener
-document.getElementById("validkb").onclick = () => {
-    const link = "https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/.extra";
-    fetchkb(link, `https://gh.sevencdn.com/${link}`);
 }
 
 // Open local keybox selector
