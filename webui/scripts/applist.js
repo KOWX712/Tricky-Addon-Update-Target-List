@@ -4,8 +4,7 @@ import { loadingIndicator, appsWithExclamation, appsWithQuestion, checkSukiSu } 
 import fallbackIcon from '../icon.png';
 
 const appTemplate = document.getElementById('app-template').content;
-export const appListContainer = document.getElementById('apps-list');
-export const updateCard = document.getElementById('update-card');
+export const appListContainer = document.querySelector('.app-list');
 
 let targetList = [];
 
@@ -85,7 +84,6 @@ function renderAppList(data) {
     appListContainer.innerHTML = "";
     loadingIndicator.style.display = "none";
     document.querySelector('.floating-btn').classList.remove('hide');
-    if (updateCard) appListContainer.appendChild(updateCard);
     let showIcon = false;
     if (typeof globalThis.ksu?.listPackages === 'function') {
         showIcon = true;

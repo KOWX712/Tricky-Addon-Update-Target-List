@@ -1,25 +1,30 @@
 @import './theme.css';
 
-.card-box {
+#app-list-content {
+    margin-top: 76px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
 
-#apps-list {
-    margin-top: 76px;
+.app-list {
+    display: flex;
     flex-direction: column;
+    gap: 2px;
+    width: calc(100% - 32px);
+    max-width: 900px;
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 .update-card {
     display: none;
-    flex-direction: row;
     align-items: center;
     gap: 15px;
     background-color: var(--md-sys-color-surface-variant);
     color: var(--md-sys-color-on-surface-variant);
     padding: 16px;
-    border-radius: 8px;
+    border-radius: 20px;
     box-sizing: border-box;
     margin: 0 auto;
     margin-bottom: 10px;
@@ -60,17 +65,19 @@
 }
 
 .card {
-    border-radius: 8px;
-    margin: 0 auto;
-    margin-bottom: 4px;
-    width: calc(100% - 32px);
-    max-width: 900px;
+    border-radius: 4px;
+    width: 100%;
     padding: 16px;
     box-sizing: border-box;
     background-color: var(--md-sys-color-surface-container);
     transition: background-color 0.1s ease;
     position: relative;
     overflow: hidden;
+    transition: border-radius 0.2s ease;
+}
+
+.card:active {
+    border-radius: 20px;
 }
 
 .card.selected {

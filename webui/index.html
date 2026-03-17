@@ -79,14 +79,16 @@
     </md-fab>
 
     <!-- Applist Display -->
-    <div id="apps-list"></div>
-    <div class="update-card" id="update-card">
-        <md-ripple></md-ripple>
-        <md-icon>download</md-icon>
-        <div>
-            <div id="update-available" data-i18n="update_update_available"></div>
-            <div id="redirect-to-release" data-i18n="update_redirect_to_release"></div>
+    <div id="app-list-content">
+        <div class="update-card" id="update-card">
+            <md-ripple></md-ripple>
+            <md-icon>download</md-icon>
+            <div>
+                <div id="update-available" data-i18n="update_update_available"></div>
+                <div id="redirect-to-release" data-i18n="update_redirect_to_release"></div>
+            </div>
         </div>
+        <div class="app-list"></div>
     </div>
     <template id="app-template">
         <div class="card-box">

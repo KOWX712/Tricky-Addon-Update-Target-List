@@ -34,7 +34,7 @@ searchInput.addEventListener("input", (e) => {
     const apps = appListContainer.querySelectorAll(".card");
     apps.forEach(app => {
         const name = app.querySelector(".name").textContent.toLowerCase();
-        app.style.display = name.includes(searchQuery) ? "flex" : "none";
+        app.parentElement.style.display = name.includes(searchQuery) ? "flex" : "none";
         window.scrollTo(0, 0);
     });
 });

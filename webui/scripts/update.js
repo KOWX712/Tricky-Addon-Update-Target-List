@@ -1,8 +1,8 @@
 import { exec, spawn } from 'kernelsu-alt';
 import { basePath, showPrompt, parseMarkdown } from './main.js';
 import { getString } from './language.js';
-import { updateCard } from './applist.js';
 
+const updateCard = document.getElementById('update-card');
 const updateDialog = document.getElementById('update-dialog');
 const closeUpdate = document.getElementById('close-update');
 const releaseNotes = document.querySelector('.changelog');
