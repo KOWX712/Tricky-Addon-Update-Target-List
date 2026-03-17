@@ -35,6 +35,7 @@
     <string name="functional_button_close">Close</string>
     <string name="functional_button_cancel">Cancel</string>
     <string name="functional_button_confirm">Confirm</string>
+    <string name="functional_button_reset">Reset</string>
     <!-- Loading -->
     <string name="loading_loading">Loading...</string>
     <!-- Menu -->
@@ -125,7 +126,6 @@
     <string name="customkb_dialog_title">Custom Keybox Provider</string>
     <string name="customkb_name_placeholder">Name</string>
     <string name="customkb_script_placeholder">Decode script</string>
-    <string name="customkb_clear_all">Clear All</string>
     <string name="customkb_export_success">Config exported to %s</string>
     <string name="customkb_export_error">Failed to export config</string>
     <string name="customkb_export_empty">Nothing to export</string>
@@ -134,7 +134,7 @@
     <string name="customkb_import_duplicate">Some entries were skipped (duplicate names)</string>
     <string name="customkb_remove_title">Confirm Remove?</string>
     <string name="customkb_remove_message">Remove this custom keybox provider?</string>
-    <string name="customkb_remove_all_message">Remove all custom keybox providers?</string>
+    <string name="customkb_reset_message">Reset custom keybox providers?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Confirm Uninstall?</string>
     <string name="confirmation_uninstall_message">Are you sure you want to uninstall Tricky Addon</string>

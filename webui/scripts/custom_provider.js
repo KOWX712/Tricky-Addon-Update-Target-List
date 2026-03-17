@@ -43,7 +43,7 @@ function validateScript(script) {
 }
 
 let currentRemoveName = null;
-let isRemoveAll = false;
+let isReset = false;
 
 function renderCustomKeyboxEntries() {
     const entries = getCustomKeyboxEntries();
@@ -133,12 +133,12 @@ function saveCustomKeyboxEntry() {
 }
 
 function removeCustomKeyboxEntry() {
-    if (isRemoveAll) {
-        saveCustomKeyboxEntries([]);
+    if (isReset) {
+        saveCustomKeyboxEntries(defaultEntries);
         renderCustomKeyboxEntries();
         document.getElementById('customkb-remove-dialog').close();
         showPrompt(getString("prompt_custom_removed"));
-        isRemoveAll = false;
+        isReset = false;
         return;
     }
 
@@ -149,7 +149,7 @@ function removeCustomKeyboxEntry() {
     renderCustomKeyboxEntries();
 
     document.getElementById('customkb-remove-dialog').close();
-        showPrompt(getString("prompt_custom_removed"));
+    showPrompt(getString("prompt_custom_removed"));
     currentRemoveName = null;
 }
 
@@ -212,11 +212,11 @@ async function importCustomKeyboxConfig() {
     }
 }
 
-function showRemoveDialog(removeAll, name = null) {
-    isRemoveAll = removeAll;
+function showRemoveDialog(reset, name = null) {
+    isReset = reset;
     currentRemoveName = name;
-    document.getElementById('customkb-remove-single').style.display = removeAll ? 'none' : '';
-    document.getElementById('customkb-remove-all').style.display = removeAll ? '' : 'none';
+    document.getElementById('customkb-remove-single').style.display = isReset ? 'none' : '';
+    document.getElementById('customkb-reset').style.display = isReset ? '' : 'none';
     document.getElementById('customkb-remove-dialog').show();
     customkbDialog.close();
 }
@@ -229,13 +229,13 @@ export function initCustomKeybox() {
     };
     
     document.getElementById('save-customkb').onclick = saveCustomKeyboxEntry;
-    document.getElementById('clear-all-customkb').onclick = () => showRemoveDialog(true);
+    document.getElementById('reset-customkb').onclick = () => showRemoveDialog(true);
     document.getElementById('customkb-import').onclick = importCustomKeyboxConfig;
     document.getElementById('customkb-export').onclick = exportCustomKeyboxConfig;
 
     document.getElementById('cancel-remove-customkb').onclick = () => {
         document.getElementById('customkb-remove-dialog').close();
-        isRemoveAll = false;
+        isReset = false;
         currentRemoveName = null;
     };
 
