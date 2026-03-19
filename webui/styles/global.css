@@ -147,6 +147,10 @@ body {
     margin-inline-end: auto;
 }
 
+.spacer {
+    flex: 1;
+}
+
 .hidden {
     display: none;
 }

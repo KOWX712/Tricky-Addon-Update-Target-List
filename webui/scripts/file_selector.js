@@ -1,6 +1,7 @@
 import { exec } from 'kernelsu-alt';
 
 let fileType;
+let fileSelectorMode;
 
 const fileSelectorDialog = document.getElementById('file-selector-dialog');
 let currentPath = '/storage/emulated/0/Download';
@@ -163,6 +164,21 @@ function setupListeners() {
 
     // Close button
     fileSelectorDialog.querySelector('.close-selector').onclick = () => closeFileSelector();
+
+    fileSelectorDialog.querySelector('.open-system-file').onclick = () => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.onchange = (event) => {
+            const file = event.target.files[0];
+            if (!file || !window.fileSelectorResolve) return;
+            if (!file.name.endsWith(`.${fileType}`)) return;
+
+            window.fileSelectorResolve(file);
+            window.fileSelectorResolve = null;
+            closeFileSelector();
+        };
+        input.click();
+    };
 }
 
 /**
@@ -189,9 +205,10 @@ export const FileSelector = {
      */
     getFilePath: async function (type) {
         fileType = type;
+        fileSelectorMode = 'path';
         currentPath = '/storage/emulated/0/Download';
 
-        // Show file selector overlay
+        fileSelectorDialog.querySelector('.open-system-file').classList.add('hidden');
         fileSelectorDialog.show();
         setupListeners();
 
@@ -214,15 +231,40 @@ export const FileSelector = {
      * @returns {Promise<string|null>} Resolves with the file content or null if closed/failed.
      */
     getFileContent: async function (type) {
-        const filePath = await this.getFilePath(type);
-        if (!filePath) return null;
+        fileType = type;
+        fileSelectorMode = 'content';
+        currentPath = '/storage/emulated/0/Download';
 
-        const result = await exec(`cat "${filePath}"`);
-        if (result.errno === 0) {
-            return result.stdout;
-        } else {
-            console.error(`Failed to read file content: ${result.stderr}`);
-            return null;
-        }
+        fileSelectorDialog.querySelector('.open-system-file').classList.remove('hidden');
+        fileSelectorDialog.show();
+        setupListeners();
+
+        const currentPathElement = document.querySelector('.current-path');
+        currentPathElement.innerHTML = currentPath.split('/').filter(Boolean).join('<span class="separator">›</span>');
+        currentPathElement.scrollTo({
+            left: currentPathElement.scrollWidth,
+            behavior: 'smooth'
+        });
+        await listFiles(currentPath, true);
+
+        return new Promise((resolve) => {
+            window.fileSelectorResolve = async (result) => {
+                if (result instanceof File) {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.readAsText(result);
+                } else if (typeof result === 'string' && result !== null) {
+                    const execResult = await exec(`cat "${result}"`);
+                    if (execResult.errno === 0) {
+                        resolve(execResult.stdout);
+                    } else {
+                        console.error(`Failed to read file content: ${execResult.stderr}`);
+                        resolve(null);
+                    }
+                } else {
+                    resolve(null);
+                }
+            };
+        });
     }
 };
