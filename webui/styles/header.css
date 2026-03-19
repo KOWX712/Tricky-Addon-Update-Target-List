@@ -147,6 +147,11 @@
     margin: 8px 0;
 }
 
+.instruction ul {
+    margin-top: 0;
+    padding-inline-start: 24px;
+}
+
 .instruction-header {
     font-size: 1.3em;
 }

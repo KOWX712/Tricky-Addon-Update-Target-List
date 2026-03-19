@@ -13,10 +13,12 @@
     <string name="help_deselect_unnecessary_description">Unnecessary category: Xposed module, root manager, root-related apps, and general apps that never check bootloader status. This option requires Internet connection.</string>
     <string name="help_add_system_app">Add System App</string>
     <string name="help_add_system_app_description">Add specific system app to app list.</string>
-    <string name="help_set_keybox">Set AOSP &amp; Valid Keybox</string>
-    <string name="help_set_keybox_description">Replace tricky store keybox.xml. Valid keybox option requires Internet connection and not always available.</string>
-    <string name="help_set_custom_keybox">Set Custom Keybox</string>
-    <string name="help_set_custom_keybox_description">Import keybox from your device storage. Only support xml file.</string>
+    <string name="help_set_keybox">Set Keybox</string>
+    <string name="help_set_keybox_description">Replace tricky store keybox.xml with:</string>
+    <string name="help_set_keybox_aosp">AOSP - the default keybox comes with TrickyStore.</string>
+    <string name="help_set_keybox_unknown">Unknown - self-signed and not valid for Play Integrity verdict.</string>
+    <string name="help_set_keybox_local">Local - select keybox from your device.</string>
+    <string name="help_set_keybox_custom">Custom - custom keybox provider via online fetching.</string>
     <string name="help_set_security_patch">Set Security Patch</string>
     <string name="help_set_security_patch_description">Set custom security patch spoof. Auto config will use security patch from PIF module. Leave blank and save to disable auto config.</string>
     <string name="help_set_verified_boot_hash">Set Verified Boot Hash</string>
