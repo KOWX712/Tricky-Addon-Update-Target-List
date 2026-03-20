@@ -38,6 +38,7 @@
     <string name="functional_button_cancel">Cancel</string>
     <string name="functional_button_confirm">Confirm</string>
     <string name="functional_button_reset">Reset</string>
+    <string name="functional_button_remove">Remove</string>
     <!-- Loading -->
     <string name="loading_loading">Loading...</string>
     <!-- Menu -->

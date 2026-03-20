@@ -216,14 +216,6 @@ document.getElementById('localkb').onclick = async () => {
     }
 }
 
-// Custom keybox provider
-document.getElementById('customkb').onclick = () => {
-    document.getElementById('customkb-name-input').value = '';
-    document.getElementById('customkb-link-input').value = '';
-    document.getElementById('customkb-script-input').value = '';
-    document.getElementById('customkb-dialog').show();
-};
-
 // Instruction menu
 const helpDialog = document.getElementById('help-dialog');
 document.getElementById('help').onclick = () => helpDialog.show();

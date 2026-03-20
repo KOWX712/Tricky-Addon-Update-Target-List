@@ -61,7 +61,7 @@ function renderCustomKeyboxEntries() {
         menuItem.onclick = () => fetchCustomKeybox(entry.link, entry.script);
         menuItem.oncontextmenu = (e) => {
             e.preventDefault();
-            showRemoveDialog(false, entry.name);
+            showCustomKbDialog(true, entry);
         };
     });
 }
@@ -124,7 +124,15 @@ function saveCustomKeyboxEntry() {
         script: scriptInput.value.trim()
     };
 
-    entries.push(newEntry);
+    if (currentRemoveName) {
+        const index = entries.findIndex(e => e.name === currentRemoveName);
+        if (index !== -1) {
+            entries[index] = newEntry;
+        }
+    } else {
+        entries.push(newEntry);
+    }
+
     saveCustomKeyboxEntries(entries);
     renderCustomKeyboxEntries();
 
@@ -210,6 +218,18 @@ async function importCustomKeyboxConfig() {
     }
 }
 
+function showCustomKbDialog(edit, entry = null) {
+    document.getElementById('customkb-name-input').value = edit ? entry.name : '';
+    document.getElementById('customkb-link-input').value = edit ? entry.link : '';
+    document.getElementById('customkb-script-input').value = edit ? (entry.script || '') : '';
+
+    customkbDialog.querySelectorAll('.new').forEach(el => el.style.display = edit ? 'none' : '');
+    customkbDialog.querySelectorAll('.old').forEach(el => el.style.display = edit ? '' : 'none');
+
+    currentRemoveName = edit ? entry.name : null;
+    customkbDialog.show();
+}
+
 function showRemoveDialog(reset, name = null) {
     isReset = reset;
     currentRemoveName = name;
@@ -222,12 +242,17 @@ function showRemoveDialog(reset, name = null) {
 export function initCustomKeybox() {
     renderCustomKeyboxEntries();
 
+    document.getElementById('customkb').onclick = () => {
+        showCustomKbDialog(false);
+    };
+
     document.getElementById('cancel-customkb').onclick = () => {
         customkbDialog.close();
     };
     
     document.getElementById('save-customkb').onclick = saveCustomKeyboxEntry;
     document.getElementById('reset-customkb').onclick = () => showRemoveDialog(true);
+    document.getElementById('remove-customkb').onclick = () => showRemoveDialog(false, currentRemoveName);
     document.getElementById('customkb-import').onclick = importCustomKeyboxConfig;
     document.getElementById('customkb-export').onclick = exportCustomKeyboxConfig;
 

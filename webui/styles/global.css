@@ -143,10 +143,6 @@ body {
     margin-top: 16px;
 }
 
-#reset-customkb {
-    margin-inline-end: auto;
-}
-
 .spacer {
     flex: 1;
 }

@@ -335,20 +335,22 @@
                 <md-outlined-text-field id="customkb-script-input" label="Decode Script" placeholder="base64 -d" data-i18n="customkb_script_placeholder" class="customkb-input">
                     <md-icon slot="trailing-icon" class="hidden">error</md-icon>
                 </md-outlined-text-field>
-                <md-divider></md-divider>
-                <div class="customkb-actions">
+                <md-divider class="new"></md-divider>
+                <div class="customkb-actions new">
                     <md-filled-tonal-icon-button id="customkb-import"><md-icon>download</md-icon></md-filled-tonal-icon-button>
                     <md-filled-tonal-icon-button id="customkb-export"><md-icon>upload</md-icon></md-filled-tonal-icon-button>
                 </div>
             </div>
             <div slot="actions">
-                <md-text-button id="reset-customkb" data-i18n="functional_button_reset"></md-text-button>
+                <md-text-button id="reset-customkb" class="new" data-i18n="functional_button_reset"></md-text-button>
+                <md-text-button id="remove-customkb" class="old" data-i18n="functional_button_remove"></md-text-button>
+                <div class="spacer"></div>
                 <md-text-button id="cancel-customkb" data-i18n="functional_button_cancel"></md-text-button>
                 <md-text-button id="save-customkb" data-i18n="functional_button_save"></md-text-button>
             </div>
         </md-dialog>
 
-        <!-- Custom keybox Remove Confirmation Dialog -->
+        <!-- Custom keybox Reset Confirmation Dialog -->
         <md-dialog id="customkb-remove-dialog" type="alert">
             <div slot="headline" data-i18n="customkb_remove_title"></div>
             <md-icon slot="icon">delete</md-icon>
@@ -357,7 +359,7 @@
                 <div id="customkb-reset" data-i18n="customkb_reset_message" style="display: none;"></div>
             </div>
             <div slot="actions">
-                <md-text-button id="cancel-remove-customkb" data-i18n="functional_button_cancel"></md-text-button>
+                <md-outlined-button id="cancel-remove-customkb" data-i18n="functional_button_cancel"></md-outlined-button>
                 <md-filled-button id="confirm-remove-customkb" data-i18n="functional_button_confirm"></md-filled-button>
             </div>
         </md-dialog>
@@ -368,7 +370,7 @@
             <md-icon slot="icon">delete</md-icon>
             <div slot="content" data-i18n="confirmation_uninstall_message"></div>
             <div slot="actions">
-                <md-text-button id="cancel-uninstall" data-i18n="functional_button_cancel"></md-text-button>
+                <md-outlined-button id="cancel-uninstall" data-i18n="functional_button_cancel"></md-outlined-button>
                 <md-filled-button id="confirm-uninstall" data-i18n="functional_button_confirm"></md-filled-button>
             </div>
         </md-dialog>
