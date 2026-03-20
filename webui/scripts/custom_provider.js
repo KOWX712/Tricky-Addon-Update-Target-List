@@ -195,17 +195,15 @@ async function importCustomKeyboxConfig() {
             return;
         }
 
-        const existingEntries = getCustomKeyboxEntries();
-        const existingNames = new Set(existingEntries.map(e => e.name));
-        const newEntries = config.entries.filter(e => !existingNames.has(e.name));
-        const hasDuplicates = newEntries.length < config.entries.length;
+        const updatedEntries = Array.from(new Map([
+            ...getCustomKeyboxEntries().map(e => [e.name, e]),
+            ...config.entries.map(e => [e.name, e])
+        ]).values());
 
-        if (newEntries.length > 0) {
-            saveCustomKeyboxEntries([...existingEntries, ...newEntries]);
-            renderCustomKeyboxEntries();
-        }
+        saveCustomKeyboxEntries(updatedEntries);
+        renderCustomKeyboxEntries();
 
-        showPrompt(getString(hasDuplicates ? "customkb_import_duplicate" : "customkb_import_success"));
+        showPrompt(getString("customkb_import_success"));
     } catch (error) {
         console.error("Import error:", error);
         showPrompt(getString("customkb_import_error"), false);

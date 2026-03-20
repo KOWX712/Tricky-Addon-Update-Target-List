@@ -133,7 +133,6 @@
     <string name="customkb_export_empty">Nothing to export</string>
     <string name="customkb_import_success">Config imported</string>
     <string name="customkb_import_error">Invalid config file</string>
-    <string name="customkb_import_duplicate">Some entries were skipped (duplicate names)</string>
     <string name="customkb_remove_title">Confirm Remove?</string>
     <string name="customkb_remove_message">Remove this custom keybox provider?</string>
     <string name="customkb_reset_message">Reset custom keybox providers?</string>
