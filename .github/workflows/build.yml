@@ -25,7 +25,7 @@ jobs:
       version_tag_exists: ${{ steps.check_tag.outputs.version_tag_exists }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: true
@@ -46,12 +46,12 @@ jobs:
           fi
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
           version: 'latest'
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 'latest'
           cache: 'pnpm'
@@ -77,7 +77,7 @@ jobs:
           echo "VERSION=${MODULE_VERSION}" >> $GITHUB_ENV
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ env.ARTIFACT_NAME }}
           path: module/
@@ -105,7 +105,7 @@ jobs:
     if: ${{ needs.build.outputs.version_tag_exists == 'false' && github.event_name != 'pull_request' }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -149,12 +149,12 @@ jobs:
           git push --force
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
           version: 'latest'
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 'latest'
           cache: 'pnpm'
