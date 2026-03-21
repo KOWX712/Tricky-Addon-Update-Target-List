@@ -13,10 +13,6 @@
     <string name="help_deselect_unnecessary_description">Categoria non necessaria: modulo Xposed, root manager, app correlate al root e app generali che non controllano mai lo stato del bootloader. Questa opzione richiede una connessione a Internet.</string>
     <string name="help_add_system_app">Aggiungi App di Sistema</string>
     <string name="help_add_system_app_description">Aggiungi app di sistema specifiche all&apos;elenco delle app.</string>
-    <string name="help_set_keybox">Imposta AOSP &amp; Keybox Valida</string>
-    <string name="help_set_keybox_description">Sostituisci tricky store keybox.xml. L&apos;opzione valida per la keybox richiede una connessione Internet.</string>
-    <string name="help_set_custom_keybox">Imposta Keybox Personalizzata</string>
-    <string name="help_set_custom_keybox_description">Importa keybox dalla memoria del tuo dispositivo. Supporta solo file xml.</string>
     <string name="help_set_security_patch">Imposta Patch di Sicurezza</string>
     <string name="help_set_security_patch_description">Imposta spoofing patch di sicurezza personalizzato. La configurazione automatica utilizzerà la patch di sicurezza dal modulo PIF. Lascia vuoto e salva per disabilitare la configurazione automatica.</string>
     <string name="help_set_verified_boot_hash">Imposta Boot Hash Verificato</string>
@@ -34,6 +30,7 @@
     <string name="functional_button_uninstall_webui">Disinstalla WebUI</string>
     <string name="functional_button_cancel">Annulla</string>
     <string name="functional_button_confirm">Conferma</string>
+    <string name="functional_button_reset">Azzera</string>
     <!-- Loading -->
     <string name="loading_loading">Caricamento...</string>
     <!-- Menu -->
@@ -43,6 +40,7 @@
     <string name="menu_select_denylist">Seleziona da DenyList</string>
     <string name="menu_deselect_unnecessary">Deseleziona Non necessari</string>
     <string name="menu_add_system_app">Aggiungi App di Sistema</string>
+    <string name="menu_keybox_local">Locale</string>
     <string name="menu_set_verified_boot_hash">Imposta Boot Hash Verificato</string>
     <string name="menu_set_security_patch">Imposta Patch di Sicurezza</string>
     <string name="menu_about">Informazioni</string>
@@ -62,8 +60,6 @@
     <string name="prompt_aosp_key_set">Keybox AOSP impostata correttamente</string>
     <string name="prompt_key_set_error">Impossibile aggiornare keybox</string>
     <string name="prompt_unknown_key_set">Keybox sconosciuta impostata correttamente</string>
-    <string name="prompt_valid_key_set">Keybox valida impostata correttamente</string>
-    <string name="prompt_no_valid">Nessuna keybox valida trovata.</string>
     <string name="prompt_boot_hash_set">Boot Hash Verificato salvato correttamente</string>
     <string name="prompt_boot_hash_set_error">Impossibile aggiornare Boot Hash Verificato</string>
     <string name="prompt_saved_target">Configurazione salvata in target.txt</string>
@@ -108,6 +104,8 @@
     <string name="add_system_app_title">Aggiungi app di sistema</string>
     <string name="add_system_app_add">Aggiungi</string>
     <string name="add_system_app_current_list">Elenco attuale delle app di sistema</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">Confermare la rimozione?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Confermi disinstallazione?</string>
     <string name="confirmation_uninstall_message">Sei sicuro di voler disinstallare Tricky Addon</string>

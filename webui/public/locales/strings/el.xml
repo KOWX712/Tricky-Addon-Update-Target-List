@@ -12,10 +12,6 @@
     <string name="help_deselect_unnecessary_description">Άχρηστη κατηγορία: Xposed module, root manager, root-related apps, και γενικές εφαρμογές που ποτέ δεν ελέγχουν κατάσταση bootloader. Απαιτεί σύνδεση Internet.</string>
     <string name="help_add_system_app">Πρόσθεσε Εφαρμογή Συστήματος</string>
     <string name="help_add_system_app_description">Πρόσθεσε συγκεκριμένη εφαρμογή συστήματος στη λίστα εφαρμογών.</string>
-    <string name="help_set_keybox">Όρισε AOSP &amp; Έγκυρο Keybox</string>
-    <string name="help_set_keybox_description">Αντικατέστησε το tricky store keybox.xml. Η επιλογή valid keybox απαιτεί σύνδεση Internet.</string>
-    <string name="help_set_custom_keybox">Όρισε Custom Keybox</string>
-    <string name="help_set_custom_keybox_description">Εισήγαγε keybox από τη συσκευή σου. Υποστηρίζεται μόνο αρχείο xml.</string>
     <string name="help_set_security_patch">Όρισε Security Patch</string>
     <string name="help_set_security_patch_description">Όρισε spoof για custom security patch. Η αυτόματη ρύθμιση χρησιμοποιεί το security patch από το PIF module. Άφησε κενό και αποθήκευσε για απενεργοποίηση αυτόματης ρύθμισης.</string>
     <string name="help_set_verified_boot_hash">Όρισε Verified Boot Hash</string>
@@ -33,6 +29,7 @@
     <string name="functional_button_uninstall_webui">Απεγκατάσταση WebUI</string>
     <string name="functional_button_cancel">Άκυρο</string>
     <string name="functional_button_confirm">Επιβεβαίωση</string>
+    <string name="functional_button_reset">Επαναφορά</string>
     <!-- Loading -->
     <string name="loading_loading">Φόρτωση...</string>
     <!-- Menu -->
@@ -42,6 +39,7 @@
     <string name="menu_select_denylist">Επίλεξε από DenyList</string>
     <string name="menu_deselect_unnecessary">Αποεπίλεξε Άχρηστα</string>
     <string name="menu_add_system_app">Πρόσθεσε Εφαρμογή Συστήματος</string>
+    <string name="menu_keybox_local">Τοπικά</string>
     <string name="menu_set_verified_boot_hash">Όρισε Verified Boot Hash</string>
     <string name="menu_set_security_patch">Όρισε Security Patch</string>
     <string name="menu_about">Σχετικά</string>
@@ -60,8 +58,6 @@
     <string name="prompt_aosp_key_set">Το AOSP keybox ορίστηκε με επιτυχία</string>
     <string name="prompt_key_set_error">Αποτυχία ενημέρωσης keybox</string>
     <string name="prompt_unknown_key_set">Το Unknown keybox ορίστηκε με επιτυχία</string>
-    <string name="prompt_valid_key_set">Το Valid keybox ορίστηκε με επιτυχία</string>
-    <string name="prompt_no_valid">Δεν βρέθηκε έγκυρο keybox.</string>
     <string name="prompt_boot_hash_set">Το Verified Boot Hash αποθηκεύτηκε με επιτυχία</string>
     <string name="prompt_boot_hash_set_error">Αποτυχία ενημέρωσης Verified Boot Hash</string>
     <string name="prompt_saved_target">Η ρύθμιση αποθηκεύτηκε στο target.txt</string>
@@ -103,6 +99,8 @@
     <string name="add_system_app_title">Πρόσθεσε Εφαρμογή Συστήματος</string>
     <string name="add_system_app_add">Πρόσθεσε</string>
     <string name="add_system_app_current_list">Τρέχουσα Λίστα Εφαρμογών Συστήματος</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">Επιβεβαίωση Αφαίρεσης?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Επιβεβαίωση Απεγκατάστασης;</string>
     <string name="confirmation_uninstall_message">Είσαι σίγουρος ότι θέλεις να απεγκαταστήσεις το Tricky Addon;</string>

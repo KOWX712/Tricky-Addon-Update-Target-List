@@ -12,10 +12,6 @@
     <string name="help_deselect_unnecessary_description">Hindi kinakailangang kategorya: Xposed module, root manager, root-related apps, at mga karaniwang apps na hindi kailanman nire-refresh ang bootloader status. Nangangailangan ng koneksyon sa internet.</string>
     <string name="help_add_system_app">Magdagdag ng System App</string>
     <string name="help_add_system_app_description">Magdagdag ng tiyak na system app sa listahan ng apps.</string>
-    <string name="help_set_keybox">I-set ang AOSP at Valid Keybox</string>
-    <string name="help_set_keybox_description">Palitan ang tricky store keybox. Nangangailangan ng koneksyon sa internet ang valid keybox option.</string>
-    <string name="help_set_custom_keybox">I-set ang Custom Keybox</string>
-    <string name="help_set_custom_keybox_description">Mag-import ng custom keybox mula sa iyong device storage. Sumusuporta lamang ng xml file.</string>
     <string name="help_set_security_patch">I-set ang Security Patch</string>
     <string name="help_set_security_patch_description">I-set ang custom security patch. Ang auto config ay mag-use ng security patch mula sa PIF module. I-leave blank at i-save para i-disable ang auto config.</string>
     <string name="help_set_verified_boot_hash">I-set ang Verified Boot Hash</string>
@@ -33,6 +29,7 @@
     <string name="functional_button_uninstall_webui">I-uninstall ang WebUI</string>
     <string name="functional_button_cancel">Kanselahin</string>
     <string name="functional_button_confirm">Kumpirmahin</string>
+    <string name="functional_button_reset">I-reset</string>
     <!-- Loading -->
     <string name="loading_loading">Naglo-load...</string>
     <!-- Menu -->
@@ -42,6 +39,7 @@
     <string name="menu_select_denylist">Piliin mula sa DenyList</string>
     <string name="menu_deselect_unnecessary">Huwag Pumili ng Hindi Kinakailangan</string>
     <string name="menu_add_system_app">Magdagdag ng System App</string>
+    <string name="menu_keybox_local">Lokal</string>
     <string name="menu_set_verified_boot_hash">I-set ang Verified Boot Hash</string>
     <string name="menu_set_security_patch">I-set ang Security Patch</string>
     <string name="menu_about">Tungkol</string>
@@ -60,8 +58,6 @@
     <string name="prompt_aosp_key_set">Matagumpay na na-set ang AOSP Keybox</string>
     <string name="prompt_key_set_error">Nabigong i-update ang keybox</string>
     <string name="prompt_unknown_key_set">Matagumpay na na-set ang Hindi Kilalang Keybox</string>
-    <string name="prompt_valid_key_set">Matagumpay na na-set ang Valid Keybox</string>
-    <string name="prompt_no_valid">Walang valid na keybox na natagpuan.</string>
     <string name="prompt_boot_hash_set">Matagumpay na na-save ang Verified Boot Hash</string>
     <string name="prompt_boot_hash_set_error">Nabigong i-update ang Verified Boot Hash</string>
     <string name="prompt_saved_target">Na-save ang configuration sa target.txt</string>
@@ -103,6 +99,8 @@
     <string name="add_system_app_title">Magdagdag ng System App</string>
     <string name="add_system_app_add">Idagdag</string>
     <string name="add_system_app_current_list">Kasalukuyang Listahan ng System App</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">Підтвердити видалення?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Kumpirmahin ang Pag-uninstall?</string>
     <string name="confirmation_uninstall_message">Sigurado ka bang gusto mong i-uninstall ang Tricky Addon</string>

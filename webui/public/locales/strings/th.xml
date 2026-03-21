@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Header -->
     <!-- Help Menu-->
     <string name="help_help_instructions">คำแนะนำการใช้งาน</string>
     <string name="help_save_and_update_description">บันทึกการตั้งค่าปัจจุบันลงใน target.txt</string>
@@ -9,10 +10,6 @@
     <string name="help_deselect_unnecessary_description">หมวดหมู่ที่ไม่จำเป็น: โมดูล Xposed, แอปจัดการรูท, แอปที่เกี่ยวข้องกับรูท และแอปทั่วไปที่ไม่เคยตรวจสอบสถานะ Bootloader ตัวเลือกนี้ต้องใช้การเชื่อมต่ออินเทอร์เน็ต</string>
     <string name="help_add_system_app">เพิ่มแอประบบ (System App)</string>
     <string name="help_add_system_app_description">เพิ่มแอปพลิเคชันระบบที่ระบุลงในรายการแอป</string>
-    <string name="help_set_keybox">ตั้งค่า AOSP &amp; Valid Keybox</string>
-    <string name="help_set_keybox_description">แทนที่ keybox.xml ของ tricky store ตัวเลือก Valid keybox ต้องใช้การเชื่อมต่ออินเทอร์เน็ตและอาจไม่พร้อมใช้งานเสมอไป</string>
-    <string name="help_set_custom_keybox">ตั้งค่า Keybox กำหนดเอง</string>
-    <string name="help_set_custom_keybox_description">นำเข้า keybox จากที่เก็บข้อมูลในระบบ รองรับเฉพาะไฟล์ .xml เท่านั้น</string>
     <string name="help_set_security_patch">ตั้งค่า Security Patch</string>
     <string name="help_set_security_patch_description">ตั้งค่าการหลอก (spoof) แพตช์ความปลอดภัย การกำหนดค่าอัตโนมัติจะใช้แพตช์ความปลอดภัยจากโมดูล PIF หากเว้นว่างไว้และบันทึกจะเป็นการปิดใช้งานการตั้งค่าอัตโนมัติ</string>
     <string name="help_set_verified_boot_hash">ตั้งค่า Verified Boot Hash</string>
@@ -31,6 +28,7 @@
     <string name="functional_button_close">ปิด</string>
     <string name="functional_button_cancel">ยกเลิก</string>
     <string name="functional_button_confirm">ยืนยัน</string>
+    <string name="functional_button_reset">รีเซ็ต</string>
     <!-- Loading -->
     <string name="loading_loading">กำลังโหลด...</string>
     <!-- Menu -->
@@ -40,11 +38,8 @@
     <string name="menu_select_denylist">เลือกจาก DenyList</string>
     <string name="menu_deselect_unnecessary">ยกเลิกการเลือกที่ไม่จำเป็น</string>
     <string name="menu_add_system_app">เพิ่มแอประบบ (System App)</string>
-    <string name="menu_keybox">Keybox</string>
-    <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">ไม่รู้จัก (Unknown)</string>
-    <string name="menu_keybox_valid">ใช้งานได้ (Valid)</string>
-    <string name="menu_keybox_custom">กำหนดเอง</string>
+    <string name="menu_keybox_local">ในเครื่อง</string>
     <string name="menu_set_verified_boot_hash">ตั้งค่า Verified Boot Hash</string>
     <string name="menu_set_security_patch">ตั้งค่า Security Patch</string>
     <string name="menu_set_devconfig">ตั้งค่า DevConfig</string>
@@ -66,8 +61,6 @@
     <string name="prompt_aosp_key_set">ตั้งค่า AOSP keybox สำเร็จแล้ว</string>
     <string name="prompt_key_set_error">อัปเดต keybox ไม่สำเร็จ</string>
     <string name="prompt_unknown_key_set">ตั้งค่า Unknown keybox สำเร็จแล้ว</string>
-    <string name="prompt_valid_key_set">ตั้งค่า Valid keybox สำเร็จแล้ว</string>
-    <string name="prompt_no_valid">ไม่พบ keybox ที่ใช้งานได้</string>
     <string name="prompt_boot_hash_set">บันทึก Verified Boot Hash สำเร็จแล้ว</string>
     <string name="prompt_boot_hash_set_error">อัปเดต Verified Boot Hash ไม่สำเร็จ</string>
     <string name="prompt_saved_target">บันทึกการตั้งค่าลงใน target.txt แล้ว</string>
@@ -93,7 +86,6 @@
     <string name="prompt_system_app_not_found">ไม่พบแอประบบ</string>
     <string name="prompt_system_app_error">เพิ่มแอประบบไม่สำเร็จ</string>
     <!-- Security Patch -->
-    <string name="security_patch_title">Security Patch</string>
     <string name="security_patch_advanced_mode">ขั้นสูง</string>
     <string name="security_patch_get_date">ดึงวันที่ของแพตช์ความปลอดภัย</string>
     <string name="security_patch_auto">อัตโนมัติ</string>
@@ -114,6 +106,8 @@
     <string name="add_system_app_title">เพิ่มแอประบบ</string>
     <string name="add_system_app_add">เพิ่ม</string>
     <string name="add_system_app_current_list">รายการแอประบบปัจจุบัน</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">ยืนยันการลบ</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">ยืนยันการถอนการติดตั้ง?</string>
     <string name="confirmation_uninstall_message">คุณแน่ใจหรือไม่ว่าต้องการถอนการติดตั้ง Tricky Addon</string>

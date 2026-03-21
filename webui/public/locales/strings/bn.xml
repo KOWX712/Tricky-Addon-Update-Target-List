@@ -12,10 +12,6 @@
     <string name="help_deselect_unnecessary_description">অপ্রয়োজনীয় বিভাগ: Xposed মডিউল, root ম্যানেজার, root-সম্পর্কিত অ্যাপ, এবং সাধারণ অ্যাপ যা কখনও bootloader স্ট্যাটাস চেক করে না। এই অপশন ইন্টারনেট সংযোগ প্রয়োজন।</string>
     <string name="help_add_system_app">সিস্টেম অ্যাপ যোগ করুন</string>
     <string name="help_add_system_app_description">অ্যাপ তালিকায় নির্দিষ্ট সিস্টেম অ্যাপ যোগ করুন।</string>
-    <string name="help_set_keybox">AOSP এবং Valid Keybox সেট করুন</string>
-    <string name="help_set_keybox_description">Tricky store keybox.xml প্রতিস্থাপন করুন। Valid keybox অপশন ইন্টারনেট সংযোগ প্রয়োজন এবং সবসময় উপলব্ধ নয়।</string>
-    <string name="help_set_custom_keybox">Custom Keybox সেট করুন</string>
-    <string name="help_set_custom_keybox_description">আপনার ডিভাইস স্টোরেজ থেকে keybox ইমপোর্ট করুন। শুধুমাত্র xml ফাইল সমর্থন করে।</string>
     <string name="help_set_security_patch">Security Patch সেট করুন</string>
     <string name="help_set_security_patch_description">Custom security patch spoof সেট করুন। Auto config PIF মডিউল থেকে security patch ব্যবহার করবে। খালি রাখুন এবং সেভ করুন auto config নিষ্ক্রিয় করতে।</string>
     <string name="help_set_verified_boot_hash">Verified Boot Hash সেট করুন</string>
@@ -33,6 +29,7 @@
     <string name="functional_button_uninstall_webui">WebUI আনইনস্টল করুন</string>
     <string name="functional_button_cancel">ক্যানসেল করুন</string>
     <string name="functional_button_confirm">নিশ্চিত করুন</string>
+    <string name="functional_button_reset">রিসেট</string>
     <!-- Loading -->
     <string name="loading_loading">লোড হচ্ছে...</string>
     <!-- Menu -->
@@ -42,6 +39,7 @@
     <string name="menu_select_denylist">DenyList থেকে নির্বাচন করুন</string>
     <string name="menu_deselect_unnecessary">অপ্রয়োজনীয় নির্বাচন প্রত্যাহার করুন</string>
     <string name="menu_add_system_app">সিস্টেম অ্যাপ যোগ করুন</string>
+    <string name="menu_keybox_local">স্থানীয়</string>
     <string name="menu_set_verified_boot_hash">Verified Boot Hash সেট করুন</string>
     <string name="menu_set_security_patch">Security Patch সেট করুন</string>
     <string name="menu_about">সম্পর্কে</string>
@@ -58,8 +56,6 @@
     <string name="prompt_aosp_key_set">AOSP keybox সফলভাবে সেট হয়েছে</string>
     <string name="prompt_key_set_error">Keybox আপডেট করতে ব্যর্থ</string>
     <string name="prompt_unknown_key_set">Unknown keybox সফলভাবে সেট হয়েছে</string>
-    <string name="prompt_valid_key_set">Valid keybox সফলভাবে সেট হয়েছে</string>
-    <string name="prompt_no_valid">কোন valid keybox পাওয়া যায়নি।</string>
     <string name="prompt_boot_hash_set">Verified Boot Hash সফলভাবে সেভ হয়েছে</string>
     <string name="prompt_boot_hash_set_error">Verified Boot Hash আপডেট করতে ব্যর্থ</string>
     <string name="prompt_saved_target">কনফিগ target.txt এ সেভ হয়েছে</string>
@@ -103,6 +99,8 @@
     <string name="add_system_app_title">সিস্টেম অ্যাপ যোগ করুন</string>
     <string name="add_system_app_add">যোগ করুন</string>
     <string name="add_system_app_current_list">বর্তমান সিস্টেম অ্যাপ তালিকা</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">টেমপ্লেট সংরক্ষণ করো</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">আনইনস্টল নিশ্চিত করুন?</string>
     <string name="confirmation_uninstall_message">আপনি কি নিশ্চিত যে আপনি Tricky Addon আনইনস্টল করতে চান</string>

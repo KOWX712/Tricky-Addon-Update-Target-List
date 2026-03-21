@@ -13,10 +13,6 @@
     <string name="help_deselect_unnecessary_description">Categoria desnecessária: Módulo Xposed, gereciador root, apps relacionado a root, e aplicativos gerais que nunca verificam o status do bootloader. Esta opção requer conexão à Internet.</string>
     <string name="help_add_system_app">Adicionar app do sistema</string>
     <string name="help_add_system_app_description">Adicionar app do sistema específico à lista de aplicativos.</string>
-    <string name="help_set_keybox">Definir AOSP &amp; Keybox Válida</string>
-    <string name="help_set_keybox_description">Substitua keybox.xml de tricky store. A opção Keybox válida requer conexão à Internet.</string>
-    <string name="help_set_custom_keybox">Definir uma Keybox personalizada</string>
-    <string name="help_set_custom_keybox_description">Importar Keybox do armazenamento do seu dispositivo. Suporta apenas o arquivo XML.</string>
     <string name="help_set_security_patch">Definir patch de segurança</string>
     <string name="help_set_security_patch_description">Definir spoof de patch de segurança personalizado. Config automática usará o patch de segurança do módulo PIF. Deixe em branco e salve para desativar a configuração automática.</string>
     <string name="help_set_verified_boot_hash">Definir Hash de boot verificado</string>
@@ -35,6 +31,7 @@
     <string name="functional_button_close">Fechar</string>
     <string name="functional_button_cancel">Cancelar</string>
     <string name="functional_button_confirm">Confirmar</string>
+    <string name="functional_button_reset">Redefinir</string>
     <!-- Loading -->
     <string name="loading_loading">Carregando...</string>
     <!-- Menu -->
@@ -47,8 +44,7 @@
     <string name="menu_keybox">Keybox</string>
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">Desconhecido</string>
-    <string name="menu_keybox_valid">Válido</string>
-    <string name="menu_keybox_custom">Custom</string>
+    <string name="menu_keybox_local">Local</string>
     <string name="menu_set_verified_boot_hash">Definir Hash de Boot Verificado</string>
     <string name="menu_set_security_patch">Definir Patch de segurança</string>
     <string name="menu_set_devconfig">Definir DevConfig</string>
@@ -64,6 +60,7 @@
     <string name="about_by">por</string>
     <string name="about_telegram_channel">Canal do Telegram</string>
     <string name="about_canary_update">Atualizado para última versão canária</string>
+    <string name="about_translation_update">Atualizar pacote de tradução</string>
     <string name="about_disclaimer">Este módulo não faz parte do módulo Tricky Store. Não relate nenhum problema à Tricky Store, se encontrada.</string>
     <string name="about_acknowledgment">Reconhecimento</string>
     <!-- Prompt -->
@@ -71,8 +68,6 @@
     <string name="prompt_aosp_key_set">AOSP keybox definida com sucesso</string>
     <string name="prompt_key_set_error">Falha ao atualizar o Keybox</string>
     <string name="prompt_unknown_key_set">Keybox desconhecido definido com sucesso</string>
-    <string name="prompt_valid_key_set">Keybox válida definida com sucesso</string>
-    <string name="prompt_no_valid">Nenhuma Keybox válida encontrada.</string>
     <string name="prompt_boot_hash_set">Hash de Boot Verificado salvo com sucesso</string>
     <string name="prompt_boot_hash_set_error">Falha ao atualizar Hash de Boot Verificado</string>
     <string name="prompt_saved_target">Config salvo para Target.txt</string>
@@ -90,8 +85,14 @@
     <string name="prompt_install_fail">Falha ao instalar, atualize manualmente</string>
     <string name="prompt_rebooting">Reiniciando...</string>
     <string name="prompt_reboot_fail">Falha ao reiniciar, reinicie manualmente</string>
+    <string name="prompt_translation_updated">Pacote de tradução atualizado com sucesso</string>
+    <string name="prompt_translation_update_failed">Falha ao atualizar o pacote de tradução</string>
     <string name="prompt_custom_key_set">keybox custom definida com sucesso</string>
     <string name="prompt_custom_key_set_error">Falha ao definir keybox customizada</string>
+    <string name="prompt_custom_saved">Entrada de custom keybox salva</string>
+    <string name="prompt_custom_fetch_error">Falha ao buscar keybox</string>
+    <string name="prompt_custom_invalid_script">Script não permitido</string>
+    <string name="prompt_custom_removed">Entrada de custom keybox removido</string>
     <string name="prompt_no_file_selected">Nenhum arquivo selecionado</string>
     <string name="prompt_system_app_not_found">App do sistema não encontrado</string>
     <string name="prompt_system_app_error">Falha ao adicionar app do sistema</string>
@@ -117,6 +118,17 @@
     <string name="add_system_app_title">Adicionar app do sistema</string>
     <string name="add_system_app_add">Adicionar</string>
     <string name="add_system_app_current_list">Lista de aplicativos do sistema atual</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_dialog_title">Provedor de custom Keybox</string>
+    <string name="customkb_name_placeholder">Nome</string>
+    <string name="customkb_script_placeholder">Script de decodificação</string>
+    <string name="customkb_export_success">Configuração exportada para %s</string>
+    <string name="customkb_export_error">Falha ao exportar configuração</string>
+    <string name="customkb_export_empty">Nada para exportar</string>
+    <string name="customkb_import_success">Configuração importada</string>
+    <string name="customkb_import_error">Arquivo de configuração inválido</string>
+    <string name="customkb_remove_title">Confirmar Remoção?</string>
+    <string name="customkb_remove_message">Remover este provedor de custom keybox?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Confirmar desinstalar?</string>
     <string name="confirmation_uninstall_message">Tem certeza que deseja desinstalar Tricky Addon</string>

@@ -13,10 +13,6 @@
     <string name="help_deselect_unnecessary_description">不要なカテゴリー: Xposed モジュール、root マネージャー、root 関連アプリ、Bootloader の状態を確認しない一般的なアプリです。このオプションはインターネット接続が必要です。</string>
     <string name="help_add_system_app">システムアプリを追加</string>
     <string name="help_add_system_app_description">特定のシステムアプリをアプリリストに追加します。</string>
-    <string name="help_set_keybox">AOSP と有効な Keybox</string>
-    <string name="help_set_keybox_description">Tricky Store の keybox.xml を置き換えます。インターネット接続が必要です。</string>
-    <string name="help_set_custom_keybox">カスタム Keybox を設定</string>
-    <string name="help_set_custom_keybox_description">デバイスのストレージからカスタム Keybox ファイルをインポートします。インポートは xml ファイルのみ対応しています。</string>
     <string name="help_set_security_patch">セキュリティパッチを設定</string>
     <string name="help_set_security_patch_description">カスタムセキュリティパッチの設定です。自動設定は PIF モジュールのセキュリティパッチを使用します。空白のまま保存すると自動設定を無効にします。</string>
     <string name="help_set_verified_boot_hash">確認付きブートハッシュを設定</string>
@@ -34,6 +30,7 @@
     <string name="functional_button_uninstall_webui">WebUI をアンインストール</string>
     <string name="functional_button_cancel">キャンセル</string>
     <string name="functional_button_confirm">確認</string>
+    <string name="functional_button_reset">リセット</string>
     <!-- Loading -->
     <string name="loading_loading">読み込み中...</string>
     <!-- Menu -->
@@ -43,6 +40,7 @@
     <string name="menu_select_denylist">DenyList から選択</string>
     <string name="menu_deselect_unnecessary">不要な選択を解除</string>
     <string name="menu_add_system_app">システムアプリを追加</string>
+    <string name="menu_keybox_local">ローカル</string>
     <string name="menu_set_verified_boot_hash">確認付きブートハッシュを設定</string>
     <string name="menu_set_security_patch">セキュリティパッチを設定</string>
     <string name="menu_set_devconfig">DevConfig を設定</string>
@@ -63,8 +61,6 @@
     <string name="prompt_aosp_key_set">AOSP Keybox の設定に成功しました。</string>
     <string name="prompt_key_set_error">Keybox の更新に失敗しました。</string>
     <string name="prompt_unknown_key_set">不明な Keybox の設定に成功しました。</string>
-    <string name="prompt_valid_key_set">有効な Keybox の設定に成功しました。</string>
-    <string name="prompt_no_valid">有効な Keybox がありません。</string>
     <string name="prompt_boot_hash_set">確認付きブートハッシュの更新に成功しました。</string>
     <string name="prompt_boot_hash_set_error">確認付きブートハッシュの更新に失敗しました。</string>
     <string name="prompt_saved_target">設定を target.txt に保存しました。</string>
@@ -109,6 +105,8 @@
     <string name="add_system_app_title">システムアプリを追加</string>
     <string name="add_system_app_add">追加</string>
     <string name="add_system_app_current_list">現在のシステムアプリリスト</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">削除の確認?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">アンインストールしますか？</string>
     <string name="confirmation_uninstall_message">Tricky Addon をアンインストールしてもよろしいですか</string>

@@ -12,10 +12,6 @@
     <string name="help_deselect_unnecessary_description">دسته غیرضروری: ماژول Xposed، مدیر root، برنامه‌های مرتبط با root، و برنامه‌های عمومی که هرگز وضعیت bootloader را بررسی نمی‌کنند. این گزینه نیاز به اتصال اینترنت دارد.</string>
     <string name="help_add_system_app">افزودن برنامه سیستمی</string>
     <string name="help_add_system_app_description">برنامه سیستمی خاص را به لیست برنامه‌ها اضافه کنید.</string>
-    <string name="help_set_keybox">تنظیم AOSP و Valid Keybox</string>
-    <string name="help_set_keybox_description">keybox.xml ذخیره tricky را جایگزین کنید. گزینه Valid keybox نیاز به اتصال اینترنت دارد و همیشه موجود نیست.</string>
-    <string name="help_set_custom_keybox">تنظیم Custom Keybox</string>
-    <string name="help_set_custom_keybox_description">keybox را از ذخیره‌سازی دستگاه خود وارد کنید. فقط فایل xml پشتیبانی می‌شود.</string>
     <string name="help_set_security_patch">تنظیم Security Patch</string>
     <string name="help_set_security_patch_description">Custom security patch spoof تنظیم کنید. Auto config از security patch ماژول PIF استفاده خواهد کرد. خالی بگذارید و ذخیره کنید تا auto config غیرفعال شود.</string>
     <string name="help_set_verified_boot_hash">تنظیم Verified Boot Hash</string>
@@ -33,6 +29,7 @@
     <string name="functional_button_uninstall_webui">حذف WebUI</string>
     <string name="functional_button_cancel">لغو</string>
     <string name="functional_button_confirm">تایید</string>
+    <string name="functional_button_reset">بازنشانی</string>
     <!-- Loading -->
     <string name="loading_loading">در حال بارگیری...</string>
     <!-- Menu -->
@@ -42,6 +39,7 @@
     <string name="menu_select_denylist">انتخاب از DenyList</string>
     <string name="menu_deselect_unnecessary">لغو انتخاب غیرضروری</string>
     <string name="menu_add_system_app">افزودن برنامه سیستمی</string>
+    <string name="menu_keybox_local">محلی</string>
     <string name="menu_set_verified_boot_hash">تنظیم Verified Boot Hash</string>
     <string name="menu_set_security_patch">تنظیم Security Patch</string>
     <string name="menu_about">درباره</string>
@@ -58,8 +56,6 @@
     <string name="prompt_aosp_key_set">AOSP keybox با موفقیت تنظیم شد</string>
     <string name="prompt_key_set_error">به‌روزرسانی keybox ناموفق بود</string>
     <string name="prompt_unknown_key_set">Unknown keybox با موفقیت تنظیم شد</string>
-    <string name="prompt_valid_key_set">Valid keybox با موفقیت تنظیم شد</string>
-    <string name="prompt_no_valid">هیچ valid keybox یافت نشد.</string>
     <string name="prompt_boot_hash_set">Verified Boot Hash با موفقیت ذخیره شد</string>
     <string name="prompt_boot_hash_set_error">به‌روزرسانی Verified Boot Hash ناموفق بود</string>
     <string name="prompt_saved_target">پیکربندی در target.txt ذخیره شد</string>
@@ -103,6 +99,8 @@
     <string name="add_system_app_title">افزودن برنامه سیستمی</string>
     <string name="add_system_app_add">افزودن</string>
     <string name="add_system_app_current_list">لیست فعلی برنامه‌های سیستمی</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">تایید حذف</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">تأیید حذف؟</string>
     <string name="confirmation_uninstall_message">آیا مطمئن هستید که می‌خواهید Tricky Addon را حذف کنید</string>
