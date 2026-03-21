@@ -14,7 +14,7 @@
     <string name="help_add_system_app">Add System App</string>
     <string name="help_add_system_app_description">Add specific system app to app list.</string>
     <string name="help_set_keybox">Set Keybox</string>
-    <string name="help_set_keybox_description">Replace tricky store keybox.xml with:</string>
+    <string name="help_set_keybox_description">Replace TrickyStore keybox with:</string>
     <string name="help_set_keybox_aosp">AOSP - the default keybox comes with TrickyStore.</string>
     <string name="help_set_keybox_unknown">Unknown - self-signed and not valid for Play Integrity verdict.</string>
     <string name="help_set_keybox_local">Local - select keybox from your device.</string>
