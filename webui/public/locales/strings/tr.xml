@@ -9,14 +9,10 @@
     <string name="help_save_and_update_description">Mevcut yapılandırmayı target.txt dosyasına kaydet.</string>
     <string name="help_select_denylist">Reddetme Listesinden Seç</string>
     <string name="help_select_denylist_description">Yalnızca Magisk&apos;te mevcut, Reddetme Listesindeki uygulamaları seç. Tavsiye edilir.</string>
-    <string name="help_deselect_unnecessary">Gereksizleri Seçme</string>
+    <string name="help_deselect_unnecessary">Gereksizleri Çıkar</string>
     <string name="help_deselect_unnecessary_description">Gereksiz kategori: Xposed modülü, root yöneticisi, root ile ilgili uygulamalar ve asla bootloader durumunu kontrol etmeyen genel uygulamalar. Bu seçenek internet bağlantısı gerektirir.</string>
     <string name="help_add_system_app">Sistem Uygulaması Ekle</string>
     <string name="help_add_system_app_description">Belirli bir sistem uygulamasını uygulama listesine ekleyin.</string>
-    <string name="help_set_keybox">AOSP &amp; Geçerli Keybox Ayarla</string>
-    <string name="help_set_keybox_description">Tricky Store&apos;daki keybox.xml dosyasını değiştirir. Geçerli keybox seçeneği internet bağlantısı gerektirir.</string>
-    <string name="help_set_custom_keybox">Özel Keybox Ayarla</string>
-    <string name="help_set_custom_keybox_description">Cihaz depolamasından bir keybox dosyasını içe aktarın. Sadece xml dosyaları desteklenir.</string>
     <string name="help_set_security_patch">Güvenlik Yaması Ayarla</string>
     <string name="help_set_security_patch_description">Özel güvenlik yamasını ayarlayın. Otomatik yapılandırma PIF modülünün güvenlik yamasını kullanacaktır. Boş bırakın ve kaydedin ki otomatik yapılandırma devre dışı bırakılsın.</string>
     <string name="help_set_verified_boot_hash">Doğrulanmış Boot Hash Ayarla</string>
@@ -32,8 +28,10 @@
     <!-- Functional Button -->
     <string name="functional_button_save">Kaydet</string>
     <string name="functional_button_uninstall_webui">WebUI&apos;ı Kaldır</string>
+    <string name="functional_button_close">Kapat</string>
     <string name="functional_button_cancel">İptal</string>
     <string name="functional_button_confirm">Onayla</string>
+    <string name="functional_button_reset">Sıfırla</string>
     <!-- Loading -->
     <string name="loading_loading">Yükleniyor...</string>
     <!-- Menu -->
@@ -41,11 +39,17 @@
     <string name="menu_select_all">Tümünü Seç</string>
     <string name="menu_deselect_all">Tüm Seçimleri Kaldır</string>
     <string name="menu_select_denylist">Reddetme Listesinden Seç</string>
-    <string name="menu_deselect_unnecessary">Gereksizleri Seçme</string>
+    <string name="menu_deselect_unnecessary">Gereksizleri Çıkar</string>
     <string name="menu_add_system_app">Sistem Uygulaması Ekle</string>
+    <string name="menu_keybox">Keybox</string>
+    <string name="menu_keybox_aosp">AOSP</string>
+    <string name="menu_keybox_unknown">Bilinmeyen</string>
+    <string name="menu_keybox_local">Yerel</string>
     <string name="menu_set_verified_boot_hash">Doğrulanmış Boot Hash Ayarla</string>
     <string name="menu_set_security_patch">Güvenlik Yaması Ayarla</string>
     <string name="menu_set_devconfig">DevConfig Ayarla</string>
+    <string name="menu_help">Yardım</string>
+    <string name="menu_language">Dil</string>
     <string name="menu_about">Hakkında</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
@@ -56,6 +60,7 @@
     <string name="about_by">tarafından</string>
     <string name="about_telegram_channel">Telegram Kanalı</string>
     <string name="about_canary_update">En son canary sürümüne güncelleyin</string>
+    <string name="about_translation_update">Çeviri paketini güncelle</string>
     <string name="about_disclaimer">Bu modül, Tricky Store modülünün bir parçası değildir. Herhangi bir sorun yaşarsanız, lütfen bunu Tricky Store&apos;a rapor etmeyin.</string>
     <string name="about_acknowledgment">Teşekkürler</string>
     <!-- Prompt -->
@@ -63,8 +68,6 @@
     <string name="prompt_aosp_key_set">AOSP keybox başarıyla ayarlandı</string>
     <string name="prompt_key_set_error">Keybox güncellenemedi</string>
     <string name="prompt_unknown_key_set">Bilinmeyen keybox başarıyla ayarlandı</string>
-    <string name="prompt_valid_key_set">Geçerli keybox başarıyla ayarlandı</string>
-    <string name="prompt_no_valid">Geçerli keybox bulunamadı.</string>
     <string name="prompt_boot_hash_set">Doğrulanmış Boot Hash başarıyla kaydedildi</string>
     <string name="prompt_boot_hash_set_error">Doğrulanmış Boot Hash güncellenemedi</string>
     <string name="prompt_saved_target">Yapılandırma target.txt dosyasına kaydedildi</string>
@@ -82,6 +85,8 @@
     <string name="prompt_install_fail">Yükleme başarısız oldu, lütfen manuel olarak güncelleyin</string>
     <string name="prompt_rebooting">Yeniden başlatılıyor...</string>
     <string name="prompt_reboot_fail">Yeniden başlatma başarısız, lütfen manuel olarak yeniden başlatın</string>
+    <string name="prompt_translation_updated">Çeviri paketi başarıyla güncellendi</string>
+    <string name="prompt_translation_update_failed">Çeviri paketi güncellenemedi</string>
     <string name="prompt_custom_key_set">Özel keybox başarıyla ayarlandı</string>
     <string name="prompt_custom_key_set_error">Özel keybox ayarlanamadı</string>
     <string name="prompt_no_file_selected">Dosya seçilmedi</string>
@@ -109,8 +114,14 @@
     <string name="add_system_app_title">Sistem Uygulaması Ekle</string>
     <string name="add_system_app_add">Ekle</string>
     <string name="add_system_app_current_list">Mevcut Sistem Uygulamaları Listesi</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">Kaldırmayı Onayla?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Kaldırma İşlemi Onaylansın mı?</string>
     <string name="confirmation_uninstall_message">Tricky Addon&apos;u kaldırmak istediğinizden emin misiniz</string>
     <!-- Mode dialog -->
+    <string name="mode_dialog_title">Mod</string>
+    <string name="mode_auto">Otomatik</string>
+    <string name="mode_certificate_generating">Cert Generating (!)</string>
+    <string name="mode_leaf_hack">Leaf Hack (?)</string>
 </resources>

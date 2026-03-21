@@ -12,10 +12,6 @@
     <string name="help_deselect_unnecessary_description">Lazımsız kateqoriya: Xposed modulu, kök meneceri, kök ilə əlaqəli tətbiqlər və heç vaxt bootloader statusunu yoxlamayan ümumi tətbiqlər. Bu seçim İnternet bağlantısı tələb edir.</string>
     <string name="help_add_system_app">Sistem Tətbiqi Əlavə et</string>
     <string name="help_add_system_app_description">Müəyyən bir sistem tətbiqini tətbiq siyahısına əlavə et.</string>
-    <string name="help_set_keybox">AOSP &amp; Etibarlı Keybox təyin et</string>
-    <string name="help_set_keybox_description">Tricky store keybox.xml-ni dəyişdir. Etibarlı keybox seçimi İnternet bağlantısı tələb edir.</string>
-    <string name="help_set_custom_keybox">Özəl Keybox təyin et</string>
-    <string name="help_set_custom_keybox_description">Keybox-u cihaz yaddaşından idxal et. Yalnız xml faylını dəstəkləyir.</string>
     <string name="help_set_security_patch">Təhlükəsizlik Təkmilləşdirməsini təyin et</string>
     <string name="help_set_security_patch_description">Xüsusi təhlükəsizlik təkmilləşdirməsini dəyişdir. Avtomatik konfiqurasiya, PIF modulundan təhlükəsizlik təkmilləşdirməsini istifadə edəcək. Avtomatik konfiqurasiyanı dayandırmaq üçün boş buraxın və yadda saxlayın.</string>
     <string name="help_set_verified_boot_hash">Təsdiqlənmiş Boot Hash təyin et</string>
@@ -33,6 +29,7 @@
     <string name="functional_button_uninstall_webui">WebUI-ni sil</string>
     <string name="functional_button_cancel">İmtina et</string>
     <string name="functional_button_confirm">Təsdiqlə</string>
+    <string name="functional_button_reset">Sıfırla</string>
     <!-- Loading -->
     <string name="loading_loading">Yüklənir...</string>
     <!-- Menu -->
@@ -42,6 +39,7 @@
     <string name="menu_select_denylist">DenyList-dən seç</string>
     <string name="menu_deselect_unnecessary">Lazımsızları seçmə</string>
     <string name="menu_add_system_app">Sistem Tətbiqi Əlavə et</string>
+    <string name="menu_keybox_local">Lokal</string>
     <string name="menu_set_verified_boot_hash">Təsdiqlənmiş Boot Hash təyin et</string>
     <string name="menu_set_security_patch">Təhlükəsizlik Təkmilləşdirməsini təyin et</string>
     <string name="menu_about">Haqqında</string>
@@ -60,8 +58,6 @@
     <string name="prompt_aosp_key_set">AOSP keybox uğurla təyin olundu</string>
     <string name="prompt_key_set_error">Keybox-u yeniləmək mümkün olmadı</string>
     <string name="prompt_unknown_key_set">Naməlum keybox uğurla təyin olundu</string>
-    <string name="prompt_valid_key_set">Etibarlı keybox uğurla təyin olundu</string>
-    <string name="prompt_no_valid">Etibarlı keybox tapılmadı.</string>
     <string name="prompt_boot_hash_set">Təsdiqlənmiş Boot Hash uğurla yadda saxlanıldı</string>
     <string name="prompt_boot_hash_set_error">Təsdiqlənmiş Boot Hash yenilənə bilmədi</string>
     <string name="prompt_saved_target">Konfiqurasiya target.txt-yə yadda saxlanıldı</string>
@@ -103,6 +99,8 @@
     <string name="add_system_app_title">Sistem Tətbiqi Əlavə et</string>
     <string name="add_system_app_add">Əlavə et</string>
     <string name="add_system_app_current_list">Cari Sistem Tətbiqi Siyahısı</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">Çıxarılmanı Təsdiqlə</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Silinməni Təsdiqləyirsiniz?</string>
     <string name="confirmation_uninstall_message">Tricky Addon-u silmək istədiyinizə əminsinizmi?</string>

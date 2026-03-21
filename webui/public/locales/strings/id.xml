@@ -13,10 +13,6 @@
     <string name="help_deselect_unnecessary_description">Kategori tidak perlu: Modul Xposed, pengelola root, aplikasi terkait root, dan aplikasi yang tidak pernah memeriksa status bootloader. Opsi ini memerlukan koneksi internet.</string>
     <string name="help_add_system_app">Tambahkan Aplikasi Sistem</string>
     <string name="help_add_system_app_description">Tambahkan aplikasi sistem tertentu ke daftar aplikasi.</string>
-    <string name="help_set_keybox">Ganti Keybox AOSP &amp; Valid</string>
-    <string name="help_set_keybox_description">Ganti file keybox.xml bawaan. Opsi ini memerlukan koneksi internet.</string>
-    <string name="help_set_custom_keybox">Gunakan Keybox Kustom</string>
-    <string name="help_set_custom_keybox_description">Impor keybox dari penyimpanan perangkat. Hanya mendukung file XML.</string>
     <string name="help_set_security_patch">Atur Patch Keamanan</string>
     <string name="help_set_security_patch_description">Sesuaikan patch keamanan. Konfigurasi otomatis akan menggunakan patch dari modul PIF. Kosongkan dan simpan untuk menonaktifkan konfigurasi otomatis.</string>
     <string name="help_set_verified_boot_hash">Atur Verified Boot Hash</string>
@@ -34,6 +30,7 @@
     <string name="functional_button_uninstall_webui">Copot Pemasangan WebUI</string>
     <string name="functional_button_cancel">Batal</string>
     <string name="functional_button_confirm">Konfirmasi</string>
+    <string name="functional_button_reset">Ulang</string>
     <!-- Loading -->
     <string name="loading_loading">Memuat...</string>
     <!-- Menu -->
@@ -43,6 +40,7 @@
     <string name="menu_select_denylist">Pilih dari Denylist</string>
     <string name="menu_deselect_unnecessary">Batalkan Pilihan yang Tidak Perlu</string>
     <string name="menu_add_system_app">Tambahkan Aplikasi Sistem</string>
+    <string name="menu_keybox_local">Lokal</string>
     <string name="menu_set_verified_boot_hash">Atur Verified Boot Hash</string>
     <string name="menu_set_security_patch">Atur Patch Keamanan</string>
     <string name="menu_set_devconfig">Atur Konfigurasi Pengembang</string>
@@ -63,8 +61,6 @@
     <string name="prompt_aosp_key_set">Keybox AOSP berhasil digunakan</string>
     <string name="prompt_key_set_error">Gagal memperbarui keybox</string>
     <string name="prompt_unknown_key_set">Keybox tidak dikenal berhasil digunakan</string>
-    <string name="prompt_valid_key_set">Keybox valid berhasil digunakan</string>
-    <string name="prompt_no_valid">Tidak ada keybox valid.</string>
     <string name="prompt_boot_hash_set">Verified Boot Hash berhasil disimpan</string>
     <string name="prompt_boot_hash_set_error">Gagal memperbarui Verified Boot Hash</string>
     <string name="prompt_saved_target">Konfigurasi disimpan ke target.txt</string>
@@ -109,6 +105,8 @@
     <string name="add_system_app_title">Tambah Aplikasi Sistem</string>
     <string name="add_system_app_add">Tambah</string>
     <string name="add_system_app_current_list">Daftar Aplikasi Sistem Saat Ini</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">Konfirmasi Hapus?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Konfirmasi Hapus?</string>
     <string name="confirmation_uninstall_message">Apakah Anda yakin ingin menghapus Tricky Addon</string>

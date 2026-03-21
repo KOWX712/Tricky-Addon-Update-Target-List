@@ -13,10 +13,6 @@
     <string name="help_deselect_unnecessary_description">Необов&apos;язкова категорія: Модуль Xposed, рут-менеджер, програми, пов&apos;язані з рутом, і загальні програми, які ніколи не перевіряють стан завантажувача. Ця опція вимагає підключення до інтернету.</string>
     <string name="help_add_system_app">Додати системний застосунок</string>
     <string name="help_add_system_app_description">Додати конкретний системний застосунок до списку.</string>
-    <string name="help_set_keybox">Встановити AOSP та валідний ключ</string>
-    <string name="help_set_keybox_description">Замінити tricky store keybox.xml. Для використання валідного ключа потрібне з&apos;єднання з інтернетом.</string>
-    <string name="help_set_custom_keybox">Встановити власний ключ</string>
-    <string name="help_set_custom_keybox_description">Імпортувати ключі зі сховища вашого пристрою. Підтримуються лише xml файли.</string>
     <string name="help_set_security_patch">Встановити патч безпеки</string>
     <string name="help_set_security_patch_description">Встановити власну підміну патчу безпеки. Автоконфігурація використовуватиме патч безпеки з модуля PIF. Залиште порожнім і збережіть, щоб вимкнути автоконфігурацію.</string>
     <string name="help_set_verified_boot_hash">Встановити перевірений хеш завантаження</string>
@@ -35,6 +31,7 @@
     <string name="functional_button_close">Закрити</string>
     <string name="functional_button_cancel">Скасувати</string>
     <string name="functional_button_confirm">Підтвердити</string>
+    <string name="functional_button_reset">Скинути</string>
     <!-- Loading -->
     <string name="loading_loading">Завантаження...</string>
     <!-- Menu -->
@@ -46,8 +43,7 @@
     <string name="menu_add_system_app">Додати системний застосунок</string>
     <string name="menu_keybox">Ключ</string>
     <string name="menu_keybox_unknown">Невідомий</string>
-    <string name="menu_keybox_valid">Валідний</string>
-    <string name="menu_keybox_custom">Користувацький</string>
+    <string name="menu_keybox_local">Локальне</string>
     <string name="menu_set_verified_boot_hash">Встановити перевірений хеш завантаження</string>
     <string name="menu_set_security_patch">Встановити патч безпеки</string>
     <string name="menu_set_devconfig">Встановити конфігурацію розробника</string>
@@ -71,8 +67,6 @@
     <string name="prompt_aosp_key_set">Ключ AOSP успішно встановлено</string>
     <string name="prompt_key_set_error">Не вдалося оновити ключ</string>
     <string name="prompt_unknown_key_set">Невідомий ключ успішно встановлено</string>
-    <string name="prompt_valid_key_set">Валідний ключ успішно встановлений</string>
-    <string name="prompt_no_valid">Не знайдено жодного дійсного ключа.</string>
     <string name="prompt_boot_hash_set">Перевірений хеш завантаження успішно збережено</string>
     <string name="prompt_boot_hash_set_error">Не вдалося оновити перевірений хеш завантаження</string>
     <string name="prompt_saved_target">Конфігурацію збережено до файлу target.txt</string>
@@ -119,6 +113,8 @@
     <string name="add_system_app_title">Додати системний застосунок</string>
     <string name="add_system_app_add">Add</string>
     <string name="add_system_app_current_list">Поточний список системних застосунків</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_remove_title">Підтвердити видалення?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Підтверджуєте видалення?</string>
     <string name="confirmation_uninstall_message">Ви дійсно хочете видалити Tricky Addon?</string>

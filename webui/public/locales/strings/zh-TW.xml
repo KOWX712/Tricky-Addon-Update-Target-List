@@ -13,10 +13,12 @@
     <string name="help_deselect_unnecessary_description">非必要分類：Xposed 模組、root 管理器、與 root 相關的應用，以及從不檢查 bootloader 狀態的通用應用。此功能需連網使用。</string>
     <string name="help_add_system_app">添加系統應用</string>
     <string name="help_add_system_app_description">添加特定系統應用到應用列表。</string>
-    <string name="help_set_keybox">設置 AOSP &amp; 有效密鑰</string>
-    <string name="help_set_keybox_description">替換 Tricky Store 的密鑰（keybox.xml）。有效密鑰選項需連網使用，不保證能一直提供。</string>
-    <string name="help_set_custom_keybox">設置自定義密鑰</string>
-    <string name="help_set_custom_keybox_description">從設備存儲導入自定義密鑰。僅支持 xml 文件。</string>
+    <string name="help_set_keybox">設定密鑰</string>
+    <string name="help_set_keybox_description">替換 TrickyStore 的密鑰為：</string>
+    <string name="help_set_keybox_aosp">AOSP - TrickyStore 的預設密鑰。</string>
+    <string name="help_set_keybox_unknown">未知 - 自签名密钥，不符合 Play Intergrity 要求。</string>
+    <string name="help_set_keybox_local">未知 - 自簽名金鑰，不符合 Play Intergrity 要求。</string>
+    <string name="help_set_keybox_custom">自訂 - 透過線上取得自訂金鑰提供者。</string>
     <string name="help_set_security_patch">設置安全補丁</string>
     <string name="help_set_security_patch_description">設置自定義安全補丁。自動配置將使用 PIF 模組的安全補丁。留空保存則禁用自動配置。</string>
     <string name="help_set_verified_boot_hash">設置哈希值</string>
@@ -35,6 +37,8 @@
     <string name="functional_button_close">關閉</string>
     <string name="functional_button_cancel">取消</string>
     <string name="functional_button_confirm">確認</string>
+    <string name="functional_button_reset">重置</string>
+    <string name="functional_button_remove">刪除</string>
     <!-- Loading -->
     <string name="loading_loading">加載中...</string>
     <!-- Menu -->
@@ -47,8 +51,7 @@
     <string name="menu_keybox">密鑰</string>
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">未知</string>
-    <string name="menu_keybox_valid">有效</string>
-    <string name="menu_keybox_custom">自定義</string>
+    <string name="menu_keybox_local">本機</string>
     <string name="menu_set_verified_boot_hash">設置哈希值</string>
     <string name="menu_set_security_patch">設置安全補丁</string>
     <string name="menu_set_devconfig">設定 DevConfig</string>
@@ -72,8 +75,6 @@
     <string name="prompt_aosp_key_set">成功設置 AOSP 密鑰</string>
     <string name="prompt_key_set_error">更新密鑰失敗</string>
     <string name="prompt_unknown_key_set">成功設置未知密鑰</string>
-    <string name="prompt_valid_key_set">成功設置有效密鑰</string>
-    <string name="prompt_no_valid">未找到有效密鑰。</string>
     <string name="prompt_boot_hash_set">哈希值重置成功</string>
     <string name="prompt_boot_hash_set_error">哈希值重置失敗</string>
     <string name="prompt_saved_target">成功保存配置</string>
@@ -94,7 +95,11 @@
     <string name="prompt_translation_updated">翻譯包更新成功</string>
     <string name="prompt_translation_update_failed">翻譯包更新失敗</string>
     <string name="prompt_custom_key_set">成功設置自定義密鑰</string>
-    <string name="prompt_custom_key_set_error">設置自定義密鑰失敗</string>
+    <string name="prompt_custom_key_set_error">自定義密鑰設置失敗</string>
+    <string name="prompt_custom_saved">已儲存自訂密鑰入口</string>
+    <string name="prompt_custom_fetch_error">取得密鑰失敗</string>
+    <string name="prompt_custom_invalid_script">腳本不被允許</string>
+    <string name="prompt_custom_removed">已移除自訂密鑰入口</string>
     <string name="prompt_no_file_selected">未選擇文件</string>
     <string name="prompt_system_app_not_found">未找到該系統應用</string>
     <string name="prompt_system_app_error">系統應用添加失敗</string>
@@ -120,6 +125,18 @@
     <string name="add_system_app_title">添加系統應用</string>
     <string name="add_system_app_add">添加</string>
     <string name="add_system_app_current_list">當前系統應用列表</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_dialog_title">自訂密鑰提供者</string>
+    <string name="customkb_name_placeholder">名稱</string>
+    <string name="customkb_script_placeholder">解碼腳本</string>
+    <string name="customkb_export_success">配置已儲存至 %s</string>
+    <string name="customkb_export_error">配置匯出失敗</string>
+    <string name="customkb_export_empty">沒有任何東西可匯出</string>
+    <string name="customkb_import_success">已導入配置</string>
+    <string name="customkb_import_error">設定檔無效</string>
+    <string name="customkb_remove_title">確認刪除？</string>
+    <string name="customkb_remove_message">移除此自定义密钥入口？</string>
+    <string name="customkb_reset_message">重置自訂密鑰入口？</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">確認卸載？</string>
     <string name="confirmation_uninstall_message">您確定要卸載 TS 插件嗎</string>

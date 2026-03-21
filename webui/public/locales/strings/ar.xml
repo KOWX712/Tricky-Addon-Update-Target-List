@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="system_default">الإعدادات الافتراضية للنظام</string>
+    <string name="system_default">النظام الافتراضي</string>
     <string name="more_language">المزيد</string>
     <!-- Header -->
     <string name="header_title">Tricky Addon</string>
@@ -13,10 +13,6 @@
     <string name="help_deselect_unnecessary_description">فئة غير ضرورية: وحدة Xposed، مدير الجذر، التطبيقات المتعلقة بالجذر، والتطبيقات العامة التي لا تتحقق أبدًا من حالة bootloader. يتطلب هذا الخيار اتصالاً بالإنترنت.</string>
     <string name="help_add_system_app">إضافة تطبيق نظام</string>
     <string name="help_add_system_app_description">إضافة تطبيق نظام محدد إلى قائمة التطبيقات.</string>
-    <string name="help_set_keybox">تعيين AOSP و Keybox صالح</string>
-    <string name="help_set_keybox_description">استبدال tricky store keybox.xml. يتطلب خيار keybox الصالح اتصالاً بالإنترنت.</string>
-    <string name="help_set_custom_keybox">تعيين Keybox مخصص</string>
-    <string name="help_set_custom_keybox_description">استيراد keybox من تخزين جهازك. يدعم فقط ملف xml.</string>
     <string name="help_set_security_patch">تعيين تصحيح الأمان</string>
     <string name="help_set_security_patch_description">تعيين تصحيح أمان مخصص. سيستخدم التكوين التلقائي تصحيح الأمان من وحدة PIF. اتركه فارغًا واحفظه لتعطيل التكوين التلقائي.</string>
     <string name="help_set_verified_boot_hash">تعيين تجزئة التمهيد الموثوق</string>
@@ -35,6 +31,7 @@
     <string name="functional_button_close">غلق</string>
     <string name="functional_button_cancel">إلغاء</string>
     <string name="functional_button_confirm">تأكيد</string>
+    <string name="functional_button_reset">إعادة الضبط</string>
     <!-- Loading -->
     <string name="loading_loading">جارٍ التحميل...</string>
     <!-- Menu -->
@@ -47,8 +44,7 @@
     <string name="menu_keybox">Keybox</string>
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">غير معروف</string>
-    <string name="menu_keybox_valid">صالح</string>
-    <string name="menu_keybox_custom">مخصص</string>
+    <string name="menu_keybox_local">محلي</string>
     <string name="menu_set_verified_boot_hash">تعيين تجزئة التمهيد الموثوق</string>
     <string name="menu_set_security_patch">تعيين تصحيح الأمان</string>
     <string name="menu_set_devconfig">تعيين DevConfig</string>
@@ -72,8 +68,6 @@
     <string name="prompt_aosp_key_set">تم تعيين keybox AOSP بنجاح</string>
     <string name="prompt_key_set_error">فشل في تحديث keybox</string>
     <string name="prompt_unknown_key_set">تم تعيين Keybox غير معروف بنجاح</string>
-    <string name="prompt_valid_key_set">تم تعيين keybox صالح بنجاح</string>
-    <string name="prompt_no_valid">لم يتم العثور على keybox صالح.</string>
     <string name="prompt_boot_hash_set">تم حفظ تجزئة التمهيد الموثوق بنجاح</string>
     <string name="prompt_boot_hash_set_error">فشل في تحديث تجزئة التمهيد الموثوق</string>
     <string name="prompt_saved_target">تم حفظ التكوين إلى target.txt</string>
@@ -95,6 +89,10 @@
     <string name="prompt_translation_update_failed">فشل تحديث حزمة ملفات الترجمة</string>
     <string name="prompt_custom_key_set">تم تعيين keybox مخصص بنجاح</string>
     <string name="prompt_custom_key_set_error">فشل في تعيين keybox مخصص</string>
+    <string name="prompt_custom_saved">تم حفظ مدخل keybox مخصص</string>
+    <string name="prompt_custom_fetch_error">فشل الحصول على keybox</string>
+    <string name="prompt_custom_invalid_script">سكربت غير مقبول</string>
+    <string name="prompt_custom_removed">تم حذف مدخل keybox مخصص</string>
     <string name="prompt_no_file_selected">لم يتم اختيار أي ملف</string>
     <string name="prompt_system_app_not_found">لم يتم العثور على تطبيق النظام</string>
     <string name="prompt_system_app_error">فشل في إضافة تطبيق النظام</string>
@@ -120,6 +118,17 @@
     <string name="add_system_app_title">إضافة تطبيق نظام</string>
     <string name="add_system_app_add">إضافة</string>
     <string name="add_system_app_current_list">قائمة تطبيقات النظام الحالية</string>
+    <!-- CustomKB Dialog -->
+    <string name="customkb_dialog_title">مزود الـkeybox المخصص</string>
+    <string name="customkb_name_placeholder">الاسم</string>
+    <string name="customkb_script_placeholder">سكربت فك التشفير</string>
+    <string name="customkb_export_success">تم استخراج مِلَفّ الإعداد في %s</string>
+    <string name="customkb_export_error">فشل استخراج مِلَفّ الإعداد</string>
+    <string name="customkb_export_empty">لا يوجد شئ لاستخراجه</string>
+    <string name="customkb_import_success">تم استيراد مِلَفّ الإعداد</string>
+    <string name="customkb_import_error">مِلَفّ إعداد غير صالح</string>
+    <string name="customkb_remove_title">تأكيد الحذف؟؟</string>
+    <string name="customkb_remove_message">حذف مزود الـkeybox المخصص؟</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">تأكيد إلغاء التثبيت؟</string>
     <string name="confirmation_uninstall_message">هل أنت متأكد أنك تريد إلغاء تثبيت Tricky Addon</string>
