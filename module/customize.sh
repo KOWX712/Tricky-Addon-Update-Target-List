@@ -4,6 +4,10 @@ CONFIG_DIR="/data/adb/tricky_store"
 MODID=`grep_prop id $TMPDIR/module.prop`
 NEW_MODID=".TA_utl"
 
+# Hot install
+export MODULE_HOT_INSTALL_REQUEST="true"
+export MODULE_HOT_RUN_SCRIPT="hotinstall.sh"
+
 MIN_KERNELSU_VERSION=32234
 MIN_APATCH_VERSION=11159
 

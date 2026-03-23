@@ -63,3 +63,5 @@ empty_reset_prop "ro.boot.vbmeta.invalidate_on_error" "yes"
 empty_reset_prop "ro.boot.vbmeta.avb_version" "1.0"
 empty_reset_prop "ro.boot.vbmeta.hash_alg" "sha256"
 empty_reset_prop "ro.boot.vbmeta.size" "4096"
+
+resetprop -c || true

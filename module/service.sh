@@ -55,7 +55,7 @@ else
 fi
 
 # Hide module from APatch, KernelSU, KSUWebUIStandalone, MMRL
-rm -f "$MODPATH/module.prop"
+nohup sh -c "sleep 3; rm -f $MODPATH/module.prop" &
 
 # Symlink tricky store
 if [ -f "$MODPATH/action.sh" ] && [ ! -e "$TS/action.sh" ]; then
