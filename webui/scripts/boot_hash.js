@@ -37,7 +37,8 @@ saveButton.addEventListener("click", async () => {
             echo "${inputValue}" > /data/adb/boot_hash
             chmod 644 /data/adb/boot_hash
         }
-    `, { env: { PATH: "/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk:$PATH" } })
+        resetprop -c || true
+    `, { env: { PATH: "$PATH:/data/adb/ksu/bin:/data/adb/ap/bin:/data/adb/magisk" } })
         .then(() => {
             showPrompt(getString("prompt_boot_hash_set"));
             bootHashDialog.close();
