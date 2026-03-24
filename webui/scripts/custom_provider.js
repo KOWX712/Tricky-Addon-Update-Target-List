@@ -53,10 +53,11 @@ function renderCustomKeyboxEntries() {
 
     if (entries.length === 0) return;
 
-    entries.forEach(entry => {
+    entries.forEach((entry, index) => {
         const menuItem = document.createElement('md-menu-item');
         menuItem.className = 'customkb-entry';
-        menuItem.innerHTML = `<div slot="headline">${entry.name}</div>`;
+        if (index === 0) menuItem.classList.add('first');
+        menuItem.textContent = entry.name;
         customkb.parentNode.insertBefore(menuItem, customkb);
         menuItem.onclick = () => fetchCustomKeybox(entry.link, entry.script);
         menuItem.oncontextmenu = (e) => {

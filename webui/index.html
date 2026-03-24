@@ -29,36 +29,33 @@
                 </div>
                 <md-menu-item id="select-denylist" data-i18n="menu_select_denylist"></md-menu-item>
                 <md-menu-item id="deselect-unnecessary" data-i18n="menu_deselect_unnecessary"></md-menu-item>
-                <md-menu-item id="add-system-app" data-i18n="menu_add_system_app"></md-menu-item>
-                <md-divider role="separator" tabindex="-1"></md-divider>
+                <md-menu-item id="add-system-app" data-i18n="menu_add_system_app" class="last"></md-menu-item>
                 <md-sub-menu hover-close-delay="0">
-                    <md-menu-item slot="item" class="sub-menu-entry">
+                    <md-menu-item slot="item" class="sub-menu-entry first">
                         <div slot="headline" data-i18n="menu_keybox"></div>
                         <md-icon slot="start" class="ltr-icon">chevron_left</md-icon>
                         <md-icon slot="start" class="rtl-icon">chevron_right</md-icon>
                     </md-menu-item>
-                    <md-menu positioning="popover" slot="menu">
-                        <md-menu-item id="aospkb" data-i18n="menu_keybox_aosp"></md-menu-item>
+                    <md-menu positioning="popover" slot="menu" x-offset="2">
+                        <md-menu-item id="aospkb" data-i18n="menu_keybox_aosp" class="first"></md-menu-item>
                         <md-menu-item id="devicekb" data-i18n="menu_keybox_unknown"></md-menu-item>
-                        <md-menu-item id="localkb" data-i18n="menu_keybox_local"></md-menu-item>
-                        <md-divider id="customkb-divider" role="separator" tabindex="-1"></md-divider>
-                        <md-menu-item id="customkb" class="icon-item">
+                        <md-menu-item id="localkb" data-i18n="menu_keybox_local" class="last"></md-menu-item>
+                        <md-menu-item id="customkb" class="icon-item last">
                             <div><md-filled-tonal-icon-button><md-icon>add</md-icon></md-filled-tonal-icon-button></div>
                         </md-menu-item>
                     </md-menu>
                 </md-sub-menu>
                 <md-menu-item id="boot-hash" data-i18n="menu_set_verified_boot_hash"></md-menu-item>
-                <md-menu-item id="security-patch" data-i18n="menu_set_security_patch"></md-menu-item>
-                <md-divider role="separator" tabindex="-1"></md-divider>
-                <md-menu-item id="help" data-i18n="menu_help"></md-menu-item>
+                <md-menu-item id="security-patch" data-i18n="menu_set_security_patch" class="last"></md-menu-item>
+                <md-menu-item id="help" data-i18n="menu_help" class="first"></md-menu-item>
                 <md-sub-menu hover-close-delay="0">
                     <md-menu-item slot="item" class="sub-menu-entry">
                         <div slot="headline" data-i18n="menu_language"></div>
                         <md-icon slot="end">language</md-icon>
                     </md-menu-item>
-                    <md-menu positioning="popover" slot="menu" id="language-menu"></md-menu>
+                    <md-menu positioning="popover" slot="menu" id="language-menu" x-offset="2"></md-menu>
                 </md-sub-menu>
-                <md-menu-item id="about" data-i18n="menu_about"></md-menu-item>
+                <md-menu-item id="about" data-i18n="menu_about" class="last"></md-menu-item>
             </md-menu>
         </div>
         <md-outlined-text-field class="search-input" id="search" data-i18n="search_bar_search_placeholder" placeholder="Search">
@@ -179,7 +176,7 @@
                 <md-outlined-text-field id="boot-hash-input" type="textarea" rows="4" placeholder="Paste your verified Boot Hash here" data-i18n="boot_hash_input_placeholder" oninput="window.trimInput(this)"></md-outlined-text-field>
             </div>
             <div slot="actions">
-                <md-text-button id="cancel-boot-hash" data-i18n="functional_button_cancel"></md-text-button>
+                <md-outlined-button id="cancel-boot-hash" data-i18n="functional_button_cancel"></md-outlined-button>
                 <md-filled-button id="boot-hash-save-button" data-i18n="functional_button_save"></md-filled-button>
             </div>
         </md-dialog>
@@ -317,7 +314,7 @@
                 <div class="current-system-app-list-content"></div>
             </div>
             <div slot="actions">
-                <md-text-button id="cancel-add-system-app" data-i18n="functional_button_cancel"></md-text-button>
+                <md-outlined-button id="cancel-add-system-app" data-i18n="functional_button_cancel"></md-outlined-button>
                 <md-filled-button id="add-system-app-button" data-i18n="add_system_app_add"></md-filled-button>
             </div>
         </md-dialog>

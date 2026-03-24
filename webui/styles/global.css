@@ -1,7 +1,6 @@
 @import './theme.css';
 @import './about.css';
 @import './applist.css';
-@import './boot_hash.css';
 @import './file_selector.css';
 @import './header.css';
 @import './security_patch.css';
@@ -39,14 +38,6 @@ body {
 
 .floating-btn.hide {
     transform: translateY(200%);
-}
-
-.top-inset {
-    padding-top: var(--top-inset);
-}
-
-.bottom-inset {
-    padding-bottom: var(--bottom-inset);
 }
 
 .dialog-wrapper {
@@ -143,10 +134,18 @@ body {
     margin-top: 16px;
 }
 
+md-outlined-text-field {
+    --md-outlined-text-field-container-shape: 16px;
+}
+
 .spacer {
     flex: 1;
 }
 
 .hidden {
     display: none;
+}
+
+.top-inset {
+    margin-top: var(--top-inset);
 }

@@ -177,7 +177,7 @@ async function generateLanguageMenu() {
 
     // Add System Default option
     const defaultButton = document.createElement('md-menu-item');
-    defaultButton.className = 'top-inset';
+    defaultButton.className = 'first top-inset';
     defaultButton.setAttribute('data-i18n', 'system_default');
     defaultButton.onclick = () => setLanguage('default');
     languageMenu.appendChild(defaultButton);
@@ -197,7 +197,7 @@ async function generateLanguageMenu() {
 
     // Add translation guide button
     const moreBtn = document.createElement('md-menu-item');
-    moreBtn.className = 'bottom-inset';
+    moreBtn.className = 'last';
     moreBtn.textContent = translations.more_language;
     moreBtn.onclick = async () => {
         const guideDialog = document.getElementById('guide-dialog');

@@ -96,19 +96,42 @@
 }
 
 .menu md-menu {
-    --md-sys-shape-corner-extra-small: 24px;
+    --md-menu-container-color: transparent;
+    --md-menu-item-container-color: var(--md-sys-color-surface-container-highest);
+    --md-menu-top-space: 0;
+    --md-menu-bottom-space: var(--bottom-inset);
+    --md-menu-container-elevation: 0;
     max-width: 60vw;
 }
 
 .menu md-sub-menu md-menu {
-    --md-sys-shape-corner-extra-small: 8px;
     max-width: 40vw;
 }
 
 .menu md-menu-item {
     width: max-content;
+    border-radius: 4px;
     min-width: 100%;
     max-width: 100%;
+    transition: border-radius 0.2s ease;
+}
+
+.menu md-menu-item:not(:last-child) {
+    margin-bottom: 2px;
+}
+
+.menu md-menu-item.first {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.menu md-menu-item.last {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.menu md-menu-item:active {
+    border-radius: 20px;
 }
 
 .menu md-menu-item.icon-item div {
@@ -118,7 +141,10 @@
 }
 
 .menu-item-button-container {
-    padding: 2px 4px;
+    background-color: var(--md-sys-color-surface-container-highest);
+    border-radius: 20px 20px 0 0;
+    padding: 8px 4px;
+    margin-bottom: 2px;
     display: flex;
     justify-content: space-evenly;
     width: 100%;
@@ -128,10 +154,6 @@
 
 #menu-button {
     --md-icon-button-icon-color: var(--md-sys-color-on-surface);
-}
-
-#menu-options {
-    max-height: calc(100vh - var(--top-inset) - var(--bottom-inset) - 80px);
 }
 
 #select-denylist,
