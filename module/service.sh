@@ -1,5 +1,5 @@
 MODPATH=${0%/*}
-PATH=/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk:$PATH
+PATH=$PATH:/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk
 HIDE_DIR="/data/adb/modules/.TA_utl"
 TS="/data/adb/modules/tricky_store"
 TSPA="/data/adb/modules/tsupport-advance"
@@ -69,9 +69,6 @@ until [ "$(getprop sys.boot_completed)" = "1" ]; do
     sleep 1
 done
 
-# Create temporary directory
-mkdir -p "$MODPATH/common/tmp"
-
 sh "$MODPATH/common/get_extra.sh" --xposed >/dev/null 2>&1
 
-[ -f "$MODPATH/action.sh" ] && rm -rf "/data/adb/modules/TA_utl"
+[ ! -f "$MODPATH/action.sh" ] || rm -rf "/data/adb/modules/TA_utl"

@@ -6,6 +6,8 @@ MODPATH=${0%/*}
 SKIPLIST="$MODPATH/tmp/skiplist"
 XPOSED="$MODPATH/tmp/xposed"
 
+mkdir -p "$MODPATH/tmp"
+
 if [ "$MODPATH" = "/data/adb/modules/.TA_utl/common" ]; then
     MODDIR="/data/adb/modules/.TA_utl"
     MAGISK="true"

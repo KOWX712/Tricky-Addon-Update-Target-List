@@ -49,6 +49,8 @@ document.getElementById('canary').onclick = () => {
 
                 // Check local version
                 const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--check-update', `${version}`], { env: { CANARY: "true" } });
+                output.stdout.on('data', (data) => console.log(data))
+                output.stderr.on('data', (data) => console.log(data))
                 output.on('exit', (code) => {
                     if (code === 0) {
                         showPrompt(getString("prompt_no_update"));
@@ -119,6 +121,8 @@ function downloadUpdate(link) {
     showPrompt(getString("prompt_downloading"), true, 20000);
     const download = spawn('sh', [`${basePath}/common/get_extra.sh`, '--get-update', `${link}`],
                         { env: { PATH: "$PATH:/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk:/data/data/com.termux/files/usr/bin" } });
+    download.stdout.on('data', (data) => console.log(data))
+    download.stderr.on('data', (data) => console.log(data))
     download.on('exit', (code) => {
         if (code === 0) {
             installUpdate();
@@ -135,12 +139,17 @@ function downloadUpdate(link) {
  */
 function installUpdate() {
     showPrompt(getString("prompt_installing"));
+    let stdout = "";
     const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--install-update'],
                     { env: { PATH: "$PATH:/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk" } });
+    output.stdout.on('data', (data) => stdout += data);
     output.stderr.on('data', (data) => {
         console.error('Error during installation:', data);
     });
     output.on('exit', (code) => {
+        if (stdout.includes('No need to reboot')) {
+            window.location.reload();
+        }
         if (code === 0) {
             showPrompt(getString("prompt_installed"));
         } else {

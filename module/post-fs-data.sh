@@ -23,4 +23,4 @@ fi
 [ "$KSU" = "true" ] && MANAGER="KSU"
 [ ! "$APATCH" = "true" ] && [ ! "$KSU" = "true" ] && MANAGER="MAGISK"
 echo "MANAGER=$MANAGER" > "$MODPATH/common/manager.sh"
-chmod 755 "$MODPATH/common/manager.sh"
+chmod 755 "$MODPATH/common/manager.sh" || true
