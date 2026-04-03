@@ -121,7 +121,7 @@ jobs:
 
           if [[ "$VERSION" == *"beta"* ]]; then
             PRERELEASE=true
-            FORMATTED_RELEASE_NOTES=$(echo -e "- Due to extensive code refactoring, you might encounter unexpected bugs in this version, feedback in [Telegram](https://t.me/kowchannel) or [create issue](https://github.com/KOWX712/Tricky-Addon-Update-Target-List/issues) if you found any issues.\n---\n### Tricky Addon module\n$RELEASE_NOTES")
+            FORMATTED_RELEASE_NOTES=""
           else
             PRERELEASE=false
             FORMATTED_RELEASE_NOTES=$(echo -e "### Tricky Addon module\n$RELEASE_NOTES\n")
@@ -137,7 +137,7 @@ jobs:
       - name: Update update.json
         run: |
           COMMIT_NUM=$(git rev-list --count HEAD)
-          sed -i "s/\"versionCode\":.*/\"versionCode\": ${COMMIT_NUM},/" update.json
+          [ "${{ env.PRERELEASE }}" = "false" ] && sed -i "s/\"versionCode\":.*/\"versionCode\": ${COMMIT_NUM},/" update.json
           sed -i "s/^versionCode=.*/versionCode=${COMMIT_NUM}/" module/module.prop
 
           git config --global user.email "leecc0503@gmail.com"
@@ -179,5 +179,5 @@ jobs:
           tag_name: ${{ env.CURRENT_TAG }}
           name: ${{ env.CURRENT_TAG }}
           body: ${{ env.RELEASE_NOTES }}
-          draft: false
+          draft: ${{ env.PRERELEASE }}
           prerelease: ${{ env.PRERELEASE }}

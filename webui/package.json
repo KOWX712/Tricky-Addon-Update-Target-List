@@ -21,7 +21,7 @@
     "webuix": "^0.0.18"
   },
   "devDependencies": {
-    "vite": "^8.0.1",
+    "vite": "^8.0.3",
     "vite-plugin-html": "^3.2.2"
   },
   "packageManager": "pnpm@10.28.2"
