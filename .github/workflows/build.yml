@@ -144,9 +144,11 @@ jobs:
           git config --global user.name "KOWX712"
           git remote set-url origin "https://${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git"
 
-          git add update.json module/module.prop
-          git commit --amend --no-edit
-          git push --force
+          if git status --porcelain | grep -E 'update.json|module/module.prop'; then
+            git add update.json module/module.prop
+            git commit --amend --no-edit
+            git push --force
+          fi
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v5
