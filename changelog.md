@@ -9,6 +9,9 @@ Telegram channel: [KOW's Little World](https://t.me/kowchannel)
 
 ## Changelog
 
+## v5.0-beta.1
+- Check in [release notes](https://github.com/KOWX712/Tricky-Addon-Update-Target-List/releases/tag/v5.0-beta.1).
+
 ### v4.3
 - **WebUI:** UI improvement: optimized dialog animation and menu appearence.
 - **WebUI:** Fixed fallback link not working, fixed no internet connection in some condition.
