@@ -13,6 +13,12 @@
     <string name="help_deselect_unnecessary_description">Categoria non necessaria: modulo Xposed, root manager, app correlate al root e app generali che non controllano mai lo stato del bootloader. Questa opzione richiede una connessione a Internet.</string>
     <string name="help_add_system_app">Aggiungi App di Sistema</string>
     <string name="help_add_system_app_description">Aggiungi app di sistema specifiche all&apos;elenco delle app.</string>
+    <string name="help_set_keybox">Imposta Keybox</string>
+    <string name="help_set_keybox_description">Sostituire keybox TrickyStore con:</string>
+    <string name="help_set_keybox_aosp">AOSP - la keybox predefinita è inclusa in TrickyStore.</string>
+    <string name="help_set_keybox_unknown">Sconosciuto - autofirmato e non valido per il verdetto Play Integrity.</string>
+    <string name="help_set_keybox_local">Locale - seleziona keybox dal dispositivo.</string>
+    <string name="help_set_keybox_custom">Personalizzato - provider di keybox personalizzato tramite il recupero online.</string>
     <string name="help_set_security_patch">Imposta Patch di Sicurezza</string>
     <string name="help_set_security_patch_description">Imposta spoofing patch di sicurezza personalizzato. La configurazione automatica utilizzerà la patch di sicurezza dal modulo PIF. Lascia vuoto e salva per disabilitare la configurazione automatica.</string>
     <string name="help_set_verified_boot_hash">Imposta Boot Hash Verificato</string>
@@ -28,9 +34,11 @@
     <!-- Functional Button -->
     <string name="functional_button_save">Salva</string>
     <string name="functional_button_uninstall_webui">Disinstalla WebUI</string>
+    <string name="functional_button_close">Chiudi</string>
     <string name="functional_button_cancel">Annulla</string>
     <string name="functional_button_confirm">Conferma</string>
     <string name="functional_button_reset">Azzera</string>
+    <string name="functional_button_remove">Rimuovi</string>
     <!-- Loading -->
     <string name="loading_loading">Caricamento...</string>
     <!-- Menu -->
@@ -40,9 +48,15 @@
     <string name="menu_select_denylist">Seleziona da DenyList</string>
     <string name="menu_deselect_unnecessary">Deseleziona Non necessari</string>
     <string name="menu_add_system_app">Aggiungi App di Sistema</string>
+    <string name="menu_keybox">Keybox</string>
+    <string name="menu_keybox_aosp">AOSP</string>
+    <string name="menu_keybox_unknown">Sconosciuto</string>
     <string name="menu_keybox_local">Locale</string>
     <string name="menu_set_verified_boot_hash">Imposta Boot Hash Verificato</string>
     <string name="menu_set_security_patch">Imposta Patch di Sicurezza</string>
+    <string name="menu_set_devconfig">Imposta DevConfig</string>
+    <string name="menu_help">Aiuto</string>
+    <string name="menu_language">Lingua</string>
     <string name="menu_about">Informazioni</string>
     <!-- Boot Hash -->
     <string name="boot_hash_title">Boot Hash</string>
@@ -53,6 +67,7 @@
     <string name="about_by">by</string>
     <string name="about_telegram_channel">Canale Telegram</string>
     <string name="about_canary_update">Aggiornato all&apos;ultima versione canary</string>
+    <string name="about_translation_update">Aggiorna pacchetto di traduzione</string>
     <string name="about_disclaimer">Questo modulo non fa parte del modulo Tricky Store. NON segnalare eventuali problemi a Tricky Store se riscontrati.</string>
     <string name="about_acknowledgment">Riconoscimento</string>
     <!-- Prompt -->
@@ -77,8 +92,14 @@
     <string name="prompt_install_fail">Installazione non riuscita, aggiorna manualmente</string>
     <string name="prompt_rebooting">Riavvio...</string>
     <string name="prompt_reboot_fail">Impossibile riavviare, riavvia manualmente</string>
+    <string name="prompt_translation_updated">Pacchetto di traduzione aggiornato con successo</string>
+    <string name="prompt_translation_update_failed">Impossibile aggiornare pacchetto di traduzione</string>
     <string name="prompt_custom_key_set">Keybox personalizzata impostata correttamente</string>
     <string name="prompt_custom_key_set_error">Impossibile impostare keybox personalizzata</string>
+    <string name="prompt_custom_saved">Voce keybox personalizzata salvata</string>
+    <string name="prompt_custom_fetch_error">Impossibile recuperare keybox</string>
+    <string name="prompt_custom_invalid_script">Script non consentito</string>
+    <string name="prompt_custom_removed">Voce keybox personalizzata rimossa</string>
     <string name="prompt_no_file_selected">Nessun file selezionato</string>
     <string name="prompt_system_app_not_found">App di sistema non trovata</string>
     <string name="prompt_system_app_error">Impossibile aggiungere l&apos;app di sistema</string>
@@ -105,9 +126,23 @@
     <string name="add_system_app_add">Aggiungi</string>
     <string name="add_system_app_current_list">Elenco attuale delle app di sistema</string>
     <!-- CustomKB Dialog -->
+    <string name="customkb_dialog_title">Provider Keybox Personalizzato</string>
+    <string name="customkb_name_placeholder">Nome</string>
+    <string name="customkb_script_placeholder">Decodifica script</string>
+    <string name="customkb_export_success">Configurazione esportata in %s</string>
+    <string name="customkb_export_error">Impossibile esportare la configurazione</string>
+    <string name="customkb_export_empty">Niente da esportare</string>
+    <string name="customkb_import_success">Configurazione importata</string>
+    <string name="customkb_import_error">File di configurazione errato</string>
     <string name="customkb_remove_title">Confermare la rimozione?</string>
+    <string name="customkb_remove_message">Rimuovere questo provider di keybox personalizzato?</string>
+    <string name="customkb_reset_message">Ripristinare provider di keybox personalizzati?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Confermi disinstallazione?</string>
     <string name="confirmation_uninstall_message">Sei sicuro di voler disinstallare Tricky Addon</string>
     <!-- Mode dialog -->
+    <string name="mode_dialog_title">Modalità</string>
+    <string name="mode_auto">Auto</string>
+    <string name="mode_certificate_generating">Generazione Cert (!)</string>
+    <string name="mode_leaf_hack">Leaf Hack (?)</string>
 </resources>

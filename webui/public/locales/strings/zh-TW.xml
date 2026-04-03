@@ -18,7 +18,7 @@
     <string name="help_set_keybox_aosp">AOSP - TrickyStore 的預設密鑰。</string>
     <string name="help_set_keybox_unknown">未知 - 自签名密钥，不符合 Play Intergrity 要求。</string>
     <string name="help_set_keybox_local">未知 - 自簽名金鑰，不符合 Play Intergrity 要求。</string>
-    <string name="help_set_keybox_custom">自訂 - 透過線上取得自訂金鑰提供者。</string>
+    <string name="help_set_keybox_custom">自訂 - 透過線上取得自訂密鑰提供者。</string>
     <string name="help_set_security_patch">設置安全補丁</string>
     <string name="help_set_security_patch_description">設置自定義安全補丁。自動配置將使用 PIF 模組的安全補丁。留空保存則禁用自動配置。</string>
     <string name="help_set_verified_boot_hash">設置哈希值</string>
