@@ -14,7 +14,7 @@
     <string name="help_add_system_app">Thêm ứng dụng hệ thống</string>
     <string name="help_add_system_app_description">Thêm ứng dụng hệ thống cụ thể vào danh sách ứng dụng.</string>
     <string name="help_set_keybox">Thiết lập Keybox</string>
-    <string name="help_set_keybox_description">Thay thế Keybox của TrickyStore bằng:</string>
+    <string name="help_set_keybox_description">Thay thế Keybox của Tricky Store bằng:</string>
     <string name="help_set_keybox_aosp">AOSP - Keybox mặc định đi kèm với Tricky Store.</string>
     <string name="help_set_keybox_unknown">Không xác định - Chữ ký tự ký và không có giá trị đối với phán quyết của Play Integrity.</string>
     <string name="help_set_keybox_local">Cục bộ - Chọn Keybox từ thiết bị của bạn.</string>
