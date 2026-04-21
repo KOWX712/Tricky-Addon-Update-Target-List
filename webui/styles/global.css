@@ -5,6 +5,7 @@
 @import './header.css';
 @import './security_patch.css';
 @import './system_app.css';
+@import './webview.css';
 
 body {
     color: var(--md-sys-color-on-surface);

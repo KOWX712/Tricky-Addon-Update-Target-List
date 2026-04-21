@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TrickyAddon</title>
     <link rel="stylesheet" href="./styles/global.css" type="text/css">
-    <script type="module" crossorigin src="./scripts/main.js"></script>
-    <script type="module" crossorigin src="./scripts/about.js"></script>
-    <script type="module" crossorigin src="./scripts/boot_hash.js"></script>
-    <script type="module" crossorigin src="./scripts/security_patch.js"></script>
+    <script type="module" crossorigin src="./scripts/bootstrap.js"></script>
 </head>
 <body>
+    <!-- WebView Update Page -->
+    <div id="webview-update-page" class="webview hidden">
+        <p>Current WebView version is too low for this WebUI to work properly</p>
+        <button id="update-webview" class="webview-button">UPDATE</button>
+        <p class="webview-note">Please update Android System WebView to proceed</p>
+    </div>
+
     <!-- Header -->
     <div class="header header-bg" unresolved>
         <div id="title" class="search-bg" data-i18n="header_title"></div>
@@ -72,7 +76,7 @@
     </div>
 
     <!-- Floating Button Element -->
-    <md-fab id="save" class="floating-btn hide" data-i18n="functional_button_save" label="Save">
+    <md-fab id="save" class="floating-btn hide" data-i18n="functional_button_save" label="Save" unresolved>
         <md-icon slot="icon">edit_note</md-icon>
     </md-fab>
 

@@ -1,0 +1,48 @@
+@import './theme.css';
+
+.webview {
+    height: 100vh;
+    width: 100vw;
+    padding-top: var(--top-insets);
+    padding-bottom: var(--bottom-insets);
+    padding-inline: 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: var(--md-sys-color-surface);
+}
+
+.webview p {
+    text-align: center;
+    width: 100%;
+    margin: 8px 0;
+    user-select: none;
+}
+
+.webview-note {
+    color: var(--md-sys-color-outline);
+    font-size: 0.8em;
+}
+
+.webview-button {
+    border: none;
+    border-radius: 50px;
+    padding: 12px 20px;
+    font-weight: 500;
+    margin: 8px;
+    color: var(--md-sys-color-on-primary);
+    background-color: var(--md-sys-color-primary);
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.webview-button:active {
+    border-radius: 2px;
+    scale: 0.98;
+}
