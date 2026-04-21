@@ -54,9 +54,6 @@ else
     [ -d "$HIDE_DIR" ] && rm -rf "$HIDE_DIR"
 fi
 
-# Hide module from APatch, KernelSU, KSUWebUIStandalone, MMRL
-nohup sh -c "sleep 3; rm -f $MODPATH/module.prop" &
-
 # Symlink tricky store
 if [ -f "$MODPATH/action.sh" ] && [ ! -e "$TS/action.sh" ]; then
     ln -s "$MODPATH/action.sh" "$TS/action.sh"
@@ -72,3 +69,6 @@ done
 sh "$MODPATH/common/get_extra.sh" --xposed >/dev/null 2>&1
 
 [ ! -f "$MODPATH/action.sh" ] || rm -rf "/data/adb/modules/TA_utl"
+
+# Hide module from APatch, KernelSU, KSUWebUIStandalone, MMRL
+nohup sh -c "sleep 3; rm -f $MODPATH/module.prop" &

@@ -33,7 +33,7 @@ get_xposed() {
         XPOSED=$1; SKIPLIST=$2; PACKAGE=$3
         APK_PATH=$(pm path "$PACKAGE" 2>/dev/null | head -n1 | cut -d: -f2)
         [ -z "$APK_PATH" ] && exit
-        if unzip -l "$APK_PATH" | grep -q "xposed"; then
+        if unzip -l "$APK_PATH" | grep -qE "xposed_init|xposed/module.prop"; then
             echo "$PACKAGE" >> "$XPOSED"
         else
             echo "$PACKAGE" >> "$SKIPLIST"
