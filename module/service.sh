@@ -71,4 +71,4 @@ sh "$MODPATH/common/get_extra.sh" --xposed >/dev/null 2>&1
 [ ! -f "$MODPATH/action.sh" ] || rm -rf "/data/adb/modules/TA_utl"
 
 # Hide module from APatch, KernelSU, KSUWebUIStandalone, MMRL
-nohup sh -c "sleep 3; rm -f $MODPATH/module.prop" &
+nohup sh -c "while kill -0 $PPID 2>/dev/null; do sleep 1; done; rm -f '$MODPATH/module.prop'" >/dev/null 2>&1 &

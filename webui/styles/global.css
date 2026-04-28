@@ -150,3 +150,26 @@ md-outlined-text-field {
 .top-inset {
     margin-top: var(--top-inset);
 }
+
+.dialog-content.column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.switch-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.2em;
+    padding: 16px;
+    position: relative;
+    user-select: none;
+}
+
+.switch-item.contrast {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    border-radius: 16px;
+    overflow: hidden;
+}

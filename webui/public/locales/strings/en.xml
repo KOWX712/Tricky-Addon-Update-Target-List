@@ -52,15 +52,15 @@
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">Unknown</string>
     <string name="menu_keybox_local">Local</string>
-    <string name="menu_set_verified_boot_hash">Set Verified Boot Hash</string>
+    <string name="menu_prop_setting">Prop Settings</string>
     <string name="menu_set_security_patch">Set Security Patch</string>
     <string name="menu_set_devconfig">Set DevConfig</string>
     <string name="menu_help">Help</string>
     <string name="menu_language">Language</string>
     <string name="menu_about">About</string>
-    <!-- Boot Hash -->
+    <!-- Prop Dialog -->
+    <string name="prop_handler">Prop Handler</string>
     <string name="boot_hash_title">Boot Hash</string>
-    <string name="boot_hash_input_placeholder">Paste your verified Boot Hash here</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Update Target List</string>

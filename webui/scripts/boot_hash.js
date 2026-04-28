@@ -2,10 +2,14 @@ import { exec } from 'kernelsu-alt';
 import { showPrompt } from './main.js';
 import { getString } from './language.js';
 
-const bootHashDialog = document.getElementById('boot-hash-dialog');
+const propDialog = document.getElementById('prop-dialog');
+const propHandlerSwitch = document.getElementById('prop-setting-switch');
 const inputBox = document.getElementById('boot-hash-input');
 const saveButton = document.getElementById('boot-hash-save-button');
 const cancelButton = document.getElementById('cancel-boot-hash');
+
+const propHandlerFile = "/data/adb/disable_prop_handler";
+const bootHashFile = "/data/adb/boot_hash";
 
 // Remove empty spaces from input and convert to lowercase
 window.trimInput = (input) => {
@@ -13,11 +17,18 @@ window.trimInput = (input) => {
 };
 
 // Function to handle Verified Boot Hash
-document.getElementById("boot-hash").addEventListener("click", async () => {
-    bootHashDialog.show();
+document.getElementById("prop-setting").addEventListener("click", async () => {
+    propDialog.show();
+    inputBox.label = getString("boot_hash_title");
+
+    // Check if prop handler is disabled
+    exec(`[ -f ${propHandlerFile} ]`)
+        .then(({ errno }) => {
+            propHandlerSwitch.selected = errno !== 0;
+        });
 
     // read current boot hash
-    exec(`sed '/[^#]/d; /^$/d' /data/adb/boot_hash`)
+    exec(`sed '/[^#]/d; /^$/d' ${bootHashFile}`)
         .then(({ errno, stdout }) => {
             if (errno !== 0) {
                 inputBox.value = "";
@@ -28,25 +39,31 @@ document.getElementById("boot-hash").addEventListener("click", async () => {
         });
 });
 
+propHandlerSwitch.addEventListener("change", (e) => {
+    const disabled = e.target.selected;
+    const cmd = disabled ? 'rm -f' : 'touch';
+    exec(`${cmd} ${propHandlerFile}`);
+});
+
 // Save button listener
 saveButton.addEventListener("click", async () => {
     const inputValue = inputBox.value.trim();
     exec(`
         resetprop -n ro.boot.vbmeta.digest "${inputValue}"
-        [ -z "${inputValue}" ] && rm -f /data/adb/boot_hash || {
-            echo "${inputValue}" > /data/adb/boot_hash
-            chmod 644 /data/adb/boot_hash
+        [ -z "${inputValue}" ] && rm -f ${bootHashFile} || {
+            echo "${inputValue}" > ${bootHashFile}
+            chmod 644 ${bootHashFile}
         }
         resetprop -c || true
     `, { env: { PATH: "$PATH:/data/adb/ksu/bin:/data/adb/ap/bin:/data/adb/magisk" } })
         .then(() => {
             showPrompt(getString("prompt_boot_hash_set"));
-            bootHashDialog.close();
+            propDialog.close();
         });
 });
 
 cancelButton.addEventListener("click", () => {
-    bootHashDialog.close();
+    propDialog.close();
 });
 
 // Enter to save

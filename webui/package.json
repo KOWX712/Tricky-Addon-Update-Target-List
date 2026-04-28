@@ -14,14 +14,14 @@
   "type": "module",
   "dependencies": {
     "@material/web": "^2.4.1",
-    "asn1js": "^3.0.7",
+    "asn1js": "^3.0.10",
     "kernelsu-alt": "^3.1.1",
     "marked": "^18.0.2",
     "pkijs": "^3.4.0",
     "webuix": "^0.0.18"
   },
   "devDependencies": {
-    "vite": "^8.0.8",
+    "vite": "^8.0.10",
     "vite-plugin-html": "^3.2.2"
   },
   "packageManager": "pnpm@10.28.2"

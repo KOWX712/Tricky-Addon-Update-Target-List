@@ -49,7 +49,7 @@
                         </md-menu-item>
                     </md-menu>
                 </md-sub-menu>
-                <md-menu-item id="boot-hash" data-i18n="menu_set_verified_boot_hash"></md-menu-item>
+                <md-menu-item id="prop-setting" data-i18n="menu_prop_setting"></md-menu-item>
                 <md-menu-item id="security-patch" data-i18n="menu_set_security_patch" class="last"></md-menu-item>
                 <md-menu-item id="help" data-i18n="menu_help" class="first"></md-menu-item>
                 <md-sub-menu hover-close-delay="0">
@@ -173,11 +173,17 @@
             </div>
         </md-dialog>
 
-        <!-- BootHash Input Dialog -->
-        <md-dialog id="boot-hash-dialog" class="text-field-dialog">
-            <div slot="headline" data-i18n="boot_hash_title"></div>
-            <div slot="content">
-                <md-outlined-text-field id="boot-hash-input" type="textarea" rows="4" placeholder="Paste your verified Boot Hash here" data-i18n="boot_hash_input_placeholder" oninput="window.trimInput(this)"></md-outlined-text-field>
+        <!-- Prop Dialog -->
+        <md-dialog id="prop-dialog" class="text-field-dialog">
+            <div slot="headline" data-i18n="menu_prop_setting"></div>
+            <div slot="content" class="dialog-content column">
+                <label class="switch-item contrast" for="prop-setting-switch">
+                    <md-ripple></md-ripple>
+                    <span data-i18n="prop_handler"></span>
+                    <md-switch id="prop-setting-switch"></md-switch>
+                </label>
+                <md-divider></md-divider>
+                <md-outlined-text-field id="boot-hash-input" type="textarea" rows="4" placeholder="241890bd44131d34c077cb01a0c3ea1ff68533b21e9d83b3f3adca6663c3d443" oninput="window.trimInput(this)"></md-outlined-text-field>
             </div>
             <div slot="actions">
                 <md-outlined-button id="cancel-boot-hash" data-i18n="functional_button_cancel"></md-outlined-button>
