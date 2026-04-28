@@ -52,15 +52,15 @@
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">未知</string>
     <string name="menu_keybox_local">本地</string>
-    <string name="menu_set_verified_boot_hash">设置哈希值</string>
+    <string name="menu_prop_setting">Prop 设置</string>
     <string name="menu_set_security_patch">设置安全补丁</string>
     <string name="menu_set_devconfig">设置 DevConfig</string>
     <string name="menu_help">帮助</string>
     <string name="menu_language">语言</string>
     <string name="menu_about">关于</string>
-    <!-- Boot Hash -->
+    <!-- Prop Dialog -->
+    <string name="prop_handler">Prop 助手</string>
     <string name="boot_hash_title">哈希值</string>
-    <string name="boot_hash_input_placeholder">在此粘贴您的哈希值</string>
     <!-- About -->
     <string name="about_module_name_line1">TS插件</string>
     <string name="about_module_name_line2">更新目标列表</string>
@@ -126,7 +126,7 @@
     <string name="add_system_app_add">添加</string>
     <string name="add_system_app_current_list">当前系统应用列表</string>
     <!-- CustomKB Dialog -->
-    <string name="customkb_dialog_title">自定义键盘提供商</string>
+    <string name="customkb_dialog_title">自定义密钥提供商</string>
     <string name="customkb_name_placeholder">名称</string>
     <string name="customkb_script_placeholder">解码脚本</string>
     <string name="customkb_export_success">配置已保存至 %s</string>

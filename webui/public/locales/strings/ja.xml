@@ -41,13 +41,11 @@
     <string name="menu_deselect_unnecessary">不要な選択を解除</string>
     <string name="menu_add_system_app">システムアプリを追加</string>
     <string name="menu_keybox_local">ローカル</string>
-    <string name="menu_set_verified_boot_hash">確認付きブートハッシュを設定</string>
     <string name="menu_set_security_patch">セキュリティパッチを設定</string>
     <string name="menu_set_devconfig">DevConfig を設定</string>
     <string name="menu_about">このアドオンについて</string>
-    <!-- Boot Hash -->
+    <!-- Prop Dialog -->
     <string name="boot_hash_title">ブートハッシュ</string>
-    <string name="boot_hash_input_placeholder">確認付きブートハッシュをここに貼り付け</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">ターゲットリストを更新</string>

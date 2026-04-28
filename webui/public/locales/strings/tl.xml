@@ -40,12 +40,10 @@
     <string name="menu_deselect_unnecessary">Huwag Pumili ng Hindi Kinakailangan</string>
     <string name="menu_add_system_app">Magdagdag ng System App</string>
     <string name="menu_keybox_local">Lokal</string>
-    <string name="menu_set_verified_boot_hash">I-set ang Verified Boot Hash</string>
     <string name="menu_set_security_patch">I-set ang Security Patch</string>
     <string name="menu_about">Tungkol</string>
-    <!-- Boot Hash -->
+    <!-- Prop Dialog -->
     <string name="boot_hash_title">Boot Hash</string>
-    <string name="boot_hash_input_placeholder">I-paste ang iyong verified Boot Hash dito</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">I-update ang Target List</string>

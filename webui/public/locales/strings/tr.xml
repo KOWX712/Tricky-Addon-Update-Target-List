@@ -45,15 +45,13 @@
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">Bilinmeyen</string>
     <string name="menu_keybox_local">Yerel</string>
-    <string name="menu_set_verified_boot_hash">Doğrulanmış Boot Hash Ayarla</string>
     <string name="menu_set_security_patch">Güvenlik Yaması Ayarla</string>
     <string name="menu_set_devconfig">DevConfig Ayarla</string>
     <string name="menu_help">Yardım</string>
     <string name="menu_language">Dil</string>
     <string name="menu_about">Hakkında</string>
-    <!-- Boot Hash -->
+    <!-- Prop Dialog -->
     <string name="boot_hash_title">Boot Hash</string>
-    <string name="boot_hash_input_placeholder">Doğrulanmış Boot Hash&apos;inizi buraya yapıştırın</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Target List&apos;i Güncelle</string>
