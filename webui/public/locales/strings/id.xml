@@ -41,13 +41,11 @@
     <string name="menu_deselect_unnecessary">Batalkan Pilihan yang Tidak Perlu</string>
     <string name="menu_add_system_app">Tambahkan Aplikasi Sistem</string>
     <string name="menu_keybox_local">Lokal</string>
-    <string name="menu_set_verified_boot_hash">Atur Verified Boot Hash</string>
     <string name="menu_set_security_patch">Atur Patch Keamanan</string>
     <string name="menu_set_devconfig">Atur Konfigurasi Pengembang</string>
     <string name="menu_about">Tentang</string>
-    <!-- Boot Hash -->
+    <!-- Prop Dialog -->
     <string name="boot_hash_title">Verified Boot Hash</string>
-    <string name="boot_hash_input_placeholder">Tempel Verified Boot Hash Anda di sini</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Perbarui Daftar Target</string>

@@ -52,15 +52,15 @@
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">未知</string>
     <string name="menu_keybox_local">本機</string>
-    <string name="menu_set_verified_boot_hash">設置哈希值</string>
+    <string name="menu_prop_setting">Prop 設定</string>
     <string name="menu_set_security_patch">設置安全補丁</string>
     <string name="menu_set_devconfig">設定 DevConfig</string>
     <string name="menu_help">幫助</string>
     <string name="menu_language">語言</string>
     <string name="menu_about">關於</string>
-    <!-- Boot Hash -->
+    <!-- Prop Dialog -->
+    <string name="prop_handler">Prop 助理</string>
     <string name="boot_hash_title">哈希值</string>
-    <string name="boot_hash_input_placeholder">在此貼上您的哈希值</string>
     <!-- About -->
     <string name="about_module_name_line1">TS 插件</string>
     <string name="about_module_name_line2">更新目標列表</string>

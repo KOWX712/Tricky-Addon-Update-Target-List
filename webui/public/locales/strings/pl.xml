@@ -52,18 +52,16 @@
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">Nieznany</string>
     <string name="menu_keybox_local">Lokalny</string>
-    <string name="menu_set_verified_boot_hash">Ustaw zweryfikowany skrót rozruchowy</string>
     <string name="menu_set_security_patch">Ustaw poprawkę zabezpieczeń</string>
     <string name="menu_set_devconfig">Ustaw konfigurację programisty</string>
     <string name="menu_help">Pomoc</string>
     <string name="menu_language">Język</string>
     <string name="menu_about">O Tricky Addon</string>
-    <!-- Boot Hash -->
+    <!-- Prop Dialog -->
     <string name="boot_hash_title">Skrót rozruchowy</string>
-    <string name="boot_hash_input_placeholder">Wklej tutaj zweryfikowany skrót rozruchowy</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
-    <string name="about_module_name_line2">Uaktualnij listę docelową</string>
+    <string name="about_module_name_line2">Zaktualizuj listę docelową</string>
     <string name="about_by">wydany przez:</string>
     <string name="about_telegram_channel">Telegram</string>
     <string name="about_canary_update">Zaktualizuj do najnowszej wersji Canary</string>
@@ -143,6 +141,6 @@
     <!-- Mode dialog -->
     <string name="mode_dialog_title">Tryb</string>
     <string name="mode_auto">Automatyczny</string>
-    <string name="mode_certificate_generating">Generowanie certyfikatów (!)</string>
-    <string name="mode_leaf_hack">Obejście sposobem (?)</string>
+    <string name="mode_certificate_generating">Generowanie certyfikatu</string>
+    <string name="mode_leaf_hack">Podmiana certyfikatu</string>
 </resources>

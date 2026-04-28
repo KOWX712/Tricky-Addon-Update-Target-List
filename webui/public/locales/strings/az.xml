@@ -40,12 +40,10 @@
     <string name="menu_deselect_unnecessary">Lazımsızları seçmə</string>
     <string name="menu_add_system_app">Sistem Tətbiqi Əlavə et</string>
     <string name="menu_keybox_local">Lokal</string>
-    <string name="menu_set_verified_boot_hash">Təsdiqlənmiş Boot Hash təyin et</string>
     <string name="menu_set_security_patch">Təhlükəsizlik Təkmilləşdirməsini təyin et</string>
     <string name="menu_about">Haqqında</string>
-    <!-- Boot Hash -->
+    <!-- Prop Dialog -->
     <string name="boot_hash_title">Boot Hash</string>
-    <string name="boot_hash_input_placeholder">Təsdiqlənmiş Boot Hash-ı buraya yapışdırın</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Hədəf Siyahısını Yenilə</string>

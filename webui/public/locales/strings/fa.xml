@@ -40,11 +40,9 @@
     <string name="menu_deselect_unnecessary">لغو انتخاب غیرضروری</string>
     <string name="menu_add_system_app">افزودن برنامه سیستمی</string>
     <string name="menu_keybox_local">محلی</string>
-    <string name="menu_set_verified_boot_hash">تنظیم Verified Boot Hash</string>
     <string name="menu_set_security_patch">تنظیم Security Patch</string>
     <string name="menu_about">درباره</string>
-    <!-- Boot Hash -->
-    <string name="boot_hash_input_placeholder">Verified Boot Hash خود را اینجا بچسبانید</string>
+    <!-- Prop Dialog -->
     <!-- About -->
     <string name="about_by">از</string>
     <string name="about_telegram_channel">کانال تلگرام</string>

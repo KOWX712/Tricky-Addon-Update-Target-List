@@ -13,6 +13,12 @@
     <string name="help_deselect_unnecessary_description">فئة غير ضرورية: وحدة Xposed، مدير الجذر، التطبيقات المتعلقة بالجذر، والتطبيقات العامة التي لا تتحقق أبدًا من حالة bootloader. يتطلب هذا الخيار اتصالاً بالإنترنت.</string>
     <string name="help_add_system_app">إضافة تطبيق نظام</string>
     <string name="help_add_system_app_description">إضافة تطبيق نظام محدد إلى قائمة التطبيقات.</string>
+    <string name="help_set_keybox">تعيين صندوق المفاتيح</string>
+    <string name="help_set_keybox_description">استبدال صندوق مفاتيح TrickyStore بما يلي:</string>
+    <string name="help_set_keybox_aosp">AOSP - صندوق المفاتيح الافتراضي يأتي مع TrickyStore.</string>
+    <string name="help_set_keybox_unknown">غير معروف - توقيع ذاتي وغير صالح لنظام سلامة Play</string>
+    <string name="help_set_keybox_local">محلي - حدد صندوق المفاتيح من جهازك.</string>
+    <string name="help_set_keybox_custom">مخصص - موفر صندوق المفاتيح المخصص عن من خلال التحميل من الإنترنت</string>
     <string name="help_set_security_patch">تعيين تصحيح الأمان</string>
     <string name="help_set_security_patch_description">تعيين تصحيح أمان مخصص. سيستخدم التكوين التلقائي تصحيح الأمان من وحدة PIF. اتركه فارغًا واحفظه لتعطيل التكوين التلقائي.</string>
     <string name="help_set_verified_boot_hash">تعيين تجزئة التمهيد الموثوق</string>
@@ -32,6 +38,7 @@
     <string name="functional_button_cancel">إلغاء</string>
     <string name="functional_button_confirm">تأكيد</string>
     <string name="functional_button_reset">إعادة الضبط</string>
+    <string name="functional_button_remove">حذف</string>
     <!-- Loading -->
     <string name="loading_loading">جارٍ التحميل...</string>
     <!-- Menu -->
@@ -41,19 +48,17 @@
     <string name="menu_select_denylist">تحديد من قائمة الرفض</string>
     <string name="menu_deselect_unnecessary">إلغاء تحديد غير الضروري</string>
     <string name="menu_add_system_app">إضافة تطبيق نظام</string>
-    <string name="menu_keybox">Keybox</string>
+    <string name="menu_keybox">صندوق مفاتيح</string>
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">غير معروف</string>
     <string name="menu_keybox_local">محلي</string>
-    <string name="menu_set_verified_boot_hash">تعيين تجزئة التمهيد الموثوق</string>
     <string name="menu_set_security_patch">تعيين تصحيح الأمان</string>
     <string name="menu_set_devconfig">تعيين DevConfig</string>
     <string name="menu_help">المساعدة</string>
     <string name="menu_language">اللغة</string>
     <string name="menu_about">حول</string>
-    <!-- Boot Hash -->
+    <!-- Prop Dialog -->
     <string name="boot_hash_title">تجزئة التمهيد</string>
-    <string name="boot_hash_input_placeholder">الصق تجزئة التمهيد الموثوق هنا</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">تحديث قائمة الأهداف</string>
@@ -129,6 +134,7 @@
     <string name="customkb_import_error">مِلَفّ إعداد غير صالح</string>
     <string name="customkb_remove_title">تأكيد الحذف؟؟</string>
     <string name="customkb_remove_message">حذف مزود الـkeybox المخصص؟</string>
+    <string name="customkb_reset_message">حذف جميع مزودي صندوق المفاتيح المخصص؟</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">تأكيد إلغاء التثبيت؟</string>
     <string name="confirmation_uninstall_message">هل أنت متأكد أنك تريد إلغاء تثبيت Tricky Addon</string>

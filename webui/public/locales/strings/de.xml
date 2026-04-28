@@ -45,14 +45,12 @@
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">Unbekannt</string>
     <string name="menu_keybox_local">Lokal</string>
-    <string name="menu_set_verified_boot_hash">Verifizierten Boot-Hash setzen</string>
     <string name="menu_set_security_patch">Sicherheitspatch setzen</string>
     <string name="menu_help">Hilfe</string>
     <string name="menu_language">Sprache</string>
     <string name="menu_about">Über</string>
-    <!-- Boot Hash -->
+    <!-- Prop Dialog -->
     <string name="boot_hash_title">Boot Hash</string>
-    <string name="boot_hash_input_placeholder">Füge hier deinen verifizierten Boot Hash ein</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Ziel­liste aktualisieren</string>
