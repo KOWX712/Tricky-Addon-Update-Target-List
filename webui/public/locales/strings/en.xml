@@ -53,7 +53,7 @@
     <string name="menu_keybox_unknown">Unknown</string>
     <string name="menu_keybox_local">Local</string>
     <string name="menu_prop_setting">Prop Settings</string>
-    <string name="menu_set_security_patch">Set Security Patch</string>
+    <string name="menu_set_security_patch">Set Default Policy</string>
     <string name="menu_set_devconfig">Set DevConfig</string>
     <string name="menu_help">Help</string>
     <string name="menu_language">Language</string>
@@ -104,7 +104,7 @@
     <string name="prompt_system_app_not_found">System app not found</string>
     <string name="prompt_system_app_error">Failed to add system app</string>
     <!-- Security Patch -->
-    <string name="security_patch_title">Security Patch</string>
+    <string name="default_policy_title">Default Policy</string>
     <string name="security_patch_advanced_mode">Advanced</string>
     <string name="security_patch_get_date">Get Security Patch Date</string>
     <string name="security_patch_auto">Auto</string>
@@ -145,4 +145,6 @@
     <string name="mode_auto">Auto</string>
     <string name="mode_certificate_generating">Cert Generating (!)</string>
     <string name="mode_leaf_hack">Leaf Hack (?)</string>
+    <string name="mode_set_custom_policy">Set Custom Policy</string>
+    <string name="mode_use_default_policy">Use Default Policy</string>
 </resources>

@@ -3,6 +3,7 @@ import { basePath, showPrompt, refreshAppList } from './main.js';
 import { getString } from './language.js';
 import { FileSelector } from './file_selector.js';
 import { generateUnknownKeybox } from './keygen.js';
+import { getTarget, loadConfig, setTarget, writeConfig } from './config.js';
 
 // Function to check or uncheck all app
 function toggleCheckboxes(shouldCheck) {
@@ -101,11 +102,14 @@ export async function setupSystemAppMenu() {
                         exec(`
                             touch "/data/adb/tricky_store/system_app"
                             echo "${packageName}" >> "/data/adb/tricky_store/system_app"
-                            echo "${packageName}" >> "/data/adb/tricky_store/target.txt"
                         `)
                         input.value = "";
-                        dialog.close();
-                        refreshAppList();
+                        loadConfig().then(async () => {
+                            setTarget([...getTarget(), packageName]);
+                            await writeConfig();
+                            dialog.close();
+                            refreshAppList();
+                        });
                     }
                 });
         }
@@ -140,10 +144,10 @@ export async function setupSystemAppMenu() {
         document.querySelectorAll(".remove-system-app-button").forEach(button => {
             button.onclick = () => {
                 const app = button.closest(".system-app-item").querySelector("span").textContent;
-                exec(`
-                    sed -i "/${app}/d" "/data/adb/tricky_store/system_app"
-                    sed -i "/${app}/d" "/data/adb/tricky_store/target.txt"
-                `).then(() => {
+                exec(`sed -i "/${app}/d" "/data/adb/tricky_store/system_app"`).then(async () => {
+                    await loadConfig();
+                    setTarget(getTarget().filter(packageName => packageName !== app));
+                    await writeConfig();
                     dialog.close();
                     refreshAppList();
                 });

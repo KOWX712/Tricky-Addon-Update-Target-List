@@ -1,5 +1,10 @@
 @import './theme.css';
 
+:root {
+    --generate-color: #36DB2B;
+    --hack-color: #FF8400;
+}
+
 #app-list-content {
     margin-top: 76px;
     display: flex;
@@ -199,22 +204,57 @@
     font-size: 1.2em;
 }
 
+.mode-policy-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.mode-policy-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mode-policy-fields.hidden,
+.mode-policy-section.hidden {
+    display: none;
+}
+
 .mode-generated,
 .checkbox-checked-generate {
-    --md-sys-color-primary: #36DB2B;
+    --md-sys-color-primary: var(--generate-color);
 }
 
 .mode-generated {
-    --md-sys-color-on-surface: #36DB2B;
-    --md-sys-color-on-surface-variant: #36DB2B;
+    --md-sys-color-on-surface: var(--generate-color);
+    --md-sys-color-on-surface-variant: var(--generate-color);
 }
 
 .mode-hack,
 .checkbox-checked-hack {
-    --md-sys-color-primary: #FF8400;
+    --md-sys-color-primary: var(--hack-color);
 }
 
 .mode-hack {
-    --md-sys-color-on-surface: #FF8400;
-    --md-sys-color-on-surface-variant: #FF8400;
+    --md-sys-color-on-surface: var(--hack-color);
+    --md-sys-color-on-surface-variant: var(--hack-color);
+}
+
+.mode-icon {
+    font-family: monospace;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 2px;
+}
+
+.mode-icon.mode-generated {
+    background-color: var(--generate-color);
+    color: #fff;
+}
+
+.mode-icon.mode-hack {
+    background-color: var(--hack-color);
+    color: #fff;
 }

@@ -1,16 +1,13 @@
 import { exec, spawn } from 'kernelsu-alt';
 import { basePath, showPrompt } from './main.js';
 import { getString } from './language.js';
+import { POLICY_KEYS, getDefaultPolicy, loadConfig, setDefaultPolicy, writeConfig } from './config.js';
 
 let jamesFork = false;
 
 const dialog = document.getElementById('security-patch-dialog');
-const advancedToggleElement = document.querySelector('.advanced-toggle');
-const advancedToggle = document.getElementById('advanced-mode');
-const normalInputs = document.getElementById('normal-mode-inputs');
-const advancedInputs = document.getElementById('advanced-mode-inputs');
+const defaultPolicyInputs = document.getElementById('default-policy-inputs');
 const devconfigInputs = document.getElementById('devconfig-mode-inputs');
-const allPatchInput = document.getElementById('all-patch');
 const bootPatchInput = document.getElementById('boot-patch');
 const systemPatchInput = document.getElementById('system-patch');
 const vendorPatchInput = document.getElementById('vendor-patch');
@@ -64,11 +61,17 @@ function handleSecurityPatch(mode, value = null) {
     }
 }
 
+function normalizePatchValue(value) {
+    return value.trim().replace(/-/g, '');
+}
+
+function isDefaultPolicyDisabled(policy) {
+    return POLICY_KEYS.every(field => (policy[field] || 'no') === 'no');
+}
+
 // Load current configuration
 async function loadCurrentConfig() {
-    let allValue, systemValue, bootValue, vendorValue;
     try {
-        const { errno } = await exec('[ -f /data/adb/tricky_store/security_patch_auto_config ]');
         if (jamesFork) {
             const { stdout } = await exec('cat /data/adb/tricky_store/devconfig.toml');
             if (stdout.trim() !== '') {
@@ -85,140 +88,36 @@ async function loadCurrentConfig() {
                     }
                 }
             }
-        } else if (errno === 0) {
-            allValue = null;
-            systemValue = null;
-            bootValue = null;
-            vendorValue = null;
         } else {
-            // Read values from tricky_store if manual mode
-            const { stdout } = await exec('cat /data/adb/tricky_store/security_patch.txt');
-            if (stdout.trim() !== '') {
-                const lines = stdout.split('\n');
-                for (const line of lines) {
-                    if (line.startsWith('all=')) {
-                        allValue = line.split('=')[1] || null;
-                        if (allValue !== null) allPatchInput.value = allValue;
-                    } else {
-                        allValue = null;
-                    }
-                    if (line.startsWith('system=')) {
-                        systemValue = line.split('=')[1] || null;
-                        if (systemValue !== null) systemPatchInput.value = systemValue;
-                    } else {
-                        systemValue = null;
-                    }
-                    if (line.startsWith('boot=')) {
-                        bootValue = line.split('=')[1] || null;
-                        if (bootValue !== null) bootPatchInput.value = bootValue;
-                    } else {
-                        bootValue = null;
-                    }
-                    if (line.startsWith('vendor=')) {
-                        vendorValue = line.split('=')[1] || null;
-                        if (vendorValue !== null) vendorPatchInput.value = vendorValue;
-                    } else {
-                        vendorValue = null;
-                    }
-                }
-            }
-            if (allValue === null && (bootValue || systemValue || vendorValue)) {
-                checkAdvanced(true);
-            }
+            await loadConfig();
+            const policy = getDefaultPolicy();
+
+            systemPatchInput.value = '';
+            bootPatchInput.value = '';
+            vendorPatchInput.value = '';
+
+            if (isDefaultPolicyDisabled(policy)) return;
+
+            systemPatchInput.value = policy.os_patch === 'no' ? '' : policy.os_patch;
+            bootPatchInput.value = policy.boot_patch === 'no' ? '' : policy.boot_patch;
+            vendorPatchInput.value = policy.vendor_patch === 'no' ? '' : policy.vendor_patch;
         }
     } catch (error) {
         console.error('Failed to load security patch config:', error);
     }
 }
 
-// Function to check advanced mode
-function checkAdvanced(shouldCheck) {
-    if (jamesFork) return;
-    if (shouldCheck) {
-        advancedToggle.checked = true;
-        normalInputs.classList.add('hidden');
-        advancedInputs.classList.remove('hidden');
-    } else {
-        advancedToggle.checked = false;
-        normalInputs.classList.remove('hidden');
-        advancedInputs.classList.add('hidden');
-    }
-}
-
-// Unified date formatting function
-window.formatDate = function(input) {
-    let value = input.value.replace(/-/g, '');
-    let formatted = value.slice(0, 4);
-
-    // Allow 'no' input
-    if (value === 'no') {
-        input.value = 'no';
-        input.setSelectionRange(2, 2);
-        return 'no';
-    }
-
-    if (value.startsWith('n')) {
-        // Only allow 'o' after 'n'
-        if (value.length > 1 && value[1] !== 'o') {
-            value = 'n';
-        }
-        formatted = value.slice(0, 2);
-        if (value.length > 2) {
-            input.value = formatted;
-            input.setSelectionRange(2, 2);
-            return formatted;
-        }
-    } else {
-        // Only allow numbers if not starting with 'n'
-        const numbersOnly = value.replace(/\D/g, '');
-        if (numbersOnly !== value) {
-            input.value = numbersOnly;
-            value = numbersOnly;
-            formatted = numbersOnly.slice(0, 4);
-        }
-        
-        // Add hyphens on 5th and 7th character
-        if (value.length >= 4) {
-            formatted += '-'+ value.slice(4, 6);
-        }
-        if (value.length >= 6) {
-            formatted += '-'+ value.slice(6, 8);
-        }
-    }
-
-    // Handle backspace/delete
-    const lastChar = value.slice(-1);
-    if (lastChar === '-' || (isNaN(lastChar) && !['n'].includes(lastChar))) {
-        formatted = formatted.slice(0, -1);
-    }
-
-    // Update input value
-    const startPos = input.selectionStart;
-    input.value = formatted;
-    const newLength = formatted.length;
-    const shouldMoveCursor = (value.length === 4 || value.length === 6) && newLength > startPos;
-    input.setSelectionRange(shouldMoveCursor ? newLength : startPos, shouldMoveCursor ? newLength : startPos);
-
-    return formatted;
-}
-
-// Validate date format YYYY-MM-DD
-function isValidDateFormat(date) {
-    if (date === 'no') return true;
-    const regex = /^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$/;
-    return regex.test(date);
-}
-
 // Validate 6-digit format YYYYMM
 function isValid6Digit(value) {
     if (value === 'prop') return true;
-    const regex = /^\d{6}$/;
+    const regex = /^[0-9YMD]{6}$/;
     return regex.test(value);
 }
 
 // Validate 8-digit format YYYYMMDD
 function isValid8Digit(value) {
-    const regex = /^\d{8}$/;
+    if (value === 'no') return true;
+    const regex = /^[0-9YMD]{8}$/;
     return regex.test(value);
 }
 
@@ -229,8 +128,7 @@ export function securityPatch() {
             if (errno === 0) {
                 jamesFork = true;
                 document.getElementById('security-patch').textContent = getString('menu_set_devconfig');
-                advancedToggleElement.style.display = 'none';
-                normalInputs.classList.add('hidden');
+                defaultPolicyInputs.classList.add('hidden');
                 devconfigInputs.classList.remove('hidden');
             }
         });
@@ -239,31 +137,37 @@ export function securityPatch() {
         loadCurrentConfig();
     });
 
-    // Toggle advanced mode
-    advancedToggle.addEventListener('change', () => {
-        normalInputs.classList.toggle('hidden');
-        advancedInputs.classList.toggle('hidden');
-    });
-
     // Auto config button
     autoButton.addEventListener('click', () => {
-        const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--security-patch']);
+        if (jamesFork) return;
+        const output = spawn('sh', [`${basePath}/common/get_extra.sh`, '--get-security-patch'],
+            { cwd: "/data/local/tmp", env: { PATH: "/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk:/data/data/com.termux/files/usr/bin:$PATH" } });
+        let fetchedPatch = '';
         output.stdout.on('data', (data) => {
-            if (data.includes("not set")) {
+            const patch = normalizePatchValue(data);
+            if (!patch || data.includes("not set")) {
                 showPrompt(getString('security_patch_auto_failed'), false);
+            } else {
+                fetchedPatch = patch;
+                systemPatchInput.value = 'prop';
+                bootPatchInput.value = patch;
+                vendorPatchInput.value = patch;
             }
         });
-        output.on('exit', (code) => {
+        output.on('exit', async (code) => {
             if (code === 0) {
-                exec(`touch /data/adb/tricky_store/security_patch_auto_config`)
-                // Reset inputs
-                allPatchInput.value = '';
-                systemPatchInput.value = '';
-                bootPatchInput.value = '';
-                vendorPatchInput.value = '';
-
-                checkAdvanced(false);
-                showPrompt(getString('security_patch_auto_success'));
+                const patch = fetchedPatch || normalizePatchValue(bootPatchInput.value || vendorPatchInput.value);
+                if (!patch || !isValid8Digit(patch)) {
+                    showPrompt(getString('security_patch_auto_failed'), false);
+                    return;
+                }
+                setDefaultPolicy({
+                    os_patch: 'prop',
+                    vendor_patch: patch,
+                    boot_patch: patch
+                });
+                const { errno } = await writeConfig();
+                showPrompt(getString(errno === 0 ? 'security_patch_auto_success' : 'security_patch_auto_failed'), errno === 0);
             } else {
                 showPrompt(getString('security_patch_auto_failed'), false);
             }
@@ -315,36 +219,15 @@ export function securityPatch() {
             }
 
             handleSecurityPatch('manual', config);
-        } else if (!advancedToggle.checked) {
-            // Normal mode validation
-            const allValue = allPatchInput.value.trim();
-            if (!allValue) {
-                // Save empty value to disable auto config
-                handleSecurityPatch('disable');
-                dialog.close();
-                return;
-            }
-            if (!isValid8Digit(allValue)) {
-                showPrompt(getString('security_patch_invalid_all'), false);
-                return;
-            }
-            const value = `all=${allValue}`;
-            const result = handleSecurityPatch('manual', value);
-            if (result) {
-                // Reset inputs
-                systemPatchInput.value = '';
-                bootPatchInput.value = '';
-                vendorPatchInput.value = '';
-            }
         } else {
-            // Advanced mode validation
-            const bootValue = formatDate(bootPatchInput, 'boot');
-            const systemValue = systemPatchInput.value.trim();
-            const vendorValue = vendorPatchInput.value.trim();
+            const bootValue = normalizePatchValue(bootPatchInput.value);
+            const systemValue = normalizePatchValue(systemPatchInput.value);
+            const vendorValue = normalizePatchValue(vendorPatchInput.value);
 
             if (!bootValue && !systemValue && !vendorValue) {
-                // Save empty values to disable auto config
-                handleSecurityPatch('disable');
+                setDefaultPolicy({});
+                const { errno } = await writeConfig();
+                showPrompt(getString(errno === 0 ? 'security_patch_value_empty' : 'security_patch_save_failed'), errno === 0);
                 dialog.close();
                 return;
             }
@@ -354,26 +237,23 @@ export function securityPatch() {
                 return;
             }
 
-            if (bootValue && !isValidDateFormat(bootValue)) {
+            if (bootValue && !isValid8Digit(bootValue)) {
                 showPrompt(getString('security_patch_invalid_boot'), false);
                 return;
             }
 
-            if (vendorValue && !isValidDateFormat(vendorValue)) {
+            if (vendorValue && !isValid8Digit(vendorValue)) {
                 showPrompt(getString('security_patch_invalid_vendor'), false);
                 return;
             }
 
-            const config = [
-                systemValue ? `system=${systemValue}` : '',
-                bootValue ? `boot=${bootValue}` : '',
-                vendorValue ? `vendor=${vendorValue}` : ''
-            ].filter(Boolean).join('\n');
-            const result = handleSecurityPatch('manual', config);
-            if (result) {
-                // Reset inputs
-                allPatchInput.value = '';
-            }
+            setDefaultPolicy({
+                os_patch: systemValue || 'no',
+                boot_patch: bootValue || 'no',
+                vendor_patch: vendorValue || 'no'
+            });
+            const { errno } = await writeConfig();
+            showPrompt(getString(errno === 0 ? 'security_patch_save_success' : 'security_patch_save_failed'), errno === 0);
         }
         dialog.close();
         loadCurrentConfig();
@@ -386,13 +266,11 @@ export function securityPatch() {
                         { cwd: "/data/local/tmp", env: { PATH: "/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk:/data/data/com.termux/files/usr/bin:$PATH" }});
         output.stdout.on('data', (data) => {
             showPrompt(getString('security_patch_fetched'), true, 1000);
-            checkAdvanced(true);
-
-            allPatchInput.value = data.replace(/-/g, '');
+            const patch = normalizePatchValue(data);
             systemPatchInput.value = 'prop';
-            bootPatchInput.value = data;
-            vendorPatchInput.value = data;
-            devconfigPatchInput.value = data;
+            bootPatchInput.value = patch;
+            vendorPatchInput.value = patch;
+            devconfigPatchInput.value = data.trim();
         });
         output.stderr.on('data', (data) => {
             if (data.includes("failed")) {

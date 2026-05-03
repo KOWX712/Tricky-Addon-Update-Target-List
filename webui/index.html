@@ -117,15 +117,27 @@
                     <label class="mode-option">
                         <md-radio id="mode-generate" name="mode" value="generate" class="mode-generated"></md-radio>
                         <span data-i18n="mode_certificate_generating"></span>
+                        <span class="mode-icon mode-generated">!</span>
                     </label>
                     <label class="mode-option">
                         <md-radio id="mode-hack" name="mode" value="hack" class="mode-hack"></md-radio>
                         <span data-i18n="mode_leaf_hack"></span>
+                        <span class="mode-icon mode-hack">?</span>
                     </label>
+                </div>
+                <div id="mode-policy-section" class="mode-policy-section hidden">
+                    <md-divider></md-divider>
+                    <md-outlined-button id="mode-policy-toggle" data-i18n="mode_set_custom_policy"></md-outlined-button>
+                    <div id="mode-policy-fields" class="mode-policy-fields hidden">
+                        <md-outlined-text-field id="mode-policy-os" label="OS" placeholder="YYYYMM or prop" autocapitalize="none" maxlength="6"></md-outlined-text-field>
+                        <md-outlined-text-field id="mode-policy-vendor" label="Vendor" placeholder="YYYYMMDD" autocapitalize="none" maxlength="8"></md-outlined-text-field>
+                        <md-outlined-text-field id="mode-policy-boot" label="Boot" placeholder="YYYYMMDD" autocapitalize="none" maxlength="8"></md-outlined-text-field>
+                    </div>
                 </div>
             </div>
             <div slot="actions">
                 <md-text-button id="mode-cancel" data-i18n="functional_button_cancel"></md-text-button>
+                <md-filled-button id="mode-save" data-i18n="functional_button_save"></md-filled-button>
             </div>
         </md-dialog>
 
@@ -271,18 +283,12 @@
 
         <!-- Security Patch Dialog -->
         <md-dialog id="security-patch-dialog" class="text-field-dialog">
-            <div slot="headline" data-i18n="security_patch_title"></div>
+            <div slot="headline" data-i18n="default_policy_title"></div>
             <div slot="content">
-                <!-- Usual input -->
-                <div id="normal-mode-inputs" class="normal-mode-inputs input-group">
-                    <md-outlined-text-field id="all-patch" label="All" placeholder="20250101" maxlength="8" autocapitalize="none"></md-outlined-text-field>
-                </div>
-
-                <!-- Advanced input -->
-                <div id="advanced-mode-inputs" class="advanced-mode-inputs hidden input-group">
-                    <md-outlined-text-field id="system-patch" label="System" placeholder="202501" maxlength="6" autocapitalize="none"></md-outlined-text-field>
-                    <md-outlined-text-field id="boot-patch" label="Boot" placeholder="2025-01-01" autocapitalize="none" oninput="formatDate(this)" maxlength="10"></md-outlined-text-field>
-                    <md-outlined-text-field id="vendor-patch" label="Vendor" placeholder="2025-01-01" autocapitalize="none" oninput="formatDate(this)" maxlength="10"></md-outlined-text-field>
+                <div id="default-policy-inputs" class="normal-mode-inputs input-group">
+                    <md-outlined-text-field id="system-patch" label="OS" placeholder="YYYYMM or prop" maxlength="6" autocapitalize="none"></md-outlined-text-field>
+                    <md-outlined-text-field id="vendor-patch" label="Vendor" placeholder="YYYYMMDD" autocapitalize="none" maxlength="8"></md-outlined-text-field>
+                    <md-outlined-text-field id="boot-patch" label="Boot" placeholder="YYYYMMDD" autocapitalize="none" maxlength="8"></md-outlined-text-field>
                 </div>
 
                 <!-- James' fork input -->
@@ -300,12 +306,6 @@
                     <md-outlined-text-field id="devconfig-meid" label="meid" placeholder="32b6af4d93aca6" autocapitalize="none"></md-outlined-text-field>
                     <md-outlined-text-field id="devconfig-imei" label="imei" placeholder="73598126407" autocapitalize="none"></md-outlined-text-field>
                     <md-outlined-text-field id="devconfig-imei2" label="imei2" placeholder="77983102465" autocapitalize="none"></md-outlined-text-field>
-                </div>
-
-                <!-- Advanced Toggle -->
-                <div class="advanced-toggle">
-                    <md-checkbox id="advanced-mode"></md-checkbox>
-                    <label for="advanced-mode" data-i18n="security_patch_advanced_mode"></label>
                 </div>
             </div>
             <div class="security-patch-actions" slot="actions">

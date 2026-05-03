@@ -1,6 +1,21 @@
 import { wrapInputStream } from 'webuix';
 import { exec, toast, listPackages, getPackagesInfo } from 'kernelsu-alt';
 import { loadingIndicator, appsWithExclamation, appsWithQuestion, checkSukiSu } from './main.js';
+import {
+    getPolicy,
+    getStoreInfo,
+    getTarget,
+    getTargetEntries,
+    getTargetMode,
+    loadConfig,
+    parseTargetList,
+    removePolicy,
+    setPolicy,
+    setTargetMode,
+    writeConfig
+} from './config.js';
+import { getString } from './language.js';
+import { showPrompt } from './main.js';
 import fallbackIcon from '../icon.png';
 
 const appTemplate = document.getElementById('app-template').content;
@@ -8,19 +23,34 @@ export const appListContainer = document.querySelector('.app-list');
 
 let targetList = [];
 
+function syncModeStateFromEntries(entries = getTargetEntries()) {
+    appsWithExclamation.length = 0;
+    appsWithQuestion.length = 0;
+
+    for (const { packageName, mode } of entries) {
+        if (mode === 'generate') {
+            appsWithExclamation.push(packageName);
+        } else if (mode === 'hack') {
+            appsWithQuestion.push(packageName);
+        }
+    }
+}
+
 // Fetch and render applist
 export async function fetchAppList() {
-    // fetch target list
-    await exec('cat /data/adb/tricky_store/target.txt')
-        .then(({ errno, stdout }) => {
-            if (errno === 0) {
-                targetList = processTargetList(stdout);
-            } else if (typeof ksu === 'undefined') {
-                targetList = processTargetList("com.example.one\ncom.example.two!\ncom.example.three?");
-            } else {
-                toast("Failed to read target.txt!");
-            }
-        });
+    try {
+        await loadConfig();
+        targetList = getTarget();
+        syncModeStateFromEntries();
+    } catch (error) {
+        if (typeof ksu === 'undefined') {
+            const targets = parseTargetList("com.example.one\ncom.example.two!\ncom.example.three?");
+            targetList = targets.map(target => target.packageName);
+            syncModeStateFromEntries(targets);
+        } else {
+            toast("Failed to read config!");
+        }
+    }
 
     // Get installed packages
     let appEntries = [];
@@ -201,23 +231,8 @@ function arrayBufferToBase64(buffer) {
     return btoa(binary);
 }
 
-// Function to save app with ! and ? then process target list
-function processTargetList(targetFileContent) {
-    appsWithExclamation.length = 0;
-    appsWithQuestion.length = 0;
-    const targetList = targetFileContent
-        .split("\n")
-        .map(app => {
-            const trimmedApp = app.trim();
-            if (trimmedApp.endsWith('!')) {
-                appsWithExclamation.push(trimmedApp.slice(0, -1));
-            } else if (trimmedApp.endsWith('?')) {
-                appsWithQuestion.push(trimmedApp.slice(0, -1));
-            }
-            return trimmedApp.replace(/[!?]/g, '');
-        })
-        .filter(app => app.trim() !== '');
-    return targetList;
+function normalizePolicyInput(value) {
+    return value.trim().replace(/-/g, '');
 }
 
 let menuOpen = false;
@@ -248,7 +263,29 @@ function toggleableCheckbox() {
 function setupModeMenu() {
     const modeDialog = document.getElementById('mode-dialog');
     const modeAppName = document.getElementById('mode-dialog-appname');
+    const modePolicySection = document.getElementById('mode-policy-section');
+    const modePolicyToggle = document.getElementById('mode-policy-toggle');
+    const modePolicyFields = document.getElementById('mode-policy-fields');
+    const modePolicyOs = document.getElementById('mode-policy-os');
+    const modePolicyVendor = document.getElementById('mode-policy-vendor');
+    const modePolicyBoot = document.getElementById('mode-policy-boot');
     let currentCard = null;
+    let customPolicyEnabled = false;
+
+    function updatePolicyToggleLabel() {
+        modePolicyToggle.textContent = getString(customPolicyEnabled ? 'mode_use_default_policy' : 'mode_set_custom_policy');
+    }
+
+    function setCustomPolicyState(enabled) {
+        customPolicyEnabled = enabled;
+        modePolicyFields.classList.toggle('hidden', !enabled);
+        updatePolicyToggleLabel();
+        if (!enabled) {
+            modePolicyOs.value = '';
+            modePolicyVendor.value = '';
+            modePolicyBoot.value = '';
+        }
+    }
 
     function openModeDialog(card) {
         currentCard = card;
@@ -263,39 +300,62 @@ function setupModeMenu() {
         document.getElementById('mode-generate').checked = isGenerate;
         document.getElementById('mode-hack').checked = isHack;
 
+        const usesConfigIni = getStoreInfo().usesConfigIni;
+        modePolicySection.classList.toggle('hidden', !usesConfigIni);
+        const override = usesConfigIni ? getPolicy(packageName) : null;
+        modePolicyOs.value = override?.os_patch || '';
+        modePolicyVendor.value = override?.vendor_patch || '';
+        modePolicyBoot.value = override?.boot_patch || '';
+        setCustomPolicyState(Boolean(override));
+
         modeDialog.show();
     }
 
-    function closeDialog(mode) {
-        if (!currentCard || !mode) {
+    async function closeDialog(shouldSave = false) {
+        if (!currentCard || !shouldSave) {
             modeDialog.close();
             currentCard = null;
             return;
         }
-        const packageName = currentCard.getAttribute('data-package');
-        const exIndex = appsWithExclamation.indexOf(packageName);
-        if (exIndex > -1) appsWithExclamation.splice(exIndex, 1);
-        const qIndex = appsWithQuestion.indexOf(packageName);
-        if (qIndex > -1) appsWithQuestion.splice(qIndex, 1);
 
-        if (mode === 'generate') {
-            appsWithExclamation.push(packageName);
-        } else if (mode === 'hack') {
-            appsWithQuestion.push(packageName);
+        const packageName = currentCard.getAttribute('data-package');
+
+        if (document.getElementById('mode-generate').checked) {
+            setTargetMode(packageName, 'generate');
+        } else if (document.getElementById('mode-hack').checked) {
+            setTargetMode(packageName, 'hack');
+        } else {
+            setTargetMode(packageName, 'auto');
         }
+
+        if (!modePolicySection.classList.contains('hidden')) {
+            if (customPolicyEnabled) {
+                setPolicy(packageName, {
+                    os_patch: normalizePolicyInput(modePolicyOs.value),
+                    vendor_patch: normalizePolicyInput(modePolicyVendor.value),
+                    boot_patch: normalizePolicyInput(modePolicyBoot.value)
+                });
+            } else {
+                removePolicy(packageName);
+            }
+        }
+
+        syncModeStateFromEntries();
         updateCheckboxColor();
+        const { errno } = await writeConfig();
+        showPrompt(getString(errno === 0 ? 'prompt_saved_target' : 'prompt_save_error'), errno === 0);
         currentCard = null;
-        setTimeout(() => modeDialog.close(), 200);
+        modeDialog.close();
     }
 
-    // Wire dialog item clicks
-    const defaultItem = document.getElementById('mode-default');
-    const genItem = document.getElementById('mode-generate');
-    const hackItem = document.getElementById('mode-hack');
-    defaultItem.addEventListener('click', () => closeDialog('normal'));
-    genItem.addEventListener('click', () => closeDialog('generate'));
-    hackItem.addEventListener('click', () => closeDialog('hack'));
-    document.getElementById('mode-cancel').addEventListener('click', () => closeDialog());
+    if (modeDialog.dataset.initialized !== 'true') {
+        modePolicyToggle.addEventListener('click', () => {
+            setCustomPolicyState(!customPolicyEnabled);
+        });
+        document.getElementById('mode-cancel').addEventListener('click', () => closeDialog(false));
+        document.getElementById('mode-save').addEventListener('click', () => closeDialog(true));
+        modeDialog.dataset.initialized = 'true';
+    }
 
     const cards = appListContainer.querySelectorAll('.card');
     cards.forEach((card) => {
@@ -317,9 +377,9 @@ function updateCheckboxColor() {
         const packageName = card.getAttribute("data-package");
         const checkbox = card.querySelector("md-checkbox");
         checkbox.classList.remove("checkbox-checked-generate", "checkbox-checked-hack");
-        if (appsWithExclamation.includes(packageName)) {
+        if (getTargetMode(packageName) === 'generate') {
             checkbox.classList.add("checkbox-checked-generate");
-        } else if (appsWithQuestion.includes(packageName)) {
+        } else if (getTargetMode(packageName) === 'hack') {
             checkbox.classList.add("checkbox-checked-hack");
         } else if (checkbox.checked) {
             checkbox.classList.remove("checkbox-checked-generate", "checkbox-checked-hack");

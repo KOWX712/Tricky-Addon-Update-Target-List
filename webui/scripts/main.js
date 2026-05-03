@@ -10,6 +10,7 @@ import { searchInput } from './search_menu.js';
 import { updateCheck, connection } from './update.js';
 import { securityPatch } from './security_patch.js';
 import { isKeygenAvailable } from './keygen.js';
+import { setTarget, setTargetMode, writeConfig } from './config.js';
 
 // Loading, Save and Prompt Elements
 export const loadingIndicator = document.querySelector('.loading');
@@ -237,8 +238,8 @@ export function parseMarkdown(container, text) {
     });
 }
 
-// Save configure and preserve ! and ? in target.txt
-document.getElementById("save").onclick = () => {
+// Save configure and preserve mode selection in the centralized config state
+document.getElementById("save").onclick = async () => {
     const selectedApps = Array.from(appListContainer.querySelectorAll("md-checkbox"))
         .filter(cb => cb.checked)
         .map(checkbox => checkbox.closest(".card").getAttribute("data-package"));
@@ -247,30 +248,24 @@ document.getElementById("save").onclick = () => {
         finalAppsList.add(app);
     });
     finalAppsList = Array.from(finalAppsList);
-    const modifiedAppsList = finalAppsList.map(app => {
+    setTarget(finalAppsList);
+    for (const app of finalAppsList) {
         if (appsWithExclamation.includes(app)) {
-            return `${app}!`;
+            setTargetMode(app, 'generate');
         } else if (appsWithQuestion.includes(app)) {
-            return `${app}?`;
+            setTargetMode(app, 'hack');
+        } else {
+            setTargetMode(app, 'auto');
         }
-        return app;
-    });
-    const updatedTargetContent = modifiedAppsList.join("\n");
-    exec(`echo "${updatedTargetContent}" | sort -u > /data/adb/tricky_store/target.txt`)
-        .then(({ errno }) => {
-            if (errno === 0) {
-                for (const app of appsWithExclamation) {
-                    exec(`sed -i 's/^${app}$/${app}!/' /data/adb/tricky_store/target.txt`);
-                }
-                for (const app of appsWithQuestion) {
-                    exec(`sed -i 's/^${app}$/${app}?/' /data/adb/tricky_store/target.txt`);
-                }
-                showPrompt(getString("prompt_saved_target"));
-                refreshAppList();
-            } else {
-                showPrompt(getString("prompt_save_error"), false);
-            }
-        });
+    }
+
+    const { errno } = await writeConfig();
+    if (errno === 0) {
+        showPrompt(getString("prompt_saved_target"));
+        refreshAppList();
+    } else {
+        showPrompt(getString("prompt_save_error"), false);
+    }
 }
 
 // Uninstall WebUI
