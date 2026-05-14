@@ -6,6 +6,16 @@ const clearBtn = document.getElementById('clear-btn');
 const menuButton = document.getElementById('menu-button');
 const menuOptions = document.getElementById('menu-options');
 
+function setAppVisibility(searchQuery = "") {
+    const normalizedQuery = searchQuery.toLowerCase();
+    const apps = appListContainer.querySelectorAll(".card");
+
+    apps.forEach(app => {
+        const name = app.querySelector(".name").textContent.toLowerCase();
+        app.parentElement.style.display = name.includes(normalizedQuery) ? "flex" : "none";
+    });
+}
+
 searchBtn.onclick = () => {
     searchInput.classList.add('show');
     searchInput.focus();
@@ -30,22 +40,16 @@ searchInput.addEventListener('blur', () => {
 
 // Search functionality
 searchInput.addEventListener("input", (e) => {
-    const searchQuery = e.target.value.toLowerCase();
-    const apps = appListContainer.querySelectorAll(".card");
-    apps.forEach(app => {
-        const name = app.querySelector(".name").textContent.toLowerCase();
-        app.parentElement.style.display = name.includes(searchQuery) ? "flex" : "none";
-        window.scrollTo(0, 0);
-    });
+    setAppVisibility(e.target.value);
+    window.scrollTo(0, 0);
 });
 
 // Clear search input
 clearBtn.addEventListener("click", () => {
     searchInput.value = "";
+    setAppVisibility();
     searchInput.blur();
     window.scrollTo(0, 0);
-    const apps = appListContainer.querySelectorAll(".card");
-    apps.forEach(app => app.style.display = "flex");
 });
 
 menuButton.addEventListener('click', () => {
