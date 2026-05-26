@@ -4,6 +4,8 @@ HIDE_DIR="/data/adb/modules/.TA_utl"
 TS="/data/adb/modules/tricky_store"
 TSPA="/data/adb/modules/tsupport-advance"
 
+. "$MODPATH/common/manager.sh"
+
 add_denylist_to_target() {
     exclamation_target=$(grep '!' "/data/adb/tricky_store/target.txt" | sed 's/!$//')
     question_target=$(grep '?' "/data/adb/tricky_store/target.txt" | sed 's/?$//')
@@ -21,11 +23,6 @@ add_denylist_to_target() {
     done
 }
 
-# Spoof security patch
-if [ -f "/data/adb/tricky_store/security_patch_auto_config" ]; then
-    sh "$MODPATH/common/get_extra.sh" --security-patch
-fi
-
 # Handle sensitive prop in background
 sh "$MODPATH/prop.sh" &
 
@@ -37,7 +34,7 @@ elif [ ! -d "$TSPA" ] && [ -f "/storage/emulated/0/stop-tspa-auto-target" ]; the
 fi
 
 # Magisk operation
-if [ -f "$MODPATH/action.sh" ]; then
+if [ "$MANAGER" = "MAGISK" ]; then
     # Hide module from Magisk manager
     if [ "$MODPATH" != "$HIDE_DIR" ]; then
         rm -rf "$HIDE_DIR"
@@ -46,11 +43,13 @@ if [ -f "$MODPATH/action.sh" ]; then
         cp -af "$MODPATH/." "$HIDE_DIR/"
     fi
     MODPATH="$HIDE_DIR"
+    [ -f "$MODPATH/action.sh" ] && mv -f "$MODPATH/action.sh" "$MODPATH/action.sh.old"
 
     # Add target from denylist
     # To trigger this, choose "Select from DenyList" in WebUI once
     [ -f "/data/adb/tricky_store/target_from_denylist" ] && add_denylist_to_target
 else
+    [ -f "$MODPATH/action.sh.old" ] && mv -f "$MODPATH/action.sh.old" "$MODPATH/action.sh"
     [ -d "$HIDE_DIR" ] && rm -rf "$HIDE_DIR"
 fi
 

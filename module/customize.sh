@@ -1,5 +1,3 @@
-SKIPUNZIP=0
-DEBUG=false
 CONFIG_DIR="/data/adb/tricky_store"
 MODID=`grep_prop id $TMPDIR/module.prop`
 NEW_MODID=".TA_utl"
@@ -55,7 +53,6 @@ ui_print "- Installing..."
 rm -rf "/data/adb/modules/$NEW_MODID"
 
 if [ "$ACTION" = "false" ]; then
-    rm -f "$MODPATH/action.sh"
     NEW_MODID="$MODID"
 else
     mkdir -p "$MODPATH/common/update/common"
@@ -72,29 +69,6 @@ ui_print "- Finalizing..."
 if [ -f "/data/adb/boot_hash" ]; then
     hash_value=$(grep -v '^#' "/data/adb/boot_hash" | tr -d '[:space:]' | tr '[:upper:]' '[:lower:]')
     [ -z "$hash_value" ] && rm -f /data/adb/boot_hash || echo "$hash_value" > /data/adb/boot_hash
-fi
-
-if [ -f "/data/adb/security_patch" ]; then
-    if grep -q "^auto_config=1" "/data/adb/security_patch"; then
-        touch "$CONFIG_DIR/security_patch_auto_config"
-    fi
-    rm -f "/data/adb/security_patch"
-fi
-
-if [ ! -f "$CONFIG_DIR/system_app" ]; then
-    SYSTEM_APP="
-    com.google.android.gms
-    com.google.android.gsf
-    com.android.vending
-    com.oplus.deepthinker
-    com.heytap.speechassist
-    com.coloros.sceneservice"
-    touch "$CONFIG_DIR/system_app"
-    for app in $SYSTEM_APP; do
-        if pm list packages -s | grep -q "$app"; then
-            echo "$app" >> "$CONFIG_DIR/system_app"
-        fi
-    done
 fi
 
 ui_print " "

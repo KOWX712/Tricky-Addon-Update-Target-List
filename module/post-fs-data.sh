@@ -1,14 +1,10 @@
 MODPATH=${0%/*}
 TS="/data/adb/modules/tricky_store"
 
-while [ -z "$(ls -A /data/adb/modules/)" ]; do
-    sleep 1
-done
-
 if [ ! -d "$TS" ] || [ -f "$TS/remove" ]; then
     if [ -f "$MODPATH/action.sh" ]; then
         [ -d "/data/adb/modules/TA_utl" ] && rm -rf "/data/adb/modules/TA_utl"
-        cp -rf "$MODPATH/common/temp" "/data/adb/modules/TA_utl"
+        cp -rf "$MODPATH/common/update" "/data/adb/modules/TA_utl"
         touch "/data/adb/modules/TA_utl/remove"
     else
         touch "$MODPATH/remove"
