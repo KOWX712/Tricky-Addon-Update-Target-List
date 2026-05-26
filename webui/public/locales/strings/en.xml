@@ -29,6 +29,10 @@
     <string name="update_changelog">Changelog</string>
     <string name="update_install">Install</string>
     <string name="update_reboot">Reboot</string>
+    <string name="update_channel">Update Channel</string>
+    <string name="update_channel_stable">Stable</string>
+    <string name="update_channel_canary">Canary</string>
+    <string name="update_channel_disable">Disable</string>
     <!-- Search -->
     <string name="search_bar_search_placeholder">Search</string>
     <!-- Functional Button -->

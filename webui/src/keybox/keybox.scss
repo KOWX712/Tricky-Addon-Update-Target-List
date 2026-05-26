@@ -1,0 +1,15 @@
+.customkb-input {
+  width: 100%;
+  margin-bottom: 16px;
+
+  md-icon.hidden {
+    display: none;
+  }
+}
+
+.customkb-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}

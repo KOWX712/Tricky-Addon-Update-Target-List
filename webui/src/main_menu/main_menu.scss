@@ -1,0 +1,49 @@
+@scope (.main-menu) {
+  :scope {
+    position: relative;
+  }
+
+  md-menu {
+    --md-menu-container-shape: 20px;
+    --md-sys-color-surface-container: var(--md-sys-color-surface-container-high);
+    max-width: 60vw;
+  }
+
+  md-sub-menu {
+    md-menu {
+      max-width: 40vw;
+    }
+  }
+
+  #language-menu {
+    --md-menu-top-space: max(var(--top-inset), 8px);
+  }
+
+  md-menu-item {
+    width: max-content;
+    min-width: 100%;
+    max-width: 100%;
+    border-radius: 16px;
+    padding: 0 8px;
+    box-sizing: border-box;
+  }
+
+  .menu-item-button-container {
+    width: 100%;
+    display: flex;
+    padding: 8px;
+    box-sizing: border-box;
+    justify-content: space-evenly;
+    gap: 8px;
+  }
+
+  .icon-button-item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  md-divider {
+    padding: 0 20px;
+  }
+}

@@ -1,0 +1,180 @@
+@use "./theme.scss";
+
+body {
+  color: var(--md-sys-color-on-surface);
+  background-color: var(--md-sys-color-surface);
+  font-size: 16px;
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: calc(64px + var(--top-inset));
+  padding: 0 8px;
+  padding-top: var(--top-inset);
+  width: 100%;
+  background-color: var(--md-sys-color-surface);
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  user-select: none;
+  transition: background-color 0.2s ease-in;
+
+  &.scroll {
+    background-color: var(--md-sys-color-surface-container);
+  }
+}
+
+#title {
+  font-size: 1.4em;
+  padding: 0 8px;
+}
+
+.search-hide {
+  transition: opacity 0.3s ease;
+
+  &.hide {
+    opacity: 0;
+  }
+}
+
+.search-bar {
+  position: absolute;
+  left: 16px;
+  width: calc(100% - 32px - 32px);
+  transition: all 0.3s ease;
+
+  &.hide {
+    width: calc(80% - 32px - 32px);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  [dir="rtl"] & {
+    left: unset;
+    right: 16px;
+  }
+}
+
+.body-content {
+  padding-top: calc(var(--top-inset) + 64px + 8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.update {
+  width: calc(100% - 32px);
+  max-width: 900px;
+  background-color: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container);
+  padding: 16px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  position: relative;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &.hide {
+    display: none;
+  }
+
+  .update-text {
+    display: flex;
+    flex-direction: column;
+    
+    span {
+      font-weight: 500;
+    }
+
+    em {
+      font-size: 0.9em;
+    }
+  }
+}
+
+.loading {
+  height: calc(100vh - var(--top-inset) - 64px - 8px);
+  padding-bottom: calc(var(--top-inset) + 64px + 8px);
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.uninstall {
+  width: calc(100% - 32px);
+  max-width: 900px;
+  margin-top: 16px;
+
+  md-filled-button {
+    width: 100%;
+    --md-sys-color-primary: var(--md-sys-color-error);
+    --md-sys-color-on-primary: var(--md-sys-color-on-error);
+  }
+}
+
+.bottom-safe-inset {
+  height: calc(var(--bottom-inset) + 16px + 56px + 16px);
+}
+
+.floating-content {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 0 16px;
+  padding-bottom: calc(var(--bottom-inset) + 16px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.2s ease;
+  pointer-events: none;
+  z-index: 4;
+
+  &.fab-hide {
+    transform: translateY(calc(56px + 16px));
+    transition: transform 0.2s ease;
+  }
+}
+
+.fab-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+
+  .fab {
+    pointer-events: auto;
+    transition: all 0.2s ease;
+
+    &.fab-hide {
+      transform: scale(0.9);
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}
+
+.dialog-content {
+  z-index: 10;
+  position: relative;
+}
+
+.spacer {
+  flex: 1;
+}
+
+[dir="rtl"] [flip-icon-in-rtl="true"] {
+  transform: scaleX(-1);
+}

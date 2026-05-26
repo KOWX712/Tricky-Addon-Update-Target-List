@@ -1,0 +1,28 @@
+@scope (.snackbar) {
+  :scope {
+    width: 100%;
+    max-width: 600px;
+    padding: 16px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: var(--md-sys-color-inverse-on-surface);
+    background-color: var(--md-sys-color-inverse-surface);
+    font-size: 0.9em;
+    word-wrap: break-word;
+    user-select: none;
+    pointer-events: auto;
+    touch-action: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+
+    &.hide {
+      transform: scale(0.9);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &.error {
+      background-color: var(--md-sys-color-error-container);
+      color: var(--md-sys-color-on-error-container);
+    }
+  }
+}

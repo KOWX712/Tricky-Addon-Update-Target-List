@@ -1,0 +1,238 @@
+@scope (.app-list) {
+  :scope {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: calc(100% - 32px);
+    max-width: 900px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .card-box {
+    width: 100%;
+  }
+
+  .card {
+    border-radius: 4px;
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+    background-color: var(--md-sys-color-surface-container);
+    position: relative;
+    overflow: hidden;
+    transition: border-radius 0.2s ease, background-color 0.1s ease;
+
+    &:active {
+      border-radius: 20px;
+    }
+
+    &.selected {
+      background-color: var(--md-sys-color-tonal-surface);
+    }
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    gap: 8px;
+  }
+
+  .checkbox {
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    flex: 1 1 auto;
+    min-width: 0;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .app-info {
+    text-align: initial;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .app-icon-container {
+    flex-shrink: 0;
+    height: 40px;
+    width: 40px;
+    position: relative;
+    pointer-events: none;
+  }
+
+  .app-name,
+  .package-name {
+    display: block;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .app-name {
+    display: inline;
+    color: var(--md-sys-color-on-surface);
+    font-size: 1.1em;
+  }
+
+  .package-name {
+    color: var(--md-sys-color-outline);
+    font-size: 0.9em;
+  }
+
+  .loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--md-sys-color-surface-container), var(--md-sys-color-surface-container-high), var(--md-sys-color-surface-container));
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite linear;
+    border-radius: 6px;
+  }
+
+  .app-icon {
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .app-icon-fallback {
+    display: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background-color: var(--md-sys-color-secondary-container);
+    justify-content: center;
+    align-items: center;
+
+    &.visible {
+      display: flex;
+    }
+
+    svg {
+      width: 70%;
+      height: 70%;
+      fill: var(--md-sys-color-on-secondary-container);
+    }
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Mode Dialog */
+#mode-dialog {
+  [slot="headline"] {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-bottom: 0;
+  }
+
+  .mode-dialog-content {
+    min-width: 240px;
+    padding-top: 0;
+  }
+
+  #mode-dialog-appname {
+    margin-bottom: 12px;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    color: var(--md-sys-color-outline);
+    word-break: break-word;
+  }
+
+  .mode-options {
+    margin: 12px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    user-select: none;
+    --md-sys-color-on-surface: var(--md-sys-color-primary);
+    --md-sys-color-on-surface-variant: var(--md-sys-color-primary);
+  }
+
+  .mode-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.2em;
+  }
+
+  .mode-policy-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .mode-policy-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  .mode-policy-section.hidden {
+    display: none;
+  }
+}
+
+$mode-gen-color: #36DB2B;
+$mode-hack-color: #FF8400;
+
+.mode-generated,
+.checkbox-checked-generated {
+  --md-sys-color-primary: #{$mode-gen-color};
+}
+
+.mode-generated {
+  --md-sys-color-on-surface: #{$mode-gen-color};
+  --md-sys-color-on-surface-variant: #{$mode-gen-color};
+}
+
+.mode-hack,
+.checkbox-checked-hack {
+  --md-sys-color-primary: #{$mode-hack-color};
+}
+
+.mode-hack {
+  --md-sys-color-on-surface: #{$mode-hack-color};
+  --md-sys-color-on-surface-variant: #{$mode-hack-color};
+}
+
+.mode-icon {
+  font-family: monospace;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 2px;
+
+  &.mode-generated {
+    background-color: $mode-gen-color;
+    color: #fff;
+  }
+
+  &.mode-hack {
+    background-color: $mode-hack-color;
+    color: #fff;
+  }
+}
