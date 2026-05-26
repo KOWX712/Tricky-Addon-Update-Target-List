@@ -6,7 +6,7 @@
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">Instructions</string>
-    <string name="help_save_and_update_description">Save current configure to target.txt.</string>
+    <string name="help_save_and_update_description">Save current configure.</string>
     <string name="help_select_denylist">Select From DenyList</string>
     <string name="help_select_denylist_description">Available in Magisk only, select apps that are in the DenyList. Recommended.</string>
     <string name="help_deselect_unnecessary">Deselect Unnecessary</string>
@@ -43,12 +43,8 @@
     <string name="functional_button_confirm">Confirm</string>
     <string name="functional_button_reset">Reset</string>
     <string name="functional_button_remove">Remove</string>
-    <!-- Loading -->
-    <string name="loading_loading">Loading...</string>
+    <string name="functional_button_today">Today</string>
     <!-- Menu -->
-    <string name="menu_refresh">Refresh</string>
-    <string name="menu_select_all">Select All</string>
-    <string name="menu_deselect_all">Deselect All</string>
     <string name="menu_select_denylist">Select From DenyList</string>
     <string name="menu_deselect_unnecessary">Deselect Unnecessary</string>
     <string name="menu_add_system_app">Add System App</string>
@@ -58,7 +54,6 @@
     <string name="menu_keybox_local">Local</string>
     <string name="menu_prop_setting">Prop Settings</string>
     <string name="menu_set_security_patch">Set Default Policy</string>
-    <string name="menu_set_devconfig">Set DevConfig</string>
     <string name="menu_help">Help</string>
     <string name="menu_language">Language</string>
     <string name="menu_about">About</string>
@@ -80,7 +75,7 @@
     <string name="prompt_unknown_key_set">Unknown keybox set successfully</string>
     <string name="prompt_boot_hash_set">Verified Boot Hash saved successfully</string>
     <string name="prompt_boot_hash_set_error">Failed to update Verified Boot Hash</string>
-    <string name="prompt_saved_target">Config saved to target.txt</string>
+    <string name="prompt_saved_target">Config saved</string>
     <string name="prompt_save_error">Failed to save config</string>
     <string name="prompt_uninstall_prompt">WebUI will be removed after reboot</string>
     <string name="prompt_uninstall_failed">Failed to uninstall WebUI</string>
@@ -88,9 +83,7 @@
     <string name="prompt_new_update">A new update is available!</string>
     <string name="prompt_no_update">There are currently no updates available</string>
     <string name="prompt_downloading">Downloading new update...</string>
-    <string name="prompt_downloaded">Download completed</string>
     <string name="prompt_download_fail">Fail to download update</string>
-    <string name="prompt_installing">Installing update...</string>
     <string name="prompt_installed">Installed successfully, reboot now.</string>
     <string name="prompt_install_fail">Fail to install, please update manually</string>
     <string name="prompt_rebooting">Rebooting...</string>
@@ -104,31 +97,11 @@
     <string name="prompt_custom_not_found">No custom keybox found</string>
     <string name="prompt_custom_invalid_script">Script not allowed</string>
     <string name="prompt_custom_removed">Custom keybox entry removed</string>
-    <string name="prompt_no_file_selected">No file selected</string>
-    <string name="prompt_system_app_not_found">System app not found</string>
-    <string name="prompt_system_app_error">Failed to add system app</string>
     <!-- Security Patch -->
     <string name="default_policy_title">Default Policy</string>
-    <string name="security_patch_advanced_mode">Advanced</string>
-    <string name="security_patch_get_date">Get Security Patch Date</string>
-    <string name="security_patch_auto">Auto</string>
-    <string name="security_patch_fetching">Fetching...</string>
-    <string name="security_patch_fetched">Done</string>
-    <string name="security_patch_get_failed">Failed to fetch security patch date</string>
-    <string name="security_patch_unable_to_connect">Unable to connect to source.android.com</string>
-    <string name="security_patch_auto_success">Auto config enabled successfully</string>
-    <string name="security_patch_auto_failed">Failed to enable auto config</string>
-    <string name="security_patch_save_success">Security patch saved successfully</string>
-    <string name="security_patch_save_failed">Failed to save security patch</string>
-    <string name="security_patch_value_empty">Security patch configuration is disabled</string>
     <string name="security_patch_invalid_all">Invalid format</string>
-    <string name="security_patch_invalid_boot">Invalid boot format</string>
-    <string name="security_patch_invalid_system">Invalid system format</string>
-    <string name="security_patch_invalid_vendor">Invalid vendor format</string>
     <!-- Add System App -->
     <string name="add_system_app_title">Add System App</string>
-    <string name="add_system_app_add">Add</string>
-    <string name="add_system_app_current_list">Current System App List</string>
     <!-- CustomKB Dialog -->
     <string name="customkb_dialog_title">Custom Keybox Provider</string>
     <string name="customkb_name_placeholder">Name</string>
@@ -147,8 +120,8 @@
     <!-- Mode dialog -->
     <string name="mode_dialog_title">Mode</string>
     <string name="mode_auto">Auto</string>
-    <string name="mode_certificate_generating">Cert Generating (!)</string>
-    <string name="mode_leaf_hack">Leaf Hack (?)</string>
+    <string name="mode_certificate_generating">Cert Generating</string>
+    <string name="mode_leaf_hack">Leaf Hack</string>
     <string name="mode_set_custom_policy">Set Custom Policy</string>
     <string name="mode_use_default_policy">Use Default Policy</string>
 </resources>
