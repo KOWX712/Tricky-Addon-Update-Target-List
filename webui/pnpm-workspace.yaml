@@ -1,2 +1,2 @@
-ignoredBuiltDependencies:
-  - esbuild
+allowBuilds:
+  '@parcel/watcher': true
