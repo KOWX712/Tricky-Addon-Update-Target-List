@@ -6,7 +6,6 @@
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">Panduan</string>
-    <string name="help_save_and_update_description">Simpan konfigurasi saat ini ke target.txt.</string>
     <string name="help_select_denylist">Pilih dari Denylist</string>
     <string name="help_select_denylist_description">Hanya untuk Magisk, pilih aplikasi yang ada di Denylist. Disarankan.</string>
     <string name="help_deselect_unnecessary">Batalkan Pilihan yang Tidak Perlu</string>
@@ -31,23 +30,14 @@
     <string name="functional_button_cancel">Batal</string>
     <string name="functional_button_confirm">Konfirmasi</string>
     <string name="functional_button_reset">Ulang</string>
-    <!-- Loading -->
-    <string name="loading_loading">Memuat...</string>
     <!-- Menu -->
-    <string name="menu_refresh">Segarkan</string>
-    <string name="menu_select_all">Pilih Semua</string>
-    <string name="menu_deselect_all">Batalkan Semua Pilihan</string>
     <string name="menu_select_denylist">Pilih dari Denylist</string>
     <string name="menu_deselect_unnecessary">Batalkan Pilihan yang Tidak Perlu</string>
     <string name="menu_add_system_app">Tambahkan Aplikasi Sistem</string>
     <string name="menu_keybox_local">Lokal</string>
-    <string name="menu_set_verified_boot_hash">Atur Verified Boot Hash</string>
-    <string name="menu_set_security_patch">Atur Patch Keamanan</string>
-    <string name="menu_set_devconfig">Atur Konfigurasi Pengembang</string>
     <string name="menu_about">Tentang</string>
-    <!-- Boot Hash -->
+    <!-- Prop Dialog -->
     <string name="boot_hash_title">Verified Boot Hash</string>
-    <string name="boot_hash_input_placeholder">Tempel Verified Boot Hash Anda di sini</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Perbarui Daftar Target</string>
@@ -57,13 +47,11 @@
     <string name="about_disclaimer">Modul ini bukan bagian dari Tricky Store. Jangan laporkan masalah ke Tricky Store jika mengalami kendala.</string>
     <string name="about_acknowledgment">Pengakuan</string>
     <!-- Prompt -->
-    <string name="prompt_no_internet">Periksa koneksi internet Anda</string>
     <string name="prompt_aosp_key_set">Keybox AOSP berhasil digunakan</string>
     <string name="prompt_key_set_error">Gagal memperbarui keybox</string>
     <string name="prompt_unknown_key_set">Keybox tidak dikenal berhasil digunakan</string>
     <string name="prompt_boot_hash_set">Verified Boot Hash berhasil disimpan</string>
     <string name="prompt_boot_hash_set_error">Gagal memperbarui Verified Boot Hash</string>
-    <string name="prompt_saved_target">Konfigurasi disimpan ke target.txt</string>
     <string name="prompt_save_error">Gagal menyimpan konfigurasi</string>
     <string name="prompt_uninstall_prompt">WebUI akan dicopot setelah perangkat dimulai ulang</string>
     <string name="prompt_uninstall_failed">Gagal mencopot pemasangan WebUI</string>
@@ -71,40 +59,17 @@
     <string name="prompt_new_update">Pembaruan baru tersedia!</string>
     <string name="prompt_no_update">Saat ini tidak ada pembaruan yang tersedia</string>
     <string name="prompt_downloading">Mengunduh pembaruan...</string>
-    <string name="prompt_downloaded">Unduhan selesai</string>
     <string name="prompt_download_fail">Gagal mengunduh pembaruan</string>
-    <string name="prompt_installing">Memasang pembaruan...</string>
     <string name="prompt_installed">Pembaruan berhasil dipasang, mulai ulang sekarang.</string>
     <string name="prompt_install_fail">Gagal memasang, silakan perbarui secara manual</string>
     <string name="prompt_rebooting">Memulai ulang...</string>
     <string name="prompt_reboot_fail">Gagal memulai ulang, silakan lakukan secara manual</string>
     <string name="prompt_custom_key_set">Keybox kustom berhasil digunakan</string>
     <string name="prompt_custom_key_set_error">Gagal menggunakan keybox kustom</string>
-    <string name="prompt_no_file_selected">Tidak ada file yang dipilih</string>
-    <string name="prompt_system_app_not_found">Aplikasi sistem tidak ditemukan</string>
-    <string name="prompt_system_app_error">Gagal menambahkan aplikasi sistem</string>
     <!-- Security Patch -->
-    <string name="security_patch_title">Patch Keamanan</string>
-    <string name="security_patch_advanced_mode">Mode Lanjutan</string>
-    <string name="security_patch_get_date">Ambil Tanggal Patch Keamanan</string>
-    <string name="security_patch_auto">Otomatis</string>
-    <string name="security_patch_fetching">Mengambil...</string>
-    <string name="security_patch_fetched">Selesai</string>
-    <string name="security_patch_get_failed">Gagal mengambil tanggal patch keamanan</string>
-    <string name="security_patch_unable_to_connect">Tidak dapat terhubung ke source.android.com</string>
-    <string name="security_patch_auto_success">Konfigurasi otomatis berhasil diaktifkan</string>
-    <string name="security_patch_auto_failed">Gagal mengaktifkan konfigurasi otomatis</string>
-    <string name="security_patch_save_success">Patch keamanan berhasil disimpan</string>
-    <string name="security_patch_save_failed">Gagal menyimpan patch keamanan</string>
-    <string name="security_patch_value_empty">Konfigurasi patch keamanan dinonaktifkan</string>
     <string name="security_patch_invalid_all">Format tidak valid</string>
-    <string name="security_patch_invalid_boot">Format boot tidak valid</string>
-    <string name="security_patch_invalid_system">Format sistem tidak valid</string>
-    <string name="security_patch_invalid_vendor">Format vendor tidak valid</string>
     <!-- Add System App -->
     <string name="add_system_app_title">Tambah Aplikasi Sistem</string>
-    <string name="add_system_app_add">Tambah</string>
-    <string name="add_system_app_current_list">Daftar Aplikasi Sistem Saat Ini</string>
     <!-- CustomKB Dialog -->
     <string name="customkb_remove_title">Konfirmasi Hapus?</string>
     <!-- Uninstall confirmation -->

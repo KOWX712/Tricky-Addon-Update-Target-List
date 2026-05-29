@@ -6,7 +6,6 @@
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">Hướng dẫn</string>
-    <string name="help_save_and_update_description">Lưu cấu hình hiện tại vào target.txt.</string>
     <string name="help_select_denylist">Chọn từ DenyList</string>
     <string name="help_select_denylist_description">Chỉ khả dụng trong Magisk, chọn ứng dụng nằm trong DenyList. Khuyến nghị sử dụng.</string>
     <string name="help_deselect_unnecessary">Bỏ chọn các mục không cần thiết</string>
@@ -39,12 +38,7 @@
     <string name="functional_button_confirm">Xác nhận</string>
     <string name="functional_button_reset">Đặt lại</string>
     <string name="functional_button_remove">Xoá</string>
-    <!-- Loading -->
-    <string name="loading_loading">Đang tải...</string>
     <!-- Menu -->
-    <string name="menu_refresh">Làm mới</string>
-    <string name="menu_select_all">Chọn tất cả</string>
-    <string name="menu_deselect_all">Bỏ chọn tất cả</string>
     <string name="menu_select_denylist">Chọn từ DenyList</string>
     <string name="menu_deselect_unnecessary">Bỏ chọn các mục không cần thiết</string>
     <string name="menu_add_system_app">Thêm ứng dụng hệ thống</string>
@@ -52,15 +46,13 @@
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">Không xác định</string>
     <string name="menu_keybox_local">Cục bộ</string>
-    <string name="menu_set_verified_boot_hash">Thiết lập Verified Boot Hash</string>
-    <string name="menu_set_security_patch">Thiết lập bản vá bảo mật</string>
-    <string name="menu_set_devconfig">Thiết lập DevConfig</string>
+    <string name="menu_prop_setting">Cài đặt Prop</string>
     <string name="menu_help">Hỗ trợ</string>
     <string name="menu_language">Ngôn ngữ</string>
     <string name="menu_about">Giới thiệu</string>
-    <!-- Boot Hash -->
+    <!-- Prop Dialog -->
+    <string name="prop_handler">Trình xử lý Prop</string>
     <string name="boot_hash_title">Boot Hash</string>
-    <string name="boot_hash_input_placeholder">Dán Verified Boot Hash của bạn vào đây</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Cập nhật danh sách mục tiêu</string>
@@ -71,13 +63,11 @@
     <string name="about_disclaimer">Module này không phải là một phần của module Tricky Store. KHÔNG báo cáo bất kỳ vấn đề nào cho Tricky Store nếu gặp phải.</string>
     <string name="about_acknowledgment">Lời cảm ơn</string>
     <!-- Prompt -->
-    <string name="prompt_no_internet">Vui lòng kiểm tra kết nối Internet của bạn</string>
     <string name="prompt_aosp_key_set">Đã thiết lập AOSP Keybox thành công</string>
     <string name="prompt_key_set_error">Cập nhật Keybox thất bại!</string>
     <string name="prompt_unknown_key_set">Đã thiết lập Keybox không xác định thành công</string>
     <string name="prompt_boot_hash_set">Đã lưu Verified Boot Hash thành công</string>
     <string name="prompt_boot_hash_set_error">Cập nhật Verified Boot Hash thất bại!</string>
-    <string name="prompt_saved_target">Đã lưu cấu hình vào target.txt</string>
     <string name="prompt_save_error">Lưu cấu hình thất bại!</string>
     <string name="prompt_uninstall_prompt">WebUI sẽ bị Gỡ cài đặt sau khi khởi động lại</string>
     <string name="prompt_uninstall_failed">Gỡ cài đặt WebUI thất bại!</string>
@@ -85,9 +75,7 @@
     <string name="prompt_new_update">Có bản cập nhật mới!</string>
     <string name="prompt_no_update">Hiện không có bản cập nhật nào</string>
     <string name="prompt_downloading">Đang tải bản cập nhật mới...</string>
-    <string name="prompt_downloaded">Tải xuống hoàn tất</string>
     <string name="prompt_download_fail">Tải bản cập nhật thất bại!</string>
-    <string name="prompt_installing">Đang cài đặt bản cập nhật...</string>
     <string name="prompt_installed">Cài đặt thành công, khởi động lại ngay.</string>
     <string name="prompt_install_fail">Cài đặt thất bại, vui lòng cập nhật thủ công!</string>
     <string name="prompt_rebooting">Đang khởi động lại...</string>
@@ -98,33 +86,13 @@
     <string name="prompt_custom_key_set_error">Thiết lập Keybox tùy chỉnh thất bại!</string>
     <string name="prompt_custom_saved">Keybox tuỳ chỉnh đã được lưu</string>
     <string name="prompt_custom_fetch_error">Lấy Keybox thất bại!</string>
+    <string name="prompt_custom_not_found">Không tìm thấy Keybox tuỳ chỉnh nào</string>
     <string name="prompt_custom_invalid_script">Script chưa được cho phép</string>
     <string name="prompt_custom_removed">Keybox tuỳ chỉnh đã bị xoá</string>
-    <string name="prompt_no_file_selected">Chưa chọn tệp nào</string>
-    <string name="prompt_system_app_not_found">Không tìm thấy ứng dụng hệ thống</string>
-    <string name="prompt_system_app_error">Thêm ứng dụng hệ thống thất bại!</string>
     <!-- Security Patch -->
-    <string name="security_patch_title">Bản vá bảo mật</string>
-    <string name="security_patch_advanced_mode">Nâng cao</string>
-    <string name="security_patch_get_date">Lấy ngày bản vá bảo mật</string>
-    <string name="security_patch_auto">Tự động</string>
-    <string name="security_patch_fetching">Đang lấy...</string>
-    <string name="security_patch_fetched">Hoàn tất</string>
-    <string name="security_patch_get_failed">Lấy ngày bản vá bảo mật thất bại!</string>
-    <string name="security_patch_unable_to_connect">Không thể kết nối tới source.android.com</string>
-    <string name="security_patch_auto_success">Bật cấu hình tự động thành công</string>
-    <string name="security_patch_auto_failed">Bật cấu hình tự động thất bại!</string>
-    <string name="security_patch_save_success">Đã lưu bản vá bảo mật thành công</string>
-    <string name="security_patch_save_failed">Lưu bản vá bảo mật thất bại!</string>
-    <string name="security_patch_value_empty">Đã tắt cấu hình bản vá bảo mật</string>
     <string name="security_patch_invalid_all">Định dạng không hợp lệ</string>
-    <string name="security_patch_invalid_boot">Định dạng boot không hợp lệ</string>
-    <string name="security_patch_invalid_system">Định dạng system không hợp lệ</string>
-    <string name="security_patch_invalid_vendor">Định dạng vendor không hợp lệ</string>
     <!-- Add System App -->
     <string name="add_system_app_title">Thêm ứng dụng hệ thống</string>
-    <string name="add_system_app_add">Thêm</string>
-    <string name="add_system_app_current_list">Danh sách ứng dụng hệ thống hiện tại</string>
     <!-- CustomKB Dialog -->
     <string name="customkb_dialog_title">Nhà cung cấp Keybox Tuỳ chỉnh</string>
     <string name="customkb_name_placeholder">Tên</string>
@@ -143,6 +111,4 @@
     <!-- Mode dialog -->
     <string name="mode_dialog_title">Chế độ</string>
     <string name="mode_auto">Tự động</string>
-    <string name="mode_certificate_generating">Cert Generating (!)</string>
-    <string name="mode_leaf_hack">Leaf Hack (?)</string>
 </resources>

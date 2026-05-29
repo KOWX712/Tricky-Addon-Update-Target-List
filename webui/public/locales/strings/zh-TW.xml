@@ -6,7 +6,7 @@
     <string name="header_title">TS 插件</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">使用指南</string>
-    <string name="help_save_and_update_description">保存當前配置到目標列表（target.txt）。</string>
+    <string name="help_save_and_update_description">儲存目前配置。</string>
     <string name="help_select_denylist">從排除列表中選擇</string>
     <string name="help_select_denylist_description">僅適用於 Magisk，選擇在排除列表中的應用。推薦使用。</string>
     <string name="help_deselect_unnecessary">取消選擇非必要應用</string>
@@ -29,6 +29,10 @@
     <string name="update_changelog">更新日誌</string>
     <string name="update_install">安裝</string>
     <string name="update_reboot">重啟</string>
+    <string name="update_channel">更新通道</string>
+    <string name="update_channel_stable">穩定</string>
+    <string name="update_channel_canary">Canary</string>
+    <string name="update_channel_disable">禁用</string>
     <!-- Search -->
     <string name="search_bar_search_placeholder">搜索</string>
     <!-- Functional Button -->
@@ -39,12 +43,8 @@
     <string name="functional_button_confirm">確認</string>
     <string name="functional_button_reset">重置</string>
     <string name="functional_button_remove">刪除</string>
-    <!-- Loading -->
-    <string name="loading_loading">加載中...</string>
+    <string name="functional_button_today">今天</string>
     <!-- Menu -->
-    <string name="menu_refresh">刷新</string>
-    <string name="menu_select_all">全選</string>
-    <string name="menu_deselect_all">取消全選</string>
     <string name="menu_select_denylist">從排除列表中選擇</string>
     <string name="menu_deselect_unnecessary">取消選擇非必要應用</string>
     <string name="menu_add_system_app">添加系統應用</string>
@@ -52,15 +52,14 @@
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">未知</string>
     <string name="menu_keybox_local">本機</string>
-    <string name="menu_set_verified_boot_hash">設置哈希值</string>
-    <string name="menu_set_security_patch">設置安全補丁</string>
-    <string name="menu_set_devconfig">設定 DevConfig</string>
+    <string name="menu_prop_setting">Prop 設定</string>
+    <string name="menu_set_security_patch">設定預設策略</string>
     <string name="menu_help">幫助</string>
     <string name="menu_language">語言</string>
     <string name="menu_about">關於</string>
-    <!-- Boot Hash -->
+    <!-- Prop Dialog -->
+    <string name="prop_handler">Prop 助理</string>
     <string name="boot_hash_title">哈希值</string>
-    <string name="boot_hash_input_placeholder">在此貼上您的哈希值</string>
     <!-- About -->
     <string name="about_module_name_line1">TS 插件</string>
     <string name="about_module_name_line2">更新目標列表</string>
@@ -71,13 +70,12 @@
     <string name="about_disclaimer">此 WebUI 並非 Tricky Store 的一部分，如遇任何問題請勿向 Tricky Store 作者反饋。</string>
     <string name="about_acknowledgment">特別鳴謝</string>
     <!-- Prompt -->
-    <string name="prompt_no_internet">請檢查您的網絡連接</string>
     <string name="prompt_aosp_key_set">成功設置 AOSP 密鑰</string>
     <string name="prompt_key_set_error">更新密鑰失敗</string>
     <string name="prompt_unknown_key_set">成功設置未知密鑰</string>
     <string name="prompt_boot_hash_set">哈希值重置成功</string>
     <string name="prompt_boot_hash_set_error">哈希值重置失敗</string>
-    <string name="prompt_saved_target">成功保存配置</string>
+    <string name="prompt_saved_target">配置已儲存</string>
     <string name="prompt_save_error">保存配置失敗</string>
     <string name="prompt_uninstall_prompt">WebUI 將在重啟後被移除</string>
     <string name="prompt_uninstall_failed">卸載 WebUI 失敗</string>
@@ -85,9 +83,7 @@
     <string name="prompt_new_update">發現新版本！</string>
     <string name="prompt_no_update">當前已是最新版本</string>
     <string name="prompt_downloading">正在下載...</string>
-    <string name="prompt_downloaded">下載完成</string>
     <string name="prompt_download_fail">下載失敗</string>
-    <string name="prompt_installing">正在安裝...</string>
     <string name="prompt_installed">安裝完成，重啟生效</string>
     <string name="prompt_install_fail">安裝失敗，請手動更新</string>
     <string name="prompt_rebooting">正在重啟...</string>
@@ -98,33 +94,14 @@
     <string name="prompt_custom_key_set_error">自定義密鑰設置失敗</string>
     <string name="prompt_custom_saved">已儲存自訂密鑰入口</string>
     <string name="prompt_custom_fetch_error">取得密鑰失敗</string>
+    <string name="prompt_custom_not_found">未找到自訂密鑰</string>
     <string name="prompt_custom_invalid_script">腳本不被允許</string>
     <string name="prompt_custom_removed">已移除自訂密鑰入口</string>
-    <string name="prompt_no_file_selected">未選擇文件</string>
-    <string name="prompt_system_app_not_found">未找到該系統應用</string>
-    <string name="prompt_system_app_error">系統應用添加失敗</string>
     <!-- Security Patch -->
-    <string name="security_patch_title">安全補丁</string>
-    <string name="security_patch_advanced_mode">進階</string>
-    <string name="security_patch_get_date">獲取安全補丁日期</string>
-    <string name="security_patch_auto">自動</string>
-    <string name="security_patch_fetching">獲取中...</string>
-    <string name="security_patch_fetched">完成</string>
-    <string name="security_patch_get_failed">獲取安全補丁日期失敗</string>
-    <string name="security_patch_unable_to_connect">無法連線至 source.android.com</string>
-    <string name="security_patch_auto_success">自動配置成功啟用</string>
-    <string name="security_patch_auto_failed">無法啟用自動配置</string>
-    <string name="security_patch_save_success">安全補丁成功保存</string>
-    <string name="security_patch_save_failed">保存安全補丁失敗</string>
-    <string name="security_patch_value_empty">安全補丁配置已禁用</string>
+    <string name="default_policy_title">預設政策</string>
     <string name="security_patch_invalid_all">無效格式</string>
-    <string name="security_patch_invalid_boot">無效 boot 格式</string>
-    <string name="security_patch_invalid_system">無效 system 格式</string>
-    <string name="security_patch_invalid_vendor">無效 vendor 格式</string>
     <!-- Add System App -->
     <string name="add_system_app_title">添加系統應用</string>
-    <string name="add_system_app_add">添加</string>
-    <string name="add_system_app_current_list">當前系統應用列表</string>
     <!-- CustomKB Dialog -->
     <string name="customkb_dialog_title">自訂密鑰提供者</string>
     <string name="customkb_name_placeholder">名稱</string>
@@ -143,6 +120,8 @@
     <!-- Mode dialog -->
     <string name="mode_dialog_title">模式</string>
     <string name="mode_auto">自動</string>
-    <string name="mode_certificate_generating">生成證書鏈（！）</string>
-    <string name="mode_leaf_hack">修改證書鏈（？）</string>
+    <string name="mode_certificate_generating">生成證書鏈</string>
+    <string name="mode_leaf_hack">修改證書鏈</string>
+    <string name="mode_set_custom_policy">使用自訂策略</string>
+    <string name="mode_use_default_policy">使用預設策略</string>
 </resources>

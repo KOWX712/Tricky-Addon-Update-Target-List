@@ -6,7 +6,6 @@
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">Anleitung</string>
-    <string name="help_save_and_update_description">Aktuelle Konfiguration in target.txt speichern.</string>
     <string name="help_select_denylist">Aus DenyList auswählen</string>
     <string name="help_select_denylist_description">Nur in Magisk verfügbar, wähle Apps aus der DenyList aus. Empfohlen.</string>
     <string name="help_deselect_unnecessary">Unnötige abwählen</string>
@@ -32,12 +31,7 @@
     <string name="functional_button_cancel">Abbrechen</string>
     <string name="functional_button_confirm">Bestätigen</string>
     <string name="functional_button_reset">Zurücksetzen</string>
-    <!-- Loading -->
-    <string name="loading_loading">Lädt...</string>
     <!-- Menu -->
-    <string name="menu_refresh">Aktualisieren</string>
-    <string name="menu_select_all">Alle auswählen</string>
-    <string name="menu_deselect_all">Auswahl aufheben</string>
     <string name="menu_select_denylist">Aus DenyList auswählen</string>
     <string name="menu_deselect_unnecessary">Unnötige abwählen</string>
     <string name="menu_add_system_app">System App hinzufügen</string>
@@ -45,14 +39,11 @@
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">Unbekannt</string>
     <string name="menu_keybox_local">Lokal</string>
-    <string name="menu_set_verified_boot_hash">Verifizierten Boot-Hash setzen</string>
-    <string name="menu_set_security_patch">Sicherheitspatch setzen</string>
     <string name="menu_help">Hilfe</string>
     <string name="menu_language">Sprache</string>
     <string name="menu_about">Über</string>
-    <!-- Boot Hash -->
+    <!-- Prop Dialog -->
     <string name="boot_hash_title">Boot Hash</string>
-    <string name="boot_hash_input_placeholder">Füge hier deinen verifizierten Boot Hash ein</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Ziel­liste aktualisieren</string>
@@ -63,13 +54,11 @@
     <string name="about_disclaimer">Dieses Modul ist kein Teil des Tricky Store Moduls. BITTE melde keine Probleme an Tricky Store.</string>
     <string name="about_acknowledgment">Danksagung</string>
     <!-- Prompt -->
-    <string name="prompt_no_internet">Bitte überprüfe deine Internetverbindung</string>
     <string name="prompt_aosp_key_set">AOSP Keybox erfolgreich gesetzt</string>
     <string name="prompt_key_set_error">Fehler beim Aktualisieren der Keybox</string>
     <string name="prompt_unknown_key_set">Unbekannte Keybox erfolgreich gesetzt</string>
     <string name="prompt_boot_hash_set">Verifizierter Boot Hash erfolgreich gespeichert</string>
     <string name="prompt_boot_hash_set_error">Fehler beim Speichern des verifizierten Boot-Hash</string>
-    <string name="prompt_saved_target">Konfiguration in target.txt gespeichert</string>
     <string name="prompt_save_error">Fehler beim Speichern der Konfiguration</string>
     <string name="prompt_uninstall_prompt">WebUI wird nach dem Neustart entfernt</string>
     <string name="prompt_uninstall_failed">Fehler bei der Deinstallation der WebUI</string>
@@ -77,9 +66,7 @@
     <string name="prompt_new_update">Ein neues Update ist verfügbar!</string>
     <string name="prompt_no_update">Derzeit sind keine Updates verfügbar</string>
     <string name="prompt_downloading">Neues Update wird heruntergeladen...</string>
-    <string name="prompt_downloaded">Herunterladen abgeschlossen</string>
     <string name="prompt_download_fail">Fehler beim Herunterladen des Updates</string>
-    <string name="prompt_installing">Update wird installiert...</string>
     <string name="prompt_installed">Erfolgreich installiert, jetzt neu starten.</string>
     <string name="prompt_install_fail">Fehler bei der Installation, bitte manuell aktualisieren</string>
     <string name="prompt_rebooting">Neustart...</string>
@@ -88,31 +75,10 @@
     <string name="prompt_translation_update_failed">Fehler beim Aktualisieren des Übersetzungspakets</string>
     <string name="prompt_custom_key_set">Benutzerdefinierte Keybox erfolgreich gesetzt</string>
     <string name="prompt_custom_key_set_error">Fehler beim Setzen der benutzerdefinierten Keybox</string>
-    <string name="prompt_no_file_selected">Keine Datei ausgewählt</string>
-    <string name="prompt_system_app_not_found">System App nicht gefunden</string>
-    <string name="prompt_system_app_error">Fehler beim Hinzufügen der System-App</string>
     <!-- Security Patch -->
-    <string name="security_patch_title">Sicherheitspatch</string>
-    <string name="security_patch_advanced_mode">Erweitert</string>
-    <string name="security_patch_get_date">Sicherheitspatch Datum abrufen</string>
-    <string name="security_patch_auto">Automatisch</string>
-    <string name="security_patch_fetching">Abrufen...</string>
-    <string name="security_patch_fetched">Fertig</string>
-    <string name="security_patch_get_failed">Fehler beim Abrufen des Sicherheitspatch Datums</string>
-    <string name="security_patch_unable_to_connect">Keine Verbindung zu source.android.com möglich</string>
-    <string name="security_patch_auto_success">Automatische Konfiguration erfolgreich aktiviert</string>
-    <string name="security_patch_auto_failed">Fehler beim Aktivieren der automatischen Konfiguration</string>
-    <string name="security_patch_save_success">Sicherheitspatch erfolgreich gespeichert</string>
-    <string name="security_patch_save_failed">Fehler beim Speichern des Sicherheitspatch</string>
-    <string name="security_patch_value_empty">Sicherheitspatch Konfiguration ist deaktiviert</string>
     <string name="security_patch_invalid_all">Ungültiges Format</string>
-    <string name="security_patch_invalid_boot">Ungültiges Boot Format</string>
-    <string name="security_patch_invalid_system">Ungültiges System Format</string>
-    <string name="security_patch_invalid_vendor">Ungültiges Vendor Format</string>
     <!-- Add System App -->
     <string name="add_system_app_title">System App hinzufügen</string>
-    <string name="add_system_app_add">Hinzufügen</string>
-    <string name="add_system_app_current_list">Aktuelle Liste der System Apps</string>
     <!-- CustomKB Dialog -->
     <string name="customkb_remove_title">Löschen bestätigen?</string>
     <!-- Uninstall confirmation -->
