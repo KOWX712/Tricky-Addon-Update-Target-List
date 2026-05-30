@@ -1,11 +1,11 @@
 import type { MdDialog, MdFilledButton, MdOutlinedButton } from '@material/web/all'
-import { marked } from 'marked'
 import { i18n } from '../i18n'
 import type { Cli } from '../cli'
 import type { UpdateManager } from '../update'
 import type { Snackbar } from '../snackbar/snackbar'
 import { LOCAL_STORAGE_PREFIX } from '../constant'
 import { applyDialogAnimation } from './animation'
+import { renderMarkdown } from './markdown'
 
 export class UpdateDialog {
   #dialog: MdDialog | null = null
@@ -52,7 +52,7 @@ export class UpdateDialog {
 
   show(changelog: string): void {
     if (!this.#changelogEl || !this.#dialog) return
-    this.#changelogEl.innerHTML = marked.parse(changelog) as string
+    renderMarkdown(changelog, this.#changelogEl, this.#cli)
     this.#rebootMode = false
     this.#updateButtonState()
     this.#dialog.show()

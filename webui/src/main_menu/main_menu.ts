@@ -60,7 +60,7 @@ export class MainMenu {
             <div slot="headline">${i18n.t('menu_prop_setting')}</div>
           </md-menu-item>
           <md-menu-item id="default-policy">
-            <div slot="headline">${i18n.t('menu_set_security_patch')}</div>
+            <div slot="headline">${i18n.t('menu_set_default_policy')}</div>
           </md-menu-item>
           <md-divider role="separator" tabindex="-1"></md-divider>
           <md-menu-item id="help">

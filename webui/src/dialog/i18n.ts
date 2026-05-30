@@ -1,9 +1,9 @@
 import type { MdDialog, MdTextButton } from '@material/web/all'
-import { marked } from 'marked'
 import { i18n } from '../i18n'
 import type { Cli } from '../cli'
 import { GITHUB_REPO } from '../constant'
 import { applyDialogAnimation } from './animation'
+import { renderMarkdown } from './markdown'
 
 export class I18nDialog {
   private dialog: MdDialog | null = null
@@ -51,17 +51,7 @@ export class I18nDialog {
       }
       if (!response.ok) throw new Error(`HTTP error status: ${response.status}`)
       const text = await response.text()
-      contentEl.innerHTML = marked.parse(text) as string
-      contentEl.querySelectorAll('a').forEach(a => {
-        const href = a.getAttribute('href')
-        if (href && (href.startsWith('http') || href.startsWith('https'))) {
-          a.href = 'javascript:void(0)'
-          a.onclick = (e) => {
-            e.preventDefault()
-            this.cli.linkRedirect(href)
-          }
-        }
-      })
+      renderMarkdown(text, contentEl, this.cli)
     } catch (error) {
       console.error('Error fetching guide:', error)
       contentEl.textContent = i18n.t('prompt_download_fail') || 'Failed to load guide.'

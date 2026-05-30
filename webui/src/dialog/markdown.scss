@@ -1,0 +1,84 @@
+// Styles for content rendered via parseMarkdown().
+// Apply the `markdown-content` class to the container element.
+@scope (.dialog-content) {
+  .markdown-content {
+    max-height: 60vh;
+    overflow-y: auto;
+    line-height: 1.6;
+
+    h1, h2, h3, h4 { margin: 0; }
+
+    h1 { font-size: 1.6em; margin-bottom: 12px; }
+    h2 { font-size: 1.4em; margin-bottom: 10px; }
+    h3 { font-size: 1.2em; margin-bottom: 8px; }
+    h4 { font-size: 1.1em; margin-bottom: 6px; }
+
+    p {
+      margin: 6px 0;
+    }
+
+    ul, ol {
+      margin: 4px 0;
+      padding-left: 16px;
+    }
+
+    li {
+      margin: 4px 0;
+    }
+
+    code {
+      background-color: var(--md-sys-color-surface-container-highest);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    pre {
+      background-color: var(--md-sys-color-surface-container-high);
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9em;
+    }
+
+    blockquote {
+      margin: 8px 0;
+      padding: 4px 12px;
+      border-left: 3px solid var(--md-sys-color-primary);
+      background-color: var(--md-sys-color-surface-container);
+      border-radius: 0 8px 8px 0;
+    }
+
+    a {
+      color: var(--md-sys-color-primary);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--md-sys-color-outline-variant);
+      margin: 12px 0;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 8px 0;
+
+      th, td {
+        border: 1px solid var(--md-sys-color-outline-variant);
+        padding: 6px 10px;
+        text-align: left;
+      }
+
+      th {
+        background-color: var(--md-sys-color-surface-container-high);
+        font-weight: 500;
+      }
+    }
+  }
+}
