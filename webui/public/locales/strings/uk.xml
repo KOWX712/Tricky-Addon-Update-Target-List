@@ -9,13 +9,8 @@
     <string name="help_select_denylist">Виберіть із DenyList</string>
     <string name="help_select_denylist_description">Доступно лише у Magisk, обрати застосунки, які входять до DenyList. Рекомендовано.</string>
     <string name="help_deselect_unnecessary">Зняти виділення з необов&apos;язкових</string>
-    <string name="help_deselect_unnecessary_description">Необов&apos;язкова категорія: Модуль Xposed, рут-менеджер, програми, пов&apos;язані з рутом, і загальні програми, які ніколи не перевіряють стан завантажувача. Ця опція вимагає підключення до інтернету.</string>
     <string name="help_add_system_app">Додати системний застосунок</string>
     <string name="help_add_system_app_description">Додати конкретний системний застосунок до списку.</string>
-    <string name="help_set_security_patch">Встановити патч безпеки</string>
-    <string name="help_set_security_patch_description">Встановити власну підміну патчу безпеки. Автоконфігурація використовуватиме патч безпеки з модуля PIF. Залиште порожнім і збережіть, щоб вимкнути автоконфігурацію.</string>
-    <string name="help_set_verified_boot_hash">Встановити перевірений хеш завантаження</string>
-    <string name="help_set_verified_boot_hash_description">Отримати значення verifiedBootHash з Key Attestation Demo. Виправляє ненормальний стан завантаження шляхом скидання ro.boot.vbmeta.digest.</string>
     <!-- Update -->
     <string name="update_update_available">Нова версія готова</string>
     <string name="update_redirect_to_release">натисніть, щоб завантажити найновішу версію</string>

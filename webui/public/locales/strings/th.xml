@@ -6,13 +6,8 @@
     <string name="help_select_denylist">เลือกจาก DenyList</string>
     <string name="help_select_denylist_description">ใช้งานได้เฉพาะใน Magisk เท่านั้น โดยเลือกแอปที่อยู่ใน DenyList (แนะนำ)</string>
     <string name="help_deselect_unnecessary">ยกเลิกการเลือกที่ไม่จำเป็น</string>
-    <string name="help_deselect_unnecessary_description">หมวดหมู่ที่ไม่จำเป็น: โมดูล Xposed, แอปจัดการรูท, แอปที่เกี่ยวข้องกับรูท และแอปทั่วไปที่ไม่เคยตรวจสอบสถานะ Bootloader ตัวเลือกนี้ต้องใช้การเชื่อมต่ออินเทอร์เน็ต</string>
     <string name="help_add_system_app">เพิ่มแอประบบ (System App)</string>
     <string name="help_add_system_app_description">เพิ่มแอปพลิเคชันระบบที่ระบุลงในรายการแอป</string>
-    <string name="help_set_security_patch">ตั้งค่า Security Patch</string>
-    <string name="help_set_security_patch_description">ตั้งค่าการหลอก (spoof) แพตช์ความปลอดภัย การกำหนดค่าอัตโนมัติจะใช้แพตช์ความปลอดภัยจากโมดูล PIF หากเว้นว่างไว้และบันทึกจะเป็นการปิดใช้งานการตั้งค่าอัตโนมัติ</string>
-    <string name="help_set_verified_boot_hash">ตั้งค่า Verified Boot Hash</string>
-    <string name="help_set_verified_boot_hash_description">รับค่า verifiedBootHash จากแอป Key Attestation Demo แก้ไขสถานะการบูตที่ผิดปกติโดยการรีเซ็ต ro.boot.vbmeta.digest</string>
     <!-- Update -->
     <string name="update_update_available">มีเวอร์ชันใหม่พร้อมใช้งาน</string>
     <string name="update_redirect_to_release">แตะเพื่อดาวน์โหลดเวอร์ชันล่าสุด</string>

@@ -9,13 +9,8 @@
     <string name="help_select_denylist">Seleccionar desde DenyList</string>
     <string name="help_select_denylist_description">Disponible solo en Magisk, selecciona aplicaciones que están en la DenyList. Recomendado.</string>
     <string name="help_deselect_unnecessary">Deseleccionar innecesarios</string>
-    <string name="help_deselect_unnecessary_description">Categorías innecesarias: módulos Xposed, gestores de root, aplicaciones relacionadas con root y aplicaciones generales que nunca verifican el estado del bootloader. Esta opción requiere conexión a Internet.</string>
     <string name="help_add_system_app">Agregar Aplicación del Sistema</string>
     <string name="help_add_system_app_description">Agregar una aplicación del sistema específica a la lista de aplicaciones.</string>
-    <string name="help_set_security_patch">Configurar Parche de Seguridad</string>
-    <string name="help_set_security_patch_description">Configurar parche de seguridad personalizado. La configuración automática usará el parche de seguridad de PIF. Deja en blanco y guarda para deshabilitar la configuración automática.</string>
-    <string name="help_set_verified_boot_hash">Configurar Boot Hash Verificado</string>
-    <string name="help_set_verified_boot_hash_description">Obtén el valor de verifiedBootHash del Key Attestation Demo. Corrige un estado de arranque anormal reiniciando ro.boot.vbmeta.digest.</string>
     <!-- Update -->
     <string name="update_update_available">Una nueva versión está lista</string>
     <string name="update_redirect_to_release">toca para descargar la última versión</string>

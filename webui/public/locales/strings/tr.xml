@@ -9,13 +9,8 @@
     <string name="help_select_denylist">Reddetme Listesinden Seç</string>
     <string name="help_select_denylist_description">Yalnızca Magisk&apos;te mevcut, Reddetme Listesindeki uygulamaları seç. Tavsiye edilir.</string>
     <string name="help_deselect_unnecessary">Gereksizleri Çıkar</string>
-    <string name="help_deselect_unnecessary_description">Gereksiz kategori: Xposed modülü, root yöneticisi, root ile ilgili uygulamalar ve asla bootloader durumunu kontrol etmeyen genel uygulamalar. Bu seçenek internet bağlantısı gerektirir.</string>
     <string name="help_add_system_app">Sistem Uygulaması Ekle</string>
     <string name="help_add_system_app_description">Belirli bir sistem uygulamasını uygulama listesine ekleyin.</string>
-    <string name="help_set_security_patch">Güvenlik Yaması Ayarla</string>
-    <string name="help_set_security_patch_description">Özel güvenlik yamasını ayarlayın. Otomatik yapılandırma PIF modülünün güvenlik yamasını kullanacaktır. Boş bırakın ve kaydedin ki otomatik yapılandırma devre dışı bırakılsın.</string>
-    <string name="help_set_verified_boot_hash">Doğrulanmış Boot Hash Ayarla</string>
-    <string name="help_set_verified_boot_hash_description">Key Attestation Demo&apos;dan verifiedBootHash değerini alın. Abnormal boot durumunu ro.boot.vbmeta.digest&apos;i sıfırlayarak düzeltin.</string>
     <!-- Update -->
     <string name="update_update_available">Yeni bir sürüm hazır</string>
     <string name="update_redirect_to_release">Son sürümü indirmek için dokunun</string>
