@@ -9,19 +9,10 @@
     <string name="help_select_denylist">تحديد من قائمة الرفض</string>
     <string name="help_select_denylist_description">متاح في Magisk فقط، حدد التطبيقات الموجودة في قائمة الرفض. موصى به.</string>
     <string name="help_deselect_unnecessary">إلغاء تحديد غير الضروري</string>
-    <string name="help_deselect_unnecessary_description">فئة غير ضرورية: وحدة Xposed، مدير الجذر، التطبيقات المتعلقة بالجذر، والتطبيقات العامة التي لا تتحقق أبدًا من حالة bootloader. يتطلب هذا الخيار اتصالاً بالإنترنت.</string>
     <string name="help_add_system_app">إضافة تطبيق نظام</string>
     <string name="help_add_system_app_description">إضافة تطبيق نظام محدد إلى قائمة التطبيقات.</string>
     <string name="help_set_keybox">تعيين صندوق المفاتيح</string>
     <string name="help_set_keybox_description">استبدال صندوق مفاتيح TrickyStore بما يلي:</string>
-    <string name="help_set_keybox_aosp">AOSP - صندوق المفاتيح الافتراضي يأتي مع TrickyStore.</string>
-    <string name="help_set_keybox_unknown">غير معروف - توقيع ذاتي وغير صالح لنظام سلامة Play</string>
-    <string name="help_set_keybox_local">محلي - حدد صندوق المفاتيح من جهازك.</string>
-    <string name="help_set_keybox_custom">مخصص - موفر صندوق المفاتيح المخصص عن من خلال التحميل من الإنترنت</string>
-    <string name="help_set_security_patch">تعيين تصحيح الأمان</string>
-    <string name="help_set_security_patch_description">تعيين تصحيح أمان مخصص. سيستخدم التكوين التلقائي تصحيح الأمان من وحدة PIF. اتركه فارغًا واحفظه لتعطيل التكوين التلقائي.</string>
-    <string name="help_set_verified_boot_hash">تعيين تجزئة التمهيد الموثوق</string>
-    <string name="help_set_verified_boot_hash_description">احصل على قيمة verifiedBootHash من عرض إثبات المفتاح. إصلاح حالة التمهيد غير الطبيعية عن طريق إعادة تعيين ro.boot.vbmeta.digest.</string>
     <!-- Update -->
     <string name="update_update_available">إصدار جديد جاهز</string>
     <string name="update_redirect_to_release">اضغط لتنزيل أحدث إصدار</string>

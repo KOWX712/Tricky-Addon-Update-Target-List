@@ -9,13 +9,8 @@
     <string name="help_select_denylist">Выбрать из DenyList</string>
     <string name="help_select_denylist_description">Доступно только в Magisk, выберите приложения, которые находятся в DenyList. Рекомендуется.</string>
     <string name="help_deselect_unnecessary">Отменить выбор ненужных</string>
-    <string name="help_deselect_unnecessary_description">Ненужные категории: модули Xposed, менеджеры root, приложения, связанные с root, и общие приложения, которые никогда не проверяют статус загрузчика. Этот параметр требует подключения к интернету.</string>
     <string name="help_add_system_app">Добавить системное приложение</string>
     <string name="help_add_system_app_description">Добавить конкретное системное приложение в список приложений.</string>
-    <string name="help_set_security_patch">Установить патч безопасности</string>
-    <string name="help_set_security_patch_description">Установите пользовательский патч безопасности. Автоматическая настройка будет использовать патч безопасности из модуля PIF. Оставьте пустым и сохраните, чтобы отключить автоматическую настройку.</string>
-    <string name="help_set_verified_boot_hash">Установить verified boot hash</string>
-    <string name="help_set_verified_boot_hash_description">Получите значение verifiedBootHash из Key Attestation Demo. Исправьте аномальное состояние загрузки, сбросив ro.boot.vbmeta.digest.</string>
     <!-- Update -->
     <string name="update_update_available">Доступна новая версия</string>
     <string name="update_redirect_to_release">нажмите, чтобы скачать последнюю версию</string>

@@ -8,13 +8,8 @@
     <string name="help_select_denylist">انتخاب از DenyList</string>
     <string name="help_select_denylist_description">فقط در Magisk موجود است، برنامه‌هایی که در DenyList هستند را انتخاب کنید. توصیه شده.</string>
     <string name="help_deselect_unnecessary">لغو انتخاب غیرضروری</string>
-    <string name="help_deselect_unnecessary_description">دسته غیرضروری: ماژول Xposed، مدیر root، برنامه‌های مرتبط با root، و برنامه‌های عمومی که هرگز وضعیت bootloader را بررسی نمی‌کنند. این گزینه نیاز به اتصال اینترنت دارد.</string>
     <string name="help_add_system_app">افزودن برنامه سیستمی</string>
     <string name="help_add_system_app_description">برنامه سیستمی خاص را به لیست برنامه‌ها اضافه کنید.</string>
-    <string name="help_set_security_patch">تنظیم Security Patch</string>
-    <string name="help_set_security_patch_description">Custom security patch spoof تنظیم کنید. Auto config از security patch ماژول PIF استفاده خواهد کرد. خالی بگذارید و ذخیره کنید تا auto config غیرفعال شود.</string>
-    <string name="help_set_verified_boot_hash">تنظیم Verified Boot Hash</string>
-    <string name="help_set_verified_boot_hash_description">مقدار verifiedBootHash را از Key Attestation Demo دریافت کنید. وضعیت boot غیرعادی را با بازنشانی ro.boot.vbmeta.digest برطرف کنید.</string>
     <!-- Update -->
     <string name="update_update_available">نسخه جدید آماده است</string>
     <string name="update_redirect_to_release">برای دانلود آخرین نسخه ضربه بزنید</string>
