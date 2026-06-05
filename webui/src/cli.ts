@@ -107,11 +107,11 @@ export class Cli {
       switch (manager) {
         case 'APATCH':
           if (option == 'uninstall') File.copy(`${basePath}/update/module.prop`, `${basePath}/module.prop`)
-          cmd = ['apd', [option, module]]
+          cmd = ['apd', ['module', option, module]]
           break
         case 'KSU':
           if (option == 'uninstall') File.copy(`${basePath}/update/module.prop`, `${basePath}/module.prop`)
-          cmd = ['ksud', [option, module]]
+          cmd = ['ksud', ['module', option, module]]
           break
         case 'MAGISK':
           if (option == 'uninstall') File.copy(`${basePath}/update`, `/data/adb/modules/${MOD_ID}`)
