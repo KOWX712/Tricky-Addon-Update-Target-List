@@ -48,6 +48,10 @@ export class MainMenu {
               <md-menu-item id="keybox-local">
                 <div slot="headline">${i18n.t('menu_keybox_local')}</div>
               </md-menu-item>
+              <md-menu-item id="keybox-repo">
+                <div slot="headline">${i18n.t('menu_keybox_repo')}</div>
+                <md-icon slot="end">open_in_new</md-icon>
+              </md-menu-item>
               <md-divider role="separator" tabindex="-1"></md-divider>
               <md-menu-item id="keybox-custom" class="icon-item">
                 <div class="icon-button-item">
@@ -100,6 +104,7 @@ export class MainMenu {
       ['keybox-aosp', 'menu-keybox-aosp'],
       ['keybox-unknown', 'menu-keybox-unknown'],
       ['keybox-local', 'menu-keybox-local'],
+      ['keybox-repo', 'menu-keybox-repo'],
       ['keybox-custom', 'menu-keybox-custom'],
       ['prop-setting', 'menu-prop-setting'],
       ['default-policy', 'menu-default-policy'],

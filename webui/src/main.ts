@@ -10,6 +10,7 @@ import { Snackbar } from './snackbar/snackbar'
 import { FileSelector } from './file_selector/file_selector'
 import { History } from './history'
 import { Keybox } from './keybox/keybox'
+import { KeyboxRepo } from './keybox/repo/repo'
 import { DialogController } from './dialog/dialog'
 import { UpdateManager } from './update'
 import { SearchBar } from './search_bar/search_bar'
@@ -130,6 +131,7 @@ function float(hide: boolean): void {
 // Main Menu events
 const mainMenu = new MainMenu()
 const keybox = new Keybox(cli, fileSelector, snackbar)
+const keyboxRepo = new KeyboxRepo(keybox, history, snackbar)
 const header = document.querySelector<HTMLElement>('.header')!
 mainMenu.appendTo(header)
 mainMenu.on('menu-open', () => appList.menuOpen = true)
@@ -140,6 +142,7 @@ mainMenu.on('menu-deselect-all', () => appList.deselectAll())
 mainMenu.on('menu-keybox-aosp', async () => await keybox.setAospKey())
 mainMenu.on('menu-keybox-unknown', async () => await keybox.setUnknownKey())
 mainMenu.on('menu-keybox-local', async () => await keybox.setLocalKey())
+mainMenu.on('menu-keybox-repo', () => keyboxRepo.show())
 mainMenu.on('menu-add-system-app', () => dialogController.showSystemApp())
 mainMenu.on('menu-select-denylist', async () => appList.fetchDenyList())
 mainMenu.on('menu-deselect-unnecessary', async () => appList.deselectUnnecessary())
@@ -193,6 +196,7 @@ const dialogController = new DialogController(cli, config, updateManager, snackb
 const dialogContent = document.querySelector<HTMLElement>('.dialog-content')!
 fileSelector.appendTo(dialogContent)
 keybox.appendTo(dialogContent)
+keyboxRepo.appendTo(dialogContent)
 keybox.custom.renderEntries()
 dialogController.appendAll(dialogContent)
 dialogContent.querySelectorAll<MdDialog>('md-dialog').forEach((dialog, i) => {

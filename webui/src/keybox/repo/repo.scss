@@ -1,0 +1,55 @@
+@use '../../theme';
+
+.keybox-repo-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  background-color: var(--md-sys-color-surface);
+  box-sizing: border-box;
+  padding-top: var(--top-inset);
+  padding-bottom: var(--bottom-inset);
+
+  &.hidden {
+    display: none;
+  }
+
+  &:not(.hidden):not(.closing) {
+    animation: keybox-repo-open 0.3s ease;
+  }
+
+  &.closing {
+    animation: keybox-repo-close 0.3s ease;
+  }
+}
+
+@keyframes keybox-repo-open {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes keybox-repo-close {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+.keybox-repo-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
