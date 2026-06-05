@@ -7,5 +7,5 @@
     "note": {
         "message": "This module is not a part of the Tricky Store module. DO NOT report any issues to Tricky Store if encountered"
     },
-    "license": " GPL-3.0"
+    "license": "Apache-2.0"
 }
