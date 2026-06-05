@@ -157,7 +157,7 @@ export class KeyboxRepo {
         this.#snackbar.show(i18n.t('prompt_keybox_repo_set_error'), false)
         return
       }
-      const ok = await this.#keybox.setKeybox(content)
+      const ok = await this.#keybox.setKeybox(content.trim())
       this.#snackbar.show(i18n.t(ok ? 'prompt_keybox_repo_set' : 'prompt_keybox_repo_set_error'), ok)
     } catch {
       this.#snackbar.show(i18n.t('prompt_keybox_repo_set_error'), false)
