@@ -70,13 +70,20 @@ export class KeyboxRepo {
   #getElement(): DocumentFragment {
     const template = document.createElement('template')
     template.innerHTML = /* html */ `
-      <div id="keybox-repo-overlay" class="keybox-repo-overlay hidden"></div>
+      <div id="keybox-repo-overlay" class="keybox-repo-overlay hidden">
+        <button id="keybox-repo-close" class="keybox-repo-close" aria-label="${i18n.t('functional_button_close')}">
+          <md-icon>close</md-icon>
+        </button>
+      </div>
     `
 
     const fragment = template.content
     this.#overlay = fragment.querySelector<HTMLElement>('#keybox-repo-overlay')
     this.#iframe = this.#createIframe()
     this.#overlay?.appendChild(this.#iframe)
+
+    const closeBtn = fragment.querySelector<HTMLElement>('#keybox-repo-close')
+    closeBtn?.addEventListener('click', () => this.close())
 
     this.#overlay?.addEventListener('animationend', (e) => {
       if (e.animationName === 'keybox-repo-close') {
