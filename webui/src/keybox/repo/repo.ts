@@ -26,6 +26,7 @@ export class KeyboxRepo {
   readonly #snackbar: Snackbar
   #overlay: HTMLElement | null = null
   #iframe: HTMLIFrameElement | null = null
+  #loadingEl: HTMLElement | null = null
   #isLoaded = false
   #boundOnMessage: (event: MessageEvent) => void
   #handshakeInterval?: number
@@ -48,7 +49,10 @@ export class KeyboxRepo {
     iframe.setAttribute('height', '100%')
     iframe.setAttribute('frameborder', '0')
     iframe.setAttribute('allow', 'clipboard-read; clipboard-write')
-    iframe.addEventListener('load', () => this.#startHandshake())
+    iframe.addEventListener('load', () => {
+      this.#startHandshake()
+      this.#hideLoading()
+    })
     return iframe
   }
 
@@ -67,6 +71,18 @@ export class KeyboxRepo {
     }
   }
 
+  #showLoading(): void {
+    if (this.#loadingEl) {
+      this.#loadingEl.style.display = ''
+    }
+  }
+
+  #hideLoading(): void {
+    if (this.#loadingEl) {
+      this.#loadingEl.style.display = 'none'
+    }
+  }
+
   #getElement(): DocumentFragment {
     const template = document.createElement('template')
     template.innerHTML = /* html */ `
@@ -74,11 +90,15 @@ export class KeyboxRepo {
         <button id="keybox-repo-close" class="keybox-repo-close" aria-label="${i18n.t('functional_button_close')}">
           <md-icon>close</md-icon>
         </button>
+        <div id="keybox-repo-loading" class="keybox-repo-loading">
+          <md-circular-progress indeterminate></md-circular-progress>
+        </div>
       </div>
     `
 
     const fragment = template.content
     this.#overlay = fragment.querySelector<HTMLElement>('#keybox-repo-overlay')
+    this.#loadingEl = fragment.querySelector<HTMLElement>('#keybox-repo-loading')
     this.#iframe = this.#createIframe()
     this.#overlay?.appendChild(this.#iframe)
 
@@ -111,11 +131,9 @@ export class KeyboxRepo {
       this.#isLoaded = true
     }
 
+    this.#showLoading()
     this.#iframe.src = KEYBOX_REPO_URL
-
-    setTimeout(() => {
-      this.#overlay?.classList.remove('hidden')
-    }, 200)
+    this.#overlay?.classList.remove('hidden')
 
     this.#history.push(KeyboxRepo.HISTORY_KEY, () => this.close())
   }
