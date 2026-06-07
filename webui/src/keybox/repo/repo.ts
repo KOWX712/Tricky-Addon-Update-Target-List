@@ -132,7 +132,7 @@ export class KeyboxRepo {
     }
 
     this.#showLoading()
-    this.#iframe.src = KEYBOX_REPO_URL
+    this.#iframe.src = `${KEYBOX_REPO_URL}/${i18n.lang}`
     this.#overlay?.classList.remove('hidden')
 
     this.#history.push(KeyboxRepo.HISTORY_KEY, () => this.close())
