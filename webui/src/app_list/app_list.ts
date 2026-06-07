@@ -166,7 +166,6 @@ export class AppList {
       if (!target.includes(pkg)) this.#config.push('target', pkg)
     }
     this.#syncCheckboxes()
-    await File.createFile(TS_PATH + '/target_from_denylist')
   }
 
   async deselectUnnecessary(): Promise<void> {
