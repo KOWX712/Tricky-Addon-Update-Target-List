@@ -8,13 +8,8 @@
     <string name="help_select_denylist">DenyList থেকে নির্বাচন করুন</string>
     <string name="help_select_denylist_description">শুধুমাত্র Magisk এ উপলব্ধ, DenyList এ থাকা অ্যাপগুলি নির্বাচন করুন। সুপারিশকৃত।</string>
     <string name="help_deselect_unnecessary">অপ্রয়োজনীয় নির্বাচন প্রত্যাহার করুন</string>
-    <string name="help_deselect_unnecessary_description">অপ্রয়োজনীয় বিভাগ: Xposed মডিউল, root ম্যানেজার, root-সম্পর্কিত অ্যাপ, এবং সাধারণ অ্যাপ যা কখনও bootloader স্ট্যাটাস চেক করে না। এই অপশন ইন্টারনেট সংযোগ প্রয়োজন।</string>
     <string name="help_add_system_app">সিস্টেম অ্যাপ যোগ করুন</string>
     <string name="help_add_system_app_description">অ্যাপ তালিকায় নির্দিষ্ট সিস্টেম অ্যাপ যোগ করুন।</string>
-    <string name="help_set_security_patch">Security Patch সেট করুন</string>
-    <string name="help_set_security_patch_description">Custom security patch spoof সেট করুন। Auto config PIF মডিউল থেকে security patch ব্যবহার করবে। খালি রাখুন এবং সেভ করুন auto config নিষ্ক্রিয় করতে।</string>
-    <string name="help_set_verified_boot_hash">Verified Boot Hash সেট করুন</string>
-    <string name="help_set_verified_boot_hash_description">Key Attestation Demo থেকে verifiedBootHash মান পান। ro.boot.vbmeta.digest রিসেট করে অস্বাভাবিক boot state ঠিক করুন।</string>
     <!-- Update -->
     <string name="update_update_available">একটি নতুন সংস্করণ প্রস্তুত</string>
     <string name="update_redirect_to_release">সর্বশেষ সংস্করণ ডাউনলোড করতে ট্যাপ করুন</string>

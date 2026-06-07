@@ -9,13 +9,8 @@
     <string name="help_select_denylist">DenyList에서 선택</string>
     <string name="help_select_denylist_description">(권장됨) Magisk 사용자만 사용할 수 있으며, DenyList에 포함된 앱을 선택합니다.</string>
     <string name="help_deselect_unnecessary">필요 없는 앱 선택 해제</string>
-    <string name="help_deselect_unnecessary_description">불필요한 카테고리: Xposed 모듈, 루트 관리자, 루트 관련 앱, 및 부트로더 상태를 절대 확인하지 않는 일반 앱을 선택 해제합니다. 이 옵션은 인터넷 연결이 필요합니다.</string>
     <string name="help_add_system_app">시스템 앱 추가</string>
     <string name="help_add_system_app_description">특정 시스템 앱을 앱 리스트에 추가합니다.</string>
-    <string name="help_set_security_patch">보안 패치 설정</string>
-    <string name="help_set_security_patch_description">유저 정의 보안 패치 스푸핑을 설정합니다. 자동 구성은 PIF 모듈에서 보안 패치를 사용합니다. 빈 상태로 두고 저장하면 자동 구성을 비활성화합니다.</string>
-    <string name="help_set_verified_boot_hash">Verified Boot 해시 설정</string>
-    <string name="help_set_verified_boot_hash_description">Key Attestation Demo에서 검증된 verifiedBootHash 값을 가져옵니다. ro.boot.vbmeta.digest를 재설정하여 비정상적인 부팅 상태를 수정합니다.</string>
     <!-- Update -->
     <string name="update_update_available">새 버전이 준비되었습니다.</string>
     <string name="update_redirect_to_release">탭해서 최신 버전을 다운로드합니다.</string>

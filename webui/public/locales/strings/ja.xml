@@ -9,13 +9,8 @@
     <string name="help_select_denylist">DenyList から選択</string>
     <string name="help_select_denylist_description">Magisk の環境でのみ使用可能です。DenyList 内のアプリを選択します(推奨)。</string>
     <string name="help_deselect_unnecessary">不要な選択を解除</string>
-    <string name="help_deselect_unnecessary_description">不要なカテゴリー: Xposed モジュール、root マネージャー、root 関連アプリ、Bootloader の状態を確認しない一般的なアプリです。このオプションはインターネット接続が必要です。</string>
     <string name="help_add_system_app">システムアプリを追加</string>
     <string name="help_add_system_app_description">特定のシステムアプリをアプリリストに追加します。</string>
-    <string name="help_set_security_patch">セキュリティパッチを設定</string>
-    <string name="help_set_security_patch_description">カスタムセキュリティパッチの設定です。自動設定は PIF モジュールのセキュリティパッチを使用します。空白のまま保存すると自動設定を無効にします。</string>
-    <string name="help_set_verified_boot_hash">確認付きブートハッシュを設定</string>
-    <string name="help_set_verified_boot_hash_description">Key Attestation Demo から確認付きブートハッシュの値を取得します。ro.boot.vbmeta.digest をリセットして異常なブート状態を修正します。</string>
     <!-- Update -->
     <string name="update_update_available">新しいバージョンの準備完了</string>
     <string name="update_redirect_to_release">タップで最新のバージョンをダウンロード</string>

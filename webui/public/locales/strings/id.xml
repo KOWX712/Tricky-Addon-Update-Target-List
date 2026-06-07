@@ -9,13 +9,8 @@
     <string name="help_select_denylist">Pilih dari Denylist</string>
     <string name="help_select_denylist_description">Hanya untuk Magisk, pilih aplikasi yang ada di Denylist. Disarankan.</string>
     <string name="help_deselect_unnecessary">Batalkan Pilihan yang Tidak Perlu</string>
-    <string name="help_deselect_unnecessary_description">Kategori tidak perlu: Modul Xposed, pengelola root, aplikasi terkait root, dan aplikasi yang tidak pernah memeriksa status bootloader. Opsi ini memerlukan koneksi internet.</string>
     <string name="help_add_system_app">Tambahkan Aplikasi Sistem</string>
     <string name="help_add_system_app_description">Tambahkan aplikasi sistem tertentu ke daftar aplikasi.</string>
-    <string name="help_set_security_patch">Atur Patch Keamanan</string>
-    <string name="help_set_security_patch_description">Sesuaikan patch keamanan. Konfigurasi otomatis akan menggunakan patch dari modul PIF. Kosongkan dan simpan untuk menonaktifkan konfigurasi otomatis.</string>
-    <string name="help_set_verified_boot_hash">Atur Verified Boot Hash</string>
-    <string name="help_set_verified_boot_hash_description">Ambil nilai verifiedBootHash dari aplikasi Key Attestation Demo. Perbaiki status boot yang bermasalah dengan mereset ro.boot.vbmeta.digest.</string>
     <!-- Update -->
     <string name="update_update_available">Versi baru tersedia!</string>
     <string name="update_redirect_to_release">Ketuk untuk mengunduh versi terbaru</string>

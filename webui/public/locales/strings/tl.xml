@@ -8,13 +8,8 @@
     <string name="help_select_denylist">Piliin mula sa DenyList</string>
     <string name="help_select_denylist_description">Available lang sa Magisk, piliin ang mga app na nasa DenyList. Inirerekomenda.</string>
     <string name="help_deselect_unnecessary">Huwag Pumili ng Hindi Kinakailangan</string>
-    <string name="help_deselect_unnecessary_description">Hindi kinakailangang kategorya: Xposed module, root manager, root-related apps, at mga karaniwang apps na hindi kailanman nire-refresh ang bootloader status. Nangangailangan ng koneksyon sa internet.</string>
     <string name="help_add_system_app">Magdagdag ng System App</string>
     <string name="help_add_system_app_description">Magdagdag ng tiyak na system app sa listahan ng apps.</string>
-    <string name="help_set_security_patch">I-set ang Security Patch</string>
-    <string name="help_set_security_patch_description">I-set ang custom security patch. Ang auto config ay mag-use ng security patch mula sa PIF module. I-leave blank at i-save para i-disable ang auto config.</string>
-    <string name="help_set_verified_boot_hash">I-set ang Verified Boot Hash</string>
-    <string name="help_set_verified_boot_hash_description">Kunin ang verifiedBootHash mula sa Key Attestation Demo. Ayusin ang abnormal na boot state sa pamamagitan ng pag-reset ng ro.boot.vbmeta.digest.</string>
     <!-- Update -->
     <string name="update_update_available">Handa na ang bagong bersyon</string>
     <string name="update_redirect_to_release">i-tap para i-download ang pinakabagong bersyon</string>
