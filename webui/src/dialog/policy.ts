@@ -20,7 +20,7 @@ export class DefaultPolicyDialog {
         <div slot="headline">${i18n.t('default_policy_title')}</div>
         <div slot="content">
           <div id="default-policy-fields" class="policy-fields">
-            ${PolicyEditor.html()}
+            ${PolicyEditor.html(this.#config.policySchema)}
           </div>
         </div>
         <div slot="actions">
@@ -34,7 +34,7 @@ export class DefaultPolicyDialog {
     this.#dialog = fragment.querySelector<MdDialog>('#default-policy-dialog')
 
     const fieldsContainer = fragment.querySelector<HTMLElement>('#default-policy-fields')!
-    this.#policyEditor = new PolicyEditor(fieldsContainer)
+    this.#policyEditor = new PolicyEditor(fieldsContainer, this.#config.policySchema)
     this.#policyEditor.bind()
 
     fragment.querySelector<MdOutlinedButton>('#close-default-policy')!.onclick = () => this.close()

@@ -226,7 +226,7 @@ export class AppList {
     container.appendChild(fragment)
 
     if (!document.getElementById('mode-dialog')) {
-      document.body.insertAdjacentHTML('beforeend', AppList.#modeDialogHtml())
+      document.body.insertAdjacentHTML('beforeend', this.#modeDialogHtml())
       this.#setupModeDialogListeners()
     }
 
@@ -413,7 +413,7 @@ export class AppList {
     img.src = `ksu://icon/${packageName}`
   }
 
-  static #modeDialogHtml(): string {
+  #modeDialogHtml(): string {
     return /* html */ `
     <md-dialog id="mode-dialog">
       <div slot="headline">
@@ -441,7 +441,7 @@ export class AppList {
           <md-divider></md-divider>
           <md-filled-tonal-button id="mode-policy-toggle">${i18n.t('mode_set_custom_policy')}</md-filled-tonal-button>
           <div id="mode-policy-fields" class="mode-policy-fields hidden">
-            ${PolicyEditor.html()}
+            ${PolicyEditor.html(this.#config.policySchema)}
           </div>
         </div>
       </div>
@@ -457,7 +457,7 @@ export class AppList {
     applyDialogAnimation(dialog)
 
     if (this.#config.supportsPerAppConfig) {
-      this.#policyEditor = new PolicyEditor(document.getElementById('mode-policy-fields')!)
+      this.#policyEditor = new PolicyEditor(document.getElementById('mode-policy-fields')!, this.#config.policySchema)
       this.#policyEditor.bind()
 
       document.getElementById('mode-policy-toggle')!.onclick = () => {

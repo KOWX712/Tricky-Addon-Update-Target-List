@@ -5,7 +5,77 @@ export interface Policy {
   os_patch?: string
   vendor_patch?: string
   boot_patch?: string
+  [key: string]: string | undefined
 }
+
+export interface PolicyFieldMeta {
+  label?: string
+  required?: boolean
+  defaultValue?: string
+  options?: string[]
+  maxlength?: number
+  placeholder?: string
+  validate: (value: string) => boolean | string
+}
+
+export function snakeToLabel(key: string): string {
+  return key
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, c => c.toUpperCase())
+}
+
+export class PolicySchema {
+  readonly #fields: Map<string, PolicyFieldMeta>
+
+  constructor(fields: Record<string, PolicyFieldMeta>) {
+    this.#fields = new Map(Object.entries(fields))
+  }
+
+  getField(key: string): PolicyFieldMeta | undefined {
+    return this.#fields.get(key)
+  }
+
+  getFields(): [string, PolicyFieldMeta][] {
+    return [...this.#fields.entries()]
+  }
+
+  validate(values: Record<string, string>): Record<string, boolean | string> {
+    const result: Record<string, boolean | string> = {}
+    for (const [key, meta] of this.#fields) {
+      const value = values[key] ?? ''
+      if (!value && !meta.required) {
+        result[key] = true
+      } else {
+        result[key] = meta.validate(value)
+      }
+    }
+    return result
+  }
+}
+
+export const DEFAULT_POLICY_SCHEMA = new PolicySchema({
+  os_patch: {
+    defaultValue: 'no',
+    options: ['prop', 'no'],
+    maxlength: 6,
+    placeholder: 'YYYYMM',
+    validate: (v) => !v || v === 'prop' || v === 'no' || /^\d{6}$/.test(v) || 'Expected YYYYMM, prop, or no',
+  },
+  vendor_patch: {
+    defaultValue: 'no',
+    options: ['prop', 'no'],
+    maxlength: 8,
+    placeholder: 'YYYYMMDD',
+    validate: (v) => !v || v === 'prop' || v === 'no' || /^\d{8}$/.test(v) || 'Expected YYYYMMDD, prop, or no',
+  },
+  boot_patch: {
+    defaultValue: 'no',
+    options: ['prop', 'no'],
+    maxlength: 8,
+    placeholder: 'YYYYMMDD',
+    validate: (v) => !v || v === 'prop' || v === 'no' || /^\d{8}$/.test(v) || 'Expected YYYYMMDD, prop, or no',
+  },
+})
 
 export interface ConfigData {
   default_policy?: Policy
@@ -74,6 +144,7 @@ function serializeConfig(config: ConfigData): string {
 export class Config {
   #data: ConfigData = {}
   readonly supportsPerAppConfig: boolean = true
+  readonly policySchema: PolicySchema = DEFAULT_POLICY_SCHEMA
 
   async read(): Promise<void> {
     if (import.meta.env.DEV) {
