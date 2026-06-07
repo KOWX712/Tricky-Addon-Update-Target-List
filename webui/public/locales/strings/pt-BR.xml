@@ -6,28 +6,24 @@
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">Instruções</string>
+    <string name="help_save_and_update_description">Salvar configuração atual.</string>
     <string name="help_select_denylist">Selecione no DenyList</string>
     <string name="help_select_denylist_description">Disponível apenas no Magisk, selecione aplicativos que estão no DenyList. Recomendado.</string>
     <string name="help_deselect_unnecessary">Desmarque desnecessário</string>
-    <string name="help_deselect_unnecessary_description">Categoria desnecessária: Módulo Xposed, gereciador root, apps relacionado a root, e aplicativos gerais que nunca verificam o status do bootloader. Esta opção requer conexão à Internet.</string>
     <string name="help_add_system_app">Adicionar app do sistema</string>
     <string name="help_add_system_app_description">Adicionar app do sistema específico à lista de aplicativos.</string>
     <string name="help_set_keybox">Definir Keybox</string>
     <string name="help_set_keybox_description">Substitua a keybox TrickyStore por:</string>
-    <string name="help_set_keybox_aosp">AOSP - o keybox padrão vem com o TrickyStore.</string>
-    <string name="help_set_keybox_unknown">Desconhecido - autoassinado e não válido para veredicto de play integrity.</string>
-    <string name="help_set_keybox_local">Local - selecione a keybox no seu dispositivo.</string>
-    <string name="help_set_keybox_custom">Personalizado - fornecedor de keybox personalizadas via busca online.</string>
-    <string name="help_set_security_patch">Definir patch de segurança</string>
-    <string name="help_set_security_patch_description">Definir spoof de patch de segurança personalizado. Config automática usará o patch de segurança do módulo PIF. Deixe em branco e salve para desativar a configuração automática.</string>
-    <string name="help_set_verified_boot_hash">Definir Hash de boot verificado</string>
-    <string name="help_set_verified_boot_hash_description">Obter valor de verifiedBootHash de Key Attestation Demo. Corrige abnormal boot state Redefinindo ro.boot.vbmeta.digest. </string>
     <!-- Update -->
     <string name="update_update_available">Uma nova versão está Disponível</string>
     <string name="update_redirect_to_release">Toque para baixar a versão mais recente</string>
     <string name="update_changelog">Changelog</string>
     <string name="update_install">Instalar</string>
     <string name="update_reboot">Reiniciar</string>
+    <string name="update_channel">Canal de atualização</string>
+    <string name="update_channel_stable">Estável</string>
+    <string name="update_channel_canary">Canary</string>
+    <string name="update_channel_disable">Desativar</string>
     <!-- Search -->
     <string name="search_bar_search_placeholder">Buscar</string>
     <!-- Functional Button -->
@@ -38,6 +34,7 @@
     <string name="functional_button_confirm">Confirmar</string>
     <string name="functional_button_reset">Redefinir</string>
     <string name="functional_button_remove">Remover</string>
+    <string name="functional_button_today">Hoje</string>
     <!-- Menu -->
     <string name="menu_select_denylist">Selecione de denylist</string>
     <string name="menu_deselect_unnecessary">Desmarcar desnecessário</string>
@@ -68,6 +65,7 @@
     <string name="prompt_unknown_key_set">Keybox desconhecido definido com sucesso</string>
     <string name="prompt_boot_hash_set">Hash de Boot Verificado salvo com sucesso</string>
     <string name="prompt_boot_hash_set_error">Falha ao atualizar Hash de Boot Verificado</string>
+    <string name="prompt_saved_target">Configuração salva</string>
     <string name="prompt_save_error">Falha ao salvar a configuração</string>
     <string name="prompt_uninstall_prompt">WebUI será removido após a reinicialização</string>
     <string name="prompt_uninstall_failed">Falhou em desinstalar WebUI</string>
@@ -90,6 +88,7 @@
     <string name="prompt_custom_invalid_script">Script não permitido</string>
     <string name="prompt_custom_removed">Entrada de custom keybox removido</string>
     <!-- Security Patch -->
+    <string name="default_policy_title">Política Padrão</string>
     <string name="security_patch_invalid_all">Formato inválido</string>
     <!-- Add System App -->
     <string name="add_system_app_title">Adicionar app do sistema</string>
@@ -111,4 +110,8 @@
     <!-- Mode dialog -->
     <string name="mode_dialog_title">Modo</string>
     <string name="mode_auto">Auto</string>
+    <string name="mode_certificate_generating">Geração de Certificados</string>
+    <string name="mode_leaf_hack">Hack Leaf</string>
+    <string name="mode_set_custom_policy">Definir Política Personalizada</string>
+    <string name="mode_use_default_policy">Usar Política Padrão</string>
 </resources>

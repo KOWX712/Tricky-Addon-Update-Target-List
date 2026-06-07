@@ -6,28 +6,35 @@
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">Hướng dẫn</string>
+    <string name="help_save_and_update_description">Lưu cấu hình hiện tại.</string>
     <string name="help_select_denylist">Chọn từ DenyList</string>
     <string name="help_select_denylist_description">Chỉ khả dụng trong Magisk, chọn ứng dụng nằm trong DenyList. Khuyến nghị sử dụng.</string>
     <string name="help_deselect_unnecessary">Bỏ chọn các mục không cần thiết</string>
-    <string name="help_deselect_unnecessary_description">Danh mục không cần thiết: Trình quản lý root, module Xposed, ứng dụng liên quan đến root và các ứng dụng thông thường không bao giờ kiểm tra trạng thái bootloader. Tùy chọn này yêu cầu kết nối Internet.</string>
+    <string name="help_deselect_unnecessary_description">**Danh mục không cần thiết** - Trình quản lý root, module Xposed, ứng dụng liên quan đến root và các ứng dụng thông thường không bao giờ kiểm tra trạng thái bootloader. Tùy chọn này yêu cầu kết nối Internet.</string>
     <string name="help_add_system_app">Thêm ứng dụng hệ thống</string>
     <string name="help_add_system_app_description">Thêm ứng dụng hệ thống cụ thể vào danh sách ứng dụng.</string>
     <string name="help_set_keybox">Thiết lập Keybox</string>
     <string name="help_set_keybox_description">Thay thế Keybox của TrickyStore bằng:</string>
-    <string name="help_set_keybox_aosp">AOSP - Keybox mặc định đi kèm với Tricky Store.</string>
-    <string name="help_set_keybox_unknown">Không xác định - Chữ ký tự ký và không có giá trị đối với phán quyết của Play Integrity.</string>
-    <string name="help_set_keybox_local">Cục bộ - Chọn Keybox từ thiết bị của bạn.</string>
-    <string name="help_set_keybox_custom">Tùy chỉnh - Nhà cung cấp Keybox tùy chỉnh trực tuyến.</string>
-    <string name="help_set_security_patch">Thiết lập bản vá bảo mật</string>
-    <string name="help_set_security_patch_description">Thiết lập bản vá bảo mật tùy chỉnh giả mạo. Cấu hình tự động sẽ sử dụng bản vá bảo mật từ module PIF. Để trống và lưu để tắt cấu hình tự động.</string>
-    <string name="help_set_verified_boot_hash">Thiết lập Verified Boot Hash</string>
-    <string name="help_set_verified_boot_hash_description">Lấy giá trị verifiedBootHash từ Key Attestation Demo. Sửa trạng thái boot bất thường bằng cách đặt lại ro.boot.vbmeta.digest.</string>
+    <string name="help_set_keybox_aosp">**AOSP** - Keybox mặc định đi kèm với Tricky Store.</string>
+    <string name="help_set_keybox_unknown">**Không xác định** - Chữ ký tự ký và không có giá trị đối với phán quyết của Play Integrity.</string>
+    <string name="help_set_keybox_local">**Cục bộ** - Chọn Keybox từ thiết bị của bạn.</string>
+    <string name="help_set_keybox_custom">**Tùy chỉnh** - Nhà cung cấp Keybox tuỳ chỉnh trực tuyến.</string>
+    <string name="help_set_default_policy">Thiết lập chính sách mặc định</string>
+    <string name="help_set_default_policy_description">Trước đây là `Set Security Patch`. Cấu hình chính sách mặc định cho tất cả các ứng dụng. Để trống hoặc `no` để vô hiệu hoá hoặc `prop` để nhất quán với thuộc tính hệ thống.</string>
+    <string name="help_prop_settings">Cài đặt Thuộc tính</string>
+    <string name="help_prop_settings_description">Các cài đặt liên quan đến thuộc tính:</string>
+    <string name="help_prop_settings_handler">**Trình xử lý thuộc tính** - Bật/Tắt tập lệnh để đặt lại thuộc tính shamiko.</string>
+    <string name="help_prop_settings_boot_hash">**Boot hash** - lấy giá trị `verifiedboothash` từ [KeyAttestation](https://github.com/vvb2060/KeyAttestation/releases). Khắc phục trạng thái khởi động bất thường bằng cách đặt lại `ro.boot.vbmeta.digest`.</string>
     <!-- Update -->
     <string name="update_update_available">Đã có phiên bản mới</string>
     <string name="update_redirect_to_release">Nhấn để tải phiên bản mới nhất</string>
     <string name="update_changelog">Nhật ký thay đổi</string>
     <string name="update_install">Cài đặt</string>
     <string name="update_reboot">Khởi động lại</string>
+    <string name="update_channel">Kênh cập nhật</string>
+    <string name="update_channel_stable">Ổn định</string>
+    <string name="update_channel_canary">Thử nghiệm</string>
+    <string name="update_channel_disable">Vô hiệu hoá</string>
     <!-- Search -->
     <string name="search_bar_search_placeholder">Tìm kiếm</string>
     <!-- Functional Button -->
@@ -38,6 +45,7 @@
     <string name="functional_button_confirm">Xác nhận</string>
     <string name="functional_button_reset">Đặt lại</string>
     <string name="functional_button_remove">Xoá</string>
+    <string name="functional_button_today">Hôm nay</string>
     <!-- Menu -->
     <string name="menu_select_denylist">Chọn từ DenyList</string>
     <string name="menu_deselect_unnecessary">Bỏ chọn các mục không cần thiết</string>
@@ -46,12 +54,14 @@
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">Không xác định</string>
     <string name="menu_keybox_local">Cục bộ</string>
-    <string name="menu_prop_setting">Cài đặt Prop</string>
+    <string name="menu_keybox_repo">Kho lưu trữ</string>
+    <string name="menu_prop_setting">Cài đặt Thuộc tính</string>
+    <string name="menu_set_default_policy">Thiết lập chính sách mặc định</string>
     <string name="menu_help">Hỗ trợ</string>
     <string name="menu_language">Ngôn ngữ</string>
     <string name="menu_about">Giới thiệu</string>
     <!-- Prop Dialog -->
-    <string name="prop_handler">Trình xử lý Prop</string>
+    <string name="prop_handler">Trình xử lý Thuộc tính</string>
     <string name="boot_hash_title">Boot Hash</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
@@ -68,6 +78,7 @@
     <string name="prompt_unknown_key_set">Đã thiết lập Keybox không xác định thành công</string>
     <string name="prompt_boot_hash_set">Đã lưu Verified Boot Hash thành công</string>
     <string name="prompt_boot_hash_set_error">Cập nhật Verified Boot Hash thất bại!</string>
+    <string name="prompt_saved_target">Cấu hình đã được lưu</string>
     <string name="prompt_save_error">Lưu cấu hình thất bại!</string>
     <string name="prompt_uninstall_prompt">WebUI sẽ bị Gỡ cài đặt sau khi khởi động lại</string>
     <string name="prompt_uninstall_failed">Gỡ cài đặt WebUI thất bại!</string>
@@ -89,7 +100,11 @@
     <string name="prompt_custom_not_found">Không tìm thấy Keybox tuỳ chỉnh nào</string>
     <string name="prompt_custom_invalid_script">Script chưa được cho phép</string>
     <string name="prompt_custom_removed">Keybox tuỳ chỉnh đã bị xoá</string>
+    <string name="prompt_keybox_repo_set">Thiết lập Keybox từ kho lưu trữ thành công</string>
+    <string name="prompt_keybox_repo_set_error">Thiết lập Keybox từ kho lưu trữ thất bại!</string>
+    <string name="prompt_keybox_repo_download_error">Tải xuống thất bại → %s</string>
     <!-- Security Patch -->
+    <string name="default_policy_title">Chính sách mặc định</string>
     <string name="security_patch_invalid_all">Định dạng không hợp lệ</string>
     <!-- Add System App -->
     <string name="add_system_app_title">Thêm ứng dụng hệ thống</string>
@@ -111,4 +126,8 @@
     <!-- Mode dialog -->
     <string name="mode_dialog_title">Chế độ</string>
     <string name="mode_auto">Tự động</string>
+    <string name="mode_certificate_generating">Cert Generating</string>
+    <string name="mode_leaf_hack">Leaf Hack</string>
+    <string name="mode_set_custom_policy">Thiết lập chính sách tuỳ chỉnh</string>
+    <string name="mode_use_default_policy">Sử dụng chính sách mặc định</string>
 </resources>

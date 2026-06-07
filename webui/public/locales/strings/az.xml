@@ -8,13 +8,8 @@
     <string name="help_select_denylist">DenyList-dən seç</string>
     <string name="help_select_denylist_description">Yalnız Magisk-də mövcuddur, DenyList-də olan tətbiqləri seçin. Tövsiyə olunur.</string>
     <string name="help_deselect_unnecessary">Lazımsızları seçmə</string>
-    <string name="help_deselect_unnecessary_description">Lazımsız kateqoriya: Xposed modulu, kök meneceri, kök ilə əlaqəli tətbiqlər və heç vaxt bootloader statusunu yoxlamayan ümumi tətbiqlər. Bu seçim İnternet bağlantısı tələb edir.</string>
     <string name="help_add_system_app">Sistem Tətbiqi Əlavə et</string>
     <string name="help_add_system_app_description">Müəyyən bir sistem tətbiqini tətbiq siyahısına əlavə et.</string>
-    <string name="help_set_security_patch">Təhlükəsizlik Təkmilləşdirməsini təyin et</string>
-    <string name="help_set_security_patch_description">Xüsusi təhlükəsizlik təkmilləşdirməsini dəyişdir. Avtomatik konfiqurasiya, PIF modulundan təhlükəsizlik təkmilləşdirməsini istifadə edəcək. Avtomatik konfiqurasiyanı dayandırmaq üçün boş buraxın və yadda saxlayın.</string>
-    <string name="help_set_verified_boot_hash">Təsdiqlənmiş Boot Hash təyin et</string>
-    <string name="help_set_verified_boot_hash_description">Key Attestation Demo-dan verifiedBootHash dəyərini əldə et. ro.boot.vbmeta.digest-ni sıfırlayaraq qeyri-adi boot vəziyyətini düzəlt.</string>
     <!-- Update -->
     <string name="update_update_available">Yeni versiya mövcuddur</string>
     <string name="update_redirect_to_release">Ən son versiyanı yükləmək üçün klikləyin</string>

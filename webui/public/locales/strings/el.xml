@@ -8,13 +8,8 @@
     <string name="help_select_denylist">Επίλεξε από DenyList</string>
     <string name="help_select_denylist_description">Διαθέσιμο μόνο στο Magisk, επίλεξε εφαρμογές που είναι στη DenyList. Συνιστάται.</string>
     <string name="help_deselect_unnecessary">Αποεπίλεξε άχρηστα</string>
-    <string name="help_deselect_unnecessary_description">Άχρηστη κατηγορία: Xposed module, root manager, root-related apps, και γενικές εφαρμογές που ποτέ δεν ελέγχουν κατάσταση bootloader. Απαιτεί σύνδεση Internet.</string>
     <string name="help_add_system_app">Πρόσθεσε Εφαρμογή Συστήματος</string>
     <string name="help_add_system_app_description">Πρόσθεσε συγκεκριμένη εφαρμογή συστήματος στη λίστα εφαρμογών.</string>
-    <string name="help_set_security_patch">Όρισε Security Patch</string>
-    <string name="help_set_security_patch_description">Όρισε spoof για custom security patch. Η αυτόματη ρύθμιση χρησιμοποιεί το security patch από το PIF module. Άφησε κενό και αποθήκευσε για απενεργοποίηση αυτόματης ρύθμισης.</string>
-    <string name="help_set_verified_boot_hash">Όρισε Verified Boot Hash</string>
-    <string name="help_set_verified_boot_hash_description">Πάρε την τιμή verifiedBootHash από το Key Attestation Demo. Διόρθωσε την ανώμαλη κατάσταση εκκίνησης επαναφέροντας το ro.boot.vbmeta.digest.</string>
     <!-- Update -->
     <string name="update_update_available">Μια νέα έκδοση είναι έτοιμη</string>
     <string name="update_redirect_to_release">πάτησε για να κατεβάσεις την τελευταία έκδοση</string>

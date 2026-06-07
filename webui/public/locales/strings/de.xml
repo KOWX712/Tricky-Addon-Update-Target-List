@@ -9,13 +9,8 @@
     <string name="help_select_denylist">Aus DenyList auswählen</string>
     <string name="help_select_denylist_description">Nur in Magisk verfügbar, wähle Apps aus der DenyList aus. Empfohlen.</string>
     <string name="help_deselect_unnecessary">Unnötige abwählen</string>
-    <string name="help_deselect_unnecessary_description">Unnötige Kategorie: Xposed-Module, Root-Manager, Root-bezogene Apps und allgemeine Apps, die den Bootloader-Status nie prüfen. Diese Option benötigt eine Internetverbindung.</string>
     <string name="help_add_system_app">System-App hinzufügen</string>
     <string name="help_add_system_app_description">Füge eine bestimmte System-App zur App-Liste hinzu.</string>
-    <string name="help_set_security_patch">Sicherheitspatch setzen</string>
-    <string name="help_set_security_patch_description">Benutzerdefiniertes Sicherheitspatch-Spoofing setzen. Auto-Konfiguration verwendet den Sicherheitspatch vom PIF-Modul. Leer lassen und speichern, um Auto-Konfiguration zu deaktivieren.</string>
-    <string name="help_set_verified_boot_hash">Verifizierten Boot-Hash setzen</string>
-    <string name="help_set_verified_boot_hash_description">Wert „verifiedBootHash“ aus der Key Attestation Demo abrufen. Behebt einen abnormalen Bootzustand durch Zurücksetzen von ro.boot.vbmeta.digest.</string>
     <!-- Update -->
     <string name="update_update_available">Eine neue Version ist verfügbar</string>
     <string name="update_redirect_to_release">Tippe, um die neueste Version herunterzuladen</string>
