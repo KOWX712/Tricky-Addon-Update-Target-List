@@ -1,6 +1,6 @@
 import { exec, spawn } from 'kernelsu-alt'
 import { File } from './file'
-import { MOD_ID, TS_MOD_PATH } from './constant'
+import { MOD_ID, OMK_MOD_ID, TS_MOD_ID } from './constant'
 
 export class Cli {
   static #basePathPromise: Promise<string> | null = null
@@ -26,7 +26,15 @@ export class Cli {
   }
 
   async getTrickyStoreInfo(): Promise<Record<string, string>> {
-    const raw = await File.read(TS_MOD_PATH + '/module.prop')
+    const ids = [TS_MOD_ID, OMK_MOD_ID]
+    let raw = ''
+    for (const id of ids) {
+      try {
+        raw = await File.read('/data/adb/modules/' + id + '/module.prop')
+        break
+      } catch {}
+    }
+    if (!raw) throw new Error('getTrickyStoreInfo failed: module.prop not found')
     const info: Record<string, string> = {}
     for (const line of raw.split('\n')) {
       const trimmed = line.trim()

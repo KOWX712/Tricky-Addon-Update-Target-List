@@ -144,6 +144,7 @@ function serializeConfig(config: ConfigData): string {
 export class Config {
   #data: ConfigData = {}
   readonly supportsPerAppConfig: boolean = true
+  readonly supportsKeybox: boolean = true
   readonly policySchema: PolicySchema = DEFAULT_POLICY_SCHEMA
 
   async read(): Promise<void> {

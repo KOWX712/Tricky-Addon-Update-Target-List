@@ -1,4 +1,3 @@
-CONFIG_DIR="/data/adb/tricky_store"
 MODID=`grep_prop id $TMPDIR/module.prop`
 NEW_MODID=".TA_utl"
 
@@ -46,7 +45,7 @@ else
     abort " "
 fi
 
-[ -d "/data/adb/modules/tricky_store" ] || ui_print "! Warning: Tricky store module not found"
+[ -d "/data/adb/modules/tricky_store" ] || [ -d "/data/adb/modules/oh_my_keymint" ] || ui_print "! Warning: Tricky store module not found"
 
 ui_print "- Installing..."
 # Magisk cleanup

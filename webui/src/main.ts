@@ -15,8 +15,9 @@ import { DialogController } from './dialog/dialog'
 import { UpdateManager } from './update'
 import { SearchBar } from './search_bar/search_bar'
 import { Keybind } from './keybind'
-import { LOCAL_STORAGE_PREFIX } from './constant'
+import { LOCAL_STORAGE_PREFIX, OMK_MOD_ID } from './constant'
 import './style.scss'
+import { ConfigOhMyKeyMint } from './config_ohmykeymint'
 
 await i18n.init()
 
@@ -30,20 +31,22 @@ const updateManager = new UpdateManager(cli)
 let config: Config
 try {
   const tsInfo = await cli.getTrickyStoreInfo()
-  const versionCode = parseInt(tsInfo.versionCode, 10)
-  config = createConfig(versionCode)
+  config = createConfig(tsInfo)
 } catch {
   config = new Config()
 }
 
-function createConfig(versionCode: number): Config {
-  if (isNaN(versionCode)) return new Config()
+function createConfig(tsInfo: Record<string, string>): Config {
+  const modId = tsInfo.id
+  const versionCode = parseInt(tsInfo.versionCode, 10)
 
   switch (true) {
+    case modId === OMK_MOD_ID:
+      return new ConfigOhMyKeyMint()    // Oh My Keymint
     case Config.support(versionCode):
-      return new Config()         // config.ini
+      return new Config()               // config.ini
     default:
-      return new ConfigLegacy()   // target.txt + security_patch.txt
+      return new ConfigLegacy()         // target.txt + security_patch.txt
   }
 }
 
@@ -156,6 +159,9 @@ if ((await cli.getManager()) !== 'MAGISK' && !import.meta.env.DEV) {
 }
 if (!Keybox.isKeygenAvailable() && !import.meta.env.DEV) {
   mainMenu.hideItem('keybox-unknown') // Hide 'Unknown keybox'
+}
+if (!config.supportsKeybox && !import.meta.env.DEV) {
+  mainMenu.hideItem('keybox-menu') // Hide entire Keybox menu
 }
 
 const updateCard = document.querySelector<HTMLElement>('.update')!

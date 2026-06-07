@@ -33,7 +33,7 @@ export class MainMenu {
             <div slot="headline">${i18n.t('menu_add_system_app')}</div>
           </md-menu-item>
           <md-divider role="separator" tabindex="-1"></md-divider>
-          <md-sub-menu hover-close-delay="0">
+          <md-sub-menu hover-close-delay="0" id="keybox-menu">
             <md-menu-item slot="item" class="sub-menu-entry">
               <div slot="headline">${i18n.t('menu_keybox')}</div>
               <md-icon slot="end">key</md-icon>

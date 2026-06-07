@@ -2,6 +2,7 @@ MODPATH=${0%/*}
 PATH=$PATH:/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk
 HIDE_DIR="/data/adb/modules/.TA_utl"
 TS="/data/adb/modules/tricky_store"
+OMK="/data/adb/modules/oh_my_keymint"
 TSPA="/data/adb/modules/tsupport-advance"
 
 if [ -d "$TS" ]; then
@@ -39,11 +40,11 @@ else
 fi
 
 # Symlink tricky store
-if [ -f "$MODPATH/action.sh" ] && [ ! -e "$TS/action.sh" ]; then
-    ln -s "$MODPATH/action.sh" "$TS/action.sh"
+if [ -f "$MODPATH/action.sh" ] && [ ! -e "$RUNTIME/action.sh" ]; then
+    ln -s "$MODPATH/action.sh" "$RUNTIME/action.sh"
 fi
-if [ ! -e "$TS/webroot" ]; then
-    ln -s "$MODPATH/webui" "$TS/webroot"
+if [ ! -e "$RUNTIME/webroot" ]; then
+    ln -s "$MODPATH/webui" "$RUNTIME/webroot"
 fi
 
 until [ "$(getprop sys.boot_completed)" = "1" ]; do

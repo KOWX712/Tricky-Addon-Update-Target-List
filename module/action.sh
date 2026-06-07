@@ -5,9 +5,17 @@
 MODPATH="/data/adb/modules/.TA_utl"
 ORG_PATH="$PATH"
 TMP_DIR="$MODPATH/common/tmp"
-SCRIPT_DIR="/data/adb/tricky_store"
 APK_PATH="$TMP_DIR/base.apk"
 REPO="KOWX712/KsuWebUIStandalone"
+
+TS_ID="tricky_store"
+OMK_ID="oh_my_keymint"
+
+if [ -d "/data/adb/modules/$TS_ID" ]; then
+    ID=$TS_ID
+elif [ -d "/data/adb/modules/$OMK_ID" ]; then
+    ID=$OMK_ID
+fi
 
 manual_download() {
     echo "$1"
@@ -43,16 +51,16 @@ get_webui() {
     rm -f "$APK_PATH"
 
     echo "- Launching WebUI..."
-    am start -n "io.github.a13e300.ksuwebui/.WebUIActivity" -e id "tricky_store"
+    am start -n "io.github.a13e300.ksuwebui/.WebUIActivity" -e id "$ID"
 }
 
 # Launch KSUWebUI standalone or MMRL, install KSUWebUI standalone if both are not installed
 if pm path io.github.a13e300.ksuwebui >/dev/null 2>&1; then
     echo "- Launching WebUI in KSUWebUIStandalone..."
-    am start -n "io.github.a13e300.ksuwebui/.WebUIActivity" -e id "tricky_store"
+    am start -n "io.github.a13e300.ksuwebui/.WebUIActivity" -e id "$ID"
 elif pm path com.dergoogler.mmrl.wx > /dev/null 2>&1; then
     echo "- Launching WebUI in WebUI X..."
-    am start -n "com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity" -e MOD_ID "tricky_store"
+    am start -n "com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity" -e MOD_ID "$ID"
 else
     echo "! No WebUI app found"
     get_webui
