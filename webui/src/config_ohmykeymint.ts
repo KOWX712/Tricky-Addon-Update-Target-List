@@ -8,32 +8,34 @@ const OMK_POLICY_SCHEMA = new PolicySchema({
     label: 'OS Version',
     defaultValue: 'auto',
     options: ['auto'],
-    placeholder: 'e.g. 15 or auto',
-    validate: (v) => !v || v === 'auto' || /^\d+$/.test(v) || 'Expected a number or auto',
+    placeholder: '15',
+    validate: (v) => !v || v === 'auto' || /^\d+$/.test(v) || 'auto | number',
   },
   security_patch: {
     label: 'Security Patch',
     defaultValue: 'auto',
     options: ['auto', 'latest'],
     maxlength: 10,
-    placeholder: 'auto / latest / YYYY-MM-DD',
-    validate: (v) => !v || ['auto', 'latest'].includes(v) || /^\d{4}-\d{2}-\d{2}$/.test(v) || 'Expected auto, latest, or YYYY-MM-DD',
+    placeholder: 'YYYY-MM-DD',
+    validate: (v) => !v || ['auto', 'latest'].includes(v) || /^\d{4}-\d{2}-\d{2}$/.test(v) || 'auto | latest | YYYY-MM-DD',
   },
   vb_key: {
     label: 'VB Key',
     defaultValue: 'auto',
     options: ['auto', 'random'],
     maxlength: 64,
-    placeholder: 'auto / random / 64 hex chars',
-    validate: (v) => !v || ['auto', 'random'].includes(v) || /^[0-9a-f]{64}$/i.test(v) || 'Expected 64 hex characters, auto, or random',
+    placeholder: '64 hex chars',
+    textarea: true,
+    validate: (v) => !v || ['auto', 'random'].includes(v) || /^[0-9a-f]{64}$/i.test(v) || 'auto | random | 64 hex chars',
   },
   vb_hash: {
     label: 'VB Hash',
     defaultValue: 'auto',
     options: ['auto', 'random'],
     maxlength: 64,
-    placeholder: 'auto / random / 64 hex chars',
-    validate: (v) => !v || ['auto', 'random'].includes(v) || /^[0-9a-f]{64}$/i.test(v) || 'Expected 64 hex characters, auto, or random',
+    placeholder: '64 hex chars',
+    textarea: true,
+    validate: (v) => !v || ['auto', 'random'].includes(v) || /^[0-9a-f]{64}$/i.test(v) || 'auto | random | 64 hex chars',
   },
 })
 
@@ -118,9 +120,10 @@ export class ConfigOhMyKeyMint extends Config {
     if (policy.vb_key !== undefined) trust.vb_key = policy.vb_key
     if (policy.vb_hash !== undefined) trust.vb_hash = policy.vb_hash
     if (policy.os_version !== undefined) {
-      trust.os_version = /^\d+$/.test(policy.os_version)
-        ? parseInt(policy.os_version, 10)
-        : policy.os_version
+      const osVer = policy.os_version as string
+      trust.os_version = /^\d+$/.test(osVer)
+        ? parseInt(osVer, 10)
+        : osVer
     }
 
     omkConfig.trust = trust

@@ -5,6 +5,7 @@ import { MainMenu } from './main_menu/main_menu'
 import { Cli } from './cli'
 import { Config } from './config'
 import { ConfigLegacy } from './config_legacy'
+import { ConfigOhMyKeyMint } from './config_ohmykeymint'
 import { AppList } from './app_list/app_list'
 import { Snackbar } from './snackbar/snackbar'
 import { FileSelector } from './file_selector/file_selector'
@@ -17,7 +18,6 @@ import { SearchBar } from './search_bar/search_bar'
 import { Keybind } from './keybind'
 import { LOCAL_STORAGE_PREFIX, OMK_MOD_ID } from './constant'
 import './style.scss'
-import { ConfigOhMyKeyMint } from './config_ohmykeymint'
 
 await i18n.init()
 
@@ -39,7 +39,6 @@ try {
 function createConfig(tsInfo: Record<string, string>): Config {
   const modId = tsInfo.id
   const versionCode = parseInt(tsInfo.versionCode, 10)
-
   switch (true) {
     case modId === OMK_MOD_ID:
       return new ConfigOhMyKeyMint()    // Oh My Keymint

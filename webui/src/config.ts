@@ -1,21 +1,38 @@
+import type { MdOutlinedTextField } from '@material/web/all'
 import { File } from './file'
 
 export interface Policy {
   os_patch?: string
   vendor_patch?: string
   boot_patch?: string
-  [key: string]: string | undefined
+  [key: string]: string | boolean | undefined
 }
 
-export interface PolicyFieldMeta {
+export interface TextFieldMeta {
+  type?: 'text'
   label?: string
   required?: boolean
   defaultValue?: string
   options?: string[]
   maxlength?: number
   placeholder?: string
+  textarea?: boolean
   validate: (value: string) => boolean | string
 }
+
+export interface BooleanFieldMeta {
+  type: 'boolean'
+  label: string
+  defaultValue?: boolean
+}
+
+export interface ButtonFieldMeta {
+  type: 'button'
+  label: string
+  onClick: () => void
+}
+
+export type PolicyFieldMeta = TextFieldMeta | BooleanFieldMeta | ButtonFieldMeta
 
 export function snakeToLabel(key: string): string {
   return key
@@ -41,6 +58,11 @@ export class PolicySchema {
   validate(values: Record<string, string>): Record<string, boolean | string> {
     const result: Record<string, boolean | string> = {}
     for (const [key, meta] of this.#fields) {
+      if (meta.type === 'button') continue
+      if (meta.type === 'boolean') {
+        result[key] = true
+        continue
+      }
       const value = values[key] ?? ''
       if (!value && !meta.required) {
         result[key] = true
@@ -58,21 +80,41 @@ export const DEFAULT_POLICY_SCHEMA = new PolicySchema({
     options: ['prop', 'no'],
     maxlength: 6,
     placeholder: 'YYYYMM',
-    validate: (v) => !v || v === 'prop' || v === 'no' || /^\d{6}$/.test(v) || 'Expected YYYYMM, prop, or no',
+    validate: (v) => !v || v === 'prop' || v === 'no' || /^\d{6}$/.test(v) || 'YYYYMM | prop | no',
   },
   vendor_patch: {
     defaultValue: 'no',
     options: ['prop', 'no'],
     maxlength: 8,
     placeholder: 'YYYYMMDD',
-    validate: (v) => !v || v === 'prop' || v === 'no' || /^\d{8}$/.test(v) || 'Expected YYYYMMDD, prop, or no',
+    validate: (v) => !v || v === 'prop' || v === 'no' || /^\d{8}$/.test(v) || 'YYYYMMDD | prop | no',
   },
   boot_patch: {
     defaultValue: 'no',
     options: ['prop', 'no'],
     maxlength: 8,
     placeholder: 'YYYYMMDD',
-    validate: (v) => !v || v === 'prop' || v === 'no' || /^\d{8}$/.test(v) || 'Expected YYYYMMDD, prop, or no',
+    validate: (v) => !v || v === 'prop' || v === 'no' || /^\d{8}$/.test(v) || 'YYYYMMDD | prop | no',
+  },
+  _today: {
+    type: 'button',
+    label: 'functional_button_today',
+    onClick: () => {
+      const now8 = new Date().toISOString().slice(0, 10).replace(/-/g, '')
+      const setDate = (key: string) => {
+        const el = document.querySelector<MdOutlinedTextField>(`.policy-${key}`)
+        if (!el) return
+        const maxlength = parseInt(el.getAttribute('maxlength') ?? '', 10)
+        if (maxlength === 6) {
+          el.value = now8.slice(0, 6)
+        } else if (maxlength >= 8) {
+          el.value = now8
+        }
+      }
+      setDate('os_patch')
+      setDate('vendor_patch')
+      setDate('boot_patch')
+    },
   },
 })
 
@@ -129,7 +171,7 @@ function serializeConfig(config: ConfigData): string {
         lines.push(entry)
       }
     } else if (typeof data === 'object') {
-      for (const [key, value] of Object.entries(data as Record<string, string>)) {
+      for (const [key, value] of Object.entries(data as Record<string, string | boolean>)) {
         lines.push(`${key} = ${value}`)
       }
     }
