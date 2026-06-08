@@ -3,9 +3,6 @@ import { Config, PolicySchema } from './config'
 import type { ConfigData } from './config'
 import { parse, stringify } from 'smol-toml'
 
-const INJECTOR_PATH = '/data/misc/keystore/omk/injector.toml'
-const OMK_CONFIG_PATH = '/data/misc/keystore/omk/config.toml'
-
 const OMK_POLICY_SCHEMA = new PolicySchema({
   os_version: {
     label: 'OS Version',
@@ -41,8 +38,11 @@ const OMK_POLICY_SCHEMA = new PolicySchema({
 })
 
 export class ConfigOhMyKeyMint extends Config {
+  override readonly CONFIG_PATH = '/data/misc/keystore/omk'
+  override readonly CONFIG_FILE = this.CONFIG_PATH + '/config.toml'
+  readonly INJECTOR_FILE = this.CONFIG_PATH + '/injector.toml'
+
   readonly supportsPerAppConfig = false as const
-  readonly supportsKeybox = false as const
   readonly policySchema = OMK_POLICY_SCHEMA
 
   #injector: Record<string, unknown> | null = null
@@ -68,7 +68,7 @@ export class ConfigOhMyKeyMint extends Config {
     const data: ConfigData = {}
 
     try {
-      const raw = await File.read(INJECTOR_PATH)
+      const raw = await File.read(this.INJECTOR_FILE)
       this.#injector = parse(raw) as Record<string, unknown>
       data.target = (this.#injector.scoop as string[]) ?? []
     } catch {
@@ -77,7 +77,7 @@ export class ConfigOhMyKeyMint extends Config {
     }
 
     try {
-      const raw = await File.read(OMK_CONFIG_PATH)
+      const raw = await File.read(this.CONFIG_FILE)
       this.#omkConfig = parse(raw) as Record<string, unknown>
       const trust = this.#omkConfig.trust as Record<string, unknown> | undefined
       if (trust) {
@@ -107,7 +107,7 @@ export class ConfigOhMyKeyMint extends Config {
 
     if (this.#injector) {
       this.#injector.scoop = data.target ?? []
-      await File.write(INJECTOR_PATH, stringify(this.#injector))
+      await File.write(this.INJECTOR_FILE, stringify(this.#injector))
     }
 
     if (this.#omkConfig) {
@@ -124,7 +124,7 @@ export class ConfigOhMyKeyMint extends Config {
       }
 
       this.#omkConfig.trust = trust
-      await File.write(OMK_CONFIG_PATH, stringify(this.#omkConfig))
+      await File.write(this.CONFIG_FILE, stringify(this.#omkConfig))
     }
   }
 }

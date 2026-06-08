@@ -1,10 +1,6 @@
 import { File } from './file'
 import { Config } from './config'
 import type { ConfigData, Policy } from './config'
-import { TS_PATH } from './constant'
-
-const TARGET_PATH = TS_PATH + '/target.txt'
-const SECURITY_PATCH_PATH = TS_PATH + '/security_patch.txt'
 
 function parseTarget(raw: string): string[] {
   const targets: string[] = []
@@ -72,6 +68,9 @@ function serializeSecurityPatch(policy: Policy): string {
 }
 
 export class ConfigLegacy extends Config {
+  override readonly CONFIG_FILE = this.CONFIG_PATH + '/target.txt'
+  readonly SECURITY_PATCH_FILE = this.CONFIG_PATH + '/security_patch.txt'
+
   readonly supportsPerAppConfig = false as const
 
   override async read(): Promise<void> {
@@ -90,14 +89,14 @@ export class ConfigLegacy extends Config {
     const data: ConfigData = {}
 
     try {
-      const targetRaw = await File.read(TARGET_PATH)
+      const targetRaw = await File.read(this.CONFIG_FILE)
       data.target = parseTarget(targetRaw)
     } catch {
       data.target = []
     }
 
     try {
-      const spRaw = await File.read(SECURITY_PATCH_PATH)
+      const spRaw = await File.read(this.SECURITY_PATCH_FILE)
       const policy = parseSecurityPatch(spRaw)
       if (policy) data.default_policy = policy
     } catch {
@@ -117,13 +116,13 @@ export class ConfigLegacy extends Config {
     const writeTasks: Promise<void>[] = []
 
     if (data.target) {
-      writeTasks.push(File.write(TARGET_PATH, serializeTarget(data.target)))
+      writeTasks.push(File.write(this.CONFIG_FILE, serializeTarget(data.target)))
     }
 
     if (data.default_policy && !isNoOpPolicy(data.default_policy)) {
-      writeTasks.push(File.write(SECURITY_PATCH_PATH, serializeSecurityPatch(data.default_policy)))
+      writeTasks.push(File.write(this.SECURITY_PATCH_FILE, serializeSecurityPatch(data.default_policy)))
     } else {
-      writeTasks.push(File.delete(SECURITY_PATCH_PATH))
+      writeTasks.push(File.delete(this.SECURITY_PATCH_FILE))
     }
 
     // Per-app policy sections are intentionally skipped

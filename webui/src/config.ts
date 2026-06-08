@@ -1,5 +1,4 @@
 import { File } from './file'
-import { TS_PATH } from './constant'
 
 export interface Policy {
   os_patch?: string
@@ -83,9 +82,7 @@ export interface ConfigData {
   [section: string]: Policy | string[] | undefined
 }
 
-export const MIN_SUPPORTED_VERSION = 246
-
-const CONFIG_PATH = TS_PATH + '/config.ini'
+const MIN_SUPPORTED_VERSION = 246
 
 function parseConfig(raw: string): ConfigData {
   const config: ConfigData = {}
@@ -142,9 +139,11 @@ function serializeConfig(config: ConfigData): string {
 }
 
 export class Config {
+  readonly CONFIG_PATH: string = '/data/adb/tricky_store'
+  readonly CONFIG_FILE: string = this.CONFIG_PATH + '/config.ini'
+
   #data: ConfigData = {}
   readonly supportsPerAppConfig: boolean = true
-  readonly supportsKeybox: boolean = true
   readonly policySchema: PolicySchema = DEFAULT_POLICY_SCHEMA
 
   async read(): Promise<void> {
@@ -165,7 +164,7 @@ export class Config {
       return
     }
     try {
-      const raw = await File.read(CONFIG_PATH)
+      const raw = await File.read(this.CONFIG_FILE)
       this.#data = parseConfig(raw)
     } catch {
       this.#data = {
@@ -177,7 +176,7 @@ export class Config {
 
   async write(): Promise<void> {
     const raw = serializeConfig(this.#data)
-    await File.write(CONFIG_PATH, raw)
+    await File.write(this.CONFIG_FILE, raw)
   }
 
   get(): ConfigData
@@ -235,6 +234,10 @@ export class Config {
     if (value === undefined) return arr.pop()
     const idx = arr.indexOf(value)
     return idx !== -1 ? arr.splice(idx, 1)[0] : undefined
+  }
+
+  get configPath(): string {
+    return this.CONFIG_PATH
   }
 
   static support(versionCode: number): boolean {

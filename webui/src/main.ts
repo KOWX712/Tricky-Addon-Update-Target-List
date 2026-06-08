@@ -133,7 +133,7 @@ function float(hide: boolean): void {
 
 // Main Menu events
 const mainMenu = new MainMenu()
-const keybox = new Keybox(cli, fileSelector, snackbar)
+const keybox = new Keybox(cli, config, fileSelector, snackbar)
 const keyboxRepo = new KeyboxRepo(keybox, history, snackbar)
 const header = document.querySelector<HTMLElement>('.header')!
 mainMenu.appendTo(header)
@@ -159,9 +159,6 @@ if ((await cli.getManager()) !== 'MAGISK' && !import.meta.env.DEV) {
 }
 if (!Keybox.isKeygenAvailable() && !import.meta.env.DEV) {
   mainMenu.hideItem('keybox-unknown') // Hide 'Unknown keybox'
-}
-if (!config.supportsKeybox && !import.meta.env.DEV) {
-  mainMenu.hideItem('keybox-menu') // Hide entire Keybox menu
 }
 
 const updateCard = document.querySelector<HTMLElement>('.update')!

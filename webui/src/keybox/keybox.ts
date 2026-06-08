@@ -6,23 +6,27 @@ import { FileSelector } from '../file_selector/file_selector'
 import { Snackbar } from '../snackbar/snackbar'
 import { generateUnknownKeybox, isKeygenAvailable } from './unknown'
 import { CustomKeyboxProvider } from './custom'
-import { TS_PATH } from '../constant'
+import { Config } from '../config'
 import { applyDialogAnimation } from '../dialog/animation'
 import './keybox.scss'
-
-export const KEYBOX_PATH = TS_PATH + '/keybox.xml'
 
 export class Keybox {
   readonly cli: Cli
   readonly custom: CustomKeyboxProvider
+  readonly #config: Config
   #fileSelector: FileSelector
   #snackbar: Snackbar
 
-  constructor(cli: Cli, fileSelector: FileSelector, snackbar: Snackbar) {
+  constructor(cli: Cli, config: Config, fileSelector: FileSelector, snackbar: Snackbar) {
     this.cli = cli
+    this.#config = config
     this.#fileSelector = fileSelector
     this.#snackbar = snackbar
     this.custom = new CustomKeyboxProvider(this, fileSelector, snackbar)
+  }
+
+  get keyboxPath(): string {
+    return this.#config.configPath + '/keybox.xml'
   }
 
   appendTo(container: HTMLElement): void {
@@ -80,10 +84,10 @@ export class Keybox {
   }
 
   async setKeybox(content: string, cmd: string = 'cat'): Promise<boolean> {
-    await File.move(KEYBOX_PATH, `${KEYBOX_PATH}.bak`).catch(() => {})
+    await File.move(this.keyboxPath, `${this.keyboxPath}.bak`).catch(() => {})
 
     try {
-      await File.write(KEYBOX_PATH, content, cmd)
+      await File.write(this.keyboxPath, content, cmd)
       return true
     } catch {
       return false
