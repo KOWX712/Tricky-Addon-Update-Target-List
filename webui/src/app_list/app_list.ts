@@ -509,6 +509,8 @@ export class AppList {
     const dialog = document.getElementById('mode-dialog') as MdDialog & { show?: () => void }
     if (!dialog) return
 
+    if (!this.#config.supportsAppMode) return
+
     const pkg = card.dataset.package!
     this.#currentModeCard = card
 

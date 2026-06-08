@@ -40,11 +40,13 @@ const OMK_POLICY_SCHEMA = new PolicySchema({
 })
 
 export class ConfigOhMyKeyMint extends Config {
-  override readonly CONFIG_PATH = '/data/misc/keystore/omk'
-  override readonly CONFIG_FILE = this.CONFIG_PATH + '/config.toml'
-  readonly INJECTOR_FILE = this.CONFIG_PATH + '/injector.toml'
+  protected override readonly CONFIG_PATH = '/data/misc/keystore/omk'
+  protected override readonly CONFIG_FILE = this.CONFIG_PATH + '/config.toml'
+  protected readonly INJECTOR_FILE = this.CONFIG_PATH + '/injector.toml'
 
-  readonly supportsPerAppConfig = false as const
+  protected readonly perAppConfig: boolean = false
+  protected readonly appMode: boolean = false
+
   readonly policySchema = OMK_POLICY_SCHEMA
 
   #injector: Record<string, unknown> | null = null

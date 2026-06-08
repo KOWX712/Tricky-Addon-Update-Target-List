@@ -181,11 +181,13 @@ function serializeConfig(config: ConfigData): string {
 }
 
 export class Config {
-  readonly CONFIG_PATH: string = '/data/adb/tricky_store'
-  readonly CONFIG_FILE: string = this.CONFIG_PATH + '/config.ini'
+  protected readonly CONFIG_PATH: string = '/data/adb/tricky_store'
+  protected readonly CONFIG_FILE: string = this.CONFIG_PATH + '/config.ini'
+
+  protected readonly perAppConfig: boolean = true
+  protected readonly appMode: boolean = true
 
   #data: ConfigData = {}
-  readonly supportsPerAppConfig: boolean = true
   readonly policySchema: PolicySchema = DEFAULT_POLICY_SCHEMA
 
   async read(): Promise<void> {
@@ -280,6 +282,14 @@ export class Config {
 
   get configPath(): string {
     return this.CONFIG_PATH
+  }
+
+  get supportsPerAppConfig(): boolean {
+    return this.perAppConfig
+  }
+
+  get supportsAppMode(): boolean {
+    return this.appMode
   }
 
   static support(versionCode: number): boolean {

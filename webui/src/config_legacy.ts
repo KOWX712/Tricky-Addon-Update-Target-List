@@ -68,10 +68,10 @@ function serializeSecurityPatch(policy: Policy): string {
 }
 
 export class ConfigLegacy extends Config {
-  override readonly CONFIG_FILE = this.CONFIG_PATH + '/target.txt'
-  readonly SECURITY_PATCH_FILE = this.CONFIG_PATH + '/security_patch.txt'
+  protected override readonly CONFIG_FILE = this.CONFIG_PATH + '/target.txt'
+  protected readonly SECURITY_PATCH_FILE = this.CONFIG_PATH + '/security_patch.txt'
 
-  readonly supportsPerAppConfig = false as const
+  protected readonly perAppConfig: boolean = false
 
   override async read(): Promise<void> {
     if (import.meta.env.DEV) {
