@@ -19,7 +19,7 @@ export class File {
 
   static async write(path: string, data: string, cmd: string = 'cat'): Promise<void> {
     const result = await exec(`(${cmd}) << 'FileEOF' > "${path}"
-${data}
+${data.trim()}
 FileEOF`)
     if (result.errno !== 0) throw new Error(`File.write failed (${result.errno}): ${result.stderr}`)
   }
