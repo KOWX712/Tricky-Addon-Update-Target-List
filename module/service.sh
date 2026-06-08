@@ -5,7 +5,7 @@ TS="/data/adb/modules/tricky_store"
 OMK="/data/adb/modules/oh_my_keymint"
 TSPA="/data/adb/modules/tsupport-advance"
 
-if [ -d "$TS" ]; then
+if [ -d "$TS" ] && [ ! -e "$TS/disable" ]; then
     RUNTIME="$TS"
 else
     RUNTIME="$OMK"

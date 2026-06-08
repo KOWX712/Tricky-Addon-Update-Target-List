@@ -2,13 +2,11 @@ MODPATH=${0%/*}
 TS="/data/adb/modules/tricky_store"
 OMK="/data/adb/modules/oh_my_keymint"
 
-if [ -d "$TS" ]; then
+if [ -d "$TS" ] && [ ! -e "$TS/disable" ] && [ ! -e "$TS/remove" ]; then
     RUNTIME="$TS"
-elif [ -d "$OMK" ]; then
+elif [ -d "$OMK" ] && [ ! -e "$OMK/disable" ] && [ ! -e "$OMK/remove" ]; then
     RUNTIME="$OMK"
-fi
-
-if [ -z "$RUNTIME" ] || [ -f "$RUNTIME/remove" ]; then
+else
     if [ -f "$MODPATH/action.sh" ]; then
         [ -d "/data/adb/modules/TA_utl" ] && rm -rf "/data/adb/modules/TA_utl"
         cp -rf "$MODPATH/common/update" "/data/adb/modules/TA_utl"
@@ -16,6 +14,7 @@ if [ -z "$RUNTIME" ] || [ -f "$RUNTIME/remove" ]; then
     else
         touch "$MODPATH/remove"
     fi
+    abort || exit
 fi
 
 [ -L "$RUNTIME/webroot" ] && rm -f "$RUNTIME/webroot"

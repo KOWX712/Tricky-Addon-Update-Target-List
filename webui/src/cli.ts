@@ -31,7 +31,8 @@ export class Cli {
     for (const id of ids) {
       try {
         raw = await File.read('/data/adb/modules/' + id + '/module.prop')
-        break
+        const disabled = File.exist('/data/adb/modules' + id + '/disable')
+        if (!disabled) break
       } catch {}
     }
     if (!raw) throw new Error('getTrickyStoreInfo failed: module.prop not found')
