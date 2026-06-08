@@ -105,26 +105,26 @@ export class ConfigOhMyKeyMint extends Config {
   override async write(): Promise<void> {
     const data = this.get()
 
-    if (this.#injector) {
-      this.#injector.scoop = data.target ?? []
-      await File.write(this.INJECTOR_FILE, stringify(this.#injector))
+    const injector = this.#injector ?? {}
+    injector.scoop = data.target ?? []
+    this.#injector = injector
+    await File.write(this.INJECTOR_FILE, stringify(this.#injector))
+
+    const omkConfig = this.#omkConfig ?? {}
+    const trust = (omkConfig.trust ?? {}) as Record<string, unknown>
+    const policy = data.default_policy ?? {}
+
+    if (policy.security_patch !== undefined) trust.security_patch = policy.security_patch
+    if (policy.vb_key !== undefined) trust.vb_key = policy.vb_key
+    if (policy.vb_hash !== undefined) trust.vb_hash = policy.vb_hash
+    if (policy.os_version !== undefined) {
+      trust.os_version = /^\d+$/.test(policy.os_version)
+        ? parseInt(policy.os_version, 10)
+        : policy.os_version
     }
 
-    if (this.#omkConfig) {
-      const trust = (this.#omkConfig.trust ?? {}) as Record<string, unknown>
-      const policy = data.default_policy ?? {}
-
-      if (policy.security_patch !== undefined) trust.security_patch = policy.security_patch
-      if (policy.vb_key !== undefined) trust.vb_key = policy.vb_key
-      if (policy.vb_hash !== undefined) trust.vb_hash = policy.vb_hash
-      if (policy.os_version !== undefined) {
-        trust.os_version = /^\d+$/.test(policy.os_version)
-          ? parseInt(policy.os_version, 10)
-          : policy.os_version
-      }
-
-      this.#omkConfig.trust = trust
-      await File.write(this.CONFIG_FILE, stringify(this.#omkConfig))
-    }
+    omkConfig.trust = trust
+    this.#omkConfig = omkConfig
+    await File.write(this.CONFIG_FILE, stringify(this.#omkConfig))
   }
 }
