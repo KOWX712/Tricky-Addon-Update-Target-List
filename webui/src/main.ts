@@ -57,6 +57,11 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* html */ `
     <md-outlined-text-field class="search-bar hide">
       <md-icon-button slot="trailing-icon" id="search-close"><md-icon>close</md-icon></md-icon-button>
     </md-outlined-text-field>
+    <div class="main-menu">
+      <md-icon-button id="menu-button">
+        <md-icon>more_vert</md-icon>
+      </md-icon-button>
+    </div>
   </section>
 
   <section class="body-content">
@@ -134,8 +139,8 @@ function float(hide: boolean): void {
 const mainMenu = new MainMenu()
 const keybox = new Keybox(cli, config, fileSelector, snackbar)
 const keyboxRepo = new KeyboxRepo(keybox, history, snackbar)
-const header = document.querySelector<HTMLElement>('.header')!
-mainMenu.appendTo(header)
+const mainMenuContainer = document.querySelector<HTMLElement>('.main-menu')!
+mainMenu.appendTo(mainMenuContainer)
 mainMenu.on('menu-open', () => appList.menuOpen = true)
 mainMenu.on('menu-close', () => appList.menuOpen = false)
 mainMenu.on('menu-refresh', async () => await appList.refresh())
