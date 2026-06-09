@@ -2,26 +2,16 @@ MODPATH=${0%/*}
 PATH=$PATH:/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk
 HIDE_DIR="/data/adb/modules/.TA_utl"
 TS="/data/adb/modules/tricky_store"
+OMK="/data/adb/modules/oh_my_keymint"
 TSPA="/data/adb/modules/tsupport-advance"
 
+if [ -d "$TS" ] && [ ! -e "$TS/disable" ]; then
+    RUNTIME="$TS"
+else
+    RUNTIME="$OMK"
+fi
+
 . "$MODPATH/common/manager.sh"
-
-add_denylist_to_target() {
-    exclamation_target=$(grep '!' "/data/adb/tricky_store/target.txt" | sed 's/!$//')
-    question_target=$(grep '?' "/data/adb/tricky_store/target.txt" | sed 's/?$//')
-    target=$(sed 's/[!?]$//' /data/adb/tricky_store/target.txt)
-    denylist=$(magisk --denylist ls 2>/dev/null | awk -F'|' '{print $1}' | grep -v "isolated")
-    
-    printf "%s\n" "$target" "$denylist" | sort -u > "/data/adb/tricky_store/target.txt"
-
-    for target in $exclamation_target; do
-        sed -i "s/^$target$/$target!/" "/data/adb/tricky_store/target.txt"
-    done
-
-    for target in $question_target; do
-        sed -i "s/^$target$/$target?/" "/data/adb/tricky_store/target.txt"
-    done
-}
 
 # Handle sensitive prop in background
 sh "$MODPATH/prop.sh" &
@@ -44,21 +34,17 @@ if [ "$MANAGER" = "MAGISK" ]; then
     fi
     MODPATH="$HIDE_DIR"
     [ -f "$MODPATH/action.sh.old" ] && mv -f "$MODPATH/action.sh.old" "$MODPATH/action.sh"
-
-    # Add target from denylist
-    # To trigger this, choose "Select from DenyList" in WebUI once
-    [ -f "/data/adb/tricky_store/target_from_denylist" ] && add_denylist_to_target
 else
     [ -f "$MODPATH/action.sh" ] && mv -f "$MODPATH/action.sh" "$MODPATH/action.sh.old"
     [ -d "$HIDE_DIR" ] && rm -rf "$HIDE_DIR"
 fi
 
 # Symlink tricky store
-if [ -f "$MODPATH/action.sh" ] && [ ! -e "$TS/action.sh" ]; then
-    ln -s "$MODPATH/action.sh" "$TS/action.sh"
+if [ -f "$MODPATH/action.sh" ] && [ ! -e "$RUNTIME/action.sh" ]; then
+    ln -s "$MODPATH/action.sh" "$RUNTIME/action.sh"
 fi
-if [ ! -e "$TS/webroot" ]; then
-    ln -s "$MODPATH/webui" "$TS/webroot"
+if [ ! -e "$RUNTIME/webroot" ]; then
+    ln -s "$MODPATH/webui" "$RUNTIME/webroot"
 fi
 
 until [ "$(getprop sys.boot_completed)" = "1" ]; do

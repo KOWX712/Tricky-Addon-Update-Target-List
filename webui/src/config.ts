@@ -1,11 +1,122 @@
+import type { MdOutlinedTextField } from '@material/web/all'
 import { File } from './file'
-import { TS_PATH } from './constant'
 
 export interface Policy {
   os_patch?: string
   vendor_patch?: string
   boot_patch?: string
+  [key: string]: string | boolean | undefined
 }
+
+export interface TextFieldMeta {
+  type?: 'text'
+  label?: string
+  required?: boolean
+  defaultValue?: string
+  options?: string[]
+  maxlength?: number
+  placeholder?: string
+  textarea?: boolean
+  validate: (value: string) => boolean | string
+}
+
+export interface BooleanFieldMeta {
+  type: 'boolean'
+  label: string
+  defaultValue?: boolean
+}
+
+export interface ButtonFieldMeta {
+  type: 'button'
+  label: string
+  onClick: () => void
+}
+
+export type PolicyFieldMeta = TextFieldMeta | BooleanFieldMeta | ButtonFieldMeta
+
+export function snakeToLabel(key: string): string {
+  return key
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, c => c.toUpperCase())
+}
+
+export class PolicySchema {
+  readonly #fields: Map<string, PolicyFieldMeta>
+
+  constructor(fields: Record<string, PolicyFieldMeta>) {
+    this.#fields = new Map(Object.entries(fields))
+  }
+
+  getField(key: string): PolicyFieldMeta | undefined {
+    return this.#fields.get(key)
+  }
+
+  getFields(): [string, PolicyFieldMeta][] {
+    return [...this.#fields.entries()]
+  }
+
+  validate(values: Record<string, string>): Record<string, boolean | string> {
+    const result: Record<string, boolean | string> = {}
+    for (const [key, meta] of this.#fields) {
+      if (meta.type === 'button') continue
+      if (meta.type === 'boolean') {
+        result[key] = true
+        continue
+      }
+      const value = values[key] ?? ''
+      if (!value && !meta.required) {
+        result[key] = true
+      } else {
+        result[key] = meta.validate(value)
+      }
+    }
+    return result
+  }
+}
+
+export const DEFAULT_POLICY_SCHEMA = new PolicySchema({
+  os_patch: {
+    defaultValue: 'no',
+    options: ['prop', 'no'],
+    maxlength: 6,
+    placeholder: 'YYYYMM',
+    validate: (v) => !v || v === 'prop' || v === 'no' || /^\d{6}$/.test(v) || 'YYYYMM | prop | no',
+  },
+  vendor_patch: {
+    defaultValue: 'no',
+    options: ['prop', 'no'],
+    maxlength: 8,
+    placeholder: 'YYYYMMDD',
+    validate: (v) => !v || v === 'prop' || v === 'no' || /^\d{8}$/.test(v) || 'YYYYMMDD | prop | no',
+  },
+  boot_patch: {
+    defaultValue: 'no',
+    options: ['prop', 'no'],
+    maxlength: 8,
+    placeholder: 'YYYYMMDD',
+    validate: (v) => !v || v === 'prop' || v === 'no' || /^\d{8}$/.test(v) || 'YYYYMMDD | prop | no',
+  },
+  _today: {
+    type: 'button',
+    label: 'functional_button_today',
+    onClick: () => {
+      const now8 = new Date().toISOString().slice(0, 10).replace(/-/g, '')
+      const setDate = (key: string) => {
+        const el = document.querySelector<MdOutlinedTextField>(`.policy-${key}`)
+        if (!el) return
+        const maxlength = parseInt(el.getAttribute('maxlength') ?? '', 10)
+        if (maxlength === 6) {
+          el.value = now8.slice(0, 6)
+        } else if (maxlength >= 8) {
+          el.value = now8
+        }
+      }
+      setDate('os_patch')
+      setDate('vendor_patch')
+      setDate('boot_patch')
+    },
+  },
+})
 
 export interface ConfigData {
   default_policy?: Policy
@@ -13,9 +124,7 @@ export interface ConfigData {
   [section: string]: Policy | string[] | undefined
 }
 
-export const MIN_SUPPORTED_VERSION = 246
-
-const CONFIG_PATH = TS_PATH + '/config.ini'
+const MIN_SUPPORTED_VERSION = 246
 
 function parseConfig(raw: string): ConfigData {
   const config: ConfigData = {}
@@ -62,7 +171,7 @@ function serializeConfig(config: ConfigData): string {
         lines.push(entry)
       }
     } else if (typeof data === 'object') {
-      for (const [key, value] of Object.entries(data as Record<string, string>)) {
+      for (const [key, value] of Object.entries(data as Record<string, string | boolean>)) {
         lines.push(`${key} = ${value}`)
       }
     }
@@ -72,8 +181,14 @@ function serializeConfig(config: ConfigData): string {
 }
 
 export class Config {
+  protected readonly CONFIG_PATH: string = '/data/adb/tricky_store'
+  protected readonly CONFIG_FILE: string = this.CONFIG_PATH + '/config.ini'
+
+  protected readonly perAppConfig: boolean = true
+  protected readonly appMode: boolean = true
+
   #data: ConfigData = {}
-  readonly supportsPerAppConfig: boolean = true
+  readonly policySchema: PolicySchema = DEFAULT_POLICY_SCHEMA
 
   async read(): Promise<void> {
     if (import.meta.env.DEV) {
@@ -93,7 +208,7 @@ export class Config {
       return
     }
     try {
-      const raw = await File.read(CONFIG_PATH)
+      const raw = await File.read(this.CONFIG_FILE)
       this.#data = parseConfig(raw)
     } catch {
       this.#data = {
@@ -105,7 +220,7 @@ export class Config {
 
   async write(): Promise<void> {
     const raw = serializeConfig(this.#data)
-    await File.write(CONFIG_PATH, raw)
+    await File.write(this.CONFIG_FILE, raw)
   }
 
   get(): ConfigData
@@ -163,6 +278,18 @@ export class Config {
     if (value === undefined) return arr.pop()
     const idx = arr.indexOf(value)
     return idx !== -1 ? arr.splice(idx, 1)[0] : undefined
+  }
+
+  get configPath(): string {
+    return this.CONFIG_PATH
+  }
+
+  get supportsPerAppConfig(): boolean {
+    return this.perAppConfig
+  }
+
+  get supportsAppMode(): boolean {
+    return this.appMode
   }
 
   static support(versionCode: number): boolean {

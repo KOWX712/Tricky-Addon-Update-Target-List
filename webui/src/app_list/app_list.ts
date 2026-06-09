@@ -4,8 +4,7 @@ import type { MdDialog, MdRadio } from '@material/web/all'
 import { Cli } from '../cli'
 import { Config } from '../config'
 import { i18n } from '../i18n'
-import { File } from '../file'
-import { GITHUB_REPO, LOCAL_STORAGE_PREFIX, TS_PATH } from '../constant'
+import { GITHUB_REPO, LOCAL_STORAGE_PREFIX } from '../constant'
 import { applyDialogAnimation } from '../dialog/animation'
 import { PolicyEditor } from './policy'
 import './app_list.scss'
@@ -166,7 +165,6 @@ export class AppList {
       if (!target.includes(pkg)) this.#config.push('target', pkg)
     }
     this.#syncCheckboxes()
-    await File.createFile(TS_PATH + '/target_from_denylist')
   }
 
   async deselectUnnecessary(): Promise<void> {
@@ -226,7 +224,7 @@ export class AppList {
     container.appendChild(fragment)
 
     if (!document.getElementById('mode-dialog')) {
-      document.body.insertAdjacentHTML('beforeend', AppList.#modeDialogHtml())
+      document.body.insertAdjacentHTML('beforeend', this.#modeDialogHtml())
       this.#setupModeDialogListeners()
     }
 
@@ -413,7 +411,7 @@ export class AppList {
     img.src = `ksu://icon/${packageName}`
   }
 
-  static #modeDialogHtml(): string {
+  #modeDialogHtml(): string {
     return /* html */ `
     <md-dialog id="mode-dialog">
       <div slot="headline">
@@ -441,7 +439,7 @@ export class AppList {
           <md-divider></md-divider>
           <md-filled-tonal-button id="mode-policy-toggle">${i18n.t('mode_set_custom_policy')}</md-filled-tonal-button>
           <div id="mode-policy-fields" class="mode-policy-fields hidden">
-            ${PolicyEditor.html()}
+            ${PolicyEditor.html(this.#config.policySchema)}
           </div>
         </div>
       </div>
@@ -457,7 +455,7 @@ export class AppList {
     applyDialogAnimation(dialog)
 
     if (this.#config.supportsPerAppConfig) {
-      this.#policyEditor = new PolicyEditor(document.getElementById('mode-policy-fields')!)
+      this.#policyEditor = new PolicyEditor(document.getElementById('mode-policy-fields')!, this.#config.policySchema)
       this.#policyEditor.bind()
 
       document.getElementById('mode-policy-toggle')!.onclick = () => {
@@ -510,6 +508,8 @@ export class AppList {
   #openModeDialog(card: HTMLElement): void {
     const dialog = document.getElementById('mode-dialog') as MdDialog & { show?: () => void }
     if (!dialog) return
+
+    if (!this.#config.supportsAppMode) return
 
     const pkg = card.dataset.package!
     this.#currentModeCard = card

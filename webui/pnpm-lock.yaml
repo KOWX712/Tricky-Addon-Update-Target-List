@@ -23,6 +23,9 @@ importers:
       pkijs:
         specifier: ^3.4.0
         version: 3.4.0
+      smol-toml:
+        specifier: ^1.6.1
+        version: 1.6.1
     devDependencies:
       sass:
         specifier: ^1.100.0
@@ -435,6 +438,10 @@ packages:
     engines: {node: '>=20.19.0'}
     hasBin: true
 
+  smol-toml@1.6.1:
+    resolution: {integrity: sha512-dWUG8F5sIIARXih1DTaQAX4SsiTXhInKf1buxdY9DIg4ZYPZK5nGM1VRIYmEbDbsHt7USo99xSLFu5Q1IqTmsg==}
+    engines: {node: '>= 18'}
+
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
@@ -813,6 +820,8 @@ snapshots:
       source-map-js: 1.2.1
     optionalDependencies:
       '@parcel/watcher': 2.5.6
+
+  smol-toml@1.6.1: {}
 
   source-map-js@1.2.1: {}
 

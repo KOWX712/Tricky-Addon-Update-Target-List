@@ -5,6 +5,7 @@ import { MainMenu } from './main_menu/main_menu'
 import { Cli } from './cli'
 import { Config } from './config'
 import { ConfigLegacy } from './config_legacy'
+import { ConfigOhMyKeyMint } from './config_ohmykeymint'
 import { AppList } from './app_list/app_list'
 import { Snackbar } from './snackbar/snackbar'
 import { FileSelector } from './file_selector/file_selector'
@@ -15,7 +16,7 @@ import { DialogController } from './dialog/dialog'
 import { UpdateManager } from './update'
 import { SearchBar } from './search_bar/search_bar'
 import { Keybind } from './keybind'
-import { LOCAL_STORAGE_PREFIX } from './constant'
+import { LOCAL_STORAGE_PREFIX, OMK_MOD_ID } from './constant'
 import './style.scss'
 
 await i18n.init()
@@ -30,20 +31,21 @@ const updateManager = new UpdateManager(cli)
 let config: Config
 try {
   const tsInfo = await cli.getTrickyStoreInfo()
-  const versionCode = parseInt(tsInfo.versionCode, 10)
-  config = createConfig(versionCode)
+  config = createConfig(tsInfo)
 } catch {
   config = new Config()
 }
 
-function createConfig(versionCode: number): Config {
-  if (isNaN(versionCode)) return new Config()
-
+function createConfig(tsInfo: Record<string, string>): Config {
+  const modId = tsInfo.id
+  const versionCode = parseInt(tsInfo.versionCode, 10)
   switch (true) {
+    case modId === OMK_MOD_ID:
+      return new ConfigOhMyKeyMint()    // Oh My Keymint
     case Config.support(versionCode):
-      return new Config()         // config.ini
+      return new Config()               // config.ini
     default:
-      return new ConfigLegacy()   // target.txt + security_patch.txt
+      return new ConfigLegacy()         // target.txt + security_patch.txt
   }
 }
 
@@ -55,6 +57,11 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* html */ `
     <md-outlined-text-field class="search-bar hide">
       <md-icon-button slot="trailing-icon" id="search-close"><md-icon>close</md-icon></md-icon-button>
     </md-outlined-text-field>
+    <div class="main-menu">
+      <md-icon-button id="menu-button">
+        <md-icon>more_vert</md-icon>
+      </md-icon-button>
+    </div>
   </section>
 
   <section class="body-content">
@@ -130,10 +137,10 @@ function float(hide: boolean): void {
 
 // Main Menu events
 const mainMenu = new MainMenu()
-const keybox = new Keybox(cli, fileSelector, snackbar)
+const keybox = new Keybox(cli, config, fileSelector, snackbar)
 const keyboxRepo = new KeyboxRepo(keybox, history, snackbar)
-const header = document.querySelector<HTMLElement>('.header')!
-mainMenu.appendTo(header)
+const mainMenuContainer = document.querySelector<HTMLElement>('.main-menu')!
+mainMenu.appendTo(mainMenuContainer)
 mainMenu.on('menu-open', () => appList.menuOpen = true)
 mainMenu.on('menu-close', () => appList.menuOpen = false)
 mainMenu.on('menu-refresh', async () => await appList.refresh())

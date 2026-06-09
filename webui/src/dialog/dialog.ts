@@ -29,7 +29,7 @@ export class DialogController {
     this.uninstall = new UninstallDialog(cli, snackbar)
     this.defaultPolicy = new DefaultPolicyDialog(config)
     this.systemApp = new SystemAppDialog(appList)
-    this.prop = new PropDialog(cli, snackbar)
+    this.prop = new PropDialog(cli, config, snackbar)
     this.update = new UpdateDialog(cli, updateManager, snackbar)
     this.i18nDialog = new I18nDialog(cli)
   }

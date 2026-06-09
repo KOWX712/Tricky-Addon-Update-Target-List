@@ -1,7 +1,12 @@
 MODPATH=${0%/*}
 TS="/data/adb/modules/tricky_store"
+OMK="/data/adb/modules/oh_my_keymint"
 
-if [ ! -d "$TS" ] || [ -f "$TS/remove" ]; then
+if [ -d "$TS" ] && [ ! -e "$TS/disable" ] && [ ! -e "$TS/remove" ]; then
+    RUNTIME="$TS"
+elif [ -d "$OMK" ] && [ ! -e "$OMK/disable" ] && [ ! -e "$OMK/remove" ]; then
+    RUNTIME="$OMK"
+else
     if [ -f "$MODPATH/action.sh" ]; then
         [ -d "/data/adb/modules/TA_utl" ] && rm -rf "/data/adb/modules/TA_utl"
         cp -rf "$MODPATH/common/update" "/data/adb/modules/TA_utl"
@@ -9,10 +14,11 @@ if [ ! -d "$TS" ] || [ -f "$TS/remove" ]; then
     else
         touch "$MODPATH/remove"
     fi
+    abort || exit
 fi
 
-[ -L "$TS/webroot" ] && rm -f "$TS/webroot"
-[ -L "$TS/action.sh" ] && rm -f "$TS/action.sh"
+[ -L "$RUNTIME/webroot" ] && rm -f "$RUNTIME/webroot"
+[ -L "$RUNTIME/action.sh" ] && rm -f "$RUNTIME/action.sh"
 
 # detect root manager
 [ "$APATCH" = "true" ] && MANAGER="APATCH"

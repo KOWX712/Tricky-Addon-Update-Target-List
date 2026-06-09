@@ -2,6 +2,7 @@ import type { MdDialog, MdFilledButton, MdOutlinedButton, MdOutlinedTextField, M
 import { i18n } from '../i18n'
 import { File } from '../file'
 import type { Cli } from '../cli'
+import { Config } from '../config'
 import type { Snackbar } from '../snackbar/snackbar'
 import { applyDialogAnimation } from './animation'
 
@@ -11,10 +12,12 @@ const DISABLE_PROP_HANDLER_PATH = '/data/adb/disable_prop_handler'
 export class PropDialog {
   #dialog: MdDialog | null = null
   #cli: Cli
+  #config: Config
   #snackbar: Snackbar
 
-  constructor(cli: Cli, snackbar: Snackbar) {
+  constructor(cli: Cli, config: Config, snackbar: Snackbar) {
     this.#cli = cli
+    this.#config = config
     this.#snackbar = snackbar
   }
 
@@ -108,6 +111,14 @@ export class PropDialog {
       if (hash) {
         await File.write(BOOT_HASH_PATH, hash)
         await this.#cli.setBootHash(hash)
+
+        if (this.#config.policySchema.getField('vb_hash')) {
+          const data = this.#config.get()
+          const policy = data.default_policy ?? {}
+          policy.vb_hash = hash
+          data.default_policy = policy
+          await this.#config.write()
+        }
       } else {
         await File.delete(BOOT_HASH_PATH)
       }

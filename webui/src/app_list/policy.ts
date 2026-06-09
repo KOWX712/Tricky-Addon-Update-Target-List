@@ -1,93 +1,136 @@
-import type { MdOutlinedTextField } from '@material/web/all'
-import type { Policy } from '../config'
+import type { MdOutlinedTextField, MdSwitch } from '@material/web/all'
+import type { Policy, PolicySchema, TextFieldMeta, ButtonFieldMeta } from '../config'
+import { snakeToLabel } from '../config'
 import { i18n } from '../i18n'
 
-const VALID_SPECIAL_VALUES = new Set(['prop', 'no'])
-
 export class PolicyEditor {
-  #osField: MdOutlinedTextField
-  #vendorField: MdOutlinedTextField
-  #bootField: MdOutlinedTextField
-  #todayBtn: HTMLElement
+  readonly #fields: Map<string, MdOutlinedTextField | MdSwitch | HTMLElement>
+  readonly #schema: PolicySchema
 
-  constructor(fieldsEl: HTMLElement) {
-    this.#osField = fieldsEl.querySelector('.policy-os') as MdOutlinedTextField
-    this.#vendorField = fieldsEl.querySelector('.policy-vendor') as MdOutlinedTextField
-    this.#bootField = fieldsEl.querySelector('.policy-boot') as MdOutlinedTextField
-    this.#todayBtn = fieldsEl.querySelector('#today-default-policy') as HTMLElement
+  constructor(fieldsEl: HTMLElement, schema: PolicySchema) {
+    this.#schema = schema
+    this.#fields = new Map()
+    for (const [key] of schema.getFields()) {
+      const field = fieldsEl.querySelector<HTMLElement>(`.policy-${key}`)
+      if (field) this.#fields.set(key, field)
+    }
+  }
+
+  getField(key: string): MdOutlinedTextField | MdSwitch | HTMLElement | undefined {
+    return this.#fields.get(key)
+  }
+
+  getSchema(): PolicySchema {
+    return this.#schema
   }
 
   bind(): void {
-    this.#osField.oninput = () => {
-      const val = this.#osField.value.trim().toLowerCase()
-      this.#osField.value = val
-      const valid = this.#isValid(val, 6)
-      this.#osField.error = !valid
-    }
-    this.#vendorField.oninput = () => {
-      const val = this.#vendorField.value.trim().toLowerCase()
-      this.#vendorField.value = val
-      const valid = this.#isValid(val, 8)
-      this.#vendorField.error = !valid
-    }
-    this.#bootField.oninput = () => {
-      const val = this.#bootField.value.trim().toLowerCase()
-      this.#bootField.value = val
-      const valid = this.#isValid(val, 8)
-      this.#bootField.error = !valid
-    }
-    this.#todayBtn.onclick = () => {
-      const now = new Date().toISOString().slice(0, 10).replace(/-/g, '')
-      this.#osField.value = now.slice(0, 6)
-      this.#vendorField.value = now
-      this.#bootField.value = now
-      this.#osField.error = false
-      this.#vendorField.error = false
-      this.#bootField.error = false
-    }
-  }
+    for (const [key, meta] of this.#schema.getFields()) {
+      if (meta.type === 'button') {
+        const btn = this.#fields.get(key) as HTMLElement | undefined
+        if (!btn) continue
+        btn.onclick = () => (meta as ButtonFieldMeta).onClick()
+        continue
+      }
 
-  #isValid(val: string, digits: number): boolean {
-    return !val || VALID_SPECIAL_VALUES.has(val) || new RegExp(`^\\d{${digits}}$`).test(val)
+      if (meta.type === 'boolean') {
+        continue
+      }
+
+      // text field
+      const field = this.#fields.get(key) as MdOutlinedTextField | undefined
+      if (!field) continue
+      const textMeta = meta as TextFieldMeta
+      field.oninput = () => {
+        const val = field.value.trim().toLowerCase()
+        field.value = val
+        const result = textMeta.validate(val)
+        if (result === true) {
+          field.error = false
+        } else {
+          field.error = true
+          if (typeof result === 'string') field.errorText = result
+        }
+      }
+    }
   }
 
   isValid(): boolean {
-    const osVal = this.#osField.value.trim()
-    const vendorVal = this.#vendorField.value.trim()
-    const bootVal = this.#bootField.value.trim()
-    if (osVal && !this.#isValid(osVal, 6)) return false
-    if (vendorVal && !this.#isValid(vendorVal, 8)) return false
-    if (bootVal && !this.#isValid(bootVal, 8)) return false
+    for (const [key, meta] of this.#schema.getFields()) {
+      if (meta.type !== 'text') continue
+      const field = this.#fields.get(key) as MdOutlinedTextField | undefined
+      if (!field) continue
+      const val = field.value.trim()
+      if (val && (meta as TextFieldMeta).validate(val) !== true) return false
+    }
     return true
   }
 
-  static html(): string {
-    return /* html */ `
-      <md-outlined-text-field class="policy-os" label="OS" placeholder="YYYYMM" autocapitalize="none" maxlength="6" error-text="${i18n.t('security_patch_invalid_all')}"></md-outlined-text-field>
-      <md-outlined-text-field class="policy-vendor" label="Vendor" placeholder="YYYYMMDD" autocapitalize="none" maxlength="8" error-text="${i18n.t('security_patch_invalid_all')}"></md-outlined-text-field>
-      <md-outlined-text-field class="policy-boot" label="Boot" placeholder="YYYYMMDD" autocapitalize="none" maxlength="8" error-text="${i18n.t('security_patch_invalid_all')}"></md-outlined-text-field>
-      <md-outlined-button class="full-width-button" id="today-default-policy">${i18n.t('functional_button_today')}</md-outlined-button>`
+  static html(schema: PolicySchema): string {
+    const fields = schema.getFields().map(([key, meta]) => {
+      if (meta.type === 'button') {
+        return `<md-outlined-button class="full-width-button policy-${key}">${i18n.t(meta.label)}</md-outlined-button>`
+      }
+
+      if (meta.type === 'boolean') {
+        return `<label class="switch-item outlined" for="policy-${key}">
+          <md-ripple></md-ripple>
+          <span>${meta.label}</span>
+          <md-switch icons="true" id="policy-${key}" class="policy-${key}"${meta.defaultValue ? ' selected' : ''}></md-switch>
+        </label>`
+      }
+
+      // text field
+      const textMeta = meta as TextFieldMeta
+      const options = textMeta.options?.length ? ` [${textMeta.options.join('/')}]` : ''
+      const hint = textMeta.placeholder ?? key
+      const displayLabel = textMeta.label ?? snakeToLabel(key)
+      const textarea = textMeta.textarea ? ' type="textarea" rows="4"' : ''
+      const maxlength = textMeta.maxlength != null ? ` maxlength="${textMeta.maxlength}"` : ''
+      return `<md-outlined-text-field class="policy-${key}" label="${displayLabel}" placeholder="${hint}${options}" autocapitalize="none"${maxlength}${textarea}></md-outlined-text-field>`
+    }).join('\n')
+    return fields
   }
 
   setPolicy(policy: Policy | null): void {
-    this.#osField.value = policy?.os_patch ?? ''
-    this.#vendorField.value = policy?.vendor_patch ?? ''
-    this.#bootField.value = policy?.boot_patch ?? ''
-    this.#osField.error = false
-    this.#vendorField.error = false
-    this.#bootField.error = false
+    for (const [key, meta] of this.#schema.getFields()) {
+      if (meta.type === 'button') continue
+
+      if (meta.type === 'boolean') {
+        const field = this.#fields.get(key) as MdSwitch | undefined
+        if (!field) continue
+        field.selected = policy?.[key] === true || policy?.[key] === 'true'
+        continue
+      }
+
+      const field = this.#fields.get(key) as MdOutlinedTextField | undefined
+      if (!field) continue
+      field.value = (policy?.[key] as string) ?? ''
+      if ('error' in field) field.error = false
+    }
   }
 
   getPolicy(): Policy | null {
-    const osVal = this.#osField.value.trim()
-    const vendorVal = this.#vendorField.value.trim()
-    const bootVal = this.#bootField.value.trim()
-    if (!osVal && !vendorVal && !bootVal) return null
-    if (!this.isValid()) return null
     const policy: Policy = {}
-    if (osVal) policy.os_patch = osVal
-    if (vendorVal) policy.vendor_patch = vendorVal
-    if (bootVal) policy.boot_patch = bootVal
+    let hasValue = false
+    for (const [key, meta] of this.#schema.getFields()) {
+      if (meta.type === 'button') continue
+
+      if (meta.type === 'boolean') {
+        const field = this.#fields.get(key) as MdSwitch | undefined
+        if (!field) continue
+        policy[key] = field.selected
+        if (field.selected) hasValue = true
+        continue
+      }
+
+      const val = (this.#fields.get(key) as MdOutlinedTextField | undefined)?.value.trim() ?? ''
+      if (val) {
+        policy[key] = val
+        hasValue = true
+      }
+    }
+    if (!hasValue || !this.isValid()) return null
     return policy
   }
 }
