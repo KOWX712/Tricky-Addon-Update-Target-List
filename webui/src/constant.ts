@@ -5,3 +5,10 @@ export const OMK_MOD_ID = 'oh_my_keymint'
 export const GITHUB_REPO = 'KOWX712/Tricky-Addon-Update-Target-List'
 export const TELEGRAM_CHANNEL = 'https://t.me/kowchannel'
 export const KEYBOX_REPO_URL = 'https://keybox.kowx712.cc'
+
+// OMK paths
+export const OMK_TARGET_DIR = '/data/misc/keystore/omk'
+export const OMK_STATE_DIR = '/data/adb/omk'
+export const OMK_INJECTOR_FILE = OMK_TARGET_DIR + '/injector.toml'
+export const OMK_CONFIG_FILE = OMK_TARGET_DIR + '/config.toml'
+export const OMK_KEYBOX_FILE = OMK_TARGET_DIR + '/keybox.xml'

@@ -28,6 +28,7 @@ export class AboutDialog {
           <div id="module_name_line1">${i18n.t('about_module_name_line1')}</div>
           <div id="module_name_line2">${i18n.t('about_module_name_line2')}</div>
           <div id="module-version"></div>
+          <div id="engine-info" class="engine-info"></div>
           <div id="author"><span id="authored">${i18n.t('about_by')}</span> KOWX712</div>
         </div>
         <div slot="content">
@@ -76,6 +77,7 @@ export class AboutDialog {
     this.#dialog = fragment.querySelector<MdDialog>('#about-dialog')
 
     this.#loadModuleVersion()
+    this.#loadEngineInfo()
 
     fragment.querySelector<MdFilledButton>('#telegram')!.onclick = () => this.#cli.linkRedirect(TELEGRAM_CHANNEL)
     fragment.querySelector<MdFilledButton>('#github')!.onclick = () => this.#cli.linkRedirect(`https://github.com/${GITHUB_REPO}`)
@@ -146,6 +148,34 @@ export class AboutDialog {
       }
     } catch (e) {
       console.error('Failed to load module version:', e)
+    }
+  }
+
+  async #loadEngineInfo(): Promise<void> {
+    try {
+      const engine = await this.#cli.getActiveEngine()
+      const el = this.#dialog?.querySelector('#engine-info')
+      if (!el) return
+
+      let label = ''
+      let className = ''
+      switch (engine) {
+        case 'oh_my_keymint':
+          label = 'Oh My Keymint'
+          className = 'engine-badge engine-badge-omk'
+          break
+        case 'tricky_store':
+          label = 'Tricky Store'
+          className = 'engine-badge engine-badge-ts'
+          break
+        default:
+          label = 'Unknown'
+          className = 'engine-badge engine-badge-unknown'
+          break
+      }
+      el.innerHTML = `<span class="${className}">${label}</span>`
+    } catch (e) {
+      console.error('Failed to load engine info:', e)
     }
   }
 }

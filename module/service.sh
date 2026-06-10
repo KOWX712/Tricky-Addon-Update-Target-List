@@ -5,16 +5,24 @@ TS="/data/adb/modules/tricky_store"
 OMK="/data/adb/modules/oh_my_keymint"
 TSPA="/data/adb/modules/tsupport-advance"
 
-if [ -d "$TS" ] && [ ! -e "$TS/disable" ]; then
-    RUNTIME="$TS"
-else
+# Determine active engine — OMK takes priority if both are installed
+if [ -d "$OMK" ] && [ ! -e "$OMK/disable" ] && [ ! -e "$OMK/remove" ]; then
     RUNTIME="$OMK"
+    ENGINE="omk"
+elif [ -d "$TS" ] && [ ! -e "$TS/disable" ] && [ ! -e "$TS/remove" ]; then
+    RUNTIME="$TS"
+    ENGINE="ts"
+else
+    # No engine found — nothing to do
+    exit 0
 fi
 
 . "$MODPATH/common/manager.sh"
 
-# Handle sensitive prop in background
-sh "$MODPATH/prop.sh" &
+# Handle sensitive prop in background (only for TrickyStore — OMK manages props itself)
+if [ "$ENGINE" = "ts" ]; then
+    sh "$MODPATH/prop.sh" &
+fi
 
 # Disable TSupport-A auto update target to prevent overwrite
 if [ -d "$TSPA" ]; then
@@ -39,7 +47,7 @@ else
     [ -d "$HIDE_DIR" ] && rm -rf "$HIDE_DIR"
 fi
 
-# Symlink tricky store
+# Symlink to the active engine module
 if [ -f "$MODPATH/action.sh" ] && [ ! -e "$RUNTIME/action.sh" ]; then
     ln -s "$MODPATH/action.sh" "$RUNTIME/action.sh"
 fi

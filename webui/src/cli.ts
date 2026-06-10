@@ -1,13 +1,19 @@
 import { exec, spawn } from 'kernelsu-alt'
 import { File } from './file'
-import { MOD_ID, OMK_MOD_ID, TS_MOD_ID } from './constant'
+import { MOD_ID, OMK_MOD_ID, TS_MOD_ID, OMK_STATE_DIR } from './constant'
+
+export type ActiveEngine = 'tricky_store' | 'oh_my_keymint' | 'unknown'
 
 export class Cli {
   static #basePathPromise: Promise<string> | null = null
+  static #activeEnginePromise: Promise<ActiveEngine> | null = null
 
   constructor() {
     if (!Cli.#basePathPromise) {
       Cli.#basePathPromise = this.#resolveBasePath()
+    }
+    if (!Cli.#activeEnginePromise) {
+      Cli.#activeEnginePromise = this.#resolveActiveEngine()
     }
   }
 
@@ -15,9 +21,43 @@ export class Cli {
     return Cli.#basePathPromise!
   }
 
+  // ------------------------------------------------------------------
+  // Determine which engine is active: OMK or TrickyStore
+  // OMK takes priority when both are installed (it is the newer engine)
+  // ------------------------------------------------------------------
+  async getActiveEngine(): Promise<ActiveEngine> {
+    return Cli.#activeEnginePromise!
+  }
+
   async #resolveBasePath(): Promise<string> {
     const exists = await File.exist(`/data/adb/modules/.${MOD_ID}`)
     return exists ? `/data/adb/modules/.${MOD_ID}` : `/data/adb/modules/${MOD_ID}`
+  }
+
+  async #resolveActiveEngine(): Promise<ActiveEngine> {
+    // Check OMK first — it takes priority
+    try {
+      const raw = await File.read(`/data/adb/modules/${OMK_MOD_ID}/module.prop`)
+      if (raw) {
+        const disabled = await File.exist(`/data/adb/modules/${OMK_MOD_ID}/disable`)
+        if (!disabled) return 'oh_my_keymint'
+      }
+    } catch {}
+
+    // Then TrickyStore
+    try {
+      const raw = await File.read(`/data/adb/modules/${TS_MOD_ID}/module.prop`)
+      if (raw) {
+        const disabled = await File.exist(`/data/adb/modules/${TS_MOD_ID}/disable`)
+        if (!disabled) return 'tricky_store'
+      }
+    } catch {}
+
+    return 'unknown'
+  }
+
+  async exec(cmd: string, opts?: { env?: Record<string, string> }): Promise<{ errno: number; stdout: string; stderr: string }> {
+    return exec(cmd, opts)
   }
 
   async grepProp(key: string, filePath: string): Promise<string | null> {
@@ -26,12 +66,13 @@ export class Cli {
   }
 
   async getTrickyStoreInfo(): Promise<Record<string, string>> {
-    const ids = [TS_MOD_ID, OMK_MOD_ID]
+    // Try OMK first, then TrickyStore
+    const ids = [OMK_MOD_ID, TS_MOD_ID]
     let raw = ''
     for (const id of ids) {
       try {
         raw = await File.read('/data/adb/modules/' + id + '/module.prop')
-        const disabled = File.exist('/data/adb/modules' + id + '/disable')
+        const disabled = await File.exist('/data/adb/modules/' + id + '/disable')
         if (!disabled) break
       } catch {}
     }
@@ -209,5 +250,46 @@ export class Cli {
       })
       proc.on('error', () => resolve([]))
     })
+  }
+
+  // ------------------------------------------------------------------
+  // OMK-specific helpers
+  // ------------------------------------------------------------------
+
+  /**
+   * Restart OMK daemons (keymint + injector) so that config changes take
+   * effect without a full reboot.  Uses the restart marker files that the
+   * daemon watchdogs already understand.
+   */
+  async restartOmkDaemons(): Promise<void> {
+    // Create restart marker files — the daemon watchdogs pick these up
+    await File.createFile(`${OMK_STATE_DIR}/restart.all`).catch(() => {})
+    // Also set the system property as a fallback
+    const env = { PATH: "$PATH:/data/adb/ksu/bin:/data/adb/ap/bin:/data/adb/magisk" }
+    await exec(`resetprop persist.sys.omk.restart.all 1`, { env }).catch(() => {})
+  }
+
+  /**
+   * Check whether the OMK keymint daemon is currently running.
+   */
+  async isOmkDaemonRunning(): Promise<boolean> {
+    const result = await exec(`pidof keymint 2>/dev/null || echo ""`)
+    return result.errno === 0 && result.stdout.trim().length > 0
+  }
+
+  /**
+   * Check whether the OMK injector daemon is currently running.
+   */
+  async isOmkInjectorRunning(): Promise<boolean> {
+    // The injector daemon itself doesn't have a unique name, but we can
+    // check the state directory for the PID file.
+    try {
+      const pid = (await File.read(`${OMK_STATE_DIR}/injector-daemon.pid`)).trim()
+      if (!pid) return false
+      const result = await exec(`kill -0 ${pid} 2>/dev/null && echo "yes" || echo "no"`)
+      return result.stdout.trim() === 'yes'
+    } catch {
+      return false
+    }
   }
 }

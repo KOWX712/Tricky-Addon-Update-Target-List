@@ -3,6 +3,7 @@ import { i18n } from '../i18n'
 import { File } from '../file'
 import type { Cli } from '../cli'
 import { Config } from '../config'
+import { ConfigOhMyKeyMint } from '../config_ohmykeymint'
 import type { Snackbar } from '../snackbar/snackbar'
 import { applyDialogAnimation } from './animation'
 
@@ -76,6 +77,13 @@ export class PropDialog {
   }
 
   async show(): Promise<void> {
+    // For OMK, hide prop-handler toggle (OMK manages props itself)
+    const isOmk = this.#config instanceof ConfigOhMyKeyMint
+    const propHandlerSwitch = this.#dialog?.querySelector<HTMLElement>('label.switch-item.contrast')
+    if (propHandlerSwitch) {
+      propHandlerSwitch.style.display = isOmk ? 'none' : ''
+    }
+
     const bootHashInput = this.#dialog?.querySelector<MdOutlinedTextField>('#boot-hash-input')
     if (bootHashInput) {
       try {
@@ -112,12 +120,14 @@ export class PropDialog {
         await File.write(BOOT_HASH_PATH, hash)
         await this.#cli.setBootHash(hash)
 
-        if (this.#config.policySchema.getField('vb_hash')) {
+        // For OMK, also update vb_hash in config.toml
+        if (this.#config instanceof ConfigOhMyKeyMint) {
           const data = this.#config.get()
           const policy = data.default_policy ?? {}
           policy.vb_hash = hash
           data.default_policy = policy
           await this.#config.write()
+          await this.#cli.restartOmkDaemons()
         }
       } else {
         await File.delete(BOOT_HASH_PATH)

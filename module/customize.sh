@@ -45,7 +45,19 @@ else
     abort " "
 fi
 
-[ -d "/data/adb/modules/tricky_store" ] || [ -d "/data/adb/modules/oh_my_keymint" ] || ui_print "! Warning: Tricky store module not found"
+# Detect which engine is installed
+ENGINE_TS=false
+ENGINE_OMK=false
+[ -d "/data/adb/modules/tricky_store" ] && [ ! -f "/data/adb/modules/tricky_store/remove" ] && ENGINE_TS=true
+[ -d "/data/adb/modules/oh_my_keymint" ] && [ ! -f "/data/adb/modules/oh_my_keymint/remove" ] && ENGINE_OMK=true
+
+if [ "$ENGINE_OMK" = "true" ]; then
+    ui_print "- Engine: Oh My Keymint detected"
+elif [ "$ENGINE_TS" = "true" ]; then
+    ui_print "- Engine: Tricky Store detected"
+else
+    ui_print "! Warning: Neither Tricky Store nor Oh My Keymint found"
+fi
 
 ui_print "- Installing..."
 # Magisk cleanup

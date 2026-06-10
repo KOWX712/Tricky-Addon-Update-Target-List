@@ -7,6 +7,8 @@ import { Snackbar } from '../snackbar/snackbar'
 import { generateUnknownKeybox, isKeygenAvailable } from './unknown'
 import { CustomKeyboxProvider } from './custom'
 import { Config } from '../config'
+import { ConfigOhMyKeyMint } from '../config_ohmykeymint'
+import { OMK_KEYBOX_FILE } from '../constant'
 import { applyDialogAnimation } from '../dialog/animation'
 import './keybox.scss'
 
@@ -25,7 +27,15 @@ export class Keybox {
     this.custom = new CustomKeyboxProvider(this, fileSelector, snackbar)
   }
 
+  /**
+   * Return the correct keybox.xml path depending on the active engine.
+   * OMK keeps its keybox at /data/misc/keystore/omk/keybox.xml
+   * TrickyStore uses  /data/adb/tricky_store/keybox.xml
+   */
   get keyboxPath(): string {
+    if (this.#config instanceof ConfigOhMyKeyMint) {
+      return OMK_KEYBOX_FILE
+    }
     return this.#config.configPath + '/keybox.xml'
   }
 
@@ -84,10 +94,19 @@ export class Keybox {
   }
 
   async setKeybox(content: string, cmd: string = 'cat'): Promise<boolean> {
-    await File.move(this.keyboxPath, `${this.keyboxPath}.bak`).catch(() => {})
+    const kbxPath = this.keyboxPath
+    // Backup existing keybox
+    await File.move(kbxPath, `${kbxPath}.bak`).catch(() => {})
 
     try {
-      await File.write(this.keyboxPath, content, cmd)
+      // For OMK we need to set proper ownership/permissions after writing
+      if (this.#config instanceof ConfigOhMyKeyMint) {
+        await File.write(kbxPath, content, cmd)
+        // Fix ownership: keystore user 1017:1017, permissions 0600
+        await this.cli.exec(`chown 1017:1017 '${kbxPath}' && chmod 0600 '${kbxPath}'`).catch(() => {})
+      } else {
+        await File.write(kbxPath, content, cmd)
+      }
       return true
     } catch {
       return false

@@ -63,6 +63,11 @@
     <!-- Prop Dialog -->
     <string name="prop_handler">Prop Handler</string>
     <string name="boot_hash_title">Boot Hash</string>
+    <!-- Engine / Backend -->
+    <string name="engine_tricky_store">Tricky Store</string>
+    <string name="engine_oh_my_keymint">Oh My Keymint</string>
+    <string name="engine_unknown">Unknown</string>
+    <string name="engine_label">Backend</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Update Target List</string>

@@ -2,7 +2,7 @@ import '@material/web/all'
 import type { MdOutlinedTextField, MdDialog, MdFab, MdFilledButton, MdIconButton } from '@material/web/all'
 import { i18n } from './i18n'
 import { MainMenu } from './main_menu/main_menu'
-import { Cli } from './cli'
+import { Cli, type ActiveEngine } from './cli'
 import { Config } from './config'
 import { ConfigLegacy } from './config_legacy'
 import { ConfigOhMyKeyMint } from './config_ohmykeymint'
@@ -16,7 +16,7 @@ import { DialogController } from './dialog/dialog'
 import { UpdateManager } from './update'
 import { SearchBar } from './search_bar/search_bar'
 import { Keybind } from './keybind'
-import { LOCAL_STORAGE_PREFIX, OMK_MOD_ID } from './constant'
+import { LOCAL_STORAGE_PREFIX, OMK_MOD_ID, TS_MOD_ID } from './constant'
 import './style.scss'
 
 await i18n.init()
@@ -27,6 +27,14 @@ const cli = new Cli()
 const history = new History()
 const keybind = new Keybind()
 const updateManager = new UpdateManager(cli)
+
+// Detect active engine
+let activeEngine: ActiveEngine = 'unknown'
+try {
+  activeEngine = await cli.getActiveEngine()
+} catch {
+  activeEngine = 'unknown'
+}
 
 let config: Config
 try {
@@ -49,9 +57,35 @@ function createConfig(tsInfo: Record<string, string>): Config {
   }
 }
 
+// Engine label for UI
+function getEngineLabel(engine: ActiveEngine): string {
+  switch (engine) {
+    case 'oh_my_keymint':
+      return 'Oh My Keymint'
+    case 'tricky_store':
+      return 'Tricky Store'
+    default:
+      return 'Unknown'
+  }
+}
+
+function getEngineBadgeClass(engine: ActiveEngine): string {
+  switch (engine) {
+    case 'oh_my_keymint':
+      return 'engine-badge-omk'
+    case 'tricky_store':
+      return 'engine-badge-ts'
+    default:
+      return 'engine-badge-unknown'
+  }
+}
+
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* html */ `
   <section class="header">
-    <div id="title" class="search-hide">${i18n.t('header_title')}</div>
+    <div id="title" class="search-hide">
+      <span class="title-text">${i18n.t('header_title')}</span>
+      <span class="engine-badge ${getEngineBadgeClass(activeEngine)}" id="engine-badge">${getEngineLabel(activeEngine)}</span>
+    </div>
     <div class="spacer"></div>
     <md-icon-button id="search-button" class="search-hide"><md-icon>search</md-icon></md-icon-button>
     <md-outlined-text-field class="search-bar hide">
@@ -122,6 +156,10 @@ async function saveTarget(): Promise<void> {
     await appList.save()
     await appList.refresh()
     snackbar.show(i18n.t('prompt_saved_target'))
+    // If OMK is active, restart daemons so config changes take effect
+    if (activeEngine === 'oh_my_keymint') {
+      await cli.restartOmkDaemons()
+    }
   } catch (e) {
     snackbar.show(i18n.t('prompt_save_error'), false)
   }
