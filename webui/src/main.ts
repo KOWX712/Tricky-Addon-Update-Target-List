@@ -16,7 +16,7 @@ import { DialogController } from './dialog/dialog'
 import { UpdateManager } from './update'
 import { SearchBar } from './search_bar/search_bar'
 import { Keybind } from './keybind'
-import { LOCAL_STORAGE_PREFIX, OMK_MOD_ID, TS_MOD_ID } from './constant'
+import { LOCAL_STORAGE_PREFIX, OMK_MOD_ID } from './constant'
 import './style.scss'
 
 await i18n.init()

@@ -86,37 +86,37 @@ const OMK_FULL_POLICY_SCHEMA = new PolicySchema({
     label: 'Device Brand',
     defaultValue: '',
     placeholder: 'google',
-    validate: (v) => true,
+    validate: () => true,
   },
   device: {
     label: 'Device Name',
     defaultValue: '',
     placeholder: 'husky',
-    validate: (v) => true,
+    validate: () => true,
   },
   manufacturer: {
     label: 'Manufacturer',
     defaultValue: '',
     placeholder: 'Google',
-    validate: (v) => true,
+    validate: () => true,
   },
   model: {
     label: 'Model',
     defaultValue: '',
     placeholder: 'Pixel 8 Pro',
-    validate: (v) => true,
+    validate: () => true,
   },
   product: {
     label: 'Product',
     defaultValue: '',
     placeholder: 'husky',
-    validate: (v) => true,
+    validate: () => true,
   },
   serial: {
     label: 'Serial Number',
     defaultValue: '',
     placeholder: '',
-    validate: (v) => true,
+    validate: () => true,
   },
 })
 
