@@ -8,9 +8,7 @@ import { applyDialogAnimation } from './animation'
 export class DefaultPolicyDialog {
   #dialog: MdDialog | null = null
   #policyEditor: PolicyEditor | null = null
-  #extendedEditor: PolicyEditor | null = null
   #config: Config
-  #activeTab: 'basic' | 'advanced' = 'basic'
 
   constructor(config: Config) {
     this.#config = config
@@ -95,8 +93,6 @@ export class DefaultPolicyDialog {
 
     // OMK advanced editor
     if (isOmk) {
-      const extSchema = (this.#config as ConfigOhMyKeyMint).extendedPolicySchema
-
       const deviceFields = fragment.querySelector<HTMLElement>('#extended-policy-device-fields')!
       const deviceEditor = new PolicyEditor(deviceFields, this.#getSubSchema(['brand', 'device', 'manufacturer', 'model', 'product', 'serial']))
       deviceEditor.bind()
@@ -110,11 +106,6 @@ export class DefaultPolicyDialog {
       mainEditor.bind()
 
       // Store all editors for save
-      this.#extendedEditor = new PolicyEditor(
-        fragment.querySelector<HTMLElement>('#policy-tab-advanced')!,
-        extSchema
-      )
-      // Override: we manage the fields manually, so just store references
       ;(this as any)._omkEditors = [deviceEditor, cryptoEditor, mainEditor]
 
       // Tab switching
@@ -124,14 +115,12 @@ export class DefaultPolicyDialog {
       const contentAdvanced = fragment.querySelector<HTMLElement>('#policy-tab-advanced')!
 
       tabBasic.onclick = () => {
-        this.#activeTab = 'basic'
         tabBasic.classList.add('active')
         tabAdvanced.classList.remove('active')
         contentBasic.style.display = ''
         contentAdvanced.style.display = 'none'
       }
       tabAdvanced.onclick = () => {
-        this.#activeTab = 'advanced'
         tabAdvanced.classList.add('active')
         tabBasic.classList.remove('active')
         contentBasic.style.display = 'none'
@@ -173,20 +162,22 @@ export class DefaultPolicyDialog {
         // Device fields
         const devicePolicy: Record<string, string> = {}
         for (const key of ['brand', 'device', 'manufacturer', 'model', 'product', 'serial']) {
-          if (policy[key]) devicePolicy[key] = policy[key]
+          const val = policy[key]
+          if (val) devicePolicy[key] = String(val)
         }
         editors[0].setPolicy(devicePolicy)
 
         // Crypto fields
         const cryptoPolicy: Record<string, string> = {}
         for (const key of ['root_kek_seed', 'kak_seed', 'shared_secret_seed', 'shared_secret_nonce']) {
-          if (policy[key]) cryptoPolicy[key] = policy[key]
+          const val = policy[key]
+          if (val) cryptoPolicy[key] = String(val)
         }
         editors[1].setPolicy(cryptoPolicy)
 
         // Main/injector fields
         const mainPolicy: Record<string, string> = {}
-        if (policy.log_level) mainPolicy.log_level = policy.log_level
+        if (policy.log_level) mainPolicy.log_level = String(policy.log_level)
         editors[2].setPolicy(mainPolicy)
       }
     }
@@ -201,23 +192,33 @@ export class DefaultPolicyDialog {
   #save(): void {
     if (!this.#policyEditor?.isValid()) return
 
-    const basicPolicy = this.#policyEditor?.getPolicy()
+    const basicPolicy = this.#policyEditor?.getPolicy() ?? {}
     const configData = this.#config.get()
+
+    // Sanitize: convert any boolean/undefined values to strings
+    const sanitized: Record<string, string> = {}
+    for (const [k, v] of Object.entries(basicPolicy)) {
+      if (v !== undefined && v !== true) sanitized[k] = String(v)
+    }
 
     if (this.#config instanceof ConfigOhMyKeyMint) {
       // Merge all OMK editor values
-      const merged: Record<string, string> = { ...(basicPolicy ?? {}) }
+      const merged: Record<string, string> = { ...sanitized }
       const editors = (this as any)._omkEditors as PolicyEditor[]
       if (editors) {
         for (const editor of editors) {
           const p = editor.getPolicy()
-          if (p) Object.assign(merged, p)
+          if (p) {
+            for (const [k, v] of Object.entries(p)) {
+              if (v !== undefined && v !== true) merged[k] = String(v)
+            }
+          }
         }
       }
       configData.default_policy = merged
     } else {
-      if (basicPolicy) {
-        configData.default_policy = basicPolicy
+      if (Object.keys(sanitized).length > 0) {
+        configData.default_policy = sanitized
       } else {
         delete configData.default_policy
       }

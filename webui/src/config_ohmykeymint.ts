@@ -296,7 +296,7 @@ export class ConfigOhMyKeyMint extends Config {
       }
 
       // Extract [main] from injector.toml (log_level)
-      const injectorMain = this.#injector.main as Record<string, unknown> | undefined
+      const injectorMain = (this.#injector as Record<string, unknown> | null)?.main as Record<string, unknown> | undefined
       if (injectorMain?.log_level !== undefined) {
         const policy = data.default_policy ?? {}
         policy.log_level = String(injectorMain.log_level)
