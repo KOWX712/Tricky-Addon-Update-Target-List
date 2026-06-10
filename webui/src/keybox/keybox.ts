@@ -95,15 +95,27 @@ export class Keybox {
 
   async setKeybox(content: string, cmd: string = 'cat'): Promise<boolean> {
     const kbxPath = this.keyboxPath
+    const isOmk = this.#config instanceof ConfigOhMyKeyMint
+
     // Backup existing keybox
-    await File.move(kbxPath, `${kbxPath}.bak`).catch(() => {})
+    if (isOmk) {
+      await this.cli.exec(`su -c "cp -f '${kbxPath}' '${kbxPath}.bak'"`).catch(() => {})
+    } else {
+      await File.move(kbxPath, `${kbxPath}.bak`).catch(() => {})
+    }
 
     try {
-      // For OMK we need to set proper ownership/permissions after writing
-      if (this.#config instanceof ConfigOhMyKeyMint) {
-        await File.write(kbxPath, content, cmd)
-        // Fix ownership: keystore user 1017:1017, permissions 0600
-        await this.cli.exec(`chown 1017:1017 '${kbxPath}' && chmod 0600 '${kbxPath}'`).catch(() => {})
+      if (isOmk) {
+        // For OMK: write to temp file first, then copy with proper ownership.
+        // The /data/misc/keystore/omk/ directory requires keystore user (1017) ownership.
+        // Use base64 to safely pass XML content through shell.
+        const tmpPath = `/data/local/tmp/keybox_temp_${Date.now()}.b64`
+        const decodedPath = `/data/local/tmp/keybox_temp_${Date.now()}.xml`
+        const b64Content = btoa(unescape(encodeURIComponent(content.trim())))
+        // Write base64 to temp file
+        await this.cli.exec(`su -c "echo '${b64Content}' > '${tmpPath}'"`)
+        // Decode and place with correct ownership
+        await this.cli.exec(`su -c "base64 -d '${tmpPath}' > '${decodedPath}' && cp -f '${decodedPath}' '${kbxPath}' && chown 1017:1017 '${kbxPath}' && chmod 0600 '${kbxPath}' && rm -f '${tmpPath}' '${decodedPath}'"`)
       } else {
         await File.write(kbxPath, content, cmd)
       }
