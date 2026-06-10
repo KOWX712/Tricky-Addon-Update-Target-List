@@ -97,30 +97,55 @@ export class Keybox {
     const kbxPath = this.keyboxPath
     const isOmk = this.#config instanceof ConfigOhMyKeyMint
 
-    // Backup existing keybox
+    // Backup existing keybox before writing
     if (isOmk) {
       await this.cli.exec(`su -c "cp -f '${kbxPath}' '${kbxPath}.bak'"`).catch(() => {})
     } else {
       await File.move(kbxPath, `${kbxPath}.bak`).catch(() => {})
     }
 
+    let written = false
+
     try {
       if (isOmk) {
         // For OMK: write to temp file first, then copy with proper ownership.
         // The /data/misc/keystore/omk/ directory requires keystore user (1017) ownership.
         // Use base64 to safely pass XML content through shell.
-        const tmpPath = `/data/local/tmp/keybox_temp_${Date.now()}.b64`
-        const decodedPath = `/data/local/tmp/keybox_temp_${Date.now()}.xml`
+        const ts = Date.now()
+        const tmpB64 = `/data/local/tmp/keybox_${ts}.b64`
+        const tmpDecoded = `/data/local/tmp/keybox_${ts}.xml`
         const b64Content = btoa(unescape(encodeURIComponent(content.trim())))
         // Write base64 to temp file
-        await this.cli.exec(`su -c "echo '${b64Content}' > '${tmpPath}'"`)
+        await this.cli.exec(`sh -c 'echo "${b64Content}" > "${tmpB64}"'`)
         // Decode and place with correct ownership
-        await this.cli.exec(`su -c "base64 -d '${tmpPath}' > '${decodedPath}' && cp -f '${decodedPath}' '${kbxPath}' && chown 1017:1017 '${kbxPath}' && chmod 0600 '${kbxPath}' && rm -f '${tmpPath}' '${decodedPath}'"`)
+        await this.cli.exec(`su -c "base64 -d '${tmpB64}' > '${tmpDecoded}' && cp -f '${tmpDecoded}' '${kbxPath}' && chown 1017:1017 '${kbxPath}' && chmod 0600 '${kbxPath}' && rm -f '${tmpB64}' '${tmpDecoded}'"`)
+        // Verify the file was actually written
+        const newContent = await File.read(kbxPath).catch(() => '')
+        written = newContent.includes('<AndroidAttestation>')
       } else {
         await File.write(kbxPath, content, cmd)
+        const newContent = await File.read(kbxPath).catch(() => '')
+        written = newContent.length > 0
       }
-      return true
+
+      // If write failed, restore backup
+      if (!written) {
+        await this.cli.exec(`su -c "cp -f '${kbxPath}.bak' '${kbxPath}' 2>/dev/null"`).catch(() => {})
+        if (!isOmk) {
+          await File.move(`${kbxPath}.bak`, kbxPath).catch(() => {})
+        }
+      }
+
+      return written
     } catch {
+      // Restore backup on error
+      try {
+        if (isOmk) {
+          await this.cli.exec(`su -c "cp -f '${kbxPath}.bak' '${kbxPath}' 2>/dev/null"`)
+        } else {
+          await File.move(`${kbxPath}.bak`, kbxPath).catch(() => {})
+        }
+      } catch {}
       return false
     }
   }
