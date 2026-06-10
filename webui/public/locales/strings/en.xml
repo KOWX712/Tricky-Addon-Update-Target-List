@@ -68,6 +68,16 @@
     <string name="engine_oh_my_keymint">Oh My Keymint</string>
     <string name="engine_unknown">Unknown</string>
     <string name="engine_label">Backend</string>
+    <!-- OMK Daemon Status -->
+    <string name="daemon_status_running">Daemons: running</string>
+    <string name="daemon_status_partial">Daemons: partial</string>
+    <string name="daemon_status_stopped">Daemons: stopped</string>
+    <!-- OMK Policy Tabs -->
+    <string name="policy_tab_basic">Basic</string>
+    <string name="policy_tab_advanced">Advanced</string>
+    <string name="policy_section_device">Device Spoofing</string>
+    <string name="policy_section_crypto">Crypto Seeds</string>
+    <string name="policy_section_injector">Injector</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Update Target List</string>

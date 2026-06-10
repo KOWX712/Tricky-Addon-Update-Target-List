@@ -5,7 +5,7 @@ import { parse, stringify } from 'smol-toml'
 import { OMK_TARGET_DIR } from './constant'
 
 // ---------------------------------------------------------------------------
-// Policy schema — fields that live in config.toml [trust]
+// Basic policy schema — [trust] fields shown in the default policy dialog
 // ---------------------------------------------------------------------------
 const OMK_POLICY_SCHEMA = new PolicySchema({
   os_version: {
@@ -44,10 +44,10 @@ const OMK_POLICY_SCHEMA = new PolicySchema({
 })
 
 // ---------------------------------------------------------------------------
-// Extended policy schema — also exposes [main] / [device] fields that the
-// user may want to tweak from the WebUI without touching raw TOML.
+// Full OMK policy schema — all editable fields across all TOML sections
 // ---------------------------------------------------------------------------
 const OMK_FULL_POLICY_SCHEMA = new PolicySchema({
+  // --- [trust] ---
   os_version: {
     label: 'OS Version',
     defaultValue: 'auto',
@@ -81,7 +81,7 @@ const OMK_FULL_POLICY_SCHEMA = new PolicySchema({
     textarea: true,
     validate: (v) => !v || ['auto', 'random'].includes(v) || /^[0-9a-f]{64}$/i.test(v) || 'auto | random | 64 hex chars',
   },
-  /* ------- [device] section ------- */
+  // --- [device] ---
   brand: {
     label: 'Device Brand',
     defaultValue: '',
@@ -118,6 +118,47 @@ const OMK_FULL_POLICY_SCHEMA = new PolicySchema({
     placeholder: '',
     validate: () => true,
   },
+  // --- [crypto] ---
+  root_kek_seed: {
+    label: 'Root KEK Seed',
+    defaultValue: '',
+    placeholder: '64 hex chars',
+    maxlength: 64,
+    textarea: true,
+    validate: (v) => !v || /^[0-9a-f]{64}$/i.test(v) || '64 hex chars',
+  },
+  kak_seed: {
+    label: 'KAK Seed',
+    defaultValue: '',
+    placeholder: '64 hex chars',
+    maxlength: 64,
+    textarea: true,
+    validate: (v) => !v || /^[0-9a-f]{64}$/i.test(v) || '64 hex chars',
+  },
+  shared_secret_seed: {
+    label: 'Shared Secret Seed',
+    defaultValue: '',
+    placeholder: '64 hex chars',
+    maxlength: 64,
+    textarea: true,
+    validate: (v) => !v || /^[0-9a-f]{64}$/i.test(v) || '64 hex chars',
+  },
+  shared_secret_nonce: {
+    label: 'Shared Secret Nonce',
+    defaultValue: '',
+    placeholder: '64 hex chars',
+    maxlength: 64,
+    textarea: true,
+    validate: (v) => !v || /^[0-9a-f]{64}$/i.test(v) || '64 hex chars',
+  },
+  // --- [main] (injector.toml) ---
+  log_level: {
+    label: 'Log Level',
+    defaultValue: 'debug',
+    options: ['debug', 'info', 'warn', 'error'],
+    placeholder: 'debug',
+    validate: (v) => !v || ['debug', 'info', 'warn', 'error'].includes(v) || 'debug | info | warn | error',
+  },
 })
 
 export const OMK_EXTENDED_POLICY = OMK_FULL_POLICY_SCHEMA
@@ -151,13 +192,23 @@ export class ConfigOhMyKeyMint extends Config {
           security_patch: 'auto',
           vb_key: 'auto',
           vb_hash: 'auto',
+          brand: 'google',
+          device: 'husky',
+          manufacturer: 'Google',
+          model: 'Pixel 8 Pro',
+          product: 'husky',
+          serial: '',
+          root_kek_seed: 'a'.repeat(64),
+          kak_seed: 'b'.repeat(64),
+          shared_secret_seed: 'c'.repeat(64),
+          shared_secret_nonce: 'd'.repeat(64),
+          log_level: 'debug',
         },
         target: [
           'io.github.vvb2060.keyattestation',
           'com.google.android.gms',
         ],
       })
-      // Simulate raw injector structure for dev mode
       this.#injector = {
         scoop: ['io.github.vvb2060.keyattestation', 'com.google.android.gms'],
         main: { enabled: true, log_level: 'debug' },
@@ -213,17 +264,43 @@ export class ConfigOhMyKeyMint extends Config {
     try {
       const raw = await File.read(this.CONFIG_FILE)
       this.#omkConfig = parse(raw) as Record<string, unknown>
+
+      // Extract [trust]
       const trust = this.#omkConfig.trust as Record<string, unknown> | undefined
       if (trust) {
         const policy: Record<string, string> = {}
         for (const key of ['os_version', 'security_patch', 'vb_key', 'vb_hash']) {
-          if (trust[key] !== undefined) {
-            policy[key] = String(trust[key])
-          }
+          if (trust[key] !== undefined) policy[key] = String(trust[key])
         }
-        if (Object.keys(policy).length > 0) {
-          data.default_policy = policy
+        if (Object.keys(policy).length > 0) data.default_policy = policy
+      }
+
+      // Extract [device]
+      const device = this.#omkConfig.device as Record<string, unknown> | undefined
+      if (device) {
+        const policy = data.default_policy ?? {}
+        for (const key of ['brand', 'device', 'manufacturer', 'model', 'product', 'serial']) {
+          if (device[key] !== undefined) policy[key] = String(device[key])
         }
+        data.default_policy = policy
+      }
+
+      // Extract [crypto]
+      const crypto = this.#omkConfig.crypto as Record<string, unknown> | undefined
+      if (crypto) {
+        const policy = data.default_policy ?? {}
+        for (const key of ['root_kek_seed', 'kak_seed', 'shared_secret_seed', 'shared_secret_nonce']) {
+          if (crypto[key] !== undefined) policy[key] = String(crypto[key])
+        }
+        data.default_policy = policy
+      }
+
+      // Extract [main] from injector.toml (log_level)
+      const injectorMain = this.#injector.main as Record<string, unknown> | undefined
+      if (injectorMain?.log_level !== undefined) {
+        const policy = data.default_policy ?? {}
+        policy.log_level = String(injectorMain.log_level)
+        data.default_policy = policy
       }
     } catch {
       this.#omkConfig = null
@@ -242,18 +319,26 @@ export class ConfigOhMyKeyMint extends Config {
   override async write(): Promise<void> {
     const data = this.get()
 
-    // --- injector.toml: preserve all sections, only replace scoop ---
+    // --- injector.toml: preserve all sections ---
     const injector = (this.#injector ?? {}) as Record<string, unknown>
     injector.scoop = data.target ?? []
+
+    // Write log_level into injector [main]
+    const injectorMain = (injector.main ?? {}) as Record<string, unknown>
+    const policy = data.default_policy ?? {}
+    if (policy.log_level) {
+      injectorMain.log_level = policy.log_level
+    }
+    injector.main = injectorMain
+
     this.#injector = injector
     await File.write(this.INJECTOR_FILE, stringify(this.#injector))
 
-    // --- config.toml: preserve all sections, only replace [trust] values ---
+    // --- config.toml: preserve all sections ---
     const omkConfig = (this.#omkConfig ?? {}) as Record<string, unknown>
-    const trust = (omkConfig.trust ?? {}) as Record<string, unknown>
-    const policy = data.default_policy ?? {}
 
-    // Reset fields that are no longer present in policy (user cleared them)
+    // [trust]
+    const trust = (omkConfig.trust ?? {}) as Record<string, unknown>
     const trustKeys = ['os_version', 'security_patch', 'vb_key', 'vb_hash']
     for (const key of trustKeys) {
       if (policy[key] !== undefined && policy[key] !== '') {
@@ -267,14 +352,38 @@ export class ConfigOhMyKeyMint extends Config {
         delete trust[key]
       }
     }
-
     omkConfig.trust = trust
+
+    // [device]
+    const device = (omkConfig.device ?? {}) as Record<string, unknown>
+    const deviceKeys = ['brand', 'device', 'manufacturer', 'model', 'product', 'serial']
+    for (const key of deviceKeys) {
+      if (policy[key] !== undefined && policy[key] !== '') {
+        device[key] = policy[key]
+      } else {
+        delete device[key]
+      }
+    }
+    omkConfig.device = device
+
+    // [crypto]
+    const crypto = (omkConfig.crypto ?? {}) as Record<string, unknown>
+    const cryptoKeys = ['root_kek_seed', 'kak_seed', 'shared_secret_seed', 'shared_secret_nonce']
+    for (const key of cryptoKeys) {
+      if (policy[key] !== undefined && policy[key] !== '') {
+        crypto[key] = policy[key]
+      } else {
+        delete crypto[key]
+      }
+    }
+    omkConfig.crypto = crypto
+
     this.#omkConfig = omkConfig
     await File.write(this.CONFIG_FILE, stringify(this.#omkConfig))
   }
 
   // ------------------------------------------------------------------
-  // Extended data accessors — raw TOML objects for full editing
+  // Raw TOML accessors
   // ------------------------------------------------------------------
   getInjectorData(): Record<string, unknown> | null {
     return this.#injector
@@ -282,7 +391,7 @@ export class ConfigOhMyKeyMint extends Config {
 
   setInjectorData(data: Record<string, unknown>): void {
     this.#injector = data
-    data.target = (data.scoop as string[]) ?? []
+    this.set({ ...this.get(), target: (data.scoop as string[]) ?? [] })
   }
 
   getOmkConfigData(): Record<string, unknown> | null {
@@ -291,19 +400,23 @@ export class ConfigOhMyKeyMint extends Config {
 
   setOmkConfigData(data: Record<string, unknown>): void {
     this.#omkConfig = data
-    // Sync trust → default_policy
+    // Sync all sections → default_policy
+    const policy: Record<string, string> = {}
     const trust = (data.trust ?? {}) as Record<string, unknown>
-    if (Object.keys(trust).length > 0) {
-      const policy: Record<string, string> = {}
-      for (const key of ['os_version', 'security_patch', 'vb_key', 'vb_hash']) {
-        if (trust[key] !== undefined) policy[key] = String(trust[key])
-      }
-      if (Object.keys(policy).length > 0) {
-        const cur = this.get()
-        cur.default_policy = policy
-        this.set(cur)
-      }
+    const device = (data.device ?? {}) as Record<string, unknown>
+    const crypto = (data.crypto ?? {}) as Record<string, unknown>
+    for (const key of ['os_version', 'security_patch', 'vb_key', 'vb_hash']) {
+      if (trust[key] !== undefined) policy[key] = String(trust[key])
     }
+    for (const key of ['brand', 'device', 'manufacturer', 'model', 'product', 'serial']) {
+      if (device[key] !== undefined) policy[key] = String(device[key])
+    }
+    for (const key of ['root_kek_seed', 'kak_seed', 'shared_secret_seed', 'shared_secret_nonce']) {
+      if (crypto[key] !== undefined) policy[key] = String(crypto[key])
+    }
+    const cur = this.get()
+    cur.default_policy = policy
+    this.set(cur)
   }
 
   get keyboxPath(): string {
