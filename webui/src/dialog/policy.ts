@@ -1,6 +1,6 @@
 import type { MdDialog, MdFilledButton, MdOutlinedButton } from '@material/web/all'
 import { i18n } from '../i18n'
-import { Config } from '../config'
+import { Config, PolicySchema } from '../config'
 import { ConfigOhMyKeyMint } from '../config_ohmykeymint'
 import { PolicyEditor } from '../app_list/policy'
 import { applyDialogAnimation } from './animation'
@@ -141,7 +141,7 @@ export class DefaultPolicyDialog {
     for (const [key, meta] of extSchema.getFields()) {
       if (keys.includes(key)) fields[key] = meta
     }
-    return new (this.#config.constructor as any).policySchema.constructor(fields)
+    return new PolicySchema(fields)
   }
 
   initAnimation(): void {
