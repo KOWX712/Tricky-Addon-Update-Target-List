@@ -157,23 +157,12 @@ export class AboutDialog {
       const el = this.#dialog?.querySelector('#engine-info')
       if (!el) return
 
-      let label = ''
-      let className = ''
-      switch (engine) {
-        case 'oh_my_keymint':
-          label = 'Oh My Keymint'
-          className = 'engine-badge engine-badge-omk'
-          break
-        case 'tricky_store':
-          label = 'Tricky Store'
-          className = 'engine-badge engine-badge-ts'
-          break
-        default:
-          label = 'Unknown'
-          className = 'engine-badge engine-badge-unknown'
-          break
+      // Only show engine info for OMK; for TS/unknown keep original look
+      if (engine === 'oh_my_keymint') {
+        el.innerHTML = '<span>Oh My Keymint</span>'
+      } else {
+        el.innerHTML = ''
       }
-      el.innerHTML = `<span class="${className}">${label}</span>`
     } catch (e) {
       console.error('Failed to load engine info:', e)
     }

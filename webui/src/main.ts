@@ -57,38 +57,11 @@ function createConfig(tsInfo: Record<string, string>): Config {
   }
 }
 
-// Engine label for UI
-function getEngineLabel(engine: ActiveEngine): string {
-  switch (engine) {
-    case 'oh_my_keymint':
-      return 'Oh My Keymint'
-    case 'tricky_store':
-      return 'Tricky Store'
-    default:
-      return 'Unknown'
-  }
-}
-
-function getEngineBadgeClass(engine: ActiveEngine): string {
-  switch (engine) {
-    case 'oh_my_keymint':
-      return 'engine-badge-omk'
-    case 'tricky_store':
-      return 'engine-badge-ts'
-    default:
-      return 'engine-badge-unknown'
-  }
-}
-
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* html */ `
   <section class="header">
     <div id="title" class="search-hide">
       <span class="title-text">${i18n.t('header_title')}</span>
-      <span class="engine-badge ${getEngineBadgeClass(activeEngine)}" id="engine-badge">${getEngineLabel(activeEngine)}</span>
-      <span id="daemon-status" class="daemon-status" style="display:none">
-        <span class="daemon-dot"></span>
-        <span id="daemon-status-text"></span>
-      </span>
+      ${activeEngine === 'oh_my_keymint' ? `<span class="engine-badge engine-badge-omk" id="engine-badge">Oh My Keymint</span>` : ''}
     </div>
     <div class="spacer"></div>
     <md-icon-button id="search-button" class="search-hide"><md-icon>search</md-icon></md-icon-button>
@@ -163,44 +136,10 @@ async function saveTarget(): Promise<void> {
     // If OMK is active, restart daemons so config changes take effect
     if (activeEngine === 'oh_my_keymint') {
       await cli.restartOmkDaemons()
-      // Update daemon status after a short delay
-      setTimeout(() => updateDaemonStatus(), 2000)
     }
   } catch (e) {
     snackbar.show(i18n.t('prompt_save_error'), false)
   }
-}
-
-// Update OMK daemon status indicator
-async function updateDaemonStatus(): Promise<void> {
-  if (activeEngine !== 'oh_my_keymint') return
-  const statusEl = document.getElementById('daemon-status')
-  const statusText = document.getElementById('daemon-status-text')
-  if (!statusEl || !statusText) return
-
-  try {
-    const keymintRunning = await cli.isOmkDaemonRunning()
-    const injectorRunning = await cli.isOmkInjectorRunning()
-
-    statusEl.style.display = ''
-    statusEl.classList.toggle('daemon-running', keymintRunning || injectorRunning)
-    statusEl.classList.toggle('daemon-stopped', !keymintRunning && !injectorRunning)
-
-    if (keymintRunning && injectorRunning) {
-      statusText.textContent = 'Daemons: running'
-    } else if (keymintRunning || injectorRunning) {
-      statusText.textContent = 'Daemons: partial'
-    } else {
-      statusText.textContent = 'Daemons: stopped'
-    }
-  } catch {
-    statusEl.style.display = 'none'
-  }
-}
-
-// Initial daemon status check for OMK
-if (activeEngine === 'oh_my_keymint') {
-  setTimeout(() => updateDaemonStatus(), 1000)
 }
 
 /**

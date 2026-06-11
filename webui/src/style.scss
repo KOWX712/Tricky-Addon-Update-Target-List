@@ -41,43 +41,6 @@ body {
   }
 }
 
-// Engine badge — shows which backend is active (Tricky Store / Oh My Keymint)
-.engine-badge {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.55em;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 12px;
-  vertical-align: middle;
-  white-space: nowrap;
-  letter-spacing: 0.02em;
-
-  &.engine-badge-ts {
-    background-color: var(--md-sys-color-primary-container);
-    color: var(--md-sys-color-on-primary-container);
-  }
-
-  &.engine-badge-omk {
-    background-color: var(--md-sys-color-secondary-container);
-    color: var(--md-sys-color-on-secondary-container);
-  }
-
-  &.engine-badge-unknown {
-    background-color: var(--md-sys-color-error-container);
-    color: var(--md-sys-color-on-error-container);
-  }
-}
-
-// Engine info inside About dialog
-.engine-info {
-  margin-top: 4px;
-  .engine-badge {
-    font-size: 0.75em;
-    padding: 3px 12px;
-  }
-}
-
 .search-hide {
   transition: opacity 0.3s ease;
 
