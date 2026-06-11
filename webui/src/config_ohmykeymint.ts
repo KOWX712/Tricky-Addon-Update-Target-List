@@ -161,8 +161,6 @@ const OMK_FULL_POLICY_SCHEMA = new PolicySchema({
   },
 })
 
-export const OMK_EXTENDED_POLICY = OMK_FULL_POLICY_SCHEMA
-
 // ---------------------------------------------------------------------------
 // ConfigOhMyKeyMint
 // ---------------------------------------------------------------------------
