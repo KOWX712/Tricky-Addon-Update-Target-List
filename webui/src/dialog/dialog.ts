@@ -24,7 +24,7 @@ export class DialogController {
   readonly i18nDialog: I18nDialog
 
   constructor(cli: Cli, config: Config, updateManager: UpdateManager, snackbar: Snackbar, appList: AppList) {
-    this.about = new AboutDialog(cli, updateManager, snackbar)
+    this.about = new AboutDialog(cli, updateManager, snackbar, config)
     this.help = new HelpDialog(cli)
     this.uninstall = new UninstallDialog(cli, snackbar)
     this.defaultPolicy = new DefaultPolicyDialog(config)

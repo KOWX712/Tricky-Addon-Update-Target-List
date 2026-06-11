@@ -68,6 +68,8 @@ function serializeSecurityPatch(policy: Policy): string {
 }
 
 export class ConfigLegacy extends Config {
+  override readonly identity: string = 'TS-L'
+
   protected override readonly CONFIG_FILE = this.CONFIG_PATH + '/target.txt'
   protected readonly SECURITY_PATCH_FILE = this.CONFIG_PATH + '/security_patch.txt'
 

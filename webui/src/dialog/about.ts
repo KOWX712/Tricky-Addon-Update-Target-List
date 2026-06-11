@@ -3,6 +3,7 @@ import { i18n } from '../i18n'
 import { Cli } from '../cli'
 import type { UpdateManager } from '../update'
 import type { Snackbar } from '../snackbar/snackbar'
+import type { Config } from '../config'
 import { LOCAL_STORAGE_PREFIX, TELEGRAM_CHANNEL, GITHUB_REPO } from '../constant'
 import { applyDialogAnimation } from './animation'
 
@@ -13,11 +14,13 @@ export class AboutDialog {
   #cli: Cli
   #updateManager: UpdateManager
   #snackbar: Snackbar
+  #config: Config
 
-  constructor(cli: Cli, updateManager: UpdateManager, snackbar: Snackbar) {
+  constructor(cli: Cli, updateManager: UpdateManager, snackbar: Snackbar, config: Config) {
     this.#cli = cli
     this.#updateManager = updateManager
     this.#snackbar = snackbar
+    this.#config = config
   }
 
   getElement(): DocumentFragment {
@@ -25,7 +28,10 @@ export class AboutDialog {
     template.innerHTML = /* html */ `
       <md-dialog id="about-dialog">
         <div slot="headline" class="about-headline">
-          <div id="module_name_line1">${i18n.t('about_module_name_line1')}</div>
+          <div class="about-title-row">
+            <div id="module_name_line1">${i18n.t('about_module_name_line1')}</div>
+            <div id="working-mode-tag">${this.#config.identity}</div>
+          </div>
           <div id="module_name_line2">${i18n.t('about_module_name_line2')}</div>
           <div id="module-version"></div>
           <div id="author"><span id="authored">${i18n.t('about_by')}</span> KOWX712</div>

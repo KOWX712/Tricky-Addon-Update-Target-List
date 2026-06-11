@@ -181,6 +181,8 @@ function serializeConfig(config: ConfigData): string {
 }
 
 export class Config {
+  readonly identity: string = 'TS'
+
   protected readonly CONFIG_PATH: string = '/data/adb/tricky_store'
   protected readonly CONFIG_FILE: string = this.CONFIG_PATH + '/config.ini'
 
