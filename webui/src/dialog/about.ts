@@ -107,12 +107,13 @@ export class AboutDialog {
     }
     fragment.querySelector<MdFilledButton>('#locales')!.onclick = async () => {
       this.close()
-      const ok = await this.#updateManager.updateLocales()
-      this.#snackbar.show(
-        i18n.t(ok ? 'prompt_translation_updated' : 'prompt_translation_update_failed'),
-        ok,
-      )
-      if (ok) setTimeout(() => window.location.reload(), 0)
+      try {
+        const ok = await this.#updateManager.updateLocales()
+        this.#snackbar.show(i18n.t(ok ? 'prompt_translation_updated' : 'prompt_no_update'))
+        if (ok) setTimeout(() => window.location.reload(), 0)
+      } catch {
+        this.#snackbar.show(i18n.t('prompt_translation_update_failed'), false)
+      }
     }
     fragment.querySelector<MdTextButton>('#close-about')!.onclick = () => this.close()
 

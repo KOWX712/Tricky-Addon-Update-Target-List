@@ -67,7 +67,7 @@ export class UpdateManager {
       const localResp = await fetch('./locales/version').catch(() => null)
       const localVersion = localResp ? (await localResp.text()).trim() : '0'
 
-      if (Number(remoteVersion) <= Number(localVersion)) return true
+      if (Number(remoteVersion) <= Number(localVersion)) return false
 
       const basePath = await this.#cli.getBasePath()
       const tmpDir = `${basePath}/common/tmp`
@@ -85,7 +85,7 @@ export class UpdateManager {
       await File.delete(zipPath)
       return true
     } catch {
-      return false
+      throw new Error('Failed to update locales')
     }
   }
 
@@ -229,7 +229,9 @@ export class UpdateManager {
     } catch {
       return false
     }
-    await this.updateLocales()
+    try {
+      await this.updateLocales()
+    } catch {}
     return true
   }
 }
