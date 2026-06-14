@@ -6,9 +6,11 @@
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">تعليمات</string>
+    <string name="help_save_and_update_description">حفظ التكوين الحالي.</string>
     <string name="help_select_denylist">تحديد من قائمة الرفض</string>
     <string name="help_select_denylist_description">متاح في Magisk فقط، حدد التطبيقات الموجودة في قائمة الرفض. موصى به.</string>
     <string name="help_deselect_unnecessary">إلغاء تحديد غير الضروري</string>
+    <string name="help_deselect_unnecessary_description">**فئة غير ضرورية: وحدة Xposed، مدير الجذر، التطبيقات المتعلقة بالجذر، والتطبيقات العامة التي لا تتحقق أبدًا من حالة bootloader. يتطلب هذا الخيار اتصالاً بالإنترنت.</string>
     <string name="help_add_system_app">إضافة تطبيق نظام</string>
     <string name="help_add_system_app_description">إضافة تطبيق نظام محدد إلى قائمة التطبيقات.</string>
     <string name="help_set_keybox">تعيين صندوق المفاتيح</string>
