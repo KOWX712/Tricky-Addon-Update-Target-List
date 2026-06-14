@@ -6,17 +6,32 @@
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">Instrucciones</string>
+    <string name="help_save_and_update_description">Guardar la configuración actual.</string>
     <string name="help_select_denylist">Seleccionar desde DenyList</string>
     <string name="help_select_denylist_description">Disponible solo en Magisk, selecciona aplicaciones que están en la DenyList. Recomendado.</string>
     <string name="help_deselect_unnecessary">Deseleccionar innecesarios</string>
+    <string name="help_deselect_unnecessary_description">**Categorías innecesarias: módulos Xposed, gestores de root, aplicaciones relacionadas con root y aplicaciones generales que nunca verifican el estado del bootloader. Esta opción requiere conexión a Internet.</string>
     <string name="help_add_system_app">Agregar Aplicación del Sistema</string>
     <string name="help_add_system_app_description">Agregar una aplicación del sistema específica a la lista de aplicaciones.</string>
+    <string name="help_set_keybox">Setear Keybox</string>
+    <string name="help_set_keybox_aosp">**AOSP** - el keybox por defecto viene con TrickyStore.</string>
+    <string name="help_set_keybox_unknown">**Desconocido** - autofirmado y no válido para el veredicto de Play Integrity.</string>
+    <string name="help_set_keybox_local">**Local** - selecciona el keybox desde tu dispositivo.</string>
+    <string name="help_set_keybox_custom">**Personalizado** - proveedor de keybox personalizado a través de la búsqueda en línea.</string>
+    <string name="help_set_default_policy">Establecer política predeterminada</string>
+    <string name="help_set_default_policy_description">Anteriormente `Establecer parche de seguridad`. Configura la política predeterminada para todas las aplicaciones objetivo, deja en blanco o `no` para desactivar, `prop` para mantener consistencia con la propiedad del sistema.</string>
+    <string name="help_prop_settings">Ajustes de Prop</string>
+    <string name="help_prop_settings_boot_hash">**Arranque hash** - obtiene el valor de `verifiedBootHash` desde [KeyAttestation](https://github.com/vvb2060/KeyAttestation/releases). Arregla el estado de arranque anormal restableciendo `ro.boot.vbmeta.digest`.</string>
     <!-- Update -->
     <string name="update_update_available">Una nueva versión está lista</string>
     <string name="update_redirect_to_release">toca para descargar la última versión</string>
     <string name="update_changelog">Registro de cambios</string>
     <string name="update_install">Instalar</string>
     <string name="update_reboot">Reiniciar</string>
+    <string name="update_channel">Canal de actualización</string>
+    <string name="update_channel_stable">Estable</string>
+    <string name="update_channel_canary">Canary</string>
+    <string name="update_channel_disable">Deshabilitar</string>
     <!-- Search -->
     <string name="search_bar_search_placeholder">Buscar</string>
     <!-- Functional Button -->
@@ -26,6 +41,8 @@
     <string name="functional_button_cancel">Cancelar</string>
     <string name="functional_button_confirm">Confirmar</string>
     <string name="functional_button_reset">Restablecer</string>
+    <string name="functional_button_remove">Quitar</string>
+    <string name="functional_button_today">Hoy</string>
     <!-- Menu -->
     <string name="menu_select_denylist">Seleccionar desde DenyList</string>
     <string name="menu_deselect_unnecessary">Deseleccionar innecesarios</string>
@@ -34,6 +51,7 @@
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">Desconocido</string>
     <string name="menu_keybox_local">Local</string>
+    <string name="menu_keybox_repo">Repo</string>
     <string name="menu_help">Ayuda</string>
     <string name="menu_language">Idioma</string>
     <string name="menu_about">Acerca de</string>
@@ -82,4 +100,8 @@
     <!-- Mode dialog -->
     <string name="mode_dialog_title">Modo</string>
     <string name="mode_auto">Auto</string>
+    <string name="mode_certificate_generating">Generando Cert</string>
+    <string name="mode_leaf_hack">Leaf Hack</string>
+    <string name="mode_set_custom_policy">Establecer política personalizada</string>
+    <string name="mode_use_default_policy">Establecer política predeterminada</string>
 </resources>

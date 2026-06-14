@@ -9,6 +9,7 @@
     <string name="help_select_denylist">Pilih dari Denylist</string>
     <string name="help_select_denylist_description">Hanya untuk Magisk, pilih aplikasi yang ada di Denylist. Disarankan.</string>
     <string name="help_deselect_unnecessary">Batalkan Pilihan yang Tidak Perlu</string>
+    <string name="help_deselect_unnecessary_description">**Kategori tidak perlu: Modul Xposed, pengelola root, aplikasi terkait root, dan aplikasi yang tidak pernah memeriksa status bootloader. Opsi ini memerlukan koneksi internet.</string>
     <string name="help_add_system_app">Tambahkan Aplikasi Sistem</string>
     <string name="help_add_system_app_description">Tambahkan aplikasi sistem tertentu ke daftar aplikasi.</string>
     <!-- Update -->
@@ -17,6 +18,8 @@
     <string name="update_changelog">Catatan Perubahan</string>
     <string name="update_install">Pasang</string>
     <string name="update_reboot">Mulai Ulang</string>
+    <string name="update_channel">Perbarui Saluran</string>
+    <string name="update_channel_stable">Stabil</string>
     <!-- Search -->
     <string name="search_bar_search_placeholder">Cari</string>
     <!-- Functional Button -->
@@ -25,13 +28,18 @@
     <string name="functional_button_cancel">Batal</string>
     <string name="functional_button_confirm">Konfirmasi</string>
     <string name="functional_button_reset">Ulang</string>
+    <string name="functional_button_today">Hari Ini</string>
     <!-- Menu -->
     <string name="menu_select_denylist">Pilih dari Denylist</string>
     <string name="menu_deselect_unnecessary">Batalkan Pilihan yang Tidak Perlu</string>
     <string name="menu_add_system_app">Tambahkan Aplikasi Sistem</string>
+    <string name="menu_keybox">Kotak kunci</string>
     <string name="menu_keybox_local">Lokal</string>
+    <string name="menu_prop_setting">Pegaturan Prop</string>
+    <string name="menu_set_default_policy">Tetapkan Kebijakan Default</string>
     <string name="menu_about">Tentang</string>
     <!-- Prop Dialog -->
+    <string name="prop_handler">Penanganan Prop</string>
     <string name="boot_hash_title">Verified Boot Hash</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
@@ -59,13 +67,23 @@
     <string name="prompt_install_fail">Gagal memasang, silakan perbarui secara manual</string>
     <string name="prompt_rebooting">Memulai ulang...</string>
     <string name="prompt_reboot_fail">Gagal memulai ulang, silakan lakukan secara manual</string>
+    <string name="prompt_translation_updated">Paket terjemahan berhasil diperbarui</string>
     <string name="prompt_custom_key_set">Keybox kustom berhasil digunakan</string>
     <string name="prompt_custom_key_set_error">Gagal menggunakan keybox kustom</string>
+    <string name="prompt_custom_saved">Entri kotak kunci khusus tersimpan</string>
+    <string name="prompt_custom_invalid_script">Skrip tidak diizinkan</string>
+    <string name="prompt_custom_removed">Entri kotak kunci khusus dihapus</string>
+    <string name="prompt_keybox_repo_set">Keybox berhasil diatur dari repo</string>
+    <string name="prompt_keybox_repo_set_error">Gagal mengatur keybox dari repo</string>
+    <string name="prompt_keybox_repo_download_error">Pengunduhan gagal untuk %s</string>
     <!-- Security Patch -->
+    <string name="default_policy_title">Kebijakan Default</string>
     <string name="security_patch_invalid_all">Format tidak valid</string>
     <!-- Add System App -->
     <string name="add_system_app_title">Tambah Aplikasi Sistem</string>
     <!-- CustomKB Dialog -->
+    <string name="customkb_dialog_title">Penyedia Kotak Kunci Kustom</string>
+    <string name="customkb_script_placeholder">Dekode skrip</string>
     <string name="customkb_remove_title">Konfirmasi Hapus?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Konfirmasi Hapus?</string>
