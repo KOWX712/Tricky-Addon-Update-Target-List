@@ -40,13 +40,13 @@ export class Keybox {
       <md-dialog id="customkb-dialog" class="text-field-dialog">
         <div slot="headline">${i18n.t('customkb_dialog_title')}</div>
         <div slot="content">
-          <md-outlined-text-field id="customkb-name-input" label="Name" placeholder="${i18n.t('customkb_name_placeholder')}" class="customkb-input">
+          <md-outlined-text-field id="customkb-name-input" label="${i18n.t('customkb_name_placeholder')}" placeholder="" class="customkb-input">
             <md-icon slot="trailing-icon" class="hidden">error</md-icon>
           </md-outlined-text-field>
           <md-outlined-text-field id="customkb-link-input" label="URL" type="url" placeholder="https://raw.githubusercontent.com/" class="customkb-input">
             <md-icon slot="trailing-icon" class="hidden">error</md-icon>
           </md-outlined-text-field>
-          <md-outlined-text-field id="customkb-script-input" label="Decode Script" placeholder="${i18n.t('customkb_script_placeholder')}" class="customkb-input" error-text="${i18n.t('prompt_custom_invalid_script')}">
+          <md-outlined-text-field id="customkb-script-input" label="${i18n.t('customkb_script_placeholder')}" placeholder="base64 -d" class="customkb-input" error-text="${i18n.t('prompt_custom_invalid_script')}">
             <md-icon slot="trailing-icon" class="hidden">error</md-icon>
           </md-outlined-text-field>
           <md-divider class="new"></md-divider>

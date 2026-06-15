@@ -229,9 +229,7 @@ export class UpdateManager {
     } catch {
       return false
     }
-    try {
-      await this.updateLocales()
-    } catch {}
+    await this.updateLocales().catch(() => {})
     return true
   }
 }
