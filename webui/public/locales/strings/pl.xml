@@ -54,7 +54,7 @@
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">Nieznany</string>
     <string name="menu_keybox_local">Lokalny</string>
-    <string name="menu_keybox_repo">Repozytorium</string>
+    <string name="menu_keybox_repo">Katalog</string>
     <string name="menu_prop_setting">Ustawienia właściwości</string>
     <string name="menu_set_default_policy">Ustaw domyślną regułę</string>
     <string name="menu_help">Pomoc</string>

@@ -10,10 +10,21 @@
     <string name="help_select_denylist">Selecione no DenyList</string>
     <string name="help_select_denylist_description">Disponível apenas no Magisk, selecione aplicativos que estão no DenyList. Recomendado.</string>
     <string name="help_deselect_unnecessary">Desmarque desnecessário</string>
+    <string name="help_deselect_unnecessary_description">**Categoria desnecessária** - Módulo Xposed, gerenciador de root, aplicativos relacionados a root e aplicativos gerais que nunca verificam o status do bootloader. Esta opção requer conexão com a Internet.</string>
     <string name="help_add_system_app">Adicionar app do sistema</string>
     <string name="help_add_system_app_description">Adicionar app do sistema específico à lista de aplicativos.</string>
     <string name="help_set_keybox">Definir Keybox</string>
     <string name="help_set_keybox_description">Substitua a keybox TrickyStore por:</string>
+    <string name="help_set_keybox_aosp">**AOSP** - o keybox padrão vem com o TrickyStore.</string>
+    <string name="help_set_keybox_unknown">**Desconhecido - autoassinado e não válido para veredicto de play integrity.</string>
+    <string name="help_set_keybox_local">**Local** - selecione a caixa de chaves no seu dispositivo.</string>
+    <string name="help_set_keybox_custom">**Personalizado** - fornecedor de caixas de chaves personalizadas via busca online.</string>
+    <string name="help_set_default_policy">Definir política padrão</string>
+    <string name="help_set_default_policy_description">Anteriormente chamado de `Definir Patch de Segurança`. Configure a política padrão para todos os aplicativos de destino. Deixe em branco ou use `no` para desativar. Use `prop` para manter a consistência com as propriedades do sistema.</string>
+    <string name="help_prop_settings">Configurações de Prop</string>
+    <string name="help_prop_settings_description">Várias configurações relacionadas à prop:</string>
+    <string name="help_prop_settings_handler">**Manipulador de prop** - Shamon resetprop script alternativo.</string>
+    <string name="help_prop_settings_boot_hash">**Hash de inicialização** - obtenha o valor `verifiedBootHash` de [KeyAttestation](https://github.com/vvb2060/KeyAttestation/releases). Corrija o estado de inicialização anormal redefinindo `ro.boot.vbmeta.digest`.</string>
     <!-- Update -->
     <string name="update_update_available">Uma nova versão está Disponível</string>
     <string name="update_redirect_to_release">Toque para baixar a versão mais recente</string>
@@ -43,7 +54,9 @@
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">Desconhecido</string>
     <string name="menu_keybox_local">Local</string>
+    <string name="menu_keybox_repo">Repo</string>
     <string name="menu_prop_setting">Configurações de Prop</string>
+    <string name="menu_set_default_policy">Definir política padrão</string>
     <string name="menu_help">Ajuda</string>
     <string name="menu_language">Linguagem</string>
     <string name="menu_about">Sobre</string>
@@ -87,6 +100,9 @@
     <string name="prompt_custom_not_found">Nenhuma keybox personalizada encontrada</string>
     <string name="prompt_custom_invalid_script">Script não permitido</string>
     <string name="prompt_custom_removed">Entrada de custom keybox removido</string>
+    <string name="prompt_keybox_repo_set">Keybox definida do repositório com sucesso</string>
+    <string name="prompt_keybox_repo_set_error">Falha ao definir keybox a partir do repositório</string>
+    <string name="prompt_keybox_repo_download_error">O download falhou para %s</string>
     <!-- Security Patch -->
     <string name="default_policy_title">Política Padrão</string>
     <string name="security_patch_invalid_all">Formato inválido</string>

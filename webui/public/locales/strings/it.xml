@@ -54,6 +54,7 @@
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">Sconosciuto</string>
     <string name="menu_keybox_local">Locale</string>
+    <string name="menu_keybox_repo">Repo</string>
     <string name="menu_prop_setting">Impostazioni Prop</string>
     <string name="menu_set_default_policy">Imposta Politica Predefinita</string>
     <string name="menu_help">Aiuto</string>
@@ -99,6 +100,9 @@
     <string name="prompt_custom_not_found">Nessuna keybox personalizzata trovata</string>
     <string name="prompt_custom_invalid_script">Script non consentito</string>
     <string name="prompt_custom_removed">Voce keybox personalizzata rimossa</string>
+    <string name="prompt_keybox_repo_set">Keybox impostato con successo dal repo</string>
+    <string name="prompt_keybox_repo_set_error">Impossibile impostare keybox dal repo</string>
+    <string name="prompt_keybox_repo_download_error">Download fallito per %s</string>
     <!-- Security Patch -->
     <string name="default_policy_title">Politica predefinita</string>
     <string name="security_patch_invalid_all">Formato non valido</string>
