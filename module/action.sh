@@ -8,6 +8,7 @@ TMP_DIR="$MODPATH/common/tmp"
 APK_PATH="$TMP_DIR/base.apk"
 REPO="KOWX712/KsuWebUIStandalone"
 
+MOD_ID="TA_utl"
 TS_ID="tricky_store"
 OMK_ID="oh_my_keymint"
 TEES_ID="teesim"
@@ -17,7 +18,7 @@ if [ -d "/data/adb/modules/$TS_ID" ] && [ ! -e "/data/adb/modules/$TS_ID/remove"
 elif [ -d "/data/adb/modules/$OMK_ID" ] && [ ! -e "/data/adb/modules/$OMK_ID/remove" ]; then
     ID=$OMK_ID
 elif [ -d "/data/adb/modules/$TEES_ID" ] && [ ! -e "/data/adb/modules/$TEES_ID/remove" ]; then
-    ID=$TEES_ID
+    ID=$MOD_ID
 else
     echo "! Tricky Store not found"
     exit 1
