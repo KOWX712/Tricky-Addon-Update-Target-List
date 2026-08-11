@@ -43,7 +43,7 @@ else
     abort " "
 fi
 
-[ -d "/data/adb/modules/tricky_store" ] || [ -d "/data/adb/modules/oh_my_keymint" ] || ui_print "! Warning: Tricky store module not found"
+[ -d "/data/adb/modules/tricky_store" ] || [ -d "/data/adb/modules/oh_my_keymint" ] || [ -d "/data/adb/modules/teesim" ] || ui_print "! Warning: Tricky store module not found"
 
 ui_print "- Installing..."
 # Magisk cleanup
