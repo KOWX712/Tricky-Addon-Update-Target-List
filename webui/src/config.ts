@@ -188,6 +188,7 @@ export class Config {
 
   protected readonly perAppConfig: boolean = true
   protected readonly appMode: boolean = true
+  protected readonly moduleVisible: boolean = false
 
   #data: ConfigData = {}
   readonly policySchema: PolicySchema = DEFAULT_POLICY_SCHEMA
@@ -307,6 +308,10 @@ export class Config {
 
   get supportsAppMode(): boolean {
     return this.appMode
+  }
+
+  get isModuleVisible(): boolean {
+    return this.moduleVisible
   }
 
   static support(versionCode: number): boolean {

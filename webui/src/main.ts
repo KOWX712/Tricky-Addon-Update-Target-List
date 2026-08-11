@@ -27,7 +27,6 @@ const fileSelector = new FileSelector()
 const cli = new Cli()
 const history = new History()
 const keybind = new Keybind()
-const updateManager = new UpdateManager(cli)
 
 let config: Config
 try {
@@ -172,6 +171,7 @@ const updateCard = document.querySelector<HTMLElement>('.update')!
 let pendingChangelog: string | null = null
 
 // Check module update
+const updateManager = new UpdateManager(cli, config)
 async function checkUpdate(): Promise<void> {
   const channel = localStorage.getItem(`${LOCAL_STORAGE_PREFIX}UpdateChannel`) || 'stable'
   if (channel === 'disable') {

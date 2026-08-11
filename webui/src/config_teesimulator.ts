@@ -85,6 +85,7 @@ export class ConfigTeeSimulator extends Config {
   protected override readonly CONFIG_FILE = this.CONFIG_PATH + '/config.json'
   protected override readonly perAppConfig: boolean = false
   protected override readonly appMode: boolean = false
+  protected override readonly moduleVisible: boolean = true
 
   override readonly policySchema = TEE_SIMULATOR_POLICY_SCHEMA
 

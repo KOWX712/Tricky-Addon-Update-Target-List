@@ -1,5 +1,6 @@
 import { Cli } from './cli'
 import { File } from './file'
+import type { Config } from './config'
 import { GITHUB_REPO, MOD_ID } from './constant'
 
 const RAW_URL = `https://raw.githubusercontent.com/${GITHUB_REPO}`
@@ -17,9 +18,11 @@ export interface UpdateInfo {
 
 export class UpdateManager {
   #cli: Cli
+  #config: Config
 
-  constructor(cli: Cli) {
+  constructor(cli: Cli, config: Config) {
     this.#cli = cli
+    this.#config = config
   }
 
   async #getLocalVersionCode(): Promise<number> {
@@ -33,6 +36,7 @@ export class UpdateManager {
   }
 
   async showModule(show: boolean): Promise<void> {
+    if (this.#config.isModuleVisible) return
     try {
       const basePath = await this.#cli.getBasePath()
       if (show) {
