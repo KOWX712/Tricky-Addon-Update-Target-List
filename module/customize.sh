@@ -1,5 +1,4 @@
 MODID=`grep_prop id $TMPDIR/module.prop`
-NEW_MODID=".TA_utl"
 
 # Hot install
 export MODULE_HOT_INSTALL_REQUEST="true"
@@ -28,7 +27,6 @@ ui_print " "
 if [ "$APATCH" ]; then
     [ "$APATCH_VER_CODE" -ge $MIN_APATCH_VERSION ] || eol_setup "! Unsupported APatch version, please update APatch to $MIN_APATCH_VERSION or higher"
     ui_print "- APatch:$APATCH_VER│$APATCH_VER_CODE"
-    ACTION=false
 elif [ "$KSU" ]; then
     [ "$KSU_VER_CODE" -ge $MIN_KERNELSU_VERSION ] || eol_setup "! Unsupported KernelSU version, please update KernelSU to $MIN_KERNELSU_VERSION or higher"
     if [ "$KSU_NEXT" ]; then
@@ -36,9 +34,9 @@ elif [ "$KSU" ]; then
     else
         ui_print "- KernelSU:$KSU_KERNEL_VER_CODE│$KSU_VER_CODE"
     fi
-    ACTION=false
 elif [ "$MAGISK_VER_CODE" ]; then
     ui_print "- Magisk:$MAGISK_VER│$MAGISK_VER_CODE"
+    ACTION=true
 else
     ui_print " "
     ui_print "! recovery is not supported"
@@ -49,11 +47,9 @@ fi
 
 ui_print "- Installing..."
 # Magisk cleanup
-rm -rf "/data/adb/modules/$NEW_MODID"
+rm -rf "/data/adb/modules/.TA_utl"
 
-if [ "$ACTION" = "false" ]; then
-    NEW_MODID="$MODID"
-else
+if [ -n "$ACTION"]; then
     mkdir -p "$MODPATH/common/update/common"
     cp "$MODPATH/common/.default" "$MODPATH/common/update/common/.default"
     cp "$MODPATH/uninstall.sh" "$MODPATH/common/update/uninstall.sh"

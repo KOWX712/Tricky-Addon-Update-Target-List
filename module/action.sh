@@ -10,11 +10,14 @@ REPO="KOWX712/KsuWebUIStandalone"
 
 TS_ID="tricky_store"
 OMK_ID="oh_my_keymint"
+TEES_ID="teesim"
 
 if [ -d "/data/adb/modules/$TS_ID" ] && [ ! -e "/data/adb/modules/$TS_ID/remove" ]; then
     ID=$TS_ID
 elif [ -d "/data/adb/modules/$OMK_ID" ] && [ ! -e "/data/adb/modules/$OMK_ID/remove" ]; then
     ID=$OMK_ID
+elif [ -d "/data/adb/modules/$TEES_ID" ] && [ ! -e "/data/adb/modules/$TEES_ID/remove" ]; then
+    ID=$TEES_ID
 else
     echo "! Tricky Store not found"
     exit 1
