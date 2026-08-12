@@ -60,16 +60,18 @@ done
 
 sh "$MODPATH/common/get_extra.sh" --xposed >/dev/null 2>&1
 
-[ ! -f "$MODPATH/action.sh" ] || rm -rf "/data/adb/modules/TA_utl"
+if [ ! "$RUNTIME" = "$TEES" ]; then
+    [ ! -f "$MODPATH/action.sh" ] || rm -rf "/data/adb/modules/TA_utl";
 
-# Hide module from APatch, KernelSU, KSUWebUIStandalone, MMRL
-# Don't hide module for TEESimulator since they has built in WebUI
-[ "$RUNTIME" = "$TEES" ] || nohup sh -c "
-count=0
-while kill -0 $PPID 2>/dev/null; do
-    [ \$count -ge 5 ] && break
-    sleep 1
-    count=\$((count + 1))
-done
-rm -f '$MODPATH/module.prop'
-" >/dev/null 2>&1 &
+    # Hide module from APatch, KernelSU, KSUWebUIStandalone, MMRL
+    # Don't hide module for TEESimulator since they has built in WebUI
+    nohup sh -c "
+    count=0
+    while kill -0 $PPID 2>/dev/null; do
+        [ \$count -ge 5 ] && break
+        sleep 1
+        count=\$((count + 1))
+    done
+    rm -f '$MODPATH/module.prop'
+    " >/dev/null 2>&1 &
+fi
