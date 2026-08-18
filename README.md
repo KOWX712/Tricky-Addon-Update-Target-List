@@ -1,45 +1,42 @@
 # Tricky Addon - Update Target List
-Configure Tricky Store target.txt with KSU WebUI.
 
-[![Latest Release](https://img.shields.io/github/v/release/KOWX712/Tricky-Addon-Update-Target-List?label=Release&logo=github)](https://github.com/KOWX712/Tricky-Addon-Update-Target-List/releases/latest)
-[![Nightly Release](https://custom-icon-badges.demolab.com/badge/Nightly-canary_build-640064?logo=nightly-logo)](https://nightly.link/KOWX712/Tricky-Addon-Update-Target-List/workflows/build/main?preview)
+Configure TrickyStore via KSU WebUI.
+
+[![GitHub Release](https://img.shields.io/github/v/release/KOWX712/Tricky-Addon-Update-Target-List?logo=github&label=Release)](https://github.com/KOWX712/Tricky-Addon-Update-Target-List/releases/latest)
+[![Pre Release](https://img.shields.io/github/v/release/KOWX712/Tricky-Addon-Update-Target-List?include_prereleases&logo=github&label=Pre-release)](https://github.com/KOWX712/Tricky-Addon-Update-Target-List/releases)
+[![Nightly Release](https://img.shields.io/badge/Nightly-canary_build-640064?logo=githubactions&logoColor=fff)](https://nightly.link/KOWX712/Tricky-Addon-Update-Target-List/workflows/build/main?preview)
+[![Crowdin](https://img.shields.io/badge/Localization-Crowdin-palegreen?logo=Crowdin)](https://crowdin.com/project/TA_utl)
 
 > [!WARNING]
 > This module is **not** a part of the Tricky Store module. DO NOT report any issues to Tricky Store if encountered.
 
 ## Requirements
-- [Tricky store](https://github.com/5ec1cff/TrickyStore) module installed
+
+Install any of the following:
+
+- [TrickyStore](https://github.com/5ec1cff/TrickyStore)
+- [TEESimulator](https://github.com/JingMatrix/TEESimulator)
+- [OhMyKeymint](https://github.com/qwq233/OhMyKeymint)
 
 ## Instructions
+
 ### KernelSU & Apatch
-- KSU WebUI
+
+- Built-in WebUI
 
 ### Magisk
+
 - Action button to open WebUI
-- Support [KSUWebUIStandalone](https://github.com/5ec1cff/KsuWebUIStandalone) and [WebUI X](https://github.com/MMRLApp/WebUI-X-Portable)
+- Support [KSUWebUIStandalone](https://github.com/KOWX712/KsuWebUIStandalone) and [WebUI X](https://github.com/MMRLApp/WebUI-X-Portable)
 - Automatic KSUWebUIStandalone install if none of them are installed.
 
-### What Can This Module Do
-| Feature                                                                                                                                                                      | Status |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----: |
-| Configure target.txt with app name display                                                                                                                                   |   ✅    |
-| Long press to choose `!` or `?` mode for the app. [Auto](https://github.com/5ec1cff/TrickyStore/releases/tag/1.1.0)<br>Use this only  when the app cannot work without this. |   ✅    |
-| Select apps from Magisk DenyList `optional`                                                                                                                                  |   ✅    |
-| Deselect [unnecessary apps](https://github.com/KOWX712/Tricky-Addon-Update-Target-List/blob/main/more-exclude.json) `optional`                                               |   ✅    |
-| Set verifiedBootHash `optional`                                                                                                                                              |   ✅    |
-| Auto config [security patch](https://github.com/5ec1cff/TrickyStore?tab=readme-ov-file#customize-security-patch-level-121), customizable in WebUI                            |   ✅    |
-| Provide AOSP Keybox `optional`                                                                                                                                               |   ✅    |
-| Import custom Keybox from device storage                                                                                                                                     |   ✅    |
-| Add system apps `not recommended`                                                                                                                                            |   ✅    |
-| Periodically add all app to target.txt                                                                                                                                       |   ❌    |
+## Features
+
+- Config target list, mode, security patch and keybox.
+- View 'Help' menu in WebUI for more info.
 
 ## Localization
 - Read [Translation Guide](https://github.com/KOWX712/Tricky-Addon-Update-Target-List/blob/main/webui/public/locales/GUIDE.md)
-
-## Acknowledgement
-- [j-hc/zygisk-detach](https://github.com/j-hc/zygisk-detach) - KSU WebUI template
-- [markedjs/marked](https://github.com/markedjs/marked) - Markdown Support
-- [TMLP-Team/keyboxGenerator](https://github.com/TMLP-Team/keyboxGenerator) - Unknown keybox.xml generator
 
 ## Links
 [![release](https://custom-icon-badges.demolab.com/badge/-Download-F25278?style=for-the-badge&logo=download&logoColor=white)](https://github.com/KOWX712/Tricky-Addon-Update-Target-List/releases)
