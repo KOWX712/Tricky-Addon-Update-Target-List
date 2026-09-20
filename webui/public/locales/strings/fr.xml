@@ -6,17 +6,35 @@
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">Instructions</string>
+    <string name="help_save_and_update_description">Enregistrer la configuration actuelle.</string>
     <string name="help_select_denylist">Sélectionner depuis la DenyList</string>
     <string name="help_select_denylist_description">Disponible uniquement sur Magisk, sélectionner les applications présentes dans la DenyList. Recommandé.</string>
     <string name="help_deselect_unnecessary">Désélectionner les applications inutiles</string>
+    <string name="help_deselect_unnecessary_description">**Catégorie inutile** - module Xposed, gestionnaire root, applications liées au root et applications générales ne vérifiant jamais l\'état du bootloader. Cette option nécessite une connexion Internet.</string>
     <string name="help_add_system_app">Ajouter une application système</string>
     <string name="help_add_system_app_description">Ajouter une application système spécifique à la liste.</string>
+    <string name="help_set_keybox">Définir la boîte de clés</string>
+    <string name="help_set_keybox_description">Remplacer la boîte à clés TrickyStore par :</string>
+    <string name="help_set_keybox_aosp">**AOSP** - la boîte par défaut fournie avec TrickyStore.</string>
+    <string name="help_set_keybox_unknown">**Inconnu** - autosigné et non valide pour le verdict sur l\'Intégrité du Jeu.</string>
+    <string name="help_set_keybox_local">**Local** - sélectionnez la boîte à clés de votre appareil.</string>
+    <string name="help_set_keybox_custom">**Personnalisé** - boîte à clé personnalisée via la récupération en ligne.</string>
+    <string name="help_set_default_policy">Définir la politique par défaut</string>
+    <string name="help_set_default_policy_description">Autrefois `Définir le Correctif de Sécurité`. Configuration de la politique par défaut pour toutes les applications ciblées, Laisser vide ou `non` pour désactiver, `prop` pour garder cohérent avec prop système.</string>
+    <string name="help_prop_settings">Paramètres de Prop</string>
+    <string name="help_prop_settings_description">Divers paramètres liés au prop :</string>
+    <string name="help_prop_settings_handler">**Gestionnaire de prop** - interrupteur de script de shamiko resetprop.</string>
+    <string name="help_prop_settings_boot_hash">**Boot hash** - récupère la valeur `verifiedBootHash` de [KeyAttestation](https://github.com/vvb2060/KeyAttestation/releases). Corrige l\'état de démarrage anormal en réinitialisant `ro.boot.vbmeta.digest`.</string>
     <!-- Update -->
     <string name="update_update_available">Une nouvelle version est disponible</string>
     <string name="update_redirect_to_release">appuyer pour télécharger la dernière version</string>
     <string name="update_changelog">Journal des modifications</string>
     <string name="update_install">Installer</string>
     <string name="update_reboot">Redémarrer</string>
+    <string name="update_channel">Canal de mise à jour</string>
+    <string name="update_channel_stable">Stable</string>
+    <string name="update_channel_canary">Canary</string>
+    <string name="update_channel_disable">Désactivé</string>
     <!-- Search -->
     <string name="search_bar_search_placeholder">Rechercher</string>
     <!-- Functional Button -->
@@ -26,6 +44,8 @@
     <string name="functional_button_cancel">Annuler</string>
     <string name="functional_button_confirm">Confirmer</string>
     <string name="functional_button_reset">Réinitialiser</string>
+    <string name="functional_button_remove">Retirer</string>
+    <string name="functional_button_today">Aujourd\'hui</string>
     <!-- Menu -->
     <string name="menu_select_denylist">Sélectionner depuis la DenyList</string>
     <string name="menu_deselect_unnecessary">Désélectionner les applications inutiles</string>
@@ -34,10 +54,14 @@
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">Inconnue</string>
     <string name="menu_keybox_local">Local</string>
+    <string name="menu_keybox_repo">Dépôt</string>
+    <string name="menu_prop_setting">Paramètres de Prop</string>
+    <string name="menu_set_default_policy">Définir la politique par défaut</string>
     <string name="menu_help">Aide</string>
     <string name="menu_language">Langue</string>
     <string name="menu_about">À propos</string>
     <!-- Prop Dialog -->
+    <string name="prop_handler">Gestionnaire de Prop</string>
     <string name="boot_hash_title">Hash de démarrage</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
@@ -54,6 +78,7 @@
     <string name="prompt_unknown_key_set">Keybox inconnue définie avec succès</string>
     <string name="prompt_boot_hash_set">Hash Verified Boot enregistré avec succès</string>
     <string name="prompt_boot_hash_set_error">Échec de la mise à jour du hash Verified Boot</string>
+    <string name="prompt_saved_target">Configuration enregistrée</string>
     <string name="prompt_save_error">Échec de l&apos;enregistrement de la configuration</string>
     <string name="prompt_uninstall_prompt">La WebUI sera supprimée après le redémarrage</string>
     <string name="prompt_uninstall_failed">Échec de la désinstallation de la WebUI</string>
@@ -70,16 +95,39 @@
     <string name="prompt_translation_update_failed">Échec de la mise à jour du pack de traduction</string>
     <string name="prompt_custom_key_set">Keybox personnalisée définie avec succès</string>
     <string name="prompt_custom_key_set_error">Échec de la définition de la Keybox personnalisée</string>
+    <string name="prompt_custom_saved">Entrée de la boîte à clés personnalisée enregistrée</string>
+    <string name="prompt_custom_fetch_error">Échec de la récupération de la boîte à clé personnalisée</string>
+    <string name="prompt_custom_not_found">Aucune boîte à clé personnalisée trouvée</string>
+    <string name="prompt_custom_invalid_script">Script non autorisé</string>
+    <string name="prompt_custom_removed">Entrée de la boîte à clés personnalisée supprimée</string>
+    <string name="prompt_keybox_repo_set">Boîte à clés définie à partir du dépôt avec succès</string>
+    <string name="prompt_keybox_repo_set_error">Impossible de définir la boîte à clés à partir du dépôt</string>
+    <string name="prompt_keybox_repo_download_error">Téléchargement échoué pour %s</string>
     <!-- Security Patch -->
+    <string name="default_policy_title">Politique par Défaut</string>
     <string name="security_patch_invalid_all">Format invalide</string>
     <!-- Add System App -->
     <string name="add_system_app_title">Ajouter une application système</string>
     <!-- CustomKB Dialog -->
+    <string name="customkb_dialog_title">Fournisseur de Boîte à clés Personnalisé</string>
+    <string name="customkb_name_placeholder">Nom</string>
+    <string name="customkb_script_placeholder">Décoder le script</string>
+    <string name="customkb_export_success">Configuration exportée vers %s</string>
+    <string name="customkb_export_error">Échec de l\'exportation de la configuration</string>
+    <string name="customkb_export_empty">Rien à exporter</string>
+    <string name="customkb_import_success">Configuration importée</string>
+    <string name="customkb_import_error">Fichier de configuraiton invalide</string>
     <string name="customkb_remove_title">Confirmer la suppression?</string>
+    <string name="customkb_remove_message">Supprimer ce fournisseur de boîte à clés personnalisé ?</string>
+    <string name="customkb_reset_message">Réinitialiser les fournisseurs de boîte à clés personnalisés ?</string>
     <!-- Uninstall confirmation -->
     <string name="confirmation_uninstall_title">Confirmer la désinstallation ?</string>
     <string name="confirmation_uninstall_message">Êtes-vous sûr(e) de vouloir désinstaller Tricky Addon</string>
     <!-- Mode dialog -->
     <string name="mode_dialog_title">Mode</string>
     <string name="mode_auto">Automatique</string>
+    <string name="mode_certificate_generating">Génération de certificats</string>
+    <string name="mode_leaf_hack">Leaf Hack</string>
+    <string name="mode_set_custom_policy">Définir une Politique Personnalisée</string>
+    <string name="mode_use_default_policy">Utiliser une Politique Personnalisée</string>
 </resources>
