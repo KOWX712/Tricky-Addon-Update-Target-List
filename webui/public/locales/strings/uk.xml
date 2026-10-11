@@ -1,22 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="system_default">System Default</string>
+    <string name="system_default">Системний за замовчуванням</string>
     <string name="more_language">Більше</string>
     <!-- Header -->
     <string name="header_title">Tricky Addon</string>
     <!-- Help Menu-->
     <string name="help_help_instructions">Вказівки</string>
-    <string name="help_select_denylist">Виберіть із DenyList</string>
-    <string name="help_select_denylist_description">Доступно лише у Magisk, обрати застосунки, які входять до DenyList. Рекомендовано.</string>
-    <string name="help_deselect_unnecessary">Зняти виділення з необов&apos;язкових</string>
-    <string name="help_add_system_app">Додати системний застосунок</string>
-    <string name="help_add_system_app_description">Додати конкретний системний застосунок до списку.</string>
+    <string name="help_save_and_update_description">Зберегти поточну конфігурацію.</string>
+    <string name="help_select_denylist">Вибрати з DenyList</string>
+    <string name="help_select_denylist_description">Доступно лише в Magisk. Виберіть додатки, які є у списку заборон. Рекомендовано.</string>
+    <string name="help_deselect_unnecessary">Прибрати необов\'язкові</string>
+    <string name="help_deselect_unnecessary_description">**Непотрібна категорія** – модуль Xposed, root-менеджер, додатки, пов\'язані з root-доступом, та загальні додатки, які ніколи не перевіряють стан завантажувача. Ця опція потребує підключення до Інтернету.</string>
+    <string name="help_add_system_app">Додати системний додаток</string>
+    <string name="help_add_system_app_description">Додати конкретний системний додаток до списку.</string>
+    <string name="help_set_keybox">Встановити Keybox</string>
+    <string name="help_set_keybox_description">Замініть TrickyStore keybox на:</string>
+    <string name="help_set_keybox_aosp">**AOSP** – стандартний keybox постачається з TrickyStore.</string>
+    <string name="help_set_keybox_unknown">**Невідомо** – само підписаний та недійсний для вердикту Play Integrity.</string>
+    <string name="help_set_keybox_local">**Локальний** – виберіть сховище keybox на вашому пристрої.</string>
+    <string name="help_set_keybox_custom">**Користувацький** – налаштування постачальника keybox через онлайн-завантаження.</string>
+    <string name="help_set_default_policy">Встановити політику за замовчуванням</string>
+    <string name="help_set_default_policy_description">Раніше «Встановити патч безпеки». Політика за замовчуванням для цільових додатків. Порожньо або «no» — вимкнути, «prop» — узгодити з системними властивостями.</string>
+    <string name="help_prop_settings">Налаштування властивостей</string>
+    <string name="help_prop_settings_description">Різні налаштування, пов\'язані з властивостями:</string>
+    <string name="help_prop_settings_handler">**Обробник властивостей** - перемикач скрипта resetprop shamiko.</string>
+    <string name="help_prop_settings_boot_hash">**Хеш завантаження** - отримати значення `перевіреного BootHash` з [KeyAttestation] (https://github.com/vvb2060/KeyAttestation/rele ases). Виправити аномальний стан завантаження шляхом скидання
+`ro.boot.vbmeta.digest`.</string>
     <!-- Update -->
-    <string name="update_update_available">Нова версія готова</string>
+    <string name="update_update_available">Доступна нова версія</string>
     <string name="update_redirect_to_release">натисніть, щоб завантажити найновішу версію</string>
     <string name="update_changelog">Список змін</string>
     <string name="update_install">Встановити</string>
     <string name="update_reboot">Перезавантажити</string>
+    <string name="update_channel">Канал оновлення</string>
+    <string name="update_channel_stable">Стабільний</string>
+    <string name="update_channel_canary">Canary</string>
+    <string name="update_channel_disable">Вимкнути</string>
     <!-- Search -->
     <string name="search_bar_search_placeholder">Пошук</string>
     <!-- Functional Button -->
@@ -26,40 +45,48 @@
     <string name="functional_button_cancel">Скасувати</string>
     <string name="functional_button_confirm">Підтвердити</string>
     <string name="functional_button_reset">Скинути</string>
+    <string name="functional_button_remove">Видалити</string>
+    <string name="functional_button_today">Сьогодні</string>
     <!-- Menu -->
     <string name="menu_select_denylist">Вибрати із DenyList</string>
-    <string name="menu_deselect_unnecessary">Прибрати необов&apos;язкові</string>
+    <string name="menu_deselect_unnecessary">Прибрати необов\'язкові</string>
     <string name="menu_add_system_app">Додати системний застосунок</string>
     <string name="menu_keybox">Ключ</string>
+    <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">Невідомий</string>
-    <string name="menu_keybox_local">Локальне</string>
-    <string name="menu_help">Вказівки</string>
+    <string name="menu_keybox_local">Локальний</string>
+    <string name="menu_keybox_repo">Репозиторій</string>
+    <string name="menu_prop_setting">Налаштування Prop</string>
+    <string name="menu_set_default_policy">Встановити політику за замовчуванням</string>
+    <string name="menu_help">Допомога</string>
     <string name="menu_language">Мова</string>
     <string name="menu_about">Деталі</string>
     <!-- Prop Dialog -->
+    <string name="prop_handler">Обробник властивостей</string>
     <string name="boot_hash_title">Хеш завантаження</string>
     <!-- About -->
     <string name="about_module_name_line1">Tricky Addon</string>
     <string name="about_module_name_line2">Оновити Target List</string>
-    <string name="about_by">by</string>
-    <string name="about_telegram_channel">Телеґрам-канал</string>
+    <string name="about_by">від</string>
+    <string name="about_telegram_channel">Телеграм-канал</string>
     <string name="about_canary_update">Оновити до останньої canary версії</string>
     <string name="about_translation_update">Оновити мовний пакет</string>
     <string name="about_disclaimer">Цей модуль не є частиною модуля Tricky Store. НЕ повідомляйте Tricky Store про будь-які проблеми, якщо вони виникли.</string>
     <string name="about_acknowledgment">Подяка</string>
     <!-- Prompt -->
-    <string name="prompt_aosp_key_set">Ключ AOSP успішно встановлено</string>
-    <string name="prompt_key_set_error">Не вдалося оновити ключ</string>
-    <string name="prompt_unknown_key_set">Невідомий ключ успішно встановлено</string>
+    <string name="prompt_aosp_key_set">AOSP keybox успішно встановлено</string>
+    <string name="prompt_key_set_error">Не вдалося оновити keybox</string>
+    <string name="prompt_unknown_key_set">Невідомий keybox успішно встановлено</string>
     <string name="prompt_boot_hash_set">Перевірений хеш завантаження успішно збережено</string>
     <string name="prompt_boot_hash_set_error">Не вдалося оновити перевірений хеш завантаження</string>
+    <string name="prompt_saved_target">Конфігурацію збережено</string>
     <string name="prompt_save_error">Не вдалося зберегти конфігурацію</string>
     <string name="prompt_uninstall_prompt">WebUI буде видалено після перезавантаження</string>
     <string name="prompt_uninstall_failed">Не вдалося видалити WebUI</string>
     <string name="prompt_checking_update">Перевірка оновлень...</string>
     <string name="prompt_new_update">Доступне нове оновлення!</string>
     <string name="prompt_no_update">Наразі немає доступних оновлень</string>
-    <string name="prompt_downloading">Завантажуємо нове оновлення...</string>
+    <string name="prompt_downloading">Завантаження нового оновлення...</string>
     <string name="prompt_download_fail">Не вдається завантажити оновлення</string>
     <string name="prompt_installed">Успішно встановлено, тепер перезавантажте пристрій.</string>
     <string name="prompt_install_fail">Не вдалося встановити, будь ласка, оновіть вручну</string>
@@ -67,18 +94,41 @@
     <string name="prompt_reboot_fail">Не вдається перезавантажити, будь ласка, перезавантажте вручну</string>
     <string name="prompt_translation_updated">Мовний пакет успішно оновлено</string>
     <string name="prompt_translation_update_failed">Не вдалося оновити мовний пакет</string>
-    <string name="prompt_custom_key_set">Успішне встановлення користувацького ключа</string>
-    <string name="prompt_custom_key_set_error">Не вдалося встановити користувальницький ключ</string>
+    <string name="prompt_custom_key_set">Успішне встановлення користувацького keybox</string>
+    <string name="prompt_custom_key_set_error">Не вдалося встановити користувальницький keybox</string>
+    <string name="prompt_custom_saved">Запис користувацького keybox збережено</string>
+    <string name="prompt_custom_fetch_error">Не вдалося отримати keybox</string>
+    <string name="prompt_custom_not_found">Користувацький keybox не знайдено</string>
+    <string name="prompt_custom_invalid_script">Скрипт не дозволено</string>
+    <string name="prompt_custom_removed">Запис користувацького списку keybox видалено</string>
+    <string name="prompt_keybox_repo_set">Keybox успішно встановлено з репозиторію</string>
+    <string name="prompt_keybox_repo_set_error">Keybox успішно встановлено з репозиторію</string>
+    <string name="prompt_keybox_repo_download_error">Завантаження не вдалося для %s</string>
     <!-- Security Patch -->
+    <string name="default_policy_title">Політика за замовчуванням</string>
     <string name="security_patch_invalid_all">Неправильний формат</string>
     <!-- Add System App -->
-    <string name="add_system_app_title">Додати системний застосунок</string>
+    <string name="add_system_app_title">Додати системний додаток</string>
     <!-- CustomKB Dialog -->
-    <string name="customkb_remove_title">Підтвердити видалення?</string>
+    <string name="customkb_dialog_title">Користувацький постачальник Keybox</string>
+    <string name="customkb_name_placeholder">Ім\'я</string>
+    <string name="customkb_script_placeholder">Декодувати скрипт</string>
+    <string name="customkb_export_success">Конфігурацію експортовано до %s</string>
+    <string name="customkb_export_error">Не вдалося експортувати конфігурацію</string>
+    <string name="customkb_export_empty">Немає нічого для експорту</string>
+    <string name="customkb_import_success">Конфігурацію імпортовано</string>
+    <string name="customkb_import_error">Недійсний файл конфігурації</string>
+    <string name="customkb_remove_title">Підтвердити Видалення?</string>
+    <string name="customkb_remove_message">Видалити цього постачальника keybox?</string>
+    <string name="customkb_reset_message">Скинути налаштування постачальників користувацьких keybox?</string>
     <!-- Uninstall confirmation -->
-    <string name="confirmation_uninstall_title">Підтверджуєте видалення?</string>
+    <string name="confirmation_uninstall_title">Підтвердити Видалення?</string>
     <string name="confirmation_uninstall_message">Ви дійсно хочете видалити Tricky Addon?</string>
     <!-- Mode dialog -->
     <string name="mode_dialog_title">Режим</string>
     <string name="mode_auto">Авто</string>
+    <string name="mode_certificate_generating">Генерація сертифікату</string>
+    <string name="mode_leaf_hack">Leaf Hack</string>
+    <string name="mode_set_custom_policy">Встановити власну політику</string>
+    <string name="mode_use_default_policy">Використовувати політику за замовчуванням</string>
 </resources>
