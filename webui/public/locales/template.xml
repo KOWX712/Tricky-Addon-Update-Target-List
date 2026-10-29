@@ -54,6 +54,7 @@
     <string name="menu_keybox_aosp">AOSP</string>
     <string name="menu_keybox_unknown">Unknown</string>
     <string name="menu_keybox_local">Local</string>
+    <string name="menu_keybox_repo">Repo</string>
     <string name="menu_prop_setting">Prop Settings</string>
     <string name="menu_set_default_policy">Set Default Policy</string>
     <string name="menu_help">Help</string>
@@ -99,6 +100,9 @@
     <string name="prompt_custom_not_found">No custom keybox found</string>
     <string name="prompt_custom_invalid_script">Script not allowed</string>
     <string name="prompt_custom_removed">Custom keybox entry removed</string>
+    <string name="prompt_keybox_repo_set">Keybox set from repo successfully</string>
+    <string name="prompt_keybox_repo_set_error">Failed to set keybox from repo</string>
+    <string name="prompt_keybox_repo_download_error">Download failed for %s</string>
     <!-- Security Patch -->
     <string name="default_policy_title">Default Policy</string>
     <string name="security_patch_invalid_all">Invalid format</string>
@@ -126,4 +130,10 @@
     <string name="mode_leaf_hack">Leaf Hack</string>
     <string name="mode_set_custom_policy">Set Custom Policy</string>
     <string name="mode_use_default_policy">Use Default Policy</string>
+    <!-- Profiles -->
+    <string name="profile_label">Profile</string>
+    <string name="profile_name_label">Profile Name</string>
+    <string name="profile_new">New Profile</string>
+    <string name="profile_delete">Delete this profile</string>
+    <string name="auto_include_new_apps_label">Auto-include new apps</string>
 </resources>

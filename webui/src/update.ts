@@ -1,6 +1,6 @@
 import { Cli } from './cli'
 import { File } from './file'
-import type { Config } from './config'
+import type { Config } from './conifg/config'
 import { GITHUB_REPO, MOD_ID } from './constant'
 
 const RAW_URL = `https://raw.githubusercontent.com/${GITHUB_REPO}`

@@ -6,8 +6,40 @@
     margin-bottom: 8px;
   }
 
-  .full-width-button {
+  md-outlined-button.full-width-button {
     width: 100%;
+
+    &.secondary {
+      --md-sys-color-primary: var(--md-sys-color-secondary-container);
+      --md-sys-color-on-primary: var(--md-sys-color-on-secondary-container);
+    }
+
+    &.tertiary {
+      --md-sys-color-primary: var(--md-sys-color-tertiary-container);
+      --md-sys-color-on-primary: var(--md-sys-color-on-tertiary-container);
+    }
+
+    &.error {
+      --md-sys-color-primary: var(--md-sys-color-error-container);
+      --md-sys-color-on-primary: var(--md-sys-color-on-error-container);
+    }
+  }
+
+  #custom-policy-dialog {
+    [slot="headline"] {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      padding-bottom: 0;
+    }
+
+    #custom-policy-dialog-appname {
+      margin-bottom: 12px;
+      font-size: 0.75rem;
+      line-height: 1.2;
+      color: var(--md-sys-color-outline);
+      word-break: break-word;
+    }
   }
 
   #about-dialog {
@@ -142,7 +174,7 @@
     justify-content: space-between;
     gap: 12px;
     position: relative;
-    padding: 16px;
+    padding: 12px 16px;
     box-sizing: border-box;
     font-size: 1.2em;
     user-select: none;
@@ -155,7 +187,7 @@
     }
 
     &.outlined {
-      border-radius: 8px;
+      border-radius: 4px;
       border: solid 1px var(--md-sys-color-outline);
 
       &:hover {

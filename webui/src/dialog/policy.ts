@@ -1,6 +1,6 @@
 import type { MdDialog, MdFilledButton, MdOutlinedButton } from '@material/web/all'
 import { i18n } from '../i18n'
-import { Config } from '../config'
+import { Config } from '../conifg/config'
 import { PolicyEditor } from '../app_list/policy'
 import { applyDialogAnimation } from './animation'
 
@@ -20,7 +20,7 @@ export class DefaultPolicyDialog {
         <div slot="headline">${i18n.t('default_policy_title')}</div>
         <div slot="content">
           <div id="default-policy-fields" class="policy-fields">
-            ${PolicyEditor.html(this.#config.policySchema)}
+            ${PolicyEditor.html(this.#config.policySchema, 'global')}
           </div>
         </div>
         <div slot="actions">
@@ -34,7 +34,7 @@ export class DefaultPolicyDialog {
     this.#dialog = fragment.querySelector<MdDialog>('#default-policy-dialog')
 
     const fieldsContainer = fragment.querySelector<HTMLElement>('#default-policy-fields')!
-    this.#policyEditor = new PolicyEditor(fieldsContainer, this.#config.policySchema)
+    this.#policyEditor = new PolicyEditor(fieldsContainer, this.#config.policySchema, 'global')
     this.#policyEditor.bind()
 
     fragment.querySelector<MdOutlinedButton>('#close-default-policy')!.onclick = () => this.close()
@@ -49,6 +49,7 @@ export class DefaultPolicyDialog {
 
   show(): void {
     const configData = this.#config.get()
+    this.#policyEditor?.refreshSelects()
     this.#policyEditor?.setPolicy(configData.default_policy ?? null)
     this.#dialog?.show()
   }

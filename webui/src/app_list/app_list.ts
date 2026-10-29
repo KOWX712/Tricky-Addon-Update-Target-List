@@ -1,8 +1,8 @@
 import { listPackages, getPackagesInfo } from 'kernelsu-alt'
 import type { PackagesInfo } from 'kernelsu-alt'
-import type { MdDialog, MdRadio } from '@material/web/all'
+import type { MdDialog } from '@material/web/all'
 import { Cli } from '../cli'
-import { Config } from '../config'
+import { Config } from '../conifg/config'
 import { i18n } from '../i18n'
 import { GITHUB_REPO, LOCAL_STORAGE_PREFIX } from '../constant'
 import { applyDialogAnimation } from '../dialog/animation'
@@ -35,7 +35,7 @@ export class AppList {
   #cli: Cli
   #iconObserver: IntersectionObserver | null = null
   #systemAppIconObserver: IntersectionObserver | null = null
-  #currentModeCard: HTMLElement | null = null
+  #currentPolicyCard: HTMLElement | null = null
   #container: HTMLElement | null = null
   #policyEditor!: PolicyEditor
   menuOpen = false
@@ -235,14 +235,15 @@ export class AppList {
     }
     container.appendChild(fragment)
 
-    if (!document.getElementById('mode-dialog')) {
-      document.body.insertAdjacentHTML('beforeend', this.#modeDialogHtml())
-      this.#setupModeDialogListeners()
-    }
-
     this.#iconObserver?.disconnect()
     this.#iconObserver = this.#setupIconObserver(container)
     this.#setupCardListeners(container)
+  }
+
+  appendTo(container: HTMLElement): void {
+    if (document.getElementById('custom-policy-dialog')) return
+    container.insertAdjacentHTML('beforeend', this.#customPolicyDialogHtml())
+    this.#setupCustomPolicyDialogListeners()
   }
 
   renderSystemAppList(container: HTMLElement): void {
@@ -333,6 +334,7 @@ export class AppList {
         if (checkbox.checked) {
           const idx = target.findIndex(t => stripSuffix(t) === pkg)
           if (idx >= 0) this.#config.removeMatch('target', t => stripSuffix(t) === pkg)
+          this.#config.set(pkg, undefined)
           checkbox.checked = false
           card.classList.remove('selected')
           checkbox.classList.remove('checkbox-checked-generated', 'checkbox-checked-hack')
@@ -347,7 +349,7 @@ export class AppList {
         const checkbox = card.querySelector('md-checkbox')!
         if (checkbox.checked) {
           e.preventDefault()
-          this.#openModeDialog(card)
+          this.#openCustomPolicyDialog(card)
         }
       })
     })
@@ -423,139 +425,75 @@ export class AppList {
     img.src = `ksu://icon/${packageName}`
   }
 
-  #modeDialogHtml(): string {
+  #customPolicyDialogHtml(): string {
     return /* html */ `
-    <md-dialog id="mode-dialog">
+    <md-dialog id="custom-policy-dialog">
       <div slot="headline">
-        <div>${i18n.t('mode_dialog_title')}</div>
-        <div id="mode-dialog-appname"></div>
+        <div>${i18n.t('mode_set_custom_policy')}</div>
+        <div id="custom-policy-dialog-appname"></div>
       </div>
-      <div slot="content" class="mode-dialog-content">
-        <div class="mode-options">
-          <label class="mode-option">
-            <md-radio id="mode-default" name="mode" value="auto"></md-radio>
-            <span>${i18n.t('mode_auto')}</span>
-          </label>
-          <label class="mode-option">
-            <md-radio id="mode-generate" name="mode" value="generate" class="mode-generated"></md-radio>
-            <span>${i18n.t('mode_certificate_generating')}</span>
-            <span class="mode-icon mode-generated">!</span>
-          </label>
-          <label class="mode-option">
-            <md-radio id="mode-hack" name="mode" value="hack" class="mode-hack"></md-radio>
-            <span>${i18n.t('mode_leaf_hack')}</span>
-            <span class="mode-icon mode-hack">?</span>
-          </label>
-        </div>
-        <div id="mode-policy-section" class="mode-policy-section hidden">
-          <md-divider></md-divider>
-          <md-filled-tonal-button id="mode-policy-toggle">${i18n.t('mode_set_custom_policy')}</md-filled-tonal-button>
-          <div id="mode-policy-fields" class="mode-policy-fields hidden">
-            ${PolicyEditor.html(this.#config.policySchema)}
-          </div>
+      <div slot="content">
+        <div id="custom-policy-fields" class="policy-fields">
+          ${PolicyEditor.html(this.#config.policySchema, 'perApp')}
         </div>
       </div>
       <div slot="actions">
-        <md-outlined-button id="mode-cancel">${i18n.t('functional_button_cancel')}</md-outlined-button>
-        <md-filled-button id="mode-save">${i18n.t('functional_button_save')}</md-filled-button>
+        <md-outlined-button id="custom-policy-cancel">${i18n.t('functional_button_cancel')}</md-outlined-button>
+        <md-filled-button id="custom-policy-save">${i18n.t('functional_button_save')}</md-filled-button>
       </div>
     </md-dialog>`
   }
 
-  #setupModeDialogListeners(): void {
-    const dialog = document.getElementById('mode-dialog')! as MdDialog
+  #setupCustomPolicyDialogListeners(): void {
+    const dialog = document.getElementById('custom-policy-dialog')! as MdDialog
     applyDialogAnimation(dialog)
 
-    if (this.#config.supportsPerAppConfig) {
-      this.#policyEditor = new PolicyEditor(document.getElementById('mode-policy-fields')!, this.#config.policySchema)
-      this.#policyEditor.bind()
+    this.#policyEditor = new PolicyEditor(document.getElementById('custom-policy-fields')!, this.#config.policySchema, 'perApp')
+    this.#policyEditor.bind()
 
-      document.getElementById('mode-policy-toggle')!.onclick = () => {
-        const fields = document.getElementById('mode-policy-fields')!
-        const toggle = document.getElementById('mode-policy-toggle')!
-        const isHidden = fields.classList.contains('hidden')
-        fields.classList.toggle('hidden', !isHidden)
-        toggle.textContent = isHidden ? i18n.t('mode_use_default_policy') : i18n.t('mode_set_custom_policy')
-      }
-    } else {
-      document.getElementById('mode-policy-section')?.classList.add('hidden')
-    }
-
-    document.getElementById('mode-cancel')!.onclick = () => {
-      this.#currentModeCard = null
+    document.getElementById('custom-policy-cancel')!.onclick = () => {
+      this.#currentPolicyCard = null
       dialog.close?.()
     }
 
-    document.getElementById('mode-save')!.onclick = () => {
-      if (!this.#currentModeCard) return
-      const pkg = this.#currentModeCard.dataset.package!
-      const checkbox = this.#currentModeCard.querySelector('md-checkbox')!
+    document.getElementById('custom-policy-save')!.onclick = () => {
+      if (!this.#currentPolicyCard) return
+      if (!this.#policyEditor.isValid()) return
+      const pkg = this.#currentPolicyCard.dataset.package!
+      const policy = this.#policyEditor.getPolicy()
+      this.#config.set(pkg, policy ?? undefined)
+      this.#config.write()
 
-      const radios = dialog.querySelectorAll<MdRadio>('md-radio')
-      const selectedRadio = Array.from(radios).find(r => r.checked)
-      const modeValue = selectedRadio?.value ?? 'auto'
-      const target = (this.#config.get('target') as string[]) || []
-      const idx = target.findIndex(t => stripSuffix(t) === pkg)
-
-      checkbox.classList.remove('checkbox-checked-generated', 'checkbox-checked-hack')
-
-      if (idx >= 0) {
-        const newValue = modeValue === 'generate' ? `${pkg}!` : modeValue === 'hack' ? `${pkg}?` : pkg
-        this.#config.replaceMatch('target', t => stripSuffix(t) === pkg, newValue)
-
-        if (modeValue === 'generate') checkbox.classList.add('checkbox-checked-generated')
-        else if (modeValue === 'hack') checkbox.classList.add('checkbox-checked-hack')
+      if (policy && 'app_mode' in policy) {
+        const checkbox = this.#currentPolicyCard.querySelector('md-checkbox')!
+        checkbox.classList.remove('checkbox-checked-generated', 'checkbox-checked-hack')
+        if (policy.app_mode === 'mode_certificate_generating') checkbox.classList.add('checkbox-checked-generated')
+        else if (policy.app_mode === 'mode_leaf_hack') checkbox.classList.add('checkbox-checked-hack')
       }
 
-      if (this.#config.supportsPerAppConfig) {
-        const policy = this.#policyEditor.getPolicy()
-        this.#config.set(pkg, policy ?? undefined)
-      }
-
-      this.#currentModeCard = null
+      this.#currentPolicyCard = null
       dialog.close?.()
     }
   }
 
-  #openModeDialog(card: HTMLElement): void {
-    const dialog = document.getElementById('mode-dialog') as MdDialog & { show?: () => void }
+  #openCustomPolicyDialog(card: HTMLElement): void {
+    const dialog = document.getElementById('custom-policy-dialog') as MdDialog & { show?: () => void }
     if (!dialog) return
 
-    if (!this.#config.supportsAppMode) return
+    const schema = this.#config.policySchema
+    if (!this.#config.supportsPerAppConfig || schema.getFields('perApp').length === 0) return
 
     const pkg = card.dataset.package!
-    this.#currentModeCard = card
+    this.#currentPolicyCard = card
 
-    const appNameDisplay = document.getElementById('mode-dialog-appname')!
+    const appNameDisplay = document.getElementById('custom-policy-dialog-appname')!
     const appName = card.querySelector('.app-name')?.textContent ?? pkg
     appNameDisplay.innerHTML = `${appName}<br>${pkg}`
 
-    const target = (this.#config.get('target') as string[]) || []
-    const raw = target.find(t => stripSuffix(t) === pkg)
-    const mode = raw?.endsWith('!') ? 'generate' : raw?.endsWith('?') ? 'hack' : 'auto'
-
-    const radios = dialog.querySelectorAll<MdRadio & { checked?: boolean }>('md-radio')
-    radios.forEach(r => {
-      r.checked = r.value === mode
-    })
-
-    if (this.#config.supportsPerAppConfig) {
-      const configData = this.#config.get()
-      const section = configData[pkg]
-      const hasPolicy = typeof section === 'object' && !Array.isArray(section)
-
-      document.getElementById('mode-policy-section')!.classList.remove('hidden')
-      const fields = document.getElementById('mode-policy-fields')!
-      const toggle = document.getElementById('mode-policy-toggle')!
-      if (hasPolicy) {
-        fields.classList.remove('hidden')
-        toggle.textContent = i18n.t('mode_use_default_policy')
-      } else {
-        fields.classList.add('hidden')
-        toggle.textContent = i18n.t('mode_set_custom_policy')
-      }
-      this.#policyEditor.setPolicy(hasPolicy ? section : null)
-    }
+    const section = this.#config.get(pkg)
+    const hasPolicy = typeof section === 'object' && !Array.isArray(section)
+    this.#policyEditor.refreshSelects()
+    this.#policyEditor.setPolicy(hasPolicy ? section : null)
 
     dialog.show()
   }

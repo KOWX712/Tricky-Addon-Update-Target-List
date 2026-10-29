@@ -2,11 +2,7 @@ import '@material/web/all'
 import type { MdOutlinedTextField, MdDialog, MdFab, MdFilledButton, MdIconButton } from '@material/web/all'
 import { i18n } from './i18n'
 import { MainMenu } from './main_menu/main_menu'
-import { Cli } from './cli'
-import { Config } from './config'
-import { ConfigLegacy } from './config_legacy'
-import { ConfigOhMyKeyMint } from './config_ohmykeymint'
-import { ConfigTeeSimulator } from './config_teesimulator'
+import { cli, config } from './conifg'
 import { AppList } from './app_list/app_list'
 import { Snackbar } from './snackbar/snackbar'
 import { FileSelector } from './file_selector/file_selector'
@@ -17,7 +13,7 @@ import { DialogController } from './dialog/dialog'
 import { UpdateManager } from './update'
 import { SearchBar } from './search_bar/search_bar'
 import { Keybind } from './keybind'
-import { LOCAL_STORAGE_PREFIX, OMK_MOD_ID, TEES_MOD_ID } from './constant'
+import { LOCAL_STORAGE_PREFIX } from './constant'
 import './style.scss'
 import { isDev } from './utils/dev'
 
@@ -25,32 +21,8 @@ await i18n.init()
 
 const snackbar = new Snackbar()
 const fileSelector = new FileSelector()
-const cli = new Cli()
 const history = new History()
 const keybind = new Keybind()
-
-let config: Config
-try {
-  const tsInfo = await cli.getTrickyStoreInfo()
-  config = createConfig(tsInfo)
-} catch {
-  config = new Config()
-}
-
-function createConfig(tsInfo: Record<string, string>): Config {
-  const modId = tsInfo.id
-  const versionCode = parseInt(tsInfo.versionCode, 10)
-  switch (true) {
-    case modId === OMK_MOD_ID:
-      return new ConfigOhMyKeyMint()    // Oh My Keymint
-    case modId === TEES_MOD_ID:
-      return new ConfigTeeSimulator()   // Tee Simulator
-    case Config.support(versionCode):
-      return new Config()               // config.ini
-    default:
-      return new ConfigLegacy()         // target.txt + security_patch.txt
-  }
-}
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* html */ `
   <section class="header">
@@ -208,6 +180,7 @@ const dialogContent = document.querySelector<HTMLElement>('.dialog-content')!
 fileSelector.appendTo(dialogContent)
 keybox.appendTo(dialogContent)
 keyboxRepo.appendTo(dialogContent)
+appList.appendTo(dialogContent)
 keybox.custom.renderEntries()
 dialogController.appendAll(dialogContent)
 dialogContent.querySelectorAll<MdDialog>('md-dialog').forEach((dialog, i) => {

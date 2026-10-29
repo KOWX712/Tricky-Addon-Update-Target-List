@@ -136,103 +136,13 @@
   100% { background-position: 200% 0; }
 }
 
-/* Mode Dialog */
-#mode-dialog {
-  [slot="headline"] {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    padding-bottom: 0;
-  }
-
-  .mode-dialog-content {
-    min-width: 240px;
-    padding-top: 0;
-  }
-
-  #mode-dialog-appname {
-    margin-bottom: 12px;
-    font-size: 0.75rem;
-    line-height: 1.2;
-    color: var(--md-sys-color-outline);
-    word-break: break-word;
-  }
-
-  .mode-options {
-    margin: 12px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    user-select: none;
-    --md-sys-color-on-surface: var(--md-sys-color-primary);
-    --md-sys-color-on-surface-variant: var(--md-sys-color-primary);
-  }
-
-  .mode-option {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 1.2em;
-  }
-
-  .mode-policy-section {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 20px;
-  }
-
-  .mode-policy-fields {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    &.hidden {
-      display: none;
-    }
-  }
-
-  .mode-policy-section.hidden {
-    display: none;
-  }
-}
-
 $mode-gen-color: #36DB2B;
 $mode-hack-color: #FF8400;
 
-.mode-generated,
 .checkbox-checked-generated {
   --md-sys-color-primary: #{$mode-gen-color};
 }
 
-.mode-generated {
-  --md-sys-color-on-surface: #{$mode-gen-color};
-  --md-sys-color-on-surface-variant: #{$mode-gen-color};
-}
-
-.mode-hack,
 .checkbox-checked-hack {
   --md-sys-color-primary: #{$mode-hack-color};
-}
-
-.mode-hack {
-  --md-sys-color-on-surface: #{$mode-hack-color};
-  --md-sys-color-on-surface-variant: #{$mode-hack-color};
-}
-
-.mode-icon {
-  font-family: monospace;
-  font-weight: bold;
-  padding: 2px 6px;
-  border-radius: 2px;
-
-  &.mode-generated {
-    background-color: $mode-gen-color;
-    color: #fff;
-  }
-
-  &.mode-hack {
-    background-color: $mode-hack-color;
-    color: #fff;
-  }
 }

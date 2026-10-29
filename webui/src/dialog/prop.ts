@@ -2,7 +2,7 @@ import type { MdDialog, MdFilledButton, MdOutlinedButton, MdOutlinedTextField, M
 import { i18n } from '../i18n'
 import { File } from '../file'
 import type { Cli } from '../cli'
-import { Config } from '../config'
+import { Config } from '../conifg/config'
 import type { Snackbar } from '../snackbar/snackbar'
 import { applyDialogAnimation } from './animation'
 

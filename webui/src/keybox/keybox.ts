@@ -6,7 +6,7 @@ import { FileSelector } from '../file_selector/file_selector'
 import { Snackbar } from '../snackbar/snackbar'
 import { generateUnknownKeybox, isKeygenAvailable } from './unknown'
 import { CustomKeyboxProvider } from './custom'
-import { Config } from '../config'
+import { Config } from '../conifg/config'
 import { applyDialogAnimation } from '../dialog/animation'
 import './keybox.scss'
 

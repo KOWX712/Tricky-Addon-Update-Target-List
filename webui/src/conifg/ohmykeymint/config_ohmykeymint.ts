@@ -1,7 +1,7 @@
-import { File } from './file'
-import { isDev } from './utils/dev'
-import { Config, PolicySchema } from './config'
-import type { ConfigData } from './config'
+import { File } from '../../file'
+import { isDev } from '../../utils/dev'
+import { Config, PolicySchema } from '../config'
+import type { ConfigData } from '../config'
 import { parse, stringify } from 'smol-toml'
 
 function prettyPrintToml(toml: string): string {
@@ -61,13 +61,12 @@ export class ConfigOhMyKeyMint extends Config {
   override readonly identity: string = 'OMK'
 
   protected override readonly CONFIG_PATH = '/data/misc/keystore/omk'
-  protected override readonly CONFIG_FILE = this.CONFIG_PATH + '/config.toml'
+  protected readonly CONFIG_FILE = this.CONFIG_PATH + '/config.toml'
   protected readonly INJECTOR_FILE = this.CONFIG_PATH + '/injector.toml'
 
-  protected readonly perAppConfig: boolean = false
-  protected readonly appMode: boolean = false
+  protected override readonly perAppConfig: boolean = false
 
-  readonly policySchema = OMK_POLICY_SCHEMA
+  override readonly policySchema = OMK_POLICY_SCHEMA
 
   #injector: Record<string, unknown> | null = null
   #omkConfig: Record<string, unknown> | null = null

@@ -1,7 +1,7 @@
 import { Cli } from '../cli'
 import type { UpdateManager } from '../update'
 import type { Snackbar } from '../snackbar/snackbar'
-import { Config } from '../config'
+import { Config } from '../conifg/config'
 import { AppList } from '../app_list/app_list'
 import { DefaultPolicyDialog } from './policy'
 import { AboutDialog } from './about'
