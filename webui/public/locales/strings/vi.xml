@@ -130,4 +130,5 @@
     <string name="mode_leaf_hack">Leaf Hack</string>
     <string name="mode_set_custom_policy">Thiết lập chính sách tuỳ chỉnh</string>
     <string name="mode_use_default_policy">Sử dụng chính sách mặc định</string>
+    <!-- Profiles -->
 </resources>
