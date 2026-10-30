@@ -1,6 +1,6 @@
 import type { MdDialog, MdFilledButton, MdOutlinedButton, MdOutlinedTextField, MdSwitch } from '@material/web/all'
 import { i18n } from '../i18n'
-import { File } from '../file'
+import { file } from '../file'
 import type { Cli } from '../cli'
 import { Config } from '../conifg/config'
 import type { Snackbar } from '../snackbar/snackbar'
@@ -49,9 +49,9 @@ export class PropDialog {
     switchItem?.addEventListener('change', async () => {
       try {
         if (switchItem.selected) {
-          await File.delete(DISABLE_PROP_HANDLER_PATH)
+          await file.delete(DISABLE_PROP_HANDLER_PATH)
         } else {
-          await File.createFile(DISABLE_PROP_HANDLER_PATH)
+          await file.createFile(DISABLE_PROP_HANDLER_PATH)
         }
       } catch (error) {
         switchItem.selected = !switchItem.selected
@@ -79,7 +79,7 @@ export class PropDialog {
     const bootHashInput = this.#dialog?.querySelector<MdOutlinedTextField>('#boot-hash-input')
     if (bootHashInput) {
       try {
-        const content = await File.read(BOOT_HASH_PATH)
+        const content = await file.read(BOOT_HASH_PATH)
         bootHashInput.value = content.trim()
       } catch {
         bootHashInput.value = ''
@@ -89,7 +89,7 @@ export class PropDialog {
     const disableSwitch = this.#dialog?.querySelector<MdSwitch>('#prop-setting-switch')
     if (disableSwitch) {
       try {
-        disableSwitch.selected = !await File.exist(DISABLE_PROP_HANDLER_PATH)
+        disableSwitch.selected = !await file.exist(DISABLE_PROP_HANDLER_PATH)
       } catch {
         disableSwitch.selected = false
       }
@@ -109,7 +109,7 @@ export class PropDialog {
       const hash = bootHashInput?.value?.trim() ?? ''
 
       if (hash) {
-        await File.write(BOOT_HASH_PATH, hash)
+        await file.write(BOOT_HASH_PATH, hash)
         await this.#cli.setBootHash(hash)
 
         if (this.#config.policySchema.getField('vb_hash')) {
@@ -120,7 +120,7 @@ export class PropDialog {
           await this.#config.write()
         }
       } else {
-        await File.delete(BOOT_HASH_PATH)
+        await file.delete(BOOT_HASH_PATH)
       }
 
       this.#snackbar.show(i18n.t('prompt_boot_hash_set'))

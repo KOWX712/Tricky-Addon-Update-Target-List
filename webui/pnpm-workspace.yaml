@@ -1,4 +1,4 @@
 allowBuilds:
   '@parcel/watcher': true
 minimumReleaseAgeExclude:
-  - kernelsu-alt@3.1.2
+  - kernelsu-alt

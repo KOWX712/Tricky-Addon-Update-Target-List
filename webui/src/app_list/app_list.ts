@@ -1,5 +1,5 @@
-import { listPackages, getPackagesInfo } from 'kernelsu-alt'
-import type { PackagesInfo } from 'kernelsu-alt'
+import { pm } from 'kernelsu-alt'
+import type { PackageInfoPerUid } from 'kernelsu-alt'
 import type { MdDialog } from '@material/web/all'
 import { Cli } from '../cli'
 import { Config } from '../conifg/config'
@@ -51,27 +51,33 @@ export class AppList {
       return
     }
 
-    const pkgs = await listPackages('all').catch(() => [])
+    const pkgs = await pm.listPackages('all').catch(() => [])
 
-    let infos: PackagesInfo[]
+    let infos: PackageInfoPerUid[]
     try {
-      infos = await getPackagesInfo(pkgs) as PackagesInfo[]
+      infos = (await pm.getPackagesInfo(pkgs)).filter(
+        (info): info is PackageInfoPerUid => !('error' in info),
+      )
     } catch {
-      infos = pkgs.map((pkg: string) => ({
-        packageName: pkg,
-        versionName: '',
-        versionCode: 0,
-        appLabel: pkg,
-        isSystem: false,
-        uid: 0,
-      }))
+      infos = []
     }
 
-    this.#entries = pkgs.map((pkg: string, i: number) => ({
-      packageName: pkg,
-      appName: infos[i]?.appLabel || pkg,
-      isSystem: infos[i]?.isSystem ?? false,
-    }))
+    const infoByPackage = new Map<string, PackageInfoPerUid>()
+    for (const info of infos) {
+      const previous = infoByPackage.get(info.packageName)
+      if (!previous || (previous.userId !== 0 && info.userId === 0)) {
+        infoByPackage.set(info.packageName, info)
+      }
+    }
+
+    this.#entries = pkgs.map(pkg => {
+      const info = infoByPackage.get(pkg)
+      return {
+        packageName: pkg,
+        appName: info?.appLabel || pkg,
+        isSystem: info?.isSystem ?? false,
+      }
+    })
   }
 
   getEntries(): AppEntry[] {

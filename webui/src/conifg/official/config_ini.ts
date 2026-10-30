@@ -1,5 +1,5 @@
 import type { MdOutlinedTextField } from '@material/web/all'
-import { File } from '../../file'
+import { file } from '../../file'
 import { isDev } from '../../utils/dev'
 import { Config, PolicySchema } from '../config'
 import type { ConfigData } from '../config'
@@ -129,7 +129,7 @@ export class ConfigIni extends Config {
       return
     }
     try {
-      const raw = await File.read(this.CONFIG_FILE)
+      const raw = await file.read(this.CONFIG_FILE)
       this.set(parseConfig(raw))
     } catch {
       this.set({
@@ -141,7 +141,7 @@ export class ConfigIni extends Config {
 
   override async write(): Promise<void> {
     const raw = serializeConfig(this.get())
-    await File.write(this.CONFIG_FILE, raw)
+    await file.write(this.CONFIG_FILE, raw)
   }
 
   static support(versionCode: number): boolean {

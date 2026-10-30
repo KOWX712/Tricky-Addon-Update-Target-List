@@ -1,4 +1,4 @@
-import { File } from '../../file'
+import { file } from '../../file'
 import { isDev } from '../../utils/dev'
 import { Config, PolicySchema } from '../config'
 import type { ConfigData, Policy } from '../config'
@@ -173,7 +173,7 @@ export class ConfigTeeSimulator extends Config {
       ]
     } else {
       try {
-        const parsed: unknown = JSON.parse(await File.read(this.CONFIG_FILE))
+        const parsed: unknown = JSON.parse(await file.read(this.CONFIG_FILE))
         if (!isRecord(parsed) || !isRecord(parsed.profiles)) throw new Error('Invalid Tee Simulator config')
         const profiles = Object.fromEntries(
           Object.entries(parsed.profiles).filter(([, profile]) => isRecord(profile))
@@ -257,7 +257,7 @@ export class ConfigTeeSimulator extends Config {
       this.#sectionBaseline.set(section, JSON.stringify(fresh))
     }
 
-    await File.write(this.CONFIG_FILE, JSON.stringify(this.#teeConfig, null, 2))
+    await file.write(this.CONFIG_FILE, JSON.stringify(this.#teeConfig, null, 2))
   }
 
   #profilePolicy(name: string): Policy | null {

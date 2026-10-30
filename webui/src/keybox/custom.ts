@@ -1,7 +1,7 @@
 import type { MdDialog, MdFilledTonalIconButton, MdOutlinedTextField, MdTextButton } from '@material/web/all'
 import type { Keybox } from './keybox'
 import { i18n } from '../i18n'
-import { File } from '../file'
+import { file } from '../file'
 import { FileSelector } from '../file_selector/file_selector'
 import { Snackbar } from '../snackbar/snackbar'
 import { LOCAL_STORAGE_PREFIX, GITHUB_REPO } from '../constant'
@@ -138,9 +138,22 @@ export class CustomKeyboxProvider {
         return
       }
 
-      const cmd = script || 'cat'
-      const result = await this.#keybox.setKeybox(data, cmd)
-      this.#snackbar.show(i18n.t(result ? 'prompt_custom_key_set' : 'prompt_custom_key_set_error'), result)
+      if (script) {
+        const tmpDir = `${await this.#keybox.cli.getBasePath()}/common/tmp`
+        const input = `${tmpDir}/keybox-${crypto.randomUUID()}.tmp`
+        try {
+          await file.createDirectory(tmpDir)
+          await file.write(input, data)
+          await file.copy(this.#keybox.keyboxPath, `${this.#keybox.keyboxPath}.bak`).catch(() => {})
+          await this.#keybox.cli.transformFile(input, this.#keybox.keyboxPath, script)
+          this.#snackbar.show(i18n.t('prompt_custom_key_set'), true)
+        } finally {
+          await file.delete(input).catch(() => {})
+        }
+      } else {
+        const result = await this.#keybox.setKeybox(data)
+        this.#snackbar.show(i18n.t(result ? 'prompt_custom_key_set' : 'prompt_custom_key_set_error'), result)
+      }
     } catch (error) {
       console.error(error)
       this.#snackbar.show(i18n.t('prompt_custom_fetch_error'), false)
@@ -276,7 +289,7 @@ export class CustomKeyboxProvider {
     try {
       const configStr = JSON.stringify(config, null, 2)
       const filePath = `/storage/emulated/0/Download/${fileName}`
-      await File.write(filePath, configStr)
+      await file.write(filePath, configStr)
       this.#snackbar.show(i18n.t('customkb_export_success', filePath), true)
     } catch {
       this.#snackbar.show(i18n.t('customkb_export_error'), false)

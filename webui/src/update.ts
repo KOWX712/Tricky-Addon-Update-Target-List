@@ -1,5 +1,5 @@
 import { Cli } from './cli'
-import { File } from './file'
+import { file } from './file'
 import type { Config } from './conifg/config'
 import { GITHUB_REPO, MOD_ID } from './constant'
 
@@ -40,9 +40,9 @@ export class UpdateManager {
     try {
       const basePath = await this.#cli.getBasePath()
       if (show) {
-        await File.copy(basePath + UPDATE_PROP, `${basePath}/module.prop`)
+        await file.copy(basePath + UPDATE_PROP, `${basePath}/module.prop`)
       } else {
-        await File.delete(`${basePath}/module.prop`)
+        await file.delete(`${basePath}/module.prop`)
       }
     } catch {}
   }
@@ -79,14 +79,14 @@ export class UpdateManager {
       const localseUpdateDir = `/data/adb/modules_update/${MOD_ID}/webui/locales`
       const zipPath = `${tmpDir}/locales.zip`
 
-      await File.createDirectory(tmpDir)
+      await file.createDirectory(tmpDir)
       await this.#downloadFile(`${BOT_BASE}/locales.zip`, zipPath)
       await this.#cli.unzip(zipPath, localesDir)
-      if (await File.isDirectory(localseUpdateDir)) {
+      if (await file.isDirectory(localseUpdateDir)) {
         await this.#cli.unzip(zipPath, localseUpdateDir)
       }
-      await File.write(`${localesDir}/version`, remoteVersion)
-      await File.delete(zipPath)
+      await file.write(`${localesDir}/version`, remoteVersion)
+      await file.delete(zipPath)
       return true
     } catch {
       throw new Error('Failed to update locales')
@@ -160,10 +160,10 @@ export class UpdateManager {
       const tmpDir = `${basePath}/common/tmp`
       const nightlyPage = `${tmpDir}/nightly.html`
 
-      await File.createDirectory(tmpDir)
+      await file.createDirectory(tmpDir)
       await this.#cli.downloadFile(NIGHTLY_LINK, nightlyPage)
-      const html = await File.read(nightlyPage)
-      await File.delete(nightlyPage)
+      const html = await file.read(nightlyPage)
+      await file.delete(nightlyPage)
 
       const match = html.match(/href="([^"]+\.zip)"/)
       if (!match) return null
@@ -234,7 +234,7 @@ export class UpdateManager {
     const basePath = await this.#cli.getBasePath()
     const tmpDir = `${basePath}/common/tmp`
 
-    await File.createDirectory(tmpDir)
+    await file.createDirectory(tmpDir)
     await this.#downloadFile(url, `${tmpDir}/module.zip`)
     try {
       await this.#cli.installModule(`${tmpDir}/module.zip`)

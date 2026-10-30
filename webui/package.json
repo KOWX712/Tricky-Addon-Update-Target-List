@@ -15,7 +15,7 @@
   "dependencies": {
     "@material/web": "^2.5.0",
     "asn1js": "^4.0.0",
-    "kernelsu-alt": "^3.1.2",
+    "kernelsu-alt": "^3.3.0",
     "marked": "^18.1.2",
     "pkijs": "^4.0.1",
     "smol-toml": "^1.9.1"

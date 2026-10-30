@@ -1,5 +1,5 @@
 import { exec, spawn } from 'kernelsu-alt'
-import { File } from './file'
+import { file } from './file'
 import { MOD_ID, OMK_MOD_ID, TEES_MOD_ID, TS_MOD_ID } from './constant'
 import { isDev } from './utils/dev'
 
@@ -39,7 +39,7 @@ export class Cli {
   }
 
   async #resolveBasePath(): Promise<string> {
-    const exists = await File.exist(`/data/adb/modules/.${MOD_ID}`)
+    const exists = await file.exist(`/data/adb/modules/.${MOD_ID}`)
     return exists ? `/data/adb/modules/.${MOD_ID}` : `/data/adb/modules/${MOD_ID}`
   }
 
@@ -58,8 +58,8 @@ export class Cli {
     let raw = ''
     for (const id of ids) {
       try {
-        raw = await File.read(`/data/adb/modules/${id}/module.prop`)
-        const disabled = await File.exist(`/data/adb/modules/${id}/disable`)
+        raw = await file.read(`/data/adb/modules/${id}/module.prop`)
+        const disabled = await file.exist(`/data/adb/modules/${id}/disable`)
         if (!disabled) break
       } catch {}
     }
@@ -78,6 +78,12 @@ export class Cli {
   async linkRedirect(url: string): Promise<void> {
     const result = await exec(`am start -a android.intent.action.VIEW -d '${url}'`)
     if (result.errno !== 0) window.open(url, '_blank')
+  }
+
+  async transformFile(src: string, dst: string, command: string): Promise<void> {
+    const quote = (path: string) => `'${path.replace(/'/g, "'\\''")}'`
+    const result = await exec(`(${command}) < ${quote(src)} > ${quote(dst)}`)
+    if (result.errno !== 0) throw new Error(`transformFile failed (${result.errno}): ${result.stderr}`)
   }
 
   async getAospKey(): Promise<string> {
@@ -113,7 +119,7 @@ export class Cli {
   }
 
   async unzip(zipPath: string, dest: string): Promise<void> {
-    await File.createDirectory(dest)
+    await file.createDirectory(dest)
     const result = await exec(`unzip -o '${zipPath}' -d '${dest}'`)
     if (result.errno !== 0) {
       throw new Error(`unzip failed (${result.errno}): ${result.stderr}`)
@@ -136,19 +142,19 @@ export class Cli {
     return new Promise((resolve, reject) => {
       let cmd: [string, string[]]
 
-      const cleanup = () => File.delete(`${basePath}/common/tmp`).catch(() => {})
+      const cleanup = () => file.delete(`${basePath}/common/tmp`).catch(() => {})
 
       switch (manager) {
         case 'APATCH':
-          if (option == 'uninstall') File.copy(`${basePath}/update/module.prop`, `${basePath}/module.prop`)
+          if (option == 'uninstall') file.copy(`${basePath}/update/module.prop`, `${basePath}/module.prop`)
           cmd = ['apd', ['module', option, module]]
           break
         case 'KSU':
-          if (option == 'uninstall') File.copy(`${basePath}/update/module.prop`, `${basePath}/module.prop`)
+          if (option == 'uninstall') file.copy(`${basePath}/update/module.prop`, `${basePath}/module.prop`)
           cmd = ['ksud', ['module', option, module]]
           break
         case 'MAGISK':
-          if (option == 'uninstall') File.copy(`${basePath}/update`, `/data/adb/modules/${MOD_ID}`)
+          if (option == 'uninstall') file.copy(`${basePath}/update`, `/data/adb/modules/${MOD_ID}`)
           cmd = ['magisk', [`--${option}-module`, module]]
           break
         default:
@@ -171,7 +177,7 @@ export class Cli {
           })
         } else {
           if (option == 'uninstall') {
-            File.createFile(`/data/adb/modules/${MOD_ID}/remove`).catch(() => {})
+            file.createFile(`/data/adb/modules/${MOD_ID}/remove`).catch(() => {})
             resolve(true)
           } else {
             cleanup().then(() => reject(new Error(`Failed to ${option} module: exit(${code})`)))

@@ -1,4 +1,4 @@
-import { File } from '../../file'
+import { file } from '../../file'
 import { isDev } from '../../utils/dev'
 import { Config, PolicySchema } from '../config'
 import type { ConfigData } from '../config'
@@ -91,7 +91,7 @@ export class ConfigOhMyKeyMint extends Config {
     const data: ConfigData = {}
 
     try {
-      const raw = await File.read(this.INJECTOR_FILE)
+      const raw = await file.read(this.INJECTOR_FILE)
       this.#injector = parse(raw) as Record<string, unknown>
       data.target = (this.#injector.scoop as string[]) ?? []
     } catch {
@@ -100,7 +100,7 @@ export class ConfigOhMyKeyMint extends Config {
     }
 
     try {
-      const raw = await File.read(this.CONFIG_FILE)
+      const raw = await file.read(this.CONFIG_FILE)
       this.#omkConfig = parse(raw) as Record<string, unknown>
       const trust = this.#omkConfig.trust as Record<string, unknown> | undefined
       if (trust) {
@@ -131,7 +131,7 @@ export class ConfigOhMyKeyMint extends Config {
     const injector = this.#injector ?? {}
     injector.scoop = data.target ?? []
     this.#injector = injector
-    await File.write(this.INJECTOR_FILE, prettyPrintToml(stringify(this.#injector)))
+    await file.write(this.INJECTOR_FILE, prettyPrintToml(stringify(this.#injector)))
 
     const omkConfig = this.#omkConfig ?? {}
     const trust = (omkConfig.trust ?? {}) as Record<string, unknown>
@@ -149,6 +149,6 @@ export class ConfigOhMyKeyMint extends Config {
 
     omkConfig.trust = trust
     this.#omkConfig = omkConfig
-    await File.write(this.CONFIG_FILE, stringify(this.#omkConfig))
+    await file.write(this.CONFIG_FILE, stringify(this.#omkConfig))
   }
 }

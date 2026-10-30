@@ -1,7 +1,7 @@
 import type { MdDialog } from '@material/web/all'
 import { i18n } from '../i18n'
 import { Cli } from '../cli'
-import { File } from '../file'
+import { file } from '../file'
 import { FileSelector } from '../file_selector/file_selector'
 import { Snackbar } from '../snackbar/snackbar'
 import { generateUnknownKeybox, isKeygenAvailable } from './unknown'
@@ -83,11 +83,11 @@ export class Keybox {
     return fragment
   }
 
-  async setKeybox(content: string, cmd: string = 'cat'): Promise<boolean> {
-    await File.copy(this.keyboxPath, `${this.keyboxPath}.bak`).catch(() => {})
+  async setKeybox(content: string): Promise<boolean> {
+    await file.copy(this.keyboxPath, `${this.keyboxPath}.bak`).catch(() => {})
 
     try {
-      await File.write(this.keyboxPath, content, cmd)
+      await file.write(this.keyboxPath, content)
       return true
     } catch {
       return false

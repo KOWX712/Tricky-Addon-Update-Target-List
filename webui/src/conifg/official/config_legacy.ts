@@ -1,5 +1,5 @@
 import type { MdOutlinedTextField } from '@material/web/all'
-import { File } from '../../file'
+import { file } from '../../file'
 import { isDev } from '../../utils/dev'
 import { Config, PolicySchema } from '../config'
 import type { ConfigData, Policy } from '../config'
@@ -146,14 +146,14 @@ export class ConfigLegacy extends Config {
       ]
     } else {
       try {
-        const targetRaw = await File.read(this.CONFIG_FILE)
+        const targetRaw = await file.read(this.CONFIG_FILE)
         data.target = parseTarget(targetRaw)
       } catch {
         data.target = []
       }
 
       try {
-        const spRaw = await File.read(this.SECURITY_PATCH_FILE)
+        const spRaw = await file.read(this.SECURITY_PATCH_FILE)
         const policy = parseSecurityPatch(spRaw)
         if (policy) data.default_policy = policy
       } catch {
@@ -191,13 +191,13 @@ export class ConfigLegacy extends Config {
     const writeTasks: Promise<void>[] = []
 
     if (data.target) {
-      writeTasks.push(File.write(this.CONFIG_FILE, serializeTarget(data.target)))
+      writeTasks.push(file.write(this.CONFIG_FILE, serializeTarget(data.target)))
     }
 
     if (data.default_policy && !isNoOpPolicy(data.default_policy)) {
-      writeTasks.push(File.write(this.SECURITY_PATCH_FILE, serializeSecurityPatch(data.default_policy)))
+      writeTasks.push(file.write(this.SECURITY_PATCH_FILE, serializeSecurityPatch(data.default_policy)))
     } else {
-      writeTasks.push(File.delete(this.SECURITY_PATCH_FILE))
+      writeTasks.push(file.delete(this.SECURITY_PATCH_FILE))
     }
 
     await Promise.all(writeTasks)
