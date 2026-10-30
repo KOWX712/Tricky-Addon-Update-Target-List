@@ -82,4 +82,5 @@
     <!-- Mode dialog -->
     <string name="mode_dialog_title">Mod</string>
     <string name="mode_auto">Otomatik</string>
+    <!-- Profiles -->
 </resources>

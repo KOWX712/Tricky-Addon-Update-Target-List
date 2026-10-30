@@ -130,4 +130,5 @@
     <string name="mode_leaf_hack">修改證書鏈</string>
     <string name="mode_set_custom_policy">使用自訂策略</string>
     <string name="mode_use_default_policy">使用預設策略</string>
+    <!-- Profiles -->
 </resources>
