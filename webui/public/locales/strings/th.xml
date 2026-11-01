@@ -75,4 +75,5 @@
     <!-- Mode dialog -->
     <string name="mode_dialog_title">โหมด</string>
     <string name="mode_auto">อัตโนมัติ</string>
+    <!-- Profiles -->
 </resources>

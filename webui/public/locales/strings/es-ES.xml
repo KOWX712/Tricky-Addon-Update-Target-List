@@ -104,4 +104,5 @@
     <string name="mode_leaf_hack">Leaf Hack</string>
     <string name="mode_set_custom_policy">Establecer política personalizada</string>
     <string name="mode_use_default_policy">Establecer política predeterminada</string>
+    <!-- Profiles -->
 </resources>
