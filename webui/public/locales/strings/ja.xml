@@ -71,4 +71,5 @@
     <string name="confirmation_uninstall_title">アンインストールしますか？</string>
     <string name="confirmation_uninstall_message">Tricky Addon をアンインストールしてもよろしいですか</string>
     <!-- Mode dialog -->
+    <!-- Profiles -->
 </resources>
