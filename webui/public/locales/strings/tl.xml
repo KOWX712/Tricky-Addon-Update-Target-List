@@ -67,4 +67,5 @@
     <string name="confirmation_uninstall_title">Kumpirmahin ang Pag-uninstall?</string>
     <string name="confirmation_uninstall_message">Sigurado ka bang gusto mong i-uninstall ang Tricky Addon</string>
     <!-- Mode dialog -->
+    <!-- Profiles -->
 </resources>
