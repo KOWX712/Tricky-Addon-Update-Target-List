@@ -36,20 +36,32 @@ export class KsuIo extends File {
   }
 
   async write(path: string, data: string): Promise<void> {
+    const tmpPath = `${path}.${Date.now()}.${Math.random().toString(36).slice(2)}.tmp`
     const stream = io.FileOutputStream()
-    const id = stream.open(path, false)
-    if (!id) throw new Error(`File.write failed: ${path}`)
+    const id = stream.open(tmpPath, false)
+    if (!id) throw new Error(`File.write failed to open: ${tmpPath}`)
     const bytes = new TextEncoder().encode(`${data.trim()}\n`)
     try {
       for (let offset = 0; offset < bytes.length; offset += 32768) {
         const chunk = bytes.subarray(offset, offset + 32768)
         let binary = ''
         for (const byte of chunk) binary += String.fromCharCode(byte)
-        if (!stream.write(id, btoa(binary))) throw new Error(`File.write failed: ${path}`)
+        if (!stream.write(id, btoa(binary))) throw new Error(`File.write failed: ${tmpPath}`)
       }
-      if (!stream.flush(id)) throw new Error(`File.write failed: ${path}`)
+      if (!stream.flush(id)) throw new Error(`File.write failed to flush: ${tmpPath}`)
     } finally {
-      if (!stream.close(id)) throw new Error(`File.write failed to close: ${path}`)
+      try {
+        if (!stream.close(id)) throw new Error(`File.write failed to close: ${tmpPath}`)
+      } finally {
+        const tmpFile = io.File(tmpPath)
+        try {
+          if (!tmpFile.renameTo(path)) throw new Error(`File.write failed to rename: ${tmpPath} -> ${path}`)
+        } finally {
+          if (tmpFile.exists()) {
+            await this.delete(tmpPath).catch(() => {})
+          }
+        }
+      }
     }
   }
 
@@ -57,11 +69,11 @@ export class KsuIo extends File {
     const source = io.File(src)
     if (!source.exists()) throw new Error(`File.move failed: ${src} does not exist`)
     const target = io.File(dst).isDirectory() ? `${dst}/${source.getName()}` : dst
-    if (io.File(target).exists() || io.File(target).isSymlink()) await this.delete(target)
     if (!source.renameTo(target)) throw new Error(`File.move failed: ${src} -> ${target}`)
   }
 
   async copy(src: string, dst: string): Promise<void> {
+    if (src === dst) return
     const source = io.File(src)
     if (!source.exists() && !source.isSymlink()) throw new Error(`File.copy failed: ${src} does not exist`)
 
