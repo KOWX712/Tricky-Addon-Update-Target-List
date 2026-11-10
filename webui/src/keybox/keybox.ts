@@ -2,6 +2,7 @@ import type { MdDialog } from '@material/web/all'
 import { i18n } from '../i18n'
 import { Cli } from '../cli'
 import { file } from '../file'
+import { ShellFile } from '../file/shellFile'
 import { FileSelector } from '../file_selector/file_selector'
 import { Snackbar } from '../snackbar/snackbar'
 import { generateUnknownKeybox, isKeygenAvailable } from './unknown'
@@ -87,7 +88,7 @@ export class Keybox {
     await file.copy(this.keyboxPath, `${this.keyboxPath}.bak`).catch(() => {})
 
     try {
-      await file.write(this.keyboxPath, content)
+      await new ShellFile().write(this.keyboxPath, content)
       return true
     } catch {
       return false
