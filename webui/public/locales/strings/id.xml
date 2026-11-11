@@ -89,4 +89,5 @@
     <string name="confirmation_uninstall_title">Konfirmasi Hapus?</string>
     <string name="confirmation_uninstall_message">Apakah Anda yakin ingin menghapus Tricky Addon</string>
     <!-- Mode dialog -->
+    <!-- Profiles -->
 </resources>
