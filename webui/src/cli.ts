@@ -172,7 +172,7 @@ export class Cli {
       proc.on('exit', (code: number | null) => {
         if (code === 0) {
           cleanup().then(() => {
-            if (stdout.includes('No need to reboot')) location.reload()
+            if (stdout.includes('No need to reboot') || stdout.includes('no reboot required')) location.reload()
             resolve(true)
           })
         } else {
