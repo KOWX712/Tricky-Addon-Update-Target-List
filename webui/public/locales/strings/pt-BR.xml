@@ -130,4 +130,10 @@
     <string name="mode_leaf_hack">Hack Leaf</string>
     <string name="mode_set_custom_policy">Definir Política Personalizada</string>
     <string name="mode_use_default_policy">Usar Política Padrão</string>
+    <!-- Profiles -->
+    <string name="profile_label">Perfil</string>
+    <string name="profile_name_label">Nome do perfil</string>
+    <string name="profile_new">Novo perfil</string>
+    <string name="profile_delete">Excluir este perfil</string>
+    <string name="auto_include_new_apps_label">Incluir novos aplicativos automaticamente</string>
 </resources>

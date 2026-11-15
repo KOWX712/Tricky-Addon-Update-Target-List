@@ -82,4 +82,5 @@
     <!-- Mode dialog -->
     <string name="mode_dialog_title">Modus</string>
     <string name="mode_auto">Auto</string>
+    <!-- Profiles -->
 </resources>

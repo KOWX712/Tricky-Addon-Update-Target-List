@@ -67,4 +67,5 @@
     <string name="confirmation_uninstall_title">Επιβεβαίωση Απεγκατάστασης;</string>
     <string name="confirmation_uninstall_message">Είσαι σίγουρος ότι θέλεις να απεγκαταστήσεις το Tricky Addon;</string>
     <!-- Mode dialog -->
+    <!-- Profiles -->
 </resources>

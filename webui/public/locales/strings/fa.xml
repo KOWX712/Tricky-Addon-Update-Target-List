@@ -67,4 +67,5 @@
     <string name="confirmation_uninstall_title">تأیید حذف؟</string>
     <string name="confirmation_uninstall_message">آیا مطمئن هستید که می‌خواهید Tricky Addon را حذف کنید</string>
     <!-- Mode dialog -->
+    <!-- Profiles -->
 </resources>
