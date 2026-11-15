@@ -130,4 +130,10 @@
     <string name="mode_leaf_hack">修改證書鏈</string>
     <string name="mode_set_custom_policy">使用自訂策略</string>
     <string name="mode_use_default_policy">使用預設策略</string>
+    <!-- Profiles -->
+    <string name="profile_label">配置</string>
+    <string name="profile_name_label">配置名稱</string>
+    <string name="profile_new">新增配置</string>
+    <string name="profile_delete">删除此配置</string>
+    <string name="auto_include_new_apps_label">自動新增安裝的應用</string>
 </resources>

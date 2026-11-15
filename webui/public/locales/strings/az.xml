@@ -67,4 +67,5 @@
     <string name="confirmation_uninstall_title">Silinməni Təsdiqləyirsiniz?</string>
     <string name="confirmation_uninstall_message">Tricky Addon-u silmək istədiyinizə əminsinizmi?</string>
     <!-- Mode dialog -->
+    <!-- Profiles -->
 </resources>
